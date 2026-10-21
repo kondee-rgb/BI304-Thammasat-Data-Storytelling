@@ -775,7 +775,9 @@
       gap: 14px;
     }
 
-    /* Responsive Adaptations */
+    /* =====================================================================
+       RESPONSIVE ADAPTATIONS: TABLETS & MOBILE PHONES
+       ===================================================================== */
     @media (max-width: 1024px) {
       .story-layout {
         flex-direction: column-reverse;
@@ -787,25 +789,267 @@
       }
       .viz-stage {
         width: 100%;
-        height: 52vh;
-        min-height: 380px;
+        height: 48vh;
+        min-height: 320px;
         position: sticky;
-        top: 65px;
+        top: 70px;
         margin-bottom: 20px;
       }
       body.is-flourish-mode {
-        overflow-y: auto;
+        overflow-y: hidden;
       }
       body.is-flourish-mode .story-layout {
-        height: auto;
-        flex-direction: column-reverse;
-      }
-      body.is-flourish-mode .narrative-stream {
-        width: 100%;
+        height: calc(100vh - 120px);
+        flex-direction: column;
+        padding: 12px;
       }
       body.is-flourish-mode .viz-stage {
         width: 100%;
-        height: 50vh;
+        height: 50%;
+        position: static;
+        margin-bottom: 10px;
+      }
+      body.is-flourish-mode .narrative-stream {
+        width: 100%;
+        height: 50%;
+        overflow-y: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Header & Branding */
+      .app-header {
+        padding: 8px 12px;
+      }
+      .header-inner {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: space-between;
+      }
+      .brand-emblem {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+      }
+      .brand-text h1 {
+        font-size: 14px;
+      }
+      .brand-text span {
+        display: none; /* Hide subtitle on mobile to save vertical space */
+      }
+      .mode-switch-group {
+        padding: 2px;
+      }
+      .mode-tab {
+        padding: 5px 11px;
+        font-size: 11.5px;
+      }
+      .header-links {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-top: 4px;
+        gap: 6px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .action-btn {
+        padding: 5px 9px;
+        font-size: 11px;
+        flex-shrink: 0;
+      }
+
+      /* Hero Banner */
+      .hero-banner {
+        padding: 28px 16px 32px;
+      }
+      .hero-tag {
+        font-size: 11px;
+        padding: 4px 10px;
+      }
+      .hero-banner h1 {
+        font-size: 21px;
+        line-height: 1.35;
+        margin-bottom: 10px;
+      }
+      .hero-subtitle {
+        font-size: 12.5px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+      }
+      .hero-kpis {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .kpi-card {
+        padding: 12px 10px;
+      }
+      .kpi-card .val {
+        font-size: 22px;
+      }
+      .kpi-card .lbl {
+        font-size: 10.5px;
+      }
+      .hero-btn {
+        width: 100%;
+        max-width: 300px;
+        font-size: 13px;
+        padding: 9px 16px;
+        justify-content: center;
+      }
+
+      /* Flourish Player Controller Bar */
+      .flourish-player-bar {
+        padding: 6px 12px;
+        flex-wrap: wrap;
+        gap: 6px;
+        top: auto;
+      }
+      .flourish-btn-group {
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+      .flourish-nav-btn {
+        padding: 5px 9px;
+        font-size: 11.5px;
+      }
+      .slide-progress-dots {
+        gap: 4px;
+      }
+      .slide-dot {
+        width: 6px;
+        height: 6px;
+      }
+      .slide-dot.active {
+        width: 14px;
+      }
+
+      /* Scrollytelling Layout on Mobile */
+      .story-layout {
+        padding: 10px 10px 50px;
+        gap: 12px;
+        flex-direction: column-reverse;
+      }
+      .viz-stage {
+        width: 100%;
+        height: 38vh;
+        min-height: 250px;
+        max-height: 310px;
+        position: sticky;
+        top: 96px;
+        margin-bottom: 14px;
+        border-radius: 12px;
+      }
+      .viz-frame-header {
+        padding: 6px 10px;
+      }
+      .viz-idx-tag {
+        font-size: 10.5px;
+        padding: 2px 7px;
+      }
+      .viz-frame-title {
+        font-size: 12.5px;
+      }
+      .viz-tool-badge {
+        display: none; /* Hide tool badge on mobile to allow title room */
+      }
+      .narrative-stream {
+        padding-bottom: 30px;
+      }
+      .scene-card {
+        min-height: 45vh;
+        margin-bottom: 24px;
+      }
+      .card-box {
+        padding: 16px 14px;
+        border-radius: 12px;
+        border-left-width: 4px;
+      }
+      .card-box h2 {
+        font-size: 16.5px;
+        margin-bottom: 8px;
+        line-height: 1.35;
+      }
+      .narrative-body {
+        font-size: 13.5px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+      .stat-callout {
+        font-size: 12px;
+        padding: 8px 10px;
+        margin-bottom: 10px;
+      }
+      .tufte-badge {
+        font-size: 11px;
+        padding-top: 6px;
+      }
+
+      /* Flourish Story Mode on Mobile */
+      body.is-flourish-mode {
+        overflow-y: hidden;
+      }
+      body.is-flourish-mode .story-layout {
+        height: calc(100vh - 150px);
+        padding: 6px 10px;
+        flex-direction: column;
+        overflow: hidden;
+        gap: 8px;
+      }
+      body.is-flourish-mode .viz-stage {
+        width: 100%;
+        height: 48%;
+        min-height: auto;
+        max-height: none;
+        position: static;
+        margin-bottom: 0;
+        border-radius: 12px;
+      }
+      body.is-flourish-mode .narrative-stream {
+        width: 100%;
+        height: 52%;
+        overflow-y: auto;
+        padding: 0;
+        display: block;
+      }
+      body.is-flourish-mode .scene-card {
+        min-height: auto;
+        margin-bottom: 0;
+        width: 100%;
+      }
+      body.is-flourish-mode .card-box {
+        padding: 14px 12px;
+        max-height: 100%;
+        overflow-y: auto;
+      }
+
+      /* Campus Map Buttons */
+      .map-campus-nav {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 6px 8px;
+        gap: 5px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .map-nav-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+        flex-shrink: 0;
+      }
+
+      /* Modal on Mobile */
+      .modal-content-card {
+        padding: 18px 14px;
+        margin: 12px;
+        border-radius: 12px;
+      }
+      .flourish-file-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .flourish-file-item .action-btn {
+        align-self: flex-end;
       }
     }
   </style>
@@ -1300,10 +1544,15 @@
     let mapMarkers = {};
     const chartsDrawn = {};
 
+    // Check mobile viewport
+    function isMobileView() {
+      return window.innerWidth <= 768;
+    }
+
     // Common layout configuration for Plotly
     const commonLayout = {
       font: { family: 'Prompt, Sarabun, sans-serif', color: '#1E293B', size: 12 },
-      margin: { l: 60, r: 40, t: 25, b: 50 },
+      margin: { l: 50, r: 25, t: 25, b: 45 },
       paper_bgcolor: '#FFFFFF',
       plot_bgcolor: '#FFFFFF',
       autosize: true
@@ -1536,7 +1785,7 @@
 
         const layout = {
           ...commonLayout,
-          margin: { l: 65, r: 35, t: 25, b: 50 },
+          margin: isMobileView() ? { l: 45, r: 18, t: 25, b: 42 } : { l: 65, r: 35, t: 25, b: 50 },
           xaxis: { title: 'ปี พ.ศ. (ค.ศ.)', showgrid: false },
           yaxis: { title: 'จำนวนนักศึกษา (คน)', zeroline: true, showgrid: true, gridcolor: '#F1F5F9' },
           annotations: [
@@ -1638,7 +1887,7 @@
         const layout = {
           ...commonLayout,
           barmode: 'group',
-          margin: { l: 65, r: 35, t: 48, b: 50 },
+          margin: isMobileView() ? { l: 42, r: 18, t: 44, b: 40 } : { l: 65, r: 35, t: 48, b: 50 },
           yaxis: { title: 'จำนวนนักศึกษา (คน)', gridcolor: '#F1F5F9' },
           xaxis: { showgrid: false },
           legend: { orientation: 'h', y: 1.12, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } }
@@ -1705,7 +1954,7 @@
 
         const layout = {
           ...commonLayout,
-          margin: { l: 65, r: 35, t: 25, b: 65 },
+          margin: isMobileView() ? { l: 45, r: 18, t: 25, b: 55 } : { l: 65, r: 35, t: 25, b: 65 },
           yaxis: { title: "ล้านบาท (THB)", gridcolor: '#F1F5F9' },
           xaxis: { showgrid: false }
         };
@@ -1740,7 +1989,7 @@
 
         const layout = {
           ...commonLayout,
-          margin: { l: 65, r: 35, t: 48, b: 50 },
+          margin: isMobileView() ? { l: 42, r: 18, t: 44, b: 40 } : { l: 65, r: 35, t: 48, b: 50 },
           yaxis: { autorange: 'reversed', title: 'อันดับ (อันดับน้อย = ผลงานดียิ่งขึ้น)', gridcolor: '#F1F5F9' },
           xaxis: { title: 'ปี ค.ศ.', showgrid: false },
           legend: { orientation: 'h', y: 1.12, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } },
@@ -1777,7 +2026,7 @@
 
         const layout = {
           ...commonLayout,
-          margin: { l: 45, r: 45, t: 45, b: 35 },
+          margin: isMobileView() ? { l: 25, r: 25, t: 36, b: 25 } : { l: 45, r: 45, t: 45, b: 35 },
           polar: {
             radialaxis: { visible: true, range: [70, 100], color: '#64748B' },
             angularaxis: { rotation: 90, direction: 'clockwise', tickfont: { size: 11.5, family: 'Prompt', color: '#1E293B', weight: 'bold' } }
@@ -1806,7 +2055,7 @@
 
         const layout = {
           ...commonLayout,
-          margin: { l: 65, r: 65, t: 48, b: 50 },
+          margin: isMobileView() ? { l: 42, r: 42, t: 44, b: 40 } : { l: 65, r: 65, t: 48, b: 50 },
           yaxis: { title: 'ผู้ป่วยนอก (ครั้ง)', gridcolor: '#F1F5F9' },
           yaxis2: { title: 'จำนวนเตียง', overlaying: 'y', side: 'right', showgrid: false },
           legend: { orientation: 'h', y: 1.12, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } },
