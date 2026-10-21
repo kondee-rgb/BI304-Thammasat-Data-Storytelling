@@ -59,16 +59,21 @@
       font-family: var(--font-heading);
     }
 
-    /* Fixed Application Header */
-    .app-header {
+    /* Fixed Top Controls Wrapper (Header + Player Bar) */
+    .sticky-top-wrap {
       position: sticky;
       top: 0;
       z-index: 1000;
+      background: #FFFFFF;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      border-bottom: 2px solid var(--tu-gold);
+    }
+
+    .app-header {
+      position: static;
       height: 62px;
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
 
     .header-inner {
@@ -145,6 +150,7 @@
       gap: 6px;
     }
 
+    .tab-txt-mobile { display: none; }
     .mode-tab.active {
       background: #FFFFFF;
       color: var(--tu-red);
@@ -195,9 +201,7 @@
 
     /* Scroll Progress Bar */
     .scroll-progress-line {
-      position: sticky;
-      top: 62px;
-      z-index: 999;
+      position: static;
       width: 100%;
       height: 3px;
       background: #E2E8F0;
@@ -214,14 +218,11 @@
     .flourish-player-bar {
       display: none;
       background: #FFFFFF;
-      border-bottom: 2px solid var(--tu-gold);
-      padding: 9px 24px;
+      border-top: 1px solid var(--border-color);
+      padding: 8px 24px;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      position: sticky;
-      top: 65px;
-      z-index: 998;
+      position: static;
     }
 
     .flourish-btn-group {
@@ -402,6 +403,11 @@
       display: flex;
       gap: 28px;
       position: relative;
+    }
+
+    /* Inline Visualization Holder for Responsive/Mobile Scrolly */
+    .inline-viz-slot {
+      display: none;
     }
 
     /* Left Narrative Column */
@@ -776,52 +782,17 @@
     }
 
     /* =====================================================================
-       RESPONSIVE ADAPTATIONS: TABLETS & MOBILE PHONES
+       RESPONSIVE ADAPTATIONS: TABLETS & MOBILE PHONES (<= 860px)
        ===================================================================== */
-    @media (max-width: 1024px) {
-      .story-layout {
-        flex-direction: column-reverse;
-        padding: 16px;
-      }
-      .narrative-stream {
-        width: 100%;
-        padding-bottom: 60px;
-      }
-      .viz-stage {
-        width: 100%;
-        height: 48vh;
-        min-height: 320px;
-        position: sticky;
-        top: 70px;
-        margin-bottom: 20px;
-      }
-      body.is-flourish-mode {
-        overflow-y: hidden;
-      }
-      body.is-flourish-mode .story-layout {
-        height: calc(100vh - 120px);
-        flex-direction: column;
-        padding: 12px;
-      }
-      body.is-flourish-mode .viz-stage {
-        width: 100%;
-        height: 50%;
-        position: static;
-        margin-bottom: 10px;
-      }
-      body.is-flourish-mode .narrative-stream {
-        width: 100%;
-        height: 50%;
-        overflow-y: auto;
-      }
-    }
-
-    @media (max-width: 768px) {
-      /* Header & Branding: Clean 2-Row Layout, No Overflow */
+    @media (max-width: 860px) {
+      .tab-txt-desktop { display: none !important; }
+      .tab-txt-mobile { display: inline !important; }
+      body.is-flourish-mode .viz-stage { order: 1 !important; }
+      body.is-flourish-mode .narrative-stream { order: 2 !important; }
+      /* Header & Branding: Clean Compact 2-Row Layout */
       .app-header {
         height: auto;
-        position: sticky;
-        top: 0;
+        position: static !important;
         padding: 6px 12px 8px;
         background: rgba(255, 255, 255, 0.98);
         border-bottom: 2px solid var(--tu-gold);
@@ -852,7 +823,7 @@
         font-size: 13.5px;
       }
       .brand-text span {
-        display: none; /* Hide subtitle on mobile to save vertical space */
+        display: none; /* Hide secondary title on mobile to save vertical space */
       }
       .mode-switch-group {
         width: 100%;
@@ -916,137 +887,191 @@
         padding: 6px 10px;
         flex-wrap: wrap;
         gap: 6px;
-        top: 80px;
+        top: 68px;
         background: #FFFFFF;
         border-bottom: 1px solid var(--border-color);
-        z-index: 999;
+        z-index: 998;
+        justify-content: space-between;
       }
       .flourish-btn-group {
         gap: 4px;
         flex-wrap: wrap;
+        align-items: center;
       }
       .flourish-nav-btn {
         padding: 4px 8px;
         font-size: 11px;
       }
       .slide-progress-dots {
-        gap: 3px;
+        gap: 4px;
       }
-      .slide-dot {
-        width: 5px;
-        height: 5px;
+      .dot-step {
+        width: 8px;
+        height: 8px;
       }
-      .slide-dot.active {
-        width: 12px;
-      }
-
-      /* Scrollytelling Layout on Mobile */
-      .story-layout {
-        padding: 8px 10px 50px;
-        gap: 12px;
-        flex-direction: column-reverse;
-      }
-      .viz-stage {
-        width: 100%;
-        height: 38vh;
-        min-height: 250px;
-        max-height: 300px;
-        position: sticky;
-        top: 88px;
-        margin-bottom: 14px;
-        border-radius: 12px;
-        background: #FFFFFF;
-        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
-        z-index: 20;
-      }
-      .viz-frame-header {
-        padding: 6px 10px;
-      }
-      .viz-idx-tag {
-        font-size: 10.5px;
-        padding: 2px 7px;
-      }
-      .viz-frame-title {
-        font-size: 12px;
-      }
-      .viz-tool-badge {
-        display: none; /* Hide tool badge on mobile to allow title room */
-      }
-      .narrative-stream {
-        padding-bottom: 30px;
-      }
-      .scene-card {
-        min-height: 45vh;
-        margin-bottom: 24px;
-      }
-      .card-box {
-        padding: 16px 14px;
-        border-radius: 12px;
-        border-left-width: 4px;
-      }
-      .card-box h2 {
-        font-size: 16px;
-        margin-bottom: 8px;
-        line-height: 1.35;
-      }
-      .narrative-body {
-        font-size: 13px;
-        line-height: 1.6;
-        margin-bottom: 12px;
-      }
-      .stat-callout {
-        font-size: 11.5px;
-        padding: 8px 10px;
-        margin-bottom: 10px;
-      }
-      .tufte-badge {
-        font-size: 10.5px;
-        padding-top: 6px;
+      .dot-step.active {
+        transform: scale(1.35);
       }
 
-      /* Flourish Story Mode on Mobile */
+      /* ---------------------------------------------------------------------
+         MODE 1: SCROLLYTELLING ON MOBILE (INLINE CARDS - ZERO OVERLAP)
+         --------------------------------------------------------------------- */
+      body.mode-scrolly .viz-stage {
+        display: none !important; /* Hide floating sticky box so it NEVER covers text */
+      }
+      body.mode-scrolly .story-layout {
+        display: block !important;
+        padding: 10px 12px 60px !important;
+      }
+      body.mode-scrolly .narrative-stream {
+        width: 100% !important;
+        padding-bottom: 20px !important;
+      }
+      body.mode-scrolly .scene-card {
+        min-height: auto !important;
+        opacity: 1 !important;
+        transform: none !important;
+        margin-bottom: 24px !important;
+      }
+      body.mode-scrolly .card-box {
+        padding: 18px 16px !important;
+        border-radius: 14px !important;
+        border-left-width: 5px !important;
+      }
+      body.mode-scrolly .card-box h2 {
+        font-size: 16.5px !important;
+        margin-bottom: 10px !important;
+        line-height: 1.35 !important;
+      }
+      body.mode-scrolly .inline-viz-slot {
+        display: block !important;
+        width: 100% !important;
+        height: 340px !important;
+        margin: 14px 0 16px !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        background: #FFFFFF !important;
+        border: 1px solid var(--border-color) !important;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.07) !important;
+        position: relative !important;
+      }
+      body.mode-scrolly .inline-viz-slot .viz-panel-slot {
+        position: relative !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
+      }
+
+      /* ---------------------------------------------------------------------
+         MODE 2: FLOURISH STORY ON MOBILE (NATURAL SCROLLING - 100% VISIBLE)
+         --------------------------------------------------------------------- */
       body.is-flourish-mode {
-        overflow-y: hidden;
+        overflow-y: auto !important;
+        height: auto !important;
+      }
+      body.is-flourish-mode .inline-viz-slot {
+        display: none !important;
+      }
+      body.is-flourish-mode .hero-banner {
+        display: none !important;
+      }
+      body.is-flourish-mode .scroll-progress-line {
+        display: none !important;
+      }
+      body.is-flourish-mode .flourish-player-bar {
+        display: flex !important;
+        position: static !important;
+        top: auto !important;
+        padding: 6px 10px !important;
       }
       body.is-flourish-mode .story-layout {
-        height: calc(100vh - 135px);
-        padding: 6px 10px;
-        flex-direction: column;
-        overflow: hidden;
-        gap: 8px;
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow: visible !important;
+        padding: 12px 12px 100px !important;
+        gap: 14px !important;
       }
       body.is-flourish-mode .viz-stage {
-        width: 100%;
-        height: 48%;
-        min-height: auto;
-        max-height: none;
-        position: static;
-        margin-bottom: 0;
-        border-radius: 12px;
+        display: flex !important;
+        width: 100% !important;
+        height: 380px !important;
+        min-height: 360px !important;
+        max-height: none !important;
+        position: static !important;
+        margin-bottom: 0 !important;
+        border-radius: 14px !important;
+        background: #FFFFFF !important;
+        box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08) !important;
+        overflow: hidden !important;
+        z-index: 10 !important;
+      }
+      body.is-flourish-mode .viz-canvas-frame {
+        height: 100% !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      body.is-flourish-mode .viz-frame-header {
+        padding: 7px 12px !important;
+      }
+      body.is-flourish-mode .viz-idx-tag {
+        font-size: 10.5px !important;
+        padding: 2px 7px !important;
+      }
+      body.is-flourish-mode .viz-frame-title {
+        font-size: 12.5px !important;
+      }
+      body.is-flourish-mode .viz-tool-badge {
+        display: none !important;
+      }
+      body.is-flourish-mode .viz-display-area {
+        flex: 1 !important;
+        height: calc(100% - 40px) !important;
+        position: relative !important;
+        width: 100% !important;
+      }
+      body.is-flourish-mode .viz-panel-slot {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
       }
       body.is-flourish-mode .narrative-stream {
-        width: 100%;
-        height: 52%;
-        overflow-y: auto;
-        padding: 0;
-        display: block;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding-bottom: 0 !important;
+        display: block !important;
       }
       body.is-flourish-mode .scene-card {
-        min-height: auto;
-        margin-bottom: 0;
-        width: 100%;
+        display: none;
+        width: 100% !important;
+        min-height: auto !important;
+        margin-bottom: 0 !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      body.is-flourish-mode .scene-card.active {
+        display: block !important;
       }
       body.is-flourish-mode .card-box {
-        padding: 12px 12px;
-        max-height: 100%;
-        overflow-y: auto;
+        padding: 18px 16px !important;
+        max-height: none !important;
+        overflow: visible !important;
+        border-radius: 14px !important;
       }
 
       /* Campus Map Buttons */
       .map-campus-nav {
+        top: 6px;
+        right: 6px;
+        max-width: calc(100% - 12px);
         overflow-x: auto;
         white-space: nowrap;
-        padding: 5px 6px;
+        padding: 4px;
         gap: 4px;
         -webkit-overflow-scrolling: touch;
       }
@@ -1075,6 +1100,8 @@
 </head>
 <body class="mode-scrolly">
 
+  <!-- Top Fixed Application Header & Controls Wrapper -->
+  <div class="sticky-top-wrap">
   <!-- Top Fixed Application Header -->
   <header class="app-header">
     <div class="header-inner">
@@ -1089,10 +1116,10 @@
       <!-- Mode Selector -->
       <div class="mode-switch-group">
         <button class="mode-tab active" id="tabScrolly" onclick="switchPresentationMode('scrolly')">
-          <i class="fa-solid fa-scroll"></i> Scrollytelling (เลื่อนอ่าน)
+          <i class="fa-solid fa-scroll"></i> <span class="tab-txt-desktop">Scrollytelling (เลื่อนอ่าน)</span><span class="tab-txt-mobile">Scrolly (เลื่อนอ่าน)</span>
         </button>
         <button class="mode-tab" id="tabFlourish" onclick="switchPresentationMode('flourish')">
-          <i class="fa-solid fa-presentation-screen"></i> Flourish Story (สไลด์นำเสนอ)
+          <i class="fa-solid fa-presentation-screen"></i> <span class="tab-txt-desktop">Flourish Story (สไลด์นำเสนอ)</span><span class="tab-txt-mobile">Flourish (สไลด์)</span>
         </button>
       </div>
 
@@ -1133,6 +1160,7 @@
 
     <!-- 10 Slide Indicator Dots -->
     <div class="slide-progress-dots" id="slideDotsHolder"></div>
+  </div>
   </div>
 
   <!-- Hero Section -->
@@ -1198,6 +1226,7 @@
             <span class="latch-chip">Time & Magnitude</span>
           </div>
           <h2>ปฐมบท 2477: ตลาดวิชาเพื่อราษฎรสู่ 4.2 หมื่นคน</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot1"></div>
           <p class="narrative-body">
             วันที่ 27 มิถุนายน พ.ศ. 2477 ท่ามกลางการสร้างประชาธิปไตยในสยาม 
             <b>ศ.ดร.ปรีดี พนมยงค์</b> สถาปนา <i>มหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง (มธก.)</i> 
@@ -1221,6 +1250,7 @@
             <span class="latch-chip">Location (พิกัดภูมิศาสตร์)</span>
           </div>
           <h2>การกระจายโอกาสสู่ภูมิภาค: 4 ศูนย์การศึกษา</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot2"></div>
           <p class="narrative-body">
             จากเนื้อที่จำกัดเพียง 49 ไร่ ณ ท่าพระจันทร์ ธรรมศาสตร์ได้ขยายรากฐานสู่ 
             <b>ศูนย์รังสิต (1,757 ไร่)</b> Hub การแพทย์ นวัตกรรม และวิทยาศาสตร์, 
@@ -1243,6 +1273,7 @@
             <span class="latch-chip">Hierarchy & Category</span>
           </div>
           <h2>19 คณะ 4 คลัสเตอร์วิชาการ: ความหลากหลายทางปัญญา</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot3"></div>
           <p class="narrative-body">
             โครงสร้างการศึกษาของ มธ. ประกอบด้วย 19 คณะ และสถาบันบูรณาการ แบ่งเป็น 4 คลัสเตอร์ยุทธศาสตร์ 
             โดยกลุ่ม <b>สังคมศาสตร์-มนุษยศาสตร์ (42%)</b> ยังคงเป็นเสาหลัก พร้อมการเติบโตอย่างก้าวกระโดดของ 
@@ -1265,6 +1296,7 @@
             <span class="latch-chip">Category (ความเท่าเทียมทางเพศ)</span>
           </div>
           <h2>มิติประชากร: หญิง 62.4% พลังขับเคลื่อนแห่งอนาคต</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot4"></div>
           <p class="narrative-body">
             ธรรมศาสตร์เป็นผู้นำด้านความเสมอภาคทางเพศ โดยมีสัดส่วนนักศึกษาหญิงรวม <b>62.4% (26,620 คน)</b> 
             และนักศึกษาชาย <b>37.6% (16,030 คน)</b> โดยเฉพาะในกลุ่มวิทยาศาสตร์สุขภาพ (หญิง 68%) 
@@ -1287,6 +1319,7 @@
             <span class="latch-chip">Location & Movement</span>
           </div>
           <h2>สายธารแห่งการโยกย้าย: กำเนิดศูนย์รังสิตและเครือข่าย</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot5"></div>
           <p class="narrative-body">
             วิวัฒนาการการย้ายศูนย์การศึกษาจากท่าพระจันทร์สู่รังสิต ถือเป็นก้าวกระโดดทางโครงสร้างที่ใหญ่ที่สุดของธรรมศาสตร์ 
             เริ่มต้นจากการย้ายนักศึกษาชั้นปี 1-2 ในปี 2529 จนกระทั่งย้ายหลักสูตรปริญญาตรีทั้งหมดสู่รังสิตในปี 2548
@@ -1308,6 +1341,7 @@
             <span class="latch-chip">Hierarchy & Finance</span>
           </div>
           <h2>ความมั่นคงทางการคลัง: งบประมาณรวม 11,500 ล้านบาท</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot6"></div>
           <p class="narrative-body">
             ธรรมศาสตร์ก้าวสู่มหาวิทยาลัยในกำกับของรัฐที่มีเสถียรภาพทางการเงินสูง 
             ด้วยการกระจายแหล่งรายได้ที่สมดุล ไม่พึ่งพางบประมาณแผ่นดินเพียงอย่างเดียว 
@@ -1330,6 +1364,7 @@
             <span class="latch-chip">Time & Magnitude</span>
           </div>
           <h2>ก้าวสู่เวทีโลก: อันดับ QS World & Asia ทะยานสู่ Top 70</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot7"></div>
           <p class="narrative-body">
             คุณภาพทางวิชาการและชื่อเสียงในสายตานายจ้าง (Employer Reputation) ส่งผลให้ มธ. 
             ไต่อันดับ QS Asia Rankings ดีขึ้นอย่างต่อเนื่องจากอันดับ 137 สู่ <b>อันดับ 68 ของเอเชีย</b> 
@@ -1352,6 +1387,7 @@
             <span class="latch-chip">Category & Sustainability</span>
           </div>
           <h2>มหาวิทยาลัยสีเขียว: ผู้นำโลกด้านความยั่งยืน SDG 11</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot8"></div>
           <p class="narrative-body">
             ธรรมศาสตร์ได้รับการจัดอันดับโดย THE Impact Rankings ให้เป็น <b>Top 10 ของโลกใน SDG 11 (เมืองยั่งยืน)</b> 
             ด้วยสัญลักษณ์ <b>"อุทยานเรียนรู้ป๋วย 100 ปี"</b> สวนผักดาดฟ้าที่ใหญ่ที่สุดในเอเชีย (22,000 ตร.ม.) 
@@ -1374,6 +1410,7 @@
             <span class="latch-chip">Time & Impact</span>
           </div>
           <h2>รพ.ธรรมศาสตร์: ที่พึ่งแห่งประชาชนในยามวิกฤต</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot9"></div>
           <p class="narrative-body">
             คำขวัญ <i>"ธรรมศาสตร์เพื่อประชาชน"</i> เด่นชัดผ่านโรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ 
             ซึ่งเติบโตจากสถานพยาบาล 120 เตียง สู่โรงพยาบาลระดับตติยภูมิขั้นสูงขนาด <b>1,400 เตียง</b> 
@@ -1396,6 +1433,7 @@
             <span class="latch-chip">Time & Vision</span>
           </div>
           <h2>วิสัยทัศน์ TU 2034: ก้าวสู่ 100 ปีแห่งปัญญาและความยั่งยืน</h2>
+          <div class="inline-viz-slot" id="inlineVizSlot10"></div>
           <p class="narrative-body">
             นับถอยหลังสู่ศตวรรษที่ 1 ในปี พ.ศ. 2577 ธรรมศาสตร์ขับเคลื่อนยุทธศาสตร์ <b>TU 2034</b> 
             มุ่งสู่ <b>Net-Zero Campus 2030</b> มหาวิทยาลัยคาร์บอนสุทธิเป็นศูนย์ และโครงการ 
@@ -1424,7 +1462,7 @@
           <span class="viz-tool-badge" id="vizToolTxt">Plotly Time-Series Spline</span>
         </div>
 
-        <div class="viz-display-area">
+        <div class="viz-display-area" id="desktopVizDisplayArea">
           <!-- 10 Visualization Containers -->
           <div class="viz-panel-slot active" id="vizSlot1"><div id="chartContainer1" style="width:100%; height:100%;"></div></div>
           
@@ -1569,9 +1607,9 @@
     let mapMarkers = {};
     const chartsDrawn = {};
 
-    // Check mobile viewport
+    // Check mobile viewport (tablet & phone <= 860px)
     function isMobileView() {
-      return window.innerWidth <= 768;
+      return window.innerWidth <= 860;
     }
 
     // Common layout configuration for Plotly
@@ -1583,6 +1621,63 @@
       autosize: true
     };
 
+    // Adapt Layout: Switch between Inline Visuals (Mobile Scrolly) and Desktop/Flourish Stage
+    function adaptLayoutForDevice() {
+      const isMobile = isMobileView();
+      const desktopArea = document.getElementById('desktopVizDisplayArea');
+      if (!desktopArea) return;
+
+      const headerEl = document.querySelector('.app-header');
+      const playerBar = document.getElementById('flourishPlayerBar');
+      if (headerEl && playerBar) {
+        playerBar.style.top = isMobile ? (headerEl.offsetHeight + 'px') : '65px';
+      }
+
+      if (isMobile && presentationMode === 'scrolly') {
+        // Mobile Scrolly: Dock each visual slot inside its respective story card
+        for (let i = 1; i <= 10; i++) {
+          const slot = document.getElementById(`vizSlot${i}`);
+          const inlineSlot = document.getElementById(`inlineVizSlot${i}`);
+          if (slot && inlineSlot && slot.parentElement !== inlineSlot) {
+            inlineSlot.appendChild(slot);
+          }
+          if (slot) {
+            slot.classList.add('active');
+            slot.style.display = 'block';
+          }
+          drawVisualization(i);
+        }
+      } else {
+        // Desktop OR Flourish mode: Return all slots to desktop stage
+        for (let i = 1; i <= 10; i++) {
+          const slot = document.getElementById(`vizSlot${i}`);
+          if (slot && slot.parentElement !== desktopArea) {
+            desktopArea.appendChild(slot);
+          }
+          if (slot) {
+            if (i === activeScene) {
+              slot.classList.add('active');
+              slot.style.display = 'block';
+            } else {
+              slot.classList.remove('active');
+              slot.style.display = 'none';
+            }
+          }
+        }
+      }
+
+      // Trigger redraw/resize for active charts
+      setTimeout(() => {
+        if (leafletMapInstance) leafletMapInstance.invalidateSize();
+        for (let i = 1; i <= 10; i++) {
+          const container = document.getElementById(`chartContainer${i}`);
+          if (container && window.Plotly) {
+            Plotly.Plots.resize(container);
+          }
+        }
+      }, 50);
+    }
+
     // Mode Switcher
     function switchPresentationMode(mode) {
       presentationMode = mode;
@@ -1591,7 +1686,10 @@
       document.getElementById('tabScrolly').classList.toggle('active', mode === 'scrolly');
       document.getElementById('tabFlourish').classList.toggle('active', mode === 'flourish');
       
+      adaptLayoutForDevice();
+
       if (mode === 'flourish') {
+        window.scrollTo({ top: 0, behavior: 'instant' });
         navigateToScene(activeScene || 1);
       } else {
         stopAutoplay();
@@ -1620,9 +1718,12 @@
       // Update header labels
       const meta = SCENE_META[sceneNum];
       if (meta) {
-        document.getElementById('vizBadgeTxt').textContent = meta.badge;
-        document.getElementById('vizTitleTxt').textContent = meta.title;
-        document.getElementById('vizToolTxt').textContent = meta.tool;
+        const badgeEl = document.getElementById('vizBadgeTxt');
+        const titleEl = document.getElementById('vizTitleTxt');
+        const toolEl = document.getElementById('vizToolTxt');
+        if (badgeEl) badgeEl.textContent = meta.badge;
+        if (titleEl) titleEl.textContent = meta.title;
+        if (toolEl) toolEl.textContent = meta.tool;
       }
 
       // Update slide progress indicator
@@ -1635,15 +1736,21 @@
       });
 
       // Show the active visualization panel slot
+      const isMobile = isMobileView();
       for (let i = 1; i <= 10; i++) {
         const slot = document.getElementById(`vizSlot${i}`);
         if (slot) {
-          if (i === sceneNum) {
+          if (presentationMode === 'scrolly' && isMobile) {
             slot.classList.add('active');
             slot.style.display = 'block';
           } else {
-            slot.classList.remove('active');
-            slot.style.display = 'none';
+            if (i === sceneNum) {
+              slot.classList.add('active');
+              slot.style.display = 'block';
+            } else {
+              slot.classList.remove('active');
+              slot.style.display = 'none';
+            }
           }
         }
       }
@@ -1669,6 +1776,11 @@
           }
         }
       }, 40);
+
+      // In Flourish mode on mobile, smoothly align view to the top
+      if (presentationMode === 'flourish' && isMobile) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     function stepSlide(delta) {
@@ -1810,8 +1922,8 @@
 
         const layout = {
           ...commonLayout,
-          margin: isMobileView() ? { l: 45, r: 18, t: 25, b: 42 } : { l: 65, r: 35, t: 25, b: 50 },
-          xaxis: { title: 'ปี พ.ศ. (ค.ศ.)', showgrid: false },
+          margin: isMobileView() ? { l: 45, r: 18, t: 25, b: 55 } : { l: 65, r: 35, t: 25, b: 50 },
+          xaxis: { title: 'ปี พ.ศ. (ค.ศ.)', showgrid: false, tickangle: isMobileView() ? -35 : 0 },
           yaxis: { title: 'จำนวนนักศึกษา (คน)', zeroline: true, showgrid: true, gridcolor: '#F1F5F9' },
           annotations: [
             { x: '2477 (1934)', y: 7094, text: '<b>2477: รุ่นแรก 7,094 คน</b>', showarrow: true, arrowhead: 2, ax: 45, ay: -35, bgcolor: '#FFFBEB', bordercolor: '#FCD34D' },
@@ -2094,12 +2206,13 @@
 
       // Scene 10: Dual Gauges for Strategic Vision
       else if (sceneNum === 10) {
+        const isMob = isMobileView();
         const gaugeData = [
           {
             type: "indicator",
             mode: "gauge+number+delta",
             value: 78,
-            title: { text: "<b>TU Net-Zero 2030</b><br><span style='font-size:11.5px;color:#64748B;'>เป้าหมายคาร์บอนสุทธิเป็นศูนย์</span>", font: { size: 13, family: 'Prompt' } },
+            title: { text: "<b>TU Net-Zero 2030</b><br><span style='font-size:11.5px;color:#64748B;'>เป้าหมายคาร์บอนสุทธิเป็นศูนย์</span>", font: { size: 12, family: 'Prompt' } },
             delta: { reference: 60, increasing: { color: "#059669" } },
             gauge: {
               axis: { range: [0, 100] },
@@ -2111,13 +2224,13 @@
               ],
               threshold: { line: { color: "#047857", width: 4 }, thickness: 0.75, value: 100 }
             },
-            domain: { row: 0, column: 0 }
+            domain: isMob ? { row: 0, column: 0 } : { row: 0, column: 0 }
           },
           {
             type: "indicator",
             mode: "gauge+number",
             value: 6200,
-            title: { text: "<b>88 SANDBOX Startups</b><br><span style='font-size:11.5px;color:#64748B;'>เป้าหมาย 10,000 ทีมเพื่อสังคม</span>", font: { size: 13, family: 'Prompt' } },
+            title: { text: "<b>88 SANDBOX Startups</b><br><span style='font-size:11.5px;color:#64748B;'>เป้าหมาย 10,000 ทีมเพื่อสังคม</span>", font: { size: 12, family: 'Prompt' } },
             gauge: {
               axis: { range: [0, 10000] },
               bar: { color: "#2563EB" },
@@ -2126,14 +2239,14 @@
                 { range: [5000, 10000], color: "#DBEAFE" }
               ]
             },
-            domain: { row: 0, column: 1 }
+            domain: isMob ? { row: 1, column: 0 } : { row: 0, column: 1 }
           }
         ];
 
         const layout = {
           ...commonLayout,
-          margin: { l: 20, r: 20, t: 25, b: 20 },
-          grid: { rows: 1, columns: 2, pattern: 'independent' }
+          margin: isMob ? { l: 15, r: 15, t: 20, b: 15 } : { l: 20, r: 20, t: 25, b: 20 },
+          grid: isMob ? { rows: 2, columns: 1, pattern: 'independent' } : { rows: 1, columns: 2, pattern: 'independent' }
         };
         Plotly.newPlot('chartContainer10', gaugeData, layout, { responsive: true, displayModeBar: false });
       }
@@ -2145,12 +2258,17 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const sceneNum = parseInt(entry.target.getAttribute('data-scene'));
-          if (sceneNum && sceneNum !== activeScene) {
-            navigateToScene(sceneNum);
+          if (sceneNum) {
+            if (!isMobileView()) {
+              if (sceneNum !== activeScene) navigateToScene(sceneNum);
+            } else {
+              activeScene = sceneNum;
+              drawVisualization(sceneNum);
+            }
           }
         }
       });
-    }, { rootMargin: '-20% 0px -40% 0px', threshold: 0.1 });
+    }, { rootMargin: '-15% 0px -30% 0px', threshold: 0.1 });
 
     document.querySelectorAll('.scene-card').forEach(card => sceneScrollObserver.observe(card));
 
@@ -2166,14 +2284,7 @@
 
     // Window Resize Handler
     window.addEventListener('resize', () => {
-      if (activeScene === 2 && leafletMapInstance) {
-        leafletMapInstance.invalidateSize();
-      } else {
-        const container = document.getElementById(`chartContainer${activeScene}`);
-        if (container && window.Plotly) {
-          Plotly.Plots.resize(container);
-        }
-      }
+      adaptLayoutForDevice();
     });
 
     // Modal Handlers
@@ -2187,6 +2298,8 @@
     // Initialize on Page Ready
     window.addEventListener('DOMContentLoaded', () => {
       buildSlideDots();
+      drawVisualization(1);
+      adaptLayoutForDevice();
       navigateToScene(1);
     });
   </script>
