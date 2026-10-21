@@ -19,6 +19,10 @@
   <!-- Chart.js 4 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
+  <!-- Leaflet 1.9.4 CSS & JS for Authentic Thailand Campus Geospatial Mapping -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -927,81 +931,315 @@
       background: radial-gradient(circle at center, #13244e 0%, #09132e 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 20px;
-      padding: 30px;
+      padding: 24px;
       position: relative;
-      min-height: 520px;
+      min-height: 560px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 16px;
       box-shadow: var(--bidwells-shadow-lg);
       overflow: hidden;
     }
 
-    /* Dotted Matrix Grid Background (Matching frame 015s / 020s) */
-    .dotted-matrix-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(rgba(171, 216, 237, 0.18) 1.5px, transparent 1.5px);
-      background-size: 20px 20px;
-      pointer-events: none;
-    }
-
-    .cluster-svg-stage {
-      position: relative;
-      width: 100%;
-      height: 380px;
-    }
-
-    .campus-target-node {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      cursor: pointer;
+    /* Map Real-Time Toolbar */
+    .map-toolbar-row {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      transition: transform 0.2s ease;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       z-index: 5;
     }
 
-    .campus-target-node:hover {
-      transform: translate(-50%, -50%) scale(1.1);
+    .map-live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--bidwells-sky-blue);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    .target-ring-pulsing {
+    .live-dot-pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--tu-gold);
+      box-shadow: 0 0 10px var(--tu-gold);
+      animation: pulse-ring 1.8s infinite;
+    }
+
+    .map-toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .map-tool-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .map-tool-btn:hover {
+      background: var(--bidwells-crimson);
+      border-color: var(--bidwells-crimson);
+      color: #ffffff;
+    }
+
+    .map-coord-readout {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 199, 44, 0.35);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 0.74rem;
+      font-family: monospace;
+      color: var(--tu-gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Leaflet Stage Container */
+    #campusLeafletMap {
+      width: 100%;
+      height: 420px;
+      border-radius: 14px;
+      position: relative;
+      z-index: 2;
+      background: #09132e;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Custom Leaflet Dark UI Overrides */
+    .leaflet-container {
+      background: #09132e !important;
+      font-family: var(--font-sans) !important;
+    }
+
+    .leaflet-tile-pane {
+      filter: brightness(0.92) contrast(1.15) saturate(1.1);
+    }
+
+    .leaflet-control-zoom {
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      border-radius: 10px !important;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4) !important;
+    }
+
+    .leaflet-control-zoom a {
+      background: rgba(11, 22, 59, 0.9) !important;
+      color: #ffffff !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+      transition: background 0.2s ease;
+    }
+
+    .leaflet-control-zoom a:hover {
+      background: var(--bidwells-crimson) !important;
+      color: #ffffff !important;
+    }
+
+    .leaflet-control-attribution {
+      background: rgba(11, 22, 59, 0.8) !important;
+      color: #94a3b8 !important;
+      font-size: 0.65rem !important;
+    }
+
+    .leaflet-control-attribution a {
+      color: var(--bidwells-sky-blue) !important;
+    }
+
+    /* Custom DivIcon Markers */
+    .tu-leaflet-custom-icon {
+      background: transparent !important;
+      border: none !important;
+    }
+
+    .tu-gis-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .tu-marker-core {
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      border: 2px solid var(--tu-crimson);
+      background: linear-gradient(135deg, #c51944 0%, #9e1b32 100%);
+      border: 2.5px solid var(--tu-gold);
+      box-shadow: 0 0 16px rgba(255, 199, 44, 0.7), 0 4px 12px rgba(0, 0, 0, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: pulse-ring 2s infinite;
-      background: rgba(197, 25, 68, 0.25);
+      color: #ffffff;
+      font-size: 14px;
+      position: relative;
+      z-index: 3;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.25s ease;
     }
 
-    .target-dot-center {
-      width: 10px;
-      height: 10px;
+    .tu-gis-marker:hover .tu-marker-core,
+    .tu-gis-marker.active .tu-marker-core {
+      transform: scale(1.25);
+      background: linear-gradient(135deg, #ffc72c 0%, #d99b00 100%);
+      color: #0b163b;
+      box-shadow: 0 0 26px rgba(255, 199, 44, 1), 0 6px 16px rgba(0, 0, 0, 0.9);
+    }
+
+    .tu-marker-pulse {
+      position: absolute;
+      top: 17px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: var(--tu-gold);
+      border: 2px solid rgba(255, 199, 44, 0.8);
+      animation: tu-sonar-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      pointer-events: none;
+      z-index: 1;
     }
 
-    .campus-node-label {
-      font-size: 0.82rem;
+    @keyframes tu-sonar-ping {
+      0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; }
+      100% { transform: translate(-50%, -50%) scale(2.0); opacity: 0; }
+    }
+
+    .tu-marker-tag {
+      background: rgba(11, 22, 59, 0.94);
+      border: 1px solid rgba(255, 199, 44, 0.5);
+      border-radius: 8px;
+      padding: 3px 9px;
+      margin-top: 6px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 4;
+      pointer-events: auto;
+    }
+
+    .tu-marker-tag .tag-name {
+      font-size: 0.74rem;
       font-weight: 700;
       color: #ffffff;
-      margin-top: 6px;
-      white-space: nowrap;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      letter-spacing: -0.01em;
     }
 
-    @keyframes pulse-ring {
-      0% { transform: scale(0.9); opacity: 0.8; }
-      50% { transform: scale(1.3); opacity: 0.3; }
-      100% { transform: scale(0.9); opacity: 0.8; }
+    .tu-marker-tag .tag-area {
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--tu-gold);
+      background: rgba(255, 199, 44, 0.16);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    /* Leaflet Popups */
+    .leaflet-popup-content-wrapper {
+      background: rgba(11, 22, 59, 0.96) !important;
+      border: 1px solid rgba(255, 199, 44, 0.5) !important;
+      border-radius: 14px !important;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7) !important;
+      color: #ffffff !important;
+      backdrop-filter: blur(12px) !important;
+      padding: 6px !important;
+    }
+
+    .leaflet-popup-tip {
+      background: rgba(11, 22, 59, 0.96) !important;
+      border: 1px solid rgba(255, 199, 44, 0.5) !important;
+    }
+
+    .tu-gis-popup {
+      padding: 8px 10px;
+      min-width: 230px;
+    }
+
+    .tu-gis-popup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      gap: 10px;
+    }
+
+    .tu-gis-popup-header h4 {
+      margin: 0;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .tu-gis-popup-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--tu-gold);
+      background: rgba(255, 199, 44, 0.16);
+      border: 1px solid rgba(255, 199, 44, 0.35);
+      padding: 2px 7px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .tu-gis-popup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+
+    .tu-gis-popup-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tu-gis-popup-stat .k {
+      color: #94a3b8;
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .tu-gis-popup-stat .v {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .tu-gis-popup-coord {
+      font-size: 0.68rem;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     /* Campus Info Strip */
@@ -1013,7 +1251,6 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 14px;
       padding: 16px 20px;
-      margin-top: 20px;
       z-index: 5;
     }
 
@@ -1028,6 +1265,19 @@
       color: #94a3b8;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+    }
+
+    .campus-location-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 8px 14px;
+      z-index: 5;
     }
 
     /* Multi-Era Campus Distribution Chart */
@@ -1812,6 +2062,24 @@
         display: none;
       }
     }
+
+    @media (max-width: 768px) {
+      .campus-metrics-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 12px 14px;
+      }
+      #campusLeafletMap {
+        height: 330px;
+      }
+      .map-toolbar-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .campus-metric-item .val {
+        font-size: 1.15rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2066,49 +2334,33 @@
       <div class="cluster-map-canvas-card">
         <div class="dotted-matrix-bg"></div>
 
-        <div class="cluster-svg-stage" id="campusMapStage">
-          <!-- Orbital Connection Curves (SVG) -->
-          <svg width="100%" height="100%" viewBox="0 0 800 380" fill="none" style="position: absolute; top:0; left:0;">
-            <!-- Dashed Orbital Ellipses -->
-            <path d="M 180 200 C 260 80, 520 80, 600 200 C 520 320, 260 320, 180 200" stroke="#8acfe5" stroke-width="2" stroke-dasharray="6 6" opacity="0.45" />
-            <path d="M 280 220 C 350 140, 480 140, 550 220" stroke="#c51944" stroke-width="2" stroke-dasharray="4 4" opacity="0.65" />
-          </svg>
-
-          <!-- 4 Strategic Campus Nodes with Pulsing Target Rings -->
-          <!-- 1. Tha Prachan -->
-          <div class="campus-target-node" style="top: 220px; left: 240px;" onclick="selectCampusTab(0)">
-            <div class="target-ring-pulsing">
-              <div class="target-dot-center"></div>
-            </div>
-            <div class="campus-node-label">ท่าพระจันทร์ (49 ไร่)</div>
+        <!-- Real-Time GIS Header Bar -->
+        <div class="map-toolbar-row">
+          <div class="map-live-indicator">
+            <span class="live-dot-pulse"></span>
+            <span>GIS STRATEGIC RADAR: แผนที่ภูมิสารสนเทศจริง 4 วิทยาเขตทั่วไทย</span>
           </div>
-
-          <!-- 2. Rangsit -->
-          <div class="campus-target-node" style="top: 130px; left: 340px;" onclick="selectCampusTab(1)">
-            <div class="target-ring-pulsing">
-              <div class="target-dot-center"></div>
+          <div class="map-toolbar-actions">
+            <button class="map-tool-btn" onclick="selectCampusTab(4)" title="แสดงภาพรวมทั้ง 4 วิทยาเขตทั่วไทย">
+              <i class="fa-solid fa-expand"></i> ภาพรวมทั่วประเทศ
+            </button>
+            <div class="map-coord-readout" id="currentGpsDisplay">
+              <i class="fa-solid fa-satellite"></i> 13.7557° N, 100.4930° E
             </div>
-            <div class="campus-node-label">ศูนย์รังสิต (2,644 ไร่)</div>
-          </div>
-
-          <!-- 3. Pattaya -->
-          <div class="campus-target-node" style="top: 260px; left: 520px;" onclick="selectCampusTab(2)">
-            <div class="target-ring-pulsing">
-              <div class="target-dot-center"></div>
-            </div>
-            <div class="campus-node-label">ศูนย์พัทยา (566 ไร่)</div>
-          </div>
-
-          <!-- 4. Lampang -->
-          <div class="campus-target-node" style="top: 80px; left: 460px;" onclick="selectCampusTab(3)">
-            <div class="target-ring-pulsing">
-              <div class="target-dot-center"></div>
-            </div>
-            <div class="campus-node-label">ศูนย์ลำปาง (848 ไร่)</div>
           </div>
         </div>
 
-        <!-- Campus Info Strip -->
+        <!-- Authentic Thailand Leaflet Map Canvas Container -->
+        <div id="campusLeafletMap"></div>
+
+        <!-- Location Description Bar -->
+        <div class="campus-location-bar">
+          <i class="fa-solid fa-location-crosshairs" style="color: var(--tu-gold);"></i>
+          <span style="color: #94a3b8; font-weight: 600;">ที่ตั้งทางภูมิศาสตร์:</span>
+          <span id="cLocation" style="color: #ffffff; font-weight: 600;">ริมแม่น้ำเจ้าพระยา เขตพระนคร กรุงเทพมหานคร</span>
+        </div>
+
+        <!-- Campus Metrics Strip -->
         <div class="campus-metrics-strip" id="campusMetricsBox">
           <div class="campus-metric-item">
             <div class="val" id="cArea">49 ไร่</div>
@@ -2628,11 +2880,76 @@
   <script>
     // 1. Data Store
     const CAMPUSES_DATA = [
-      { name: "ท่าพระจันทร์ (Tha Prachan)", area: "49 ไร่", students: "6,310 คน", role: "มรดกประชาธิปไตย", focus: "นานาชาติ / บัณฑิตศึกษา" },
-      { name: "ศูนย์รังสิต (Rangsit)", area: "2,644 ไร่", students: "31,350 คน", role: "ศูนย์วิจัย & นวัตกรรม", focus: "วิทย์-เทคโน / วิทย์สุขภาพ / ปริญญาตรี" },
-      { name: "ศูนย์พัทยา (Pattaya)", area: "566 ไร่", students: "1,920 คน", role: "EEC Medical Valley", focus: "การแพทย์ชั้นสูง & เทคโนโลยีดิจิทัล" },
-      { name: "ศูนย์ลำปาง (Lampang)", area: "848 ไร่", students: "3,070 คน", role: "ศูนย์การเรียนรู้ภาคเหนือ", focus: "พัฒนาชุมชน & ศิลปวัฒนธรรมล้านนา" },
-      { name: "เครือข่าย 4 วิทยาเขต", area: "4,107 ไร่", students: "42,650 คน", role: "เครือข่ายบูรณาการ", focus: "สหวิทยาการและผลกระทบสังคม" }
+      {
+        id: 0,
+        name: "ท่าพระจันทร์ (Tha Prachan)",
+        shortName: "ท่าพระจันทร์",
+        badge: "สถาปนา พ.ศ. 2477",
+        area: "49 ไร่",
+        students: "6,310 คน",
+        role: "มรดกประชาธิปไตย",
+        focus: "นานาชาติ / บัณฑิตศึกษา / กฎหมาย-รัฐศาสตร์",
+        location: "ริมแม่น้ำเจ้าพระยา เขตพระนคร กรุงเทพมหานคร",
+        lat: 13.7557,
+        lng: 100.4930,
+        zoom: 14
+      },
+      {
+        id: 1,
+        name: "ศูนย์รังสิต (Rangsit)",
+        shortName: "ศูนย์รังสิต",
+        badge: "เปิด พ.ศ. 2529",
+        area: "2,644 ไร่",
+        students: "31,350 คน",
+        role: "ศูนย์วิจัย & นวัตกรรม",
+        focus: "วิทย์-เทคโน / วิทย์สุขภาพ / รพ.ธรรมศาสตร์ / ป.ตรี",
+        location: "ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี",
+        lat: 14.0736,
+        lng: 100.6067,
+        zoom: 13
+      },
+      {
+        id: 2,
+        name: "ศูนย์พัทยา (Pattaya)",
+        shortName: "ศูนย์พัทยา EEC",
+        badge: "เปิด พ.ศ. 2538",
+        area: "566 ไร่",
+        students: "1,920 คน",
+        role: "EEC Medical Valley",
+        focus: "การแพทย์ชั้นสูง & เทคโนโลยีดิจิทัล AI",
+        location: "ต.โป่ง อ.บางละมุง จ.ชลบุรี (ระเบียงเศรษฐกิจ EEC)",
+        lat: 12.9236,
+        lng: 100.9925,
+        zoom: 13
+      },
+      {
+        id: 3,
+        name: "ศูนย์ลำปาง (Lampang)",
+        shortName: "ศูนย์ลำปาง",
+        badge: "เปิด พ.ศ. 2535",
+        area: "848 ไร่",
+        students: "3,070 คน",
+        role: "ศูนย์การเรียนรู้ภาคเหนือ",
+        focus: "พัฒนาชุมชน & ศิลปวัฒนธรรมล้านนา",
+        location: "ต.ห้างฉัตร อ.ห้างฉัตร จ.ลำปาง",
+        lat: 18.2982,
+        lng: 99.4897,
+        zoom: 12
+      },
+      {
+        id: 4,
+        name: "เครือข่าย 4 วิทยาเขตครบวงจร",
+        shortName: "ทั่วประเทศ (National)",
+        badge: "โครงข่าย 4 วิทยาเขต",
+        area: "4,107 ไร่",
+        students: "42,650 คน",
+        role: "เครือข่ายบูรณาการยุทธศาสตร์",
+        focus: "สหวิทยาการและผลกระทบสังคม TU 2034",
+        location: "ครอบคลุมกรุงเทพฯ, ปทุมธานี, ชลบุรี (EEC) และลำปาง",
+        lat: 15.45,
+        lng: 100.5,
+        zoom: 6
+      }
     ];
 
     const MILESTONES_DATA = [
@@ -2788,6 +3105,144 @@
       }
     }
 
+    // Leaflet Map State for 4 Campuses
+    let tuMap = null;
+    let tuMarkers = [];
+    let corridorLines = [];
+
+    function initTuLeafletMap() {
+      if (tuMap) return;
+      const mapEl = document.getElementById('campusLeafletMap');
+      if (!mapEl) return;
+
+      // Create Leaflet Map centered at Thailand
+      tuMap = L.map('campusLeafletMap', {
+        center: [15.45, 100.5],
+        zoom: 6,
+        minZoom: 5,
+        maxZoom: 18,
+        scrollWheelZoom: false,
+        attributionControl: true
+      });
+
+      // Enable wheel zoom only when map is clicked / focused
+      tuMap.on('focus', () => { tuMap.scrollWheelZoom.enable(); });
+      tuMap.on('blur', () => { tuMap.scrollWheelZoom.disable(); });
+
+      // CartoDB Dark Matter tile layer
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(tuMap);
+
+      // Strategic Network Connecting Corridors
+      const corridors = [
+        { from: [13.7557, 100.4930], to: [14.0736, 100.6067], title: "แนวแกนการศึกษา ปทุมธานี - กทม. (37 กม.)" },
+        { from: [14.0736, 100.6067], to: [12.9236, 100.9925], title: "ระเบียงนวัตกรรมและเศรษฐกิจตะวันออก EEC (145 กม.)" },
+        { from: [14.0736, 100.6067], to: [18.2982, 99.4897], title: "แนวเชื่อมโยงสู่ภูมิภาคภาคเหนือ จ.ลำปาง (515 กม.)" }
+      ];
+
+      corridors.forEach(cor => {
+        // Subtle crimson glow line
+        L.polyline([cor.from, cor.to], {
+          color: '#c51944',
+          weight: 4,
+          opacity: 0.4
+        }).addTo(tuMap).bindTooltip(cor.title, { sticky: true });
+
+        // Glowing gold dashed polyline
+        const dashed = L.polyline([cor.from, cor.to], {
+          color: '#ffc72c',
+          weight: 2.2,
+          dashArray: '6, 8',
+          opacity: 0.9
+        }).addTo(tuMap);
+        corridorLines.push(dashed);
+      });
+
+      // Add Custom DivIcon Markers for the 4 physical campuses
+      for (let i = 0; i < 4; i++) {
+        const c = CAMPUSES_DATA[i];
+        const customIcon = L.divIcon({
+          className: 'tu-leaflet-custom-icon',
+          html: `
+            <div class="tu-gis-marker ${i === 0 ? 'active' : ''}" id="tuMarker_${i}">
+              <div class="tu-marker-pulse"></div>
+              <div class="tu-marker-core">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="tu-marker-tag">
+                <span class="tag-name">${c.shortName}</span>
+                <span class="tag-area">${c.area}</span>
+              </div>
+            </div>
+          `,
+          iconSize: [120, 60],
+          iconAnchor: [60, 48]
+        });
+
+        const popupHtml = `
+          <div class="tu-gis-popup">
+            <div class="tu-gis-popup-header">
+              <h4>${c.name}</h4>
+              <span class="tu-gis-popup-badge">${c.badge}</span>
+            </div>
+            <div class="tu-gis-popup-grid">
+              <div class="tu-gis-popup-stat">
+                <span class="k">พื้นที่</span>
+                <span class="v">${c.area}</span>
+              </div>
+              <div class="tu-gis-popup-stat">
+                <span class="k">ประชากร</span>
+                <span class="v">${c.students}</span>
+              </div>
+              <div class="tu-gis-popup-stat" style="grid-column: span 2;">
+                <span class="k">อัตลักษณ์ยุทธศาสตร์</span>
+                <span class="v" style="color: var(--tu-gold);">${c.role}</span>
+              </div>
+              <div class="tu-gis-popup-stat" style="grid-column: span 2;">
+                <span class="k">ที่ตั้งทางภูมิศาสตร์</span>
+                <span class="v" style="font-size: 0.72rem; color: #cbd5e1;">${c.location}</span>
+              </div>
+            </div>
+            <div class="tu-gis-popup-coord">
+              <i class="fa-solid fa-satellite"></i> GPS: ${c.lat.toFixed(4)}° N, ${c.lng.toFixed(4)}° E
+            </div>
+          </div>
+        `;
+
+        const marker = L.marker([c.lat, c.lng], { icon: customIcon }).addTo(tuMap);
+        marker.bindPopup(popupHtml, { offset: [0, -32] });
+
+        marker.on('click', () => {
+          selectCampusTab(i);
+        });
+
+        tuMarkers.push(marker);
+      }
+
+      // Initial focus on Tha Prachan
+      setTimeout(() => {
+        if (tuMarkers[0]) {
+          tuMarkers[0].openPopup();
+        }
+      }, 500);
+
+      // Invalidate size when campus section intersects viewport
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(ent => {
+            if (ent.isIntersecting && tuMap) {
+              tuMap.invalidateSize();
+            }
+          });
+        }, { threshold: 0.1 });
+        const sec = document.getElementById('campuses');
+        if (sec) obs.observe(sec);
+      }
+    }
+
     // 4. Campus Selector Tab
     function selectCampusTab(idx) {
       const btns = document.querySelectorAll('.cluster-select-btn');
@@ -2798,6 +3253,38 @@
       document.getElementById('cStudents').textContent = data.students;
       document.getElementById('cRole').textContent = data.role;
       document.getElementById('cFocus').textContent = data.focus;
+      const locEl = document.getElementById('cLocation');
+      if (locEl) locEl.textContent = data.location;
+
+      const gpsEl = document.getElementById('currentGpsDisplay');
+      if (gpsEl) {
+        gpsEl.innerHTML = `<i class="fa-solid fa-satellite"></i> ${data.lat.toFixed(4)}° N, ${data.lng.toFixed(4)}° E`;
+      }
+
+      // Toggle active state on HTML markers
+      document.querySelectorAll('.tu-gis-marker').forEach((el, i) => {
+        el.classList.toggle('active', i === idx);
+      });
+
+      if (tuMap) {
+        tuMap.invalidateSize();
+        if (idx === 4) {
+          // Fit all 4 campuses in view (National overview)
+          const bounds = L.latLngBounds([
+            [12.8, 99.3],
+            [18.4, 101.1]
+          ]);
+          tuMap.flyToBounds(bounds, { padding: [50, 50], duration: 1.5 });
+          tuMap.closePopup();
+        } else {
+          tuMap.flyTo([data.lat, data.lng], data.zoom, { duration: 1.4, easeLinearity: 0.25 });
+          if (tuMarkers[idx]) {
+            setTimeout(() => {
+              tuMarkers[idx].openPopup();
+            }, 600);
+          }
+        }
+      }
     }
 
     // 5. Milestone Step Selector
@@ -3104,6 +3591,7 @@
       initScrollInteractions();
       renderFaculties('all');
       initCharts();
+      initTuLeafletMap();
     });
   </script>
 </body>
