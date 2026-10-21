@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>90 ปี มหาวิทยาลัยธรรมศาสตร์: Data Scrollytelling & Flourish Story | BI304 TBS</title>
   
   <!-- Typography -->
@@ -1635,10 +1638,10 @@
         const layout = {
           ...commonLayout,
           barmode: 'group',
-          margin: { l: 65, r: 35, t: 38, b: 50 },
+          margin: { l: 65, r: 35, t: 48, b: 50 },
           yaxis: { title: 'จำนวนนักศึกษา (คน)', gridcolor: '#F1F5F9' },
           xaxis: { showgrid: false },
-          legend: { orientation: 'h', y: 1.08, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } }
+          legend: { orientation: 'h', y: 1.12, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } }
         };
         Plotly.newPlot('chartContainer4', [traceFemale, traceMale], layout, { responsive: true, displayModeBar: false });
       }
@@ -1737,10 +1740,10 @@
 
         const layout = {
           ...commonLayout,
-          margin: { l: 65, r: 35, t: 38, b: 50 },
+          margin: { l: 65, r: 35, t: 48, b: 50 },
           yaxis: { autorange: 'reversed', title: 'อันดับ (อันดับน้อย = ผลงานดียิ่งขึ้น)', gridcolor: '#F1F5F9' },
           xaxis: { title: 'ปี ค.ศ.', showgrid: false },
-          legend: { orientation: 'h', y: 1.08, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } },
+          legend: { orientation: 'h', y: 1.12, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } },
           shapes: [{
             type: 'line', x0: 2018, x1: 2026, y0: 100, y1: 100,
             line: { color: '#059669', width: 2, dash: 'dash' }
@@ -1774,7 +1777,7 @@
 
         const layout = {
           ...commonLayout,
-          margin: { l: 45, r: 45, t: 25, b: 25 },
+          margin: { l: 45, r: 45, t: 45, b: 35 },
           polar: {
             radialaxis: { visible: true, range: [70, 100], color: '#64748B' },
             angularaxis: { rotation: 90, direction: 'clockwise', tickfont: { size: 11.5, family: 'Prompt', color: '#1E293B', weight: 'bold' } }
@@ -1803,10 +1806,10 @@
 
         const layout = {
           ...commonLayout,
-          margin: { l: 65, r: 65, t: 38, b: 50 },
+          margin: { l: 65, r: 65, t: 48, b: 50 },
           yaxis: { title: 'ผู้ป่วยนอก (ครั้ง)', gridcolor: '#F1F5F9' },
           yaxis2: { title: 'จำนวนเตียง', overlaying: 'y', side: 'right', showgrid: false },
-          legend: { orientation: 'h', y: 1.08, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } },
+          legend: { orientation: 'h', y: 1.12, x: 0.5, xanchor: 'center', font: { size: 12, family: 'Prompt' } },
           annotations: [{
             x: '2564 (โควิด)', y: 1280000, text: '<b>รพ.สนามแห่งแรก 3,083 เตียง</b>',
             showarrow: true, arrowhead: 2, ax: -40, ay: -35, bgcolor: '#FEF3C7', bordercolor: '#F59E0B'
