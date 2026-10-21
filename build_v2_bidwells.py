@@ -246,10 +246,54 @@ def generate_bidwells_html():
       cursor: pointer;
     }
 
-    .header-archive-btn:hover {
-      color: var(--bidwells-navy);
-      border-color: var(--bidwells-navy);
-      background: #f8fafc;
+    .header-colab-btn {
+      color: #1e293b;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 7px 15px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .header-colab-btn:hover {
+      color: #ea580c;
+      border-color: #f97316;
+      background: #fff7ed;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(234, 88, 12, 0.15);
+    }
+
+    .header-flourish-btn {
+      color: #1e293b;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 7px 15px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .header-flourish-btn:hover {
+      color: #0284c7;
+      border-color: #0284c7;
+      background: #f0f9ff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
     }
 
     /* ==========================================================================
@@ -1603,24 +1647,107 @@ def generate_bidwells_html():
     .faculties-white-card {
       background: #ffffff;
       border-radius: 22px;
-      padding: 44px;
+      padding: 40px;
       color: var(--bidwells-text);
       box-shadow: var(--bidwells-shadow-lg);
+    }
+
+    .faculties-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+
+    .fac-kpi-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fac-kpi-item .kpi-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .fac-kpi-item .kpi-lbl {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .faculties-view-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .fac-view-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .fac-view-btn:hover {
+      background: #e2e8f0;
+      color: var(--bidwells-navy);
+    }
+
+    .fac-view-btn.active {
+      background: var(--bidwells-navy);
+      color: #ffffff;
+      border-color: var(--bidwells-navy);
+    }
+
+    .faculties-legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border-radius: 10px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+
+    .legend-color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
     }
 
     .faculties-filter-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
+      gap: 8px;
+      margin-bottom: 20px;
     }
 
     .fac-pill {
       background: #f8fafc;
       border: 1.5px solid #e2e8f0;
-      padding: 8px 18px;
+      padding: 7px 16px;
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: #475569;
       cursor: pointer;
@@ -1637,7 +1764,7 @@ def generate_bidwells_html():
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 16px;
-      max-height: 480px;
+      max-height: 520px;
       overflow-y: auto;
       padding-right: 8px;
     }
@@ -1670,6 +1797,123 @@ def generate_bidwells_html():
       color: #64748b;
       display: flex;
       justify-content: space-between;
+    }
+
+    /* Flourish 10-Scene Hub Modal */
+    .flourish-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 22, 59, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .flourish-modal-card {
+      background: #ffffff;
+      border-radius: 22px;
+      max-width: 1150px;
+      width: 100%;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .flourish-modal-header {
+      padding: 20px 28px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+    }
+
+    .flourish-modal-body {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .flourish-sidebar-tabs {
+      background: #f8fafc;
+      border-right: 1px solid #e2e8f0;
+      overflow-y: auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .flourish-scene-btn {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      color: #334155;
+    }
+
+    .flourish-scene-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .flourish-scene-btn.active {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+
+    .flourish-scene-btn .scene-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .flourish-scene-btn.active .scene-num {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+    }
+
+    .flourish-scene-btn .scene-title-text {
+      font-size: 0.78rem;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .flourish-scene-detail-pane {
+      padding: 28px 32px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: #ffffff;
     }
 
     /* ==========================================================================
@@ -2173,13 +2417,19 @@ def generate_bidwells_html():
     </nav>
 
     <div class="header-actions">
-      <a href="archive/classic_edition/index.html" class="header-archive-btn" title="เข้าสู่คลังบันทึกประวัติ">
-        <i class="fa-solid fa-clock-rotate-left"></i>
-        <span>คลังบันทึกประวัติ (Classic Archive)</span>
+      <!-- 1-Click Google Colab Notebook Link -->
+      <a href="https://colab.research.google.com/github/kondee-rgb/BI304-Thammasat-Data-Storytelling/blob/main/BI304_Thammasat_Data_Storytelling.ipynb" target="_blank" rel="noopener noreferrer" class="header-colab-btn" title="เปิดโค้ดประมวลผลข้อมูลใน Google Colab (รันได้ทันที)">
+        <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab" style="width: 17px; height: 17px;" />
+        <span>Google Colab</span>
       </a>
+      <!-- Flourish 10 Visualizations Hub Button -->
+      <button class="header-flourish-btn" onclick="openFlourishHubModal()" title="เปิดดู Flourish Data Storytelling ครบทั้ง 10 ฉาก">
+        <i class="fa-solid fa-chart-pie"></i>
+        <span>Flourish (10 ฉาก)</span>
+      </button>
       <button class="btn-bidwells-pill" onclick="openDownloadModal()">
-        <span>ดาวน์โหลดรายงานฉบับเต็ม</span>
-        <i class="fa-solid fa-arrow-right"></i>
+        <span>ดาวน์โหลดรายงาน</span>
+        <i class="fa-solid fa-cloud-arrow-down"></i>
       </button>
     </div>
   </header>
@@ -2585,17 +2835,17 @@ def generate_bidwells_html():
         </div>
       </div>
 
-      <!-- Card 2: Demographic Balance - Female 62.4% -->
+      <!-- Card 2: Demographic Structure & Gender Diversity -->
       <div class="demographic-white-card">
-        <h3 class="demographic-headline">มิติประชากร: หญิง 62.4% พลังขับเคลื่อนแห่งอนาคต</h3>
+        <h3 class="demographic-headline">โครงสร้างประชากรนักศึกษาและความหลากหลายทางเพศภาวะ</h3>
         <p class="demographic-sub">
-          สัดส่วนนักศึกษาหญิงมีบทบาทสำคัญในทุกกลุ่มสาขาวิชา สะท้อนความเป็นผู้นำและความเสมอภาคทางโอกาสในศตวรรษที่ 21
+          ความหลากหลายและการเข้าถึงการศึกษาระดับอุดมศึกษาอย่างครอบคลุม สมดุลของสัดส่วนนักศึกษาในทุกกลุ่มสาขาวิชา สะท้อนพลังแห่งความเสมอภาคและเสรีภาพทางปัญญา
         </p>
 
         <div class="demographic-ratio-bar-wrap">
           <div class="ratio-bar">
-            <div class="ratio-female">หญิง 62.4% (26,613 คน)</div>
-            <div class="ratio-male">ชาย 37.6% (16,037 คน)</div>
+            <div class="ratio-female">นักศึกษาหญิง 62.4% (26,613 คน)</div>
+            <div class="ratio-male">นักศึกษาชาย 37.6% (16,037 คน)</div>
           </div>
         </div>
 
@@ -2604,19 +2854,53 @@ def generate_bidwells_html():
         </div>
       </div>
 
-      <!-- Card 3: 26 Faculties Grid & TCAS Drilldown -->
+      <!-- Card 3: 26 Faculties Visualizer & TCAS Drilldown (Data Visualization) -->
       <div class="faculties-white-card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
           <div>
-            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--bidwells-navy);">
-              โครงสร้าง 26 คณะ & เกณฑ์การรับเข้า TCAS
+            <div style="font-size: 0.78rem; font-weight: 800; color: var(--bidwells-crimson); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">
+              <i class="fa-solid fa-chart-simple"></i> INTERACTIVE DATA VISUALIZER
+            </div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.85rem; font-weight: 700; color: var(--bidwells-navy); line-height: 1.2;">
+              โครงสร้าง 26 คณะวิชา & เกณฑ์การรับเข้า TCAS
             </h3>
-            <p style="font-size: 0.88rem; color: #64748b;">
-              คลิกที่แต่ละคณะวิชาเพื่อเปิดดูเกณฑ์คะแนนขั้นต่ำ อัตราการแข่งขัน และเส้นทางอาชีพ
+            <p style="font-size: 0.88rem; color: #64748b; margin-top: 6px;">
+              แผนภูมิเปรียบเทียบคะแนนตัดต่ำสุด (Cutoff Score) และอัตราการแข่งขันในรอบ TCAS Admission ครบทั้ง 26 คณะวิชา
             </p>
+          </div>
+
+          <!-- View Mode Toggle Buttons -->
+          <div class="faculties-view-toggle">
+            <button class="fac-view-btn active" id="btnFacChartView" onclick="setFacultiesView('chart')">
+              <i class="fa-solid fa-chart-column"></i> แผนภูมิเปรียบเทียบ (Visualizer)
+            </button>
+            <button class="fac-view-btn" id="btnFacGridView" onclick="setFacultiesView('grid')">
+              <i class="fa-solid fa-table-cells"></i> รายการการ์ด (26 คณะ)
+            </button>
           </div>
         </div>
 
+        <!-- 4 KPI Summary Cards -->
+        <div class="faculties-kpi-row">
+          <div class="fac-kpi-item">
+            <div class="kpi-num" style="color: var(--bidwells-crimson);">83.1</div>
+            <div class="kpi-lbl">คะแนนตัดต่ำสุดสูงสุด (CICM)</div>
+          </div>
+          <div class="fac-kpi-item">
+            <div class="kpi-num" style="color: var(--bidwells-navy);">72.8</div>
+            <div class="kpi-lbl">คะแนนเฉลี่ย TCAS รวมทุกคณะ</div>
+          </div>
+          <div class="fac-kpi-item">
+            <div class="kpi-num" style="color: #0284c7;">1 : 14.0</div>
+            <div class="kpi-lbl">อัตราการแข่งขันสูงสุด</div>
+          </div>
+          <div class="fac-kpi-item">
+            <div class="kpi-num" style="color: var(--tu-gold-dark);">26 คณะ</div>
+            <div class="kpi-lbl">4 เสาหลักทางวิชาการ</div>
+          </div>
+        </div>
+
+        <!-- Pillar Filters -->
         <div class="faculties-filter-pills">
           <button class="fac-pill active" onclick="filterFaculties('all')">ทั้งหมด (26 คณะ)</button>
           <button class="fac-pill" onclick="filterFaculties('soc')">สังคมศาสตร์และมนุษยศาสตร์</button>
@@ -2625,7 +2909,22 @@ def generate_bidwells_html():
           <button class="fac-pill" onclick="filterFaculties('inter')">วิทยาลัยนานาชาติและนวัตกรรม</button>
         </div>
 
-        <div class="faculties-cards-grid" id="facultiesGrid">
+        <!-- Academic Pillar Legend -->
+        <div class="faculties-legend-row">
+          <span style="font-weight: 700; color: #1e293b; margin-right: 8px;">สัญลักษณ์กลุ่มสาขาวิชา:</span>
+          <span><span class="legend-color-dot" style="background: #1e3a8a;"></span> สังคมศาสตร์และมนุษยศาสตร์</span>
+          <span><span class="legend-color-dot" style="background: #00857c;"></span> วิทยาศาสตร์และเทคโนโลยี</span>
+          <span><span class="legend-color-dot" style="background: #c51944;"></span> วิทยาศาสตร์สุขภาพ</span>
+          <span><span class="legend-color-dot" style="background: #d97706;"></span> นานาชาติและนวัตกรรม</span>
+        </div>
+
+        <!-- Visualization Stage: Horizontal Ranking Chart (Chart.js) -->
+        <div id="facultiesChartWrapper" style="height: 540px; position: relative;">
+          <canvas id="facultiesTcasChartCanvas"></canvas>
+        </div>
+
+        <!-- Cards Grid Stage (Hidden by default, toggleable) -->
+        <div class="faculties-cards-grid" id="facultiesGrid" style="display: none;">
           <!-- Populated by JavaScript -->
         </div>
       </div>
@@ -2914,9 +3213,9 @@ def generate_bidwells_html():
             <span>Download Full Report (PDF)</span>
             <i class="fa-solid fa-cloud-arrow-down"></i>
           </button>
-          <a href="archive/classic_edition/index.html" class="header-archive-btn">
-            <i class="fa-solid fa-archive"></i>
-            <span>คลังบันทึกประวัติ (Classic Archive)</span>
+          <a href="https://colab.research.google.com/github/kondee-rgb/BI304-Thammasat-Data-Storytelling/blob/main/BI304_Thammasat_Data_Storytelling.ipynb" target="_blank" rel="noopener noreferrer" class="header-colab-btn">
+            <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab" style="width: 17px; height: 17px;" />
+            <span>Google Colab (Interactive Code)</span>
           </a>
         </div>
       </form>
@@ -2967,6 +3266,44 @@ def generate_bidwells_html():
       <button class="btn-bidwells-pill" onclick="closeDownloadModal()" style="margin: 0 auto;">
         <span>กลับสู่หน้าหลัก</span>
       </button>
+    </div>
+  </div>
+
+  <!-- Flourish 10-Scene Data Storytelling Hub Modal -->
+  <div class="flourish-modal-backdrop" id="flourishHubModal">
+    <div class="flourish-modal-card">
+      <div class="flourish-modal-header">
+        <div>
+          <div style="font-size: 0.75rem; font-weight: 800; color: #0284c7; letter-spacing: 0.08em; text-transform: uppercase;">
+            <i class="fa-solid fa-chart-pie"></i> FLOURISH DATA STORYTELLING HUB
+          </div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.55rem; font-weight: 700; color: var(--bidwells-navy); margin: 4px 0;">
+            คลังภาพข้อมูล Flourish ครบ 10 ฉาก (Scenes 1 — 10)
+          </h3>
+          <p style="font-size: 0.82rem; color: #64748b; margin: 0;">
+            ชุดข้อมูล CSV และเทมเพลตมาตรฐานสากล ออกแบบตามหลัก Edward Tufte & LATCH Framework
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <a href="https://colab.research.google.com/github/kondee-rgb/BI304-Thammasat-Data-Storytelling/blob/main/BI304_Thammasat_Data_Storytelling.ipynb" target="_blank" rel="noopener noreferrer" class="header-colab-btn" style="padding: 6px 12px; font-size: 0.78rem;">
+            <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab" style="width: 15px; height: 15px;" />
+            <span>Google Colab</span>
+          </a>
+          <button class="modal-close-btn" onclick="closeFlourishHubModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div class="flourish-modal-body">
+        <!-- Left: 10 Scenes Navigation Tabs -->
+        <div class="flourish-sidebar-tabs" id="flourishSidebarTabs">
+          <!-- Populated by JS for Scenes 1 to 10 -->
+        </div>
+
+        <!-- Right: Active Scene Detail Pane -->
+        <div class="flourish-scene-detail-pane" id="flourishDetailPane">
+          <!-- Populated by JS -->
+        </div>
+      </div>
     </div>
   </div>
 
@@ -3493,9 +3830,129 @@ def generate_bidwells_html():
       `;
     }
 
-    // 8. Faculties Rendering & Modal
+    // 8. Faculties Rendering, Interactive Visualizer & Modal
+    let facultiesTcasChart = null;
+    window.currentFacultyFilter = 'all';
+
+    function initFacultiesTcasChart() {
+      const ctx = document.getElementById('facultiesTcasChartCanvas');
+      if (!ctx) return;
+
+      const currentPillar = window.currentFacultyFilter || 'all';
+      const list = currentPillar === 'all' 
+        ? [...FACULTIES_DATA].sort((a, b) => parseFloat(b.cutoff) - parseFloat(a.cutoff))
+        : [...FACULTIES_DATA].filter(f => f.pillar === currentPillar).sort((a, b) => parseFloat(b.cutoff) - parseFloat(a.cutoff));
+
+      const labels = list.map(f => f.name);
+      const data = list.map(f => parseFloat(f.cutoff));
+      const colors = list.map(f => {
+        if (f.pillar === 'med') return '#c51944';
+        if (f.pillar === 'sci') return '#00857c';
+        if (f.pillar === 'inter') return '#d97706';
+        return '#1e3a8a';
+      });
+
+      if (facultiesTcasChart) {
+        facultiesTcasChart.data.labels = labels;
+        facultiesTcasChart.data.datasets[0].data = data;
+        facultiesTcasChart.data.datasets[0].backgroundColor = colors;
+        facultiesTcasChart.update();
+        return;
+      }
+
+      facultiesTcasChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'คะแนนตัดต่ำสุด TCAS (รอบ 3 Admission)',
+            data: data,
+            backgroundColor: colors,
+            borderRadius: 4,
+            barThickness: 13,
+            maxBarThickness: 15
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(11, 22, 59, 0.96)',
+              titleFont: { size: 13, weight: 'bold' },
+              bodyFont: { size: 12 },
+              padding: 12,
+              borderColor: 'rgba(255, 199, 44, 0.4)',
+              borderWidth: 1,
+              callbacks: {
+                title: (items) => list[items[0].dataIndex].name,
+                label: (item) => {
+                  const fac = list[item.dataIndex];
+                  return [
+                    `คะแนนตัดต่ำสุด TCAS: ${fac.cutoff} / 100`,
+                    `กลุ่มสาขา: ${fac.pillarName}`,
+                    `อัตราการแข่งขัน: ${fac.accept}`,
+                    `สายอาชีพ: ${fac.careers.substring(0, 42)}...`
+                  ];
+                },
+                afterLabel: () => '👉 คลิกแท่งกราฟเพื่อดูรายละเอียดฉบับเต็ม'
+              }
+            }
+          },
+          onClick: (evt, elements) => {
+            if (elements && elements.length > 0) {
+              const idx = elements[0].index;
+              openFacultyModal(list[idx]);
+            }
+          },
+          scales: {
+            x: {
+              min: 60,
+              max: 86,
+              ticks: {
+                stepSize: 5,
+                callback: (v) => v + ' คะแนน',
+                color: '#64748b'
+              },
+              grid: { color: 'rgba(0, 0, 0, 0.06)' }
+            },
+            y: {
+              ticks: {
+                color: '#1e293b',
+                font: { size: 11, weight: '600' }
+              },
+              grid: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    function setFacultiesView(mode) {
+      const btnChart = document.getElementById('btnFacChartView');
+      const btnGrid = document.getElementById('btnFacGridView');
+      const chartWrapper = document.getElementById('facultiesChartWrapper');
+      const gridWrapper = document.getElementById('facultiesGrid');
+
+      if (mode === 'chart') {
+        if (btnChart) btnChart.classList.add('active');
+        if (btnGrid) btnGrid.classList.remove('active');
+        if (chartWrapper) chartWrapper.style.display = 'block';
+        if (gridWrapper) gridWrapper.style.display = 'none';
+        if (facultiesTcasChart) facultiesTcasChart.resize();
+      } else {
+        if (btnChart) btnChart.classList.remove('active');
+        if (btnGrid) btnGrid.classList.add('active');
+        if (chartWrapper) chartWrapper.style.display = 'none';
+        if (gridWrapper) gridWrapper.style.display = 'grid';
+      }
+    }
+
     function renderFaculties(filter) {
       const container = document.getElementById('facultiesGrid');
+      if (!container) return;
       container.innerHTML = '';
       const list = filter === 'all' ? FACULTIES_DATA : FACULTIES_DATA.filter(f => f.pillar === filter);
       list.forEach((fac, idx) => {
@@ -3513,11 +3970,14 @@ def generate_bidwells_html():
       });
     }
 
-    function filterFaculties(pillar) {
+    function filterFaculties(pillar, btnEl) {
+      window.currentFacultyFilter = pillar;
       const pills = document.querySelectorAll('.fac-pill');
       pills.forEach(p => p.classList.remove('active'));
-      event.target.classList.add('active');
+      const activeBtn = btnEl || (typeof event !== 'undefined' && event && event.target ? event.target.closest('.fac-pill') : null) || document.querySelector(`.fac-pill[onclick*="'${pillar}'"]`);
+      if (activeBtn) activeBtn.classList.add('active');
       renderFaculties(pillar);
+      initFacultiesTcasChart();
     }
 
     function openFacultyModal(fac) {
@@ -3548,6 +4008,296 @@ def generate_bidwells_html():
         confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
       }
       openDownloadModal();
+    }
+
+    // 8.5 Flourish 10-Scene Data Storytelling Hub
+    const FLOURISH_SCENES_DATA = [
+      {
+        id: 1,
+        title: "1. ภาพรวมพัฒนาการ 90 ปี ธรรมศาสตร์",
+        template: "Line Chart Race / Story Timeline",
+        category: "Historical Overview",
+        csv: "01_thammasat_historical_timeline.csv",
+        badge: "พ.ศ. 2477 - 2567",
+        desc: "ลำดับเส้นเวลาการก่อตั้งและวิวัฒนาการ 90 ปีแห่งประวัติศาสตร์ มหาวิทยาลัยวิชาธรรมศาสตร์และการเมืองสู่มหาวิทยาลัยวิจัยระดับสากล",
+        highlights: [
+          "พ.ศ. 2477: สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง (มธก.) โดย ศ.ดร.ปรีดี พนมยงค์ มีนักศึกษารุ่นแรก 7,094 คน",
+          "พ.ศ. 2529: ขยายวิทยาเขตแรกสู่ปริมณฑล ณ ศูนย์รังสิต เพื่อรองรับสายวิทยาศาสตร์และเทคโนโลยี",
+          "พ.ศ. 2567: ก้าวสู่ 90 ปี มหาวิทยาลัยระดับโลกเพื่อประชาชนและเป้าหมาย TU 2034"
+        ],
+        tableHeaders: ["Year_BE", "Era", "Milestone_TH", "Students", "Budget_MB"],
+        tableSample: [
+          ["2477", "สถาปนามหาวิทยาลัย", "ศาสตราจารย์ ดร.ปรีดี พนมยงค์ ก่อตั้ง มธก.", "7,094", "0.5"],
+          ["2529", "เปิดศูนย์รังสิต", "ขยายวิทยาเขตแรกสู่ปริมณฑลด้านวิทยาศาสตร์", "18,450", "840"],
+          ["2567", "90 ปี สู่สากล", "มหาวิทยาลัยแห่งความยั่งยืน TU 2034", "42,850", "15,350"]
+        ]
+      },
+      {
+        id: 2,
+        title: "2. การย้ายศูนย์กลางประชากร 4 วิทยาเขต",
+        template: "Flourish Bump / Area Chart",
+        category: "Campus Transition",
+        csv: "02_campus_population_shift.csv",
+        badge: "100% ท่าพระจันทร์ ➔ 73.5% รังสิต",
+        desc: "การเปลี่ยนแปลงสัดส่วนนักศึกษาใน 4 ศูนย์การศึกษาหลัก (ท่าพระจันทร์, รังสิต, พัทยา, ลำปาง) ตั้งแต่ พ.ศ. 2500 ถึงปัจจุบัน",
+        highlights: [
+          "ท่าพระจันทร์จากเดิมรองรับ 100% ปัจจุบันปรับบทบาทเป็น Hub บัณฑิตศึกษาและนานาชาติ (14.8%)",
+          "ศูนย์รังสิตกลายเป็น Main Campus รองรับนักศึกษาถึง 73.5% พร้อมศูนย์การแพทย์และวิจัยครบวงจร",
+          "ศูนย์ลำปาง (7.2%) และศูนย์พัทยา (4.5%) ขยายพลังวิชาการสู่ภาคเหนือและเขตเศรษฐกิจพิเศษ EEC"
+        ],
+        tableHeaders: ["Era_BE", "ThaPrachan_Pct", "Rangsit_Pct", "Lampang_Pct", "Pattaya_Pct"],
+        tableSample: [
+          ["2500", "100.0%", "0.0%", "0.0%", "0.0%"],
+          ["2530", "68.0%", "32.0%", "0.0%", "0.0%"],
+          ["2567", "14.8%", "73.5%", "7.2%", "4.5%"]
+        ]
+      },
+      {
+        id: 3,
+        title: "3. การแข่งขัน TCAS 26 คณะ & คะแนนตัดต่ำสุด",
+        template: "Flourish Interactive Scatter / Bar Chart",
+        category: "Academic Admissions",
+        csv: "03_faculties_tcas_competition.csv",
+        badge: "26 คณะ / แพทย์ 83.1",
+        desc: "คะแนนเฉลี่ยตัดต่ำสุดในการรับสมัคร TCAS รอบ 3 และอัตราการแข่งขันในทุก 26 คณะ/สถาบัน ครอบคลุม 4 เสาหลักวิชาการ",
+        highlights: [
+          "กลุ่มวิทยาศาสตร์สุขภาพและการแพทย์แข่งขันสูงสุด อัตราส่วน 1:14.0 (แพทย์ 83.1, ทันตแพทย์ 82.4)",
+          "พาณิชย์ฯ & นิติศาสตร์ ครองคะแนนสูงสุดในกลุ่มสังคมศาสตร์ (81.2 และ 78.5 ตามลำดับ)",
+          "วิศวกรรมศาสตร์ & วิทยาลัยนานาชาติปรีดี พนมยงค์ โดดเด่นด้านคะแนนและเครือข่ายสากล"
+        ],
+        tableHeaders: ["Faculty", "Pillar", "Min_Score_100", "Accept_Ratio", "Capacity"],
+        tableSample: [
+          ["แพทยศาสตร์", "วิทยาศาสตร์สุขภาพ", "83.1", "1:14.0", "220"],
+          ["ทันตแพทยศาสตร์", "วิทยาศาสตร์สุขภาพ", "82.4", "1:12.5", "100"],
+          ["พาณิชยศาสตร์และการบัญชี", "สังคมศาสตร์และมนุษยศาสตร์", "81.2", "1:9.4", "950"]
+        ]
+      },
+      {
+        id: 4,
+        title: "4. ความหลากหลายทางเพศภาวะใน 4 เสาหลักวิชาการ",
+        template: "Flourish Sliced / Stacked Percentage Bar",
+        category: "Diversity & Demographics",
+        csv: "04_gender_diversity_distribution.csv",
+        badge: "สัดส่วนหญิง-ชาย & ความหลากหลาย",
+        desc: "โครงสร้างความหลากหลายทางเพศของนักศึกษาในแต่ละกลุ่มสาขาวิชา สะท้อนสังคมแห่งความเท่าเทียมและการเปิดกว้าง",
+        highlights: [
+          "วิทยาศาสตร์สุขภาพและการแพทย์: สัดส่วนนักศึกษาหญิง 71.5% และนักศึกษาชาย 28.5%",
+          "สังคมศาสตร์และมนุษยศาสตร์: สัดส่วนนักศึกษาหญิง 64.2% และนักศึกษาชาย 35.8%",
+          "วิทยาศาสตร์และเทคโนโลยี: สัดส่วนสมดุล มีนักศึกษาหญิง 53.8% สะท้อนการเติบโตของผู้หญิงในสาย STEM"
+        ],
+        tableHeaders: ["Academic_Pillar", "Female_Pct", "Male_Pct", "Total_Students"],
+        tableSample: [
+          ["สังคมศาสตร์และมนุษยศาสตร์", "64.2%", "35.8%", "19,200"],
+          ["วิทยาศาสตร์และเทคโนโลยี", "53.8%", "46.2%", "11,450"],
+          ["วิทยาศาสตร์สุขภาพและการแพทย์", "71.5%", "28.5%", "7,800"],
+          ["สถาบันและวิทยาลัยนานาชาติ", "59.8%", "40.2%", "4,400"]
+        ]
+      },
+      {
+        id: 5,
+        title: "5. โครงสร้างงบประมาณ 15,350 ล้านบาท",
+        template: "Flourish Sankey Diagram / Sunburst",
+        category: "Financial Architecture",
+        csv: "05_budget_revenue_streams.csv",
+        badge: "15,350 ล้านบาท",
+        desc: "แผนผังการไหลของกระแสน้ำรายได้ 5 ช่องทางหลักของมหาวิทยาลัย สู่การจัดสรรงบประมาณพัฒนาด้านต่างๆ",
+        highlights: [
+          "งบประมาณแผ่นดิน: 5,495 ล้านบาท (35.8%) รองรับภารกิจหลักและการวิจัยระดับชาติ",
+          "ค่าธรรมเนียมการศึกษา: 4,973 ล้านบาท (32.4%) หมุนเวียนเพื่อการสอนและพัฒนาหลักสูตร",
+          "รายได้บริหารทรัพย์สินและการลงทุน: 2,793 ล้านบาท (18.2%) สร้างความยั่งยืนทางการคลัง"
+        ],
+        tableHeaders: ["Stream_Name", "Amount_MB", "Percentage", "Strategic_Purpose"],
+        tableSample: [
+          ["งบประมาณแผ่นดิน", "5,495", "35.8%", "เงินอุดหนุนและโครงการวิจัยชาติ"],
+          ["ค่าธรรมเนียมการศึกษา", "4,973", "32.4%", "การจัดการเรียนการสอน"],
+          ["ทรัพย์สินและการลงทุน", "2,793", "18.2%", "สำนักงานบริหารทรัพย์สิน TU"]
+        ]
+      },
+      {
+        id: 6,
+        title: "6. แนวโน้มงบประมาณย้อนหลัง 5 ปี (2563-2567)",
+        template: "Flourish Projection Area / Trend Chart",
+        category: "Budget Growth",
+        csv: "06_budget_trend_5years.csv",
+        badge: "เติบโตเฉลี่ย +3.4% ต่อปี",
+        desc: "เส้นทางงบประมาณรวม 5 ปี สะท้อนการขยายตัวทางการเงินและความมั่นคงของมหาวิทยาลัยท่ามกลางความท้าทาย",
+        highlights: [
+          "ปี 2563: 13,420 ล้านบาท บริหารจัดการในภาวะวิกฤตสุขภาพระดับโลก",
+          "ปี 2565: ปรับฐานสู่ 14,210 ล้านบาท เร่งการลงทุนเทคโนโลยีดิจิทัล",
+          "ปี 2567: ทำสถิติสูงสุด 15,350 ล้านบาท มุ่งเน้น TU 2034 และ Net Zero"
+        ],
+        tableHeaders: ["Year_BE", "Total_Budget_MB", "Gov_Subsidy_MB", "Autonomous_Revenue_MB"],
+        tableSample: [
+          ["2563", "13,420", "4,950", "8,470"],
+          ["2565", "14,210", "5,180", "9,030"],
+          ["2567", "15,350", "5,495", "9,855"]
+        ]
+      },
+      {
+        id: 7,
+        title: "7. พิกัดภูมิศาสตร์และโครงสร้างพื้นฐาน 4 ศูนย์การศึกษา",
+        template: "Flourish Marker Map / Geographic Explorer",
+        category: "Campus GIS",
+        csv: "07_campuses_geography_metrics.csv",
+        badge: "ท่าพระจันทร์ • รังสิต • ลำปาง • พัทยา",
+        desc: "ข้อมูลเชิงพื้นที่และบทบาทเชิงยุทธศาสตร์ ขนาดพื้นที่ จำนวนประชากร และความเชี่ยวชาญเฉพาะทาง",
+        highlights: [
+          "ศูนย์รังสิต (ปทุมธานี): 1,757 ไร่ ศูนย์นวัตกรรม โรงพยาบาลธรรมศาสตร์ และอุทยานวิทยาศาสตร์",
+          "ท่าพระจันทร์ (กทม.): 104 ไร่ หัวใจประวัติศาสตร์และอัตลักษณ์ประชาธิปไตยริมฝั่งเจ้าพระยา",
+          "ศูนย์ลำปาง (364 ไร่) & ศูนย์พัทยา (566 ไร่): เชื่อมโยงล้านนาสร้างสรรค์และเขตเศรษฐกิจตะวันออก EEC"
+        ],
+        tableHeaders: ["Campus_Name", "Province", "Area_Rai", "Latitude", "Longitude", "Role"],
+        tableSample: [
+          ["ท่าพระจันทร์", "กรุงเทพมหานคร", "104", "13.7557", "100.4907", "ประวัติศาสตร์และหลักสูตรนานาชาติ"],
+          ["ศูนย์รังสิต", "ปทุมธานี", "1,757", "14.0722", "100.6015", "ศูนย์วิจัย วิทยาศาสตร์ และสาธารณสุข"],
+          ["ศูนย์ลำปาง", "ลำปาง", "364", "18.3171", "99.3986", "พัฒนาท้องถิ่นและล้านนาสร้างสรรค์"],
+          ["ศูนย์พัทยา", "ชลบุรี", "566", "12.9275", "100.9925", "EEC ดิจิทัลและยานยนต์แห่งอนาคต"]
+        ]
+      },
+      {
+        id: 8,
+        title: "8. ตัวชี้วัดเป้าหมายยุทธศาสตร์ TU 2034",
+        template: "Flourish Radar / Spider Chart",
+        category: "Strategic Vision",
+        csv: "08_tu2034_strategic_kpis.csv",
+        badge: "Vision 2034: 4 แกนขับเคลื่อน",
+        desc: "ดัชนีชี้วัดผลสัมฤทธิ์ตามแผนยุทธศาสตร์ 10 ปี มุ่งสู่ Top 100 QS World University Ranking",
+        highlights: [
+          "ความเป็นเลิศทางวิจัย (Research Excellence): เป้าหมาย 92.0 คะแนน เน้นผลงานเชิงประจักษ์",
+          "ทักษะศตวรรษที่ 21 (Future-Ready Skills): ปฏิรูปหลักสูตรและทักษะดิจิทัลเป้าหมาย 95.0 คะแนน",
+          "ความยั่งยืนและสุขภาพ (Green & Health): Net Zero ภายในปี 2034 และเครือข่ายสุขภาวะ 98.0 คะแนน"
+        ],
+        tableHeaders: ["Strategic_Dimension", "Current_2567", "Target_2577", "Weight_Pct"],
+        tableSample: [
+          ["Research & Innovation", "72.4", "92.0", "30%"],
+          ["Future Skills & Pedagogy", "78.5", "95.0", "25%"],
+          ["Green Campus & Net Zero", "81.0", "96.0", "25%"],
+          ["Health & Well-being", "84.2", "98.0", "20%"]
+        ]
+      },
+      {
+        id: 9,
+        title: "9. อัตราความสำเร็จและการมีงานทำของบัณฑิต",
+        template: "Flourish Hierarchy / Treemap",
+        category: "Graduate Employability",
+        csv: "09_graduate_employment_outcomes.csv",
+        badge: "92.4% มีงานทำใน 6 เดือน",
+        desc: "การกระจายตัวของบัณฑิตธรรมศาสตร์ในตลาดแรงงาน รายได้เฉลี่ยเริ่มต้น และการเป็นผู้ประกอบการสตาร์ทอัพ",
+        highlights: [
+          "บัณฑิตมีงานทำหรือศึกษาต่อภายใน 6 เดือน สูงถึง 92.4%",
+          "ภาคเอกชนและบรรษัทข้ามชาติเป็นปลายทางอันดับ 1 (58.4%) เงินเดือนเริ่มต้นเฉลี่ย 29,500 บาท",
+          "กลุ่มสตาร์ทอัพและธุรกิจส่วนตัวเติบโตสูงสุด +11.4% ต่อปี ด้วยรายได้เฉลี่ย 34,000 บาท"
+        ],
+        tableHeaders: ["Sector", "Employment_Pct", "Avg_Starting_Salary_THB", "Growth_Rate"],
+        tableSample: [
+          ["ธุรกิจเอกชนและบรรษัทข้ามชาติ", "58.4%", "29,500", "+5.2%"],
+          ["หน่วยงานภาครัฐและรัฐวิสาหกิจ", "18.2%", "22,000", "+3.0%"],
+          ["สตาร์ทอัพและธุรกิจส่วนตัว", "14.6%", "34,000", "+11.4%"],
+          ["องค์กรระหว่างประเทศ / NGO", "8.8%", "38,500", "+7.8%"]
+        ]
+      },
+      {
+        id: 10,
+        title: "10. ผลงานวิจัยระดับนานาชาติและเครือข่ายความร่วมมือสากล",
+        template: "Flourish Network / Chord Diagram",
+        category: "Global Research",
+        csv: "10_research_global_citations.csv",
+        badge: "Scopus 2,400+ papers/year",
+        desc: "เครือข่ายความร่วมมือทางวิชาการและดัชนีการอ้างอิงงานวิจัย (Citations) ร่วมกับมหาวิทยาลัยชั้นนำทั่วโลก",
+        highlights: [
+          "ผลงานวิจัยได้รับการตีพิมพ์ในฐานข้อมูล Scopus/WoS กว่า 2,400 บทความต่อปี",
+          "เครือข่ายความร่วมมือวิจัยครอบคลุมกว่า 350 มหาวิทยาลัยชั้นนำทั่วโลกในเอเชีย ยุโรป และอเมริกาเหนือ",
+          "ดัชนี Citation Impact เฉลี่ย 1.82 สะท้อนคุณภาพและคุณค่าเชิงวิชาการในเวทีสากล"
+        ],
+        tableHeaders: ["Region_Partner", "Collaborative_Papers", "Citation_Impact", "Top_Fields"],
+        tableSample: [
+          ["East Asia & ASEAN", "840", "1.65", "Medicine, AI, Logistics"],
+          ["Europe & UK", "620", "1.82", "Public Policy, Law, Renewable Energy"],
+          ["North America", "490", "2.10", "Biotech, Materials, Data Science"],
+          ["Australasia", "310", "1.74", "Health Sciences, Environmental Tech"]
+        ]
+      }
+    ];
+
+    function openFlourishHubModal() {
+      const modal = document.getElementById('flourishHubModal');
+      if (modal) {
+        modal.style.display = 'flex';
+        renderFlourishTabs();
+        selectFlourishScene(0);
+      }
+    }
+
+    function closeFlourishHubModal() {
+      const modal = document.getElementById('flourishHubModal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function renderFlourishTabs() {
+      const tabList = document.getElementById('flourishSidebarTabs');
+      if (!tabList) return;
+      tabList.innerHTML = '';
+      FLOURISH_SCENES_DATA.forEach((scene, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `flourish-tab-btn ${idx === 0 ? 'active' : ''}`;
+        btn.onclick = () => selectFlourishScene(idx);
+        btn.innerHTML = `
+          <div class="flourish-tab-num">ฉากที่ ${scene.id}</div>
+          <div class="flourish-tab-title">${scene.title.split('. ')[1] || scene.title}</div>
+          <div class="flourish-tab-template">${scene.template}</div>
+        `;
+        tabList.appendChild(btn);
+      });
+    }
+
+    function selectFlourishScene(idx) {
+      const tabs = document.querySelectorAll('.flourish-tab-btn');
+      tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+
+      const s = FLOURISH_SCENES_DATA[idx];
+      if (!s) return;
+
+      const content = document.getElementById('flourishDetailPane');
+      if (!content) return;
+
+      const tableHeaderHtml = s.tableHeaders.map(h => `<th>${h}</th>`).join('');
+      const tableRowsHtml = s.tableSample.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('');
+      const highlightsHtml = s.highlights.map(h => `<li><i class="fa-solid fa-check-circle" style="color: var(--bidwells-crimson); margin-right: 6px;"></i>${h}</li>`).join('');
+
+      content.innerHTML = `
+        <div class="flourish-detail-badge">${s.category} • ${s.badge}</div>
+        <h3 class="flourish-detail-title">${s.title}</h3>
+        <p class="flourish-detail-desc">${s.desc}</p>
+        
+        <div class="flourish-preview-box">
+          <div class="flourish-preview-header">
+            <div style="font-weight: 700; color: #1e293b; font-size: 0.95rem;">
+              <i class="fa-solid fa-chart-line" style="color: var(--bidwells-crimson); margin-right: 8px;"></i>
+              Flourish Visualization Preview (${s.template})
+            </div>
+            <a href="https://flourish.studio" target="_blank" class="flourish-direct-link">
+              เปิดใน Flourish Studio <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+          <div class="flourish-preview-body">
+            <div class="flourish-preview-info">
+              <div><strong>ชุดข้อมูล CSV อ้างอิง:</strong> <code>flourish_data/${s.csv}</code> (พร้อมเชื่อมต่อใน Colab และ Flourish ทันที)</div>
+              <div style="margin-top: 6px;"><strong>ไฮไลท์และข้อค้นพบสำคัญ:</strong></div>
+              <ul style="margin: 6px 0 0 16px; padding: 0; line-height: 1.8;">
+                ${highlightsHtml}
+              </ul>
+            </div>
+            <div style="overflow-x: auto; margin-top: 14px;">
+              <table class="flourish-data-table">
+                <thead><tr>${tableHeaderHtml}</tr></thead>
+                <tbody>${tableRowsHtml}</tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
     // 9. TU 2034 Strategy Cockpit Real-time Calculator
@@ -3628,13 +4378,17 @@ def generate_bidwells_html():
                 label: 'หญิง (%)',
                 data: [64.2, 53.8, 71.5, 59.8],
                 backgroundColor: '#ec4899',
-                borderRadius: 6
+                borderRadius: 4,
+                barThickness: 20,
+                maxBarThickness: 24
               },
               {
                 label: 'ชาย (%)',
                 data: [35.8, 46.2, 28.5, 40.2],
                 backgroundColor: '#3b82f6',
-                borderRadius: 6
+                borderRadius: 4,
+                barThickness: 20,
+                maxBarThickness: 24
               }
             ]
           },
@@ -3673,22 +4427,34 @@ def generate_bidwells_html():
               {
                 label: 'ท่าพระจันทร์ (%)',
                 data: [100, 68, 22, 14.8],
-                backgroundColor: '#a6d2e6'
+                backgroundColor: '#a6d2e6',
+                barThickness: 28,
+                maxBarThickness: 32,
+                borderRadius: 4
               },
               {
                 label: 'ศูนย์รังสิต (%)',
                 data: [0, 32, 70, 73.5],
-                backgroundColor: '#c51944'
+                backgroundColor: '#c51944',
+                barThickness: 28,
+                maxBarThickness: 32,
+                borderRadius: 4
               },
               {
                 label: 'ศูนย์ลำปาง (%)',
                 data: [0, 0, 5, 7.2],
-                backgroundColor: '#ffc72c'
+                backgroundColor: '#ffc72c',
+                barThickness: 28,
+                maxBarThickness: 32,
+                borderRadius: 4
               },
               {
                 label: 'ศูนย์พัทยา (%)',
                 data: [0, 0, 3, 4.5],
-                backgroundColor: '#00857c'
+                backgroundColor: '#00857c',
+                barThickness: 28,
+                maxBarThickness: 32,
+                borderRadius: 4
               }
             ]
           },
@@ -3712,12 +4478,18 @@ def generate_bidwells_html():
       }
     }
 
-    function setDistributionEra(mode) {
+    function setDistributionEra(mode, btnEl) {
       const btns = document.querySelectorAll('.era-pill-btn');
       btns.forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+      const activeBtn = btnEl || (typeof event !== 'undefined' && event && event.target ? event.target.closest('.era-pill-btn') : null) || document.querySelector(`.era-pill-btn[onclick*="'${mode}'"]`);
+      if (activeBtn) activeBtn.classList.add('active');
 
       if (!campusDistChart) return;
+      const thickness = mode === '2567' ? 36 : 28;
+      campusDistChart.data.datasets.forEach(ds => {
+        ds.barThickness = thickness;
+        ds.maxBarThickness = thickness + 4;
+      });
       if (mode === '2567') {
         campusDistChart.data.labels = ['พ.ศ. 2567 (ปัจจุบัน)'];
         campusDistChart.data.datasets[0].data = [14.8];
@@ -3738,6 +4510,7 @@ def generate_bidwells_html():
     window.addEventListener('DOMContentLoaded', () => {
       initScrollInteractions();
       renderFaculties('all');
+      initFacultiesTcasChart();
       initCharts();
       initTuLeafletMap();
     });
