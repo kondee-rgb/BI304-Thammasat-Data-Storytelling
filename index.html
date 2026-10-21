@@ -397,184 +397,274 @@
     }
 
     /* ==========================================================================
-       3. HERO SECTION & CENTRAL STARTING RACETRACK
+       3. HERO SECTION & CENTRAL STARTING RACETRACK (Authentic Bidwells Runway)
        ========================================================================== */
     .hero-track-section {
       position: relative;
-      min-height: 100vh;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding-top: 100px;
+      min-height: 220vh;
+      background-color: var(--bidwells-navy);
+      background-image: 
+        radial-gradient(circle at 50% 30%, #162a5b 0%, var(--bidwells-navy) 70%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 30px, transparent 30px, transparent 60px);
+      color: #ffffff;
       overflow: hidden;
+      padding-top: 76px;
     }
 
+    /* Central Vertical Racetrack Stage */
     .central-track-stage {
-      position: relative;
-      width: 780px;
-      max-width: 95vw;
-      height: 680px;
-      margin: 0 auto;
-      background: #1e293b;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .central-track-curb-left,
-    .central-track-curb-right {
       position: absolute;
       top: 0;
-      bottom: 0;
-      width: 14px;
-      background-image: repeating-linear-gradient(
-        180deg,
-        #c51944 0px,
-        #c51944 30px,
-        #ffffff 30px,
-        #ffffff 60px
-      );
-      z-index: 2;
-    }
-
-    .central-track-curb-left { left: 0; }
-    .central-track-curb-right { right: 0; }
-
-    .central-track-centerline {
-      position: absolute;
-      top: 0;
-      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 4px;
-      background-image: repeating-linear-gradient(
-        180deg,
-        #ffc72c 0px,
-        #ffc72c 40px,
-        transparent 40px,
-        transparent 80px
-      );
+      width: 640px;
+      height: 100%;
+      background: #09122d;
+      border-left: 2px solid rgba(255, 255, 255, 0.15);
+      border-right: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
       z-index: 1;
     }
 
-    .start-finish-grid-line {
+    /* Left Checkerboard Racing Curb */
+    .central-track-curb-left {
       position: absolute;
-      top: 140px;
-      left: 14px;
-      right: 14px;
-      height: 28px;
-      background-image: repeating-linear-gradient(
-        90deg,
-        #ffffff 0px,
-        #ffffff 14px,
-        #0f172a 14px,
-        #0f172a 28px
+      top: 0;
+      left: 0;
+      width: 44px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        #e2e8f0 0px,
+        #e2e8f0 40px,
+        #1e293b 40px,
+        #1e293b 80px
       );
-      opacity: 0.9;
-      z-index: 2;
+      opacity: 0.85;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    .pole-position-marker {
+    /* Right Track Border Curb */
+    .central-track-curb-right {
       position: absolute;
-      top: 180px;
-      left: 22%;
-      font-size: 0.72rem;
+      top: 0;
+      right: 0;
+      width: 14px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.6) 0px,
+        rgba(255, 255, 255, 0.6) 30px,
+        transparent 30px,
+        transparent 60px
+      );
+    }
+
+    /* Dashed Center Road Line */
+    .central-track-centerline {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.35) 0px,
+        rgba(255, 255, 255, 0.35) 40px,
+        transparent 40px,
+        transparent 80px
+      );
+    }
+
+    /* Starting Grid Stage at Scroll 800px */
+    .grid-box {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .grid-box-pole {
+      top: 820px;
+      left: 170px;
+      width: 130px;
+      height: 18px;
+    }
+
+    .grid-box-slot2 {
+      top: 1040px;
+      left: 380px;
+      width: 130px;
+      height: 18px;
+    }
+
+    .grid-box-label {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
       font-weight: 800;
-      color: #ffc72c;
       letter-spacing: 0.1em;
-      border: 1px dashed rgba(255, 199, 44, 0.4);
-      padding: 4px 10px;
-      border-radius: 4px;
-      z-index: 2;
-    }
-
-    .starting-avatar-card {
-      position: absolute;
-      top: 240px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.2s ease-out;
-      z-index: 5;
-    }
-
-    .avatar-leader { left: 24%; }
-    .avatar-scholar { right: 24%; }
-
-    .tu-student-walker-img {
-      width: 100px;
-      height: auto;
-      filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.65));
-      transition: transform 0.3s ease;
-    }
-
-    .tu-student-walker-img:hover {
-      transform: scale(1.05);
-    }
-
-    .tu-student-badge {
-      margin-top: 8px;
-      background: rgba(11, 22, 59, 0.9);
-      border: 1px solid var(--tu-gold);
-      color: #ffffff;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 9999px;
+      color: rgba(255, 255, 255, 0.65);
       white-space: nowrap;
     }
 
-    .hero-editorial-overlay {
+    /* The Thammasat Student Walkers on the Central Timeline Track */
+    .tu-student-walker-container {
       position: absolute;
-      top: 30px;
-      left: 0;
-      right: 0;
-      text-align: center;
       z-index: 10;
-      pointer-events: none;
+      transition: transform 0.08s linear;
+      will-change: transform;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .hero-eyebrow {
+    .tu-student-leader {
+      top: 650px;
+      left: 175px;
+      width: 125px;
+    }
+
+    .tu-student-scholar {
+      top: 870px;
+      left: 385px;
+      width: 125px;
+    }
+
+    .tu-student-walker-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.75));
+      animation: student-stride 2s ease-in-out infinite alternate;
+    }
+
+    .tu-student-pedestal {
+      width: 90px;
+      height: 18px;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, transparent 70%);
+      border-radius: 50%;
+      margin-top: -10px;
+    }
+
+    .tu-student-badge {
+      margin-top: 10px;
+      background: rgba(11, 22, 59, 0.88);
+      border: 1px solid rgba(255, 199, 44, 0.5);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      color: #ffc72c;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      white-space: nowrap;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      padding: 6px 18px;
+      gap: 6px;
+    }
+
+    /* Hero Typography & Overlays */
+    .hero-content-overlay {
+      position: relative;
+      z-index: 20;
+      max-width: 1200px;
+      min-height: calc(100vh - 76px);
+      margin: 0 auto;
+      padding: 100px 2rem 60px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(197, 25, 68, 0.16);
+      border: 1px solid rgba(197, 25, 68, 0.45);
+      color: #ff9cb1;
+      padding: 6px 20px;
       border-radius: 9999px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      color: var(--bidwells-crimson);
-      text-transform: uppercase;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-      margin-bottom: 12px;
-      pointer-events: auto;
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: 3.5rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      color: var(--bidwells-navy);
-      line-height: 1.15;
-      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
     }
 
-    .hero-title em {
+    .hero-main-title {
+      font-family: var(--font-serif);
+      font-size: 4.6rem;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-main-title em {
       font-style: italic;
-      color: var(--bidwells-crimson);
       font-weight: 400;
+      color: var(--bidwells-sky-blue);
+      display: inline-block;
     }
 
-    .hero-subtitle {
-      font-size: 1.12rem;
-      color: #334155;
-      max-width: 680px;
-      margin: 12px auto 0;
-      line-height: 1.6;
+    .hero-title-thai {
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-lead-desc {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 820px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-scroll-pill-btn {
+      background: var(--bidwells-sky-blue);
+      color: var(--bidwells-navy);
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(191, 229, 242, 0.35);
+      transition: all 0.25s ease;
+      animation: float-pill 2s ease-in-out infinite alternate;
+    }
+
+    .hero-scroll-pill-btn:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(191, 229, 242, 0.5);
+    }
+
+    @keyframes student-stride {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(-1.5deg); }
+      100% { transform: translateY(0px) rotate(1deg); }
+    }
+
+    @keyframes float-pill {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(6px); }
     }
 
     /* ==========================================================================
@@ -2354,17 +2444,17 @@
     </div>
 
     <nav class="header-nav">
-      <a href="#hero" class="header-nav-link active">จุดเริ่มต้น</a>
+      <a href="#hero" class="header-nav-link active">หน้าแรก</a>
       <a href="#topic-01" class="header-nav-link">1. ปฐมบท 2477</a>
-      <a href="#topic-02" class="header-nav-link">2. 4 ศูนย์ศึกษา</a>
-      <a href="#topic-03" class="header-nav-link">3. 26 คณะ & TCAS</a>
+      <a href="#topic-02" class="header-nav-link">2. ศูนย์การศึกษา</a>
+      <a href="#topic-03" class="header-nav-link">3. คณะและเกณฑ์ TCAS</a>
       <a href="#topic-04" class="header-nav-link">4. มิติประชากร</a>
-      <a href="#topic-05" class="header-nav-link">5. การโยกย้าย</a>
+      <a href="#topic-05" class="header-nav-link">5. การโยกย้ายศูนย์กลาง</a>
       <a href="#topic-06" class="header-nav-link">6. วินัยการคลัง</a>
-      <a href="#topic-07" class="header-nav-link">7. มาตรฐานโลก</a>
+      <a href="#topic-07" class="header-nav-link">7. มาตรฐานสากล</a>
       <a href="#topic-08" class="header-nav-link">8. แคมปัสสีเขียว</a>
       <a href="#topic-09" class="header-nav-link">9. รพ.ธรรมศาสตร์</a>
-      <a href="#topic-10" class="header-nav-link">10. TU 2034</a>
+      <a href="#topic-10" class="header-nav-link">10. ยุทธศาสตร์ TU 2034</a>
     </nav>
 
     <div class="header-actions">
@@ -2390,18 +2480,18 @@
       <div class="scrubber-track-fill" id="scrubberFill"></div>
       <div class="scrubber-thumb" id="scrubberThumb"></div>
       <div class="scrubber-pips">
-        <div class="scrubber-pip active" data-target="hero" title="จุดเริ่มต้น"></div>
+        <div class="scrubber-pip active" data-target="hero" title="หน้าแรก"></div>
         <div class="scrubber-pip" data-target="topic-01" title="1. ปฐมบท 2477"></div>
-        <div class="scrubber-pip" data-target="topic-02" title="2. 4 ศูนย์การศึกษา"></div>
-        <div class="scrubber-pip" data-target="topic-03" title="3. 26 คณะ & TCAS"></div>
+        <div class="scrubber-pip" data-target="topic-02" title="2. ศูนย์การศึกษา"></div>
+        <div class="scrubber-pip" data-target="topic-03" title="3. คณะและเกณฑ์ TCAS"></div>
         <div class="scrubber-pip" data-target="topic-04" title="4. มิติประชากร"></div>
-        <div class="scrubber-pip" data-target="topic-05" title="5. การโยกย้าย"></div>
+        <div class="scrubber-pip" data-target="topic-05" title="5. การโยกย้ายศูนย์กลาง"></div>
         <div class="scrubber-pip" data-target="topic-06" title="6. วินัยการคลัง"></div>
-        <div class="scrubber-pip" data-target="topic-07" title="7. มาตรฐานโลก"></div>
+        <div class="scrubber-pip" data-target="topic-07" title="7. มาตรฐานสากล"></div>
         <div class="scrubber-pip" data-target="topic-08" title="8. แคมปัสสีเขียว"></div>
         <div class="scrubber-pip" data-target="topic-09" title="9. รพ.ธรรมศาสตร์"></div>
-        <div class="scrubber-pip" data-target="topic-10" title="10. TU 2034"></div>
-        <div class="scrubber-pip" data-target="finish" title="เส้นชัยเกียรติภูมิ 90 ปี"></div>
+        <div class="scrubber-pip" data-target="topic-10" title="10. ยุทธศาสตร์ TU 2034"></div>
+        <div class="scrubber-pip" data-target="finish" title="ศตวรรษ 90 ปี"></div>
       </div>
     </div>
     <div class="scrubber-topic-indicator" id="scrubberTopicIndicator" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
@@ -2411,45 +2501,70 @@
   </div>
 
   <!-- ==========================================================================
-       HERO SECTION & CENTRAL STARTING RACETRACK
+       HERO SECTION & CENTRAL STARTING RACETRACK (Authentic Bidwells Runway)
        ========================================================================== -->
   <section class="hero-track-section" id="hero">
+    <!-- The Central Vertical Asphalt Racetrack -->
     <div class="central-track-stage">
+      <!-- Alternating Checkerboard Curb on the left -->
       <div class="central-track-curb-left"></div>
       <div class="central-track-curb-right"></div>
       <div class="central-track-centerline"></div>
 
-      <!-- Start / Finish Grid Line -->
-      <div class="start-finish-grid-line"></div>
-      <div class="pole-position-marker">POLE POSITION • GRID 2477</div>
+      <!-- Starting Grid Box Brackets [   ] at scroll 900px -->
+      <div class="grid-box grid-box-pole">
+        <span class="grid-box-label">TU PIONEER 01</span>
+      </div>
+      <div class="grid-box grid-box-slot2">
+        <span class="grid-box-label">TU SCHOLAR 02</span>
+      </div>
 
-      <!-- Two Dynamic Walking Thammasat Students -->
-      <div class="starting-avatar-card avatar-leader" id="studentLeader">
-        <img src="assets/tu_student_walking.png" alt="นักศึกษาธรรมศาสตร์ผู้นำ" class="tu-student-walker-img" />
+      <!-- Student 1: Lead Thammasat Student (tu_student_walking.png) -->
+      <div class="tu-student-walker-container tu-student-leader" id="studentLeader">
+        <img src="assets/tu_student_walking.png" alt="นักศึกษาธรรมศาสตร์ ผู้นำแห่งอนาคต" class="tu-student-walker-img" />
+        <div class="tu-student-pedestal"></div>
         <div class="tu-student-badge">
-          <i class="fa-solid fa-flag"></i> ผู้นำแห่งการเปลี่ยนแปลง
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>นักศึกษาธรรมศาสตร์ • ก้าวสู่ศตวรรษใหม่</span>
         </div>
       </div>
 
-      <div class="starting-avatar-card avatar-scholar" id="studentScholar">
-        <img src="assets/tu_student_walking.png" alt="นักศึกษาธรรมศาสตร์ปัญญาชน" class="tu-student-walker-img" style="filter: drop-shadow(0 12px 20px rgba(0,0,0,0.7)) hue-rotate(15deg);" />
+      <!-- Student 2: Second Thammasat Student Scholar -->
+      <div class="tu-student-walker-container tu-student-scholar" id="studentScholar">
+        <img src="assets/tu_student_walking.png" alt="นักศึกษาธรรมศาสตร์ นักวิจัยเพื่อสังคม" class="tu-student-walker-img" style="filter: drop-shadow(0 14px 24px rgba(0,0,0,0.75)) brightness(1.08);" />
+        <div class="tu-student-pedestal"></div>
         <div class="tu-student-badge">
-          <i class="fa-solid fa-graduation-cap"></i> พลังปัญญาเพื่อราษฎร
+          <i class="fa-solid fa-lightbulb"></i>
+          <span>TU Scholar • พลังขับเคลื่อนสังคม</span>
         </div>
       </div>
     </div>
 
-    <!-- Editorial Floating Overlay Text -->
-    <div class="hero-editorial-overlay">
-      <div class="hero-eyebrow">
-        <i class="fa-solid fa-gauge-high"></i> THAMMASAT 90 YEARS AT SPEED
+    <!-- Hero Content Overlay (First Screen) -->
+    <div class="hero-content-overlay">
+      <div class="hero-category-tag">
+        <i class="fa-solid fa-flag-checkered"></i>
+        <span>รายงานวิจัยและยุทธศาสตร์ข้อมูล • 2477 — 2567</span>
       </div>
-      <h1 class="hero-title">
-        Driving Innovation<br /><em>at Speed</em>
+
+      <h1 class="hero-main-title">
+        Driving Innovation<br>
+        <em>at Speed</em>
       </h1>
-      <p class="hero-subtitle">
-        จากตลาดวิชาเพื่อราษฎร ณ ท่าพระจันทร์ สู่ศูนย์กลางนวัตกรรมและปัญญาชนระดับโลก 90 ปีแห่งเกียรติภูมิและความเสมอภาค
+
+      <div class="hero-title-thai">
+        ขับเคลื่อนปัญญาและนวัตกรรม ด้วยความเร็วแห่งอนาคต
+      </div>
+
+      <p class="hero-lead-desc">
+        90 ปี มหาวิทยาลัยธรรมศาสตร์: จาก "ตลาดวิชา" แห่งประวัติศาสตร์ สู่มหาวิทยาลัยวิจัยชั้นนำของโลก
+        ผู้นำ Triple Crown และพลังแห่งการพัฒนาสังคมอย่างยั่งยืน
       </p>
+
+      <button class="hero-scroll-pill-btn" onclick="scrollToElement('topic-01')">
+        <span>Scroll down to race</span>
+        <i class="fa-solid fa-arrow-down"></i>
+      </button>
     </div>
   </section>
 
@@ -2646,8 +2761,8 @@
 
           <div style="display: flex; align-items: center; gap: 10px;">
             <div class="map-style-toggle-group">
-              <button class="map-style-btn active" id="btnMapStyleDark" onclick="setMapTileStyle('dark')">
-                <i class="fa-solid fa-moon"></i> แผนที่รัตติกาล
+              <button class="map-style-btn active" id="btnMapStyleStreet" onclick="setMapTileStyle('street')">
+                <i class="fa-solid fa-map-location-dot"></i> แผนที่ถนน & มุมเมือง
               </button>
               <button class="map-style-btn" id="btnMapStyleSat" onclick="setMapTileStyle('sat')">
                 <i class="fa-solid fa-satellite"></i> ภาพถ่ายดาวเทียม
@@ -3783,18 +3898,18 @@
 
     // 2. Scroll Interactions & Navigation Tracking
     const SECTION_TRACKS = [
-      { id: 'hero', name: 'จุดเริ่มต้น' },
+      { id: 'hero', name: 'หน้าแรก' },
       { id: 'topic-01', name: '1. ปฐมบท 2477' },
-      { id: 'topic-02', name: '2. 4 ศูนย์ศึกษา' },
-      { id: 'topic-03', name: '3. 26 คณะ & TCAS' },
+      { id: 'topic-02', name: '2. ศูนย์การศึกษา' },
+      { id: 'topic-03', name: '3. คณะและเกณฑ์ TCAS' },
       { id: 'topic-04', name: '4. มิติประชากร' },
-      { id: 'topic-05', name: '5. การโยกย้าย' },
+      { id: 'topic-05', name: '5. การโยกย้ายศูนย์กลาง' },
       { id: 'topic-06', name: '6. วินัยการคลัง' },
-      { id: 'topic-07', name: '7. มาตรฐานโลก' },
+      { id: 'topic-07', name: '7. มาตรฐานสากล' },
       { id: 'topic-08', name: '8. แคมปัสสีเขียว' },
       { id: 'topic-09', name: '9. รพ.ธรรมศาสตร์' },
-      { id: 'topic-10', name: '10. TU 2034' },
-      { id: 'finish', name: 'เส้นชัย 90 ปี' }
+      { id: 'topic-10', name: '10. ยุทธศาสตร์ TU 2034' },
+      { id: 'finish', name: 'ศตวรรษ 90 ปี' }
     ];
 
     function initScrollInteractions() {
@@ -3876,18 +3991,22 @@
       if (tuMap) return;
 
       tuMap = L.map('campusLeafletMap', {
-        center: [15.2, 100.8],
+        center: [14.8, 100.5],
         zoom: 6,
         scrollWheelZoom: false,
         attributionControl: false
       });
 
-      window.tuTileDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        maxZoom: 19
+      // High-detail Street Basemap with visible streets, corners, avenues & landmarks (Free, No API Key)
+      window.tuTileStreet = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 19,
+        attribution: 'Esri, HERE, Garmin, USGS, NGA'
       }).addTo(tuMap);
 
+      // High-resolution Satellite Imagery Basemap (Free, No API Key)
       window.tuTileSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 18
+        maxZoom: 18,
+        attribution: 'Esri, Maxar, Earthstar Geographics'
       });
 
       const campusCoordinates = [];
@@ -3903,9 +4022,10 @@
 
         const marker = L.marker([camp.lat, camp.lng], { icon: customIcon }).addTo(tuMap);
         marker.bindPopup(`
-          <div style="font-family: sans-serif; padding: 4px;">
-            <strong style="color: #c51944; font-size: 13px;">${camp.name}</strong><br/>
-            <span style="font-size: 11px; color: #475569;">พื้นที่: ${camp.area} • นักศึกษา ${camp.students}</span>
+          <div style="font-family: sans-serif; padding: 6px;">
+            <strong style="color: #c51944; font-size: 14px;">${camp.name}</strong><br/>
+            <span style="font-size: 12px; color: #334155;">พื้นที่: ${camp.area} • นักศึกษา ${camp.students}</span><br/>
+            <span style="font-size: 11px; color: #64748b;">${camp.locationDesc}</span>
           </div>
         `);
         marker.on('click', () => selectCampusCluster(idx));
@@ -3915,10 +4035,10 @@
       for (let i = 0; i < campusCoordinates.length; i++) {
         for (let j = i + 1; j < campusCoordinates.length; j++) {
           const line = L.polyline([campusCoordinates[i], campusCoordinates[j]], {
-            color: '#a6d2e6',
-            weight: 1.5,
-            dashArray: '4, 8',
-            opacity: 0.5
+            color: '#c51944',
+            weight: 2,
+            dashArray: '5, 8',
+            opacity: 0.65
           }).addTo(tuMap);
           corridorLines.push(line);
         }
@@ -3926,19 +4046,19 @@
     }
 
     function setMapTileStyle(style) {
-      const btnDark = document.getElementById('btnMapStyleDark');
+      const btnStreet = document.getElementById('btnMapStyleStreet');
       const btnSat = document.getElementById('btnMapStyleSat');
 
       if (style === 'sat') {
-        if (tuMap.hasLayer(window.tuTileDark)) tuMap.removeLayer(window.tuTileDark);
+        if (tuMap.hasLayer(window.tuTileStreet)) tuMap.removeLayer(window.tuTileStreet);
         window.tuTileSat.addTo(tuMap);
-        btnDark.classList.remove('active');
-        btnSat.classList.add('active');
+        if (btnStreet) btnStreet.classList.remove('active');
+        if (btnSat) btnSat.classList.add('active');
       } else {
         if (tuMap.hasLayer(window.tuTileSat)) tuMap.removeLayer(window.tuTileSat);
-        window.tuTileDark.addTo(tuMap);
-        btnDark.classList.add('active');
-        btnSat.classList.remove('active');
+        window.tuTileStreet.addTo(tuMap);
+        if (btnStreet) btnStreet.classList.add('active');
+        if (btnSat) btnSat.classList.remove('active');
       }
     }
 
