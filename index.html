@@ -2382,12 +2382,404 @@
       color: #475569;
     }
 
-    /* Responsiveness */
+    /* ==========================================================================
+       TOPIC 08 & 09 INTERACTIVE VISUAL CARD STYLES
+       ========================================================================== */
+    .green-visual-card {
+      background: rgba(6, 21, 23, 0.9);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 36px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+    }
+
+    .green-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .green-visual-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .green-visual-title i {
+      color: #10b981;
+    }
+
+    .green-toggle-group, .hospital-toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px;
+      border-radius: 9999px;
+    }
+
+    .green-toggle-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .green-toggle-btn:hover {
+      color: #ffffff;
+    }
+
+    .green-toggle-btn.active {
+      background: #10b981;
+      color: #061517;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+
+    .visual-metric-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .visual-metric-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .visual-metric-pill .val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #10b981;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .visual-metric-pill .lbl {
+      font-size: 0.74rem;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    /* Topic 09 Visual Card */
+    .hospital-visual-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 36px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+      border-top: 4px solid var(--bidwells-crimson);
+    }
+
+    .hospital-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .hospital-visual-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .hospital-visual-title i {
+      color: var(--bidwells-crimson);
+    }
+
+    .hospital-toggle-group {
+      background: #e2e8f0;
+    }
+
+    .hospital-toggle-btn {
+      background: transparent;
+      border: none;
+      color: #475569;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .hospital-toggle-btn:hover {
+      color: #0f172a;
+    }
+
+    .hospital-toggle-btn.active {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(197, 25, 68, 0.25);
+    }
+
+    .hospital-metric-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .hospital-metric-pill {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .hospital-metric-pill .val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .hospital-metric-pill .lbl {
+      font-size: 0.74rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       MOBILE NAVIGATION DRAWER & TOGGLE BUTTON
+       ========================================================================== */
+    .mobile-menu-toggle-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: var(--bidwells-navy);
+      font-size: 1.15rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-toggle-btn:hover {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      border-color: var(--bidwells-crimson);
+    }
+
+    .mobile-nav-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(11, 22, 59, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 99998;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 320px;
+      max-width: 86vw;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
+      z-index: 99999;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-drawer.open {
+      transform: translateX(-320px);
+    }
+
+    .mobile-nav-backdrop.open {
+      display: block !important;
+      opacity: 1;
+    }
+
+    .mobile-nav-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+    }
+
+    .mobile-nav-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--bidwells-navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mobile-nav-close-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      border: none;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-nav-close-btn:hover {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+    }
+
+    .mobile-nav-links {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .mobile-nav-item:hover,
+    .mobile-nav-item.active {
+      background: rgba(197, 25, 68, 0.08);
+      color: var(--bidwells-crimson);
+      font-weight: 700;
+    }
+
+    .nav-item-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: var(--bidwells-navy);
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .mobile-nav-item.active .nav-item-num {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+    }
+
+    .mobile-nav-actions {
+      padding: 16px;
+      border-top: 1px solid #e2e8f0;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-drawer-btn {
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-drawer-btn.btn-colab {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mobile-drawer-btn.btn-flourish {
+      background: linear-gradient(135deg, var(--bidwells-navy) 0%, #1c2b5e 100%);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       RESPONSIVENESS & MOBILE PHONE OPTIMIZATIONS (PC Version Kept Untouched)
+       ========================================================================== */
     @media (max-width: 1024px) {
-      .cluster-map-layout, .cost-cap-grid, .circuit-layout-grid, .statement-quote-grid, .cockpit-sliders-grid, .green-cards-grid, .hospital-centers-grid, .hospital-kpi-row, .milestone-summary-row {
-        grid-template-columns: 1fr;
-      }
-      .hospital-centers-grid {
+      .header-nav { display: none !important; }
+      .mobile-menu-toggle-btn { display: flex !important; }
+      .mobile-nav-drawer { display: flex !important; }
+      .header-brand-sub { display: none; }
+      
+      .cluster-map-layout, .cost-cap-grid, .circuit-layout-grid, .statement-quote-grid, 
+      .cockpit-sliders-grid, .green-cards-grid, .hospital-centers-grid, .hospital-kpi-row, 
+      .milestone-summary-row {
         grid-template-columns: 1fr;
       }
       .green-cards-grid {
@@ -2399,21 +2791,182 @@
       .central-track-stage {
         width: 100%;
       }
-      .bidwells-header {
-        padding: 0 1rem;
-      }
-      .header-nav {
-        display: none;
-      }
     }
 
     @media (max-width: 768px) {
-      .campus-metrics-strip, .faculties-kpi-row, .demographic-chips-row, .shift-metrics-grid {
+      .bidwells-header {
+        height: 60px;
+        padding: 0 14px;
+      }
+      .header-brand-title {
+        font-size: 0.92rem;
+      }
+      .header-actions {
+        gap: 8px;
+      }
+      .header-colab-btn, .header-flourish-btn {
+        padding: 7px 12px;
+        font-size: 0.78rem;
+      }
+      
+      /* Hero Mobile Scaling */
+      .hero-track-section {
+        min-height: 175vh;
+        padding-top: 60px;
+      }
+      .central-track-stage {
+        width: 92vw;
+        max-width: 360px;
+      }
+      .central-track-curb-left {
+        width: 26px;
+      }
+      .central-track-curb-right {
+        width: 10px;
+      }
+      .grid-box-pole {
+        top: 660px;
+        left: 10%;
+        width: 100px;
+      }
+      .grid-box-slot2 {
+        top: 860px;
+        right: 10%;
+        width: 100px;
+      }
+      .tu-student-leader {
+        top: 510px;
+        left: 10%;
+        width: 95px;
+      }
+      .tu-student-scholar {
+        top: 710px;
+        right: 10%;
+        width: 95px;
+      }
+      .hero-content-overlay {
+        padding: 55px 1rem 30px;
+      }
+      .hero-category-tag {
+        font-size: 0.72rem;
+        padding: 4px 14px;
+        margin-bottom: 1.25rem;
+      }
+      .hero-main-title {
+        font-size: clamp(2.3rem, 7.5vw, 3.2rem);
+        margin-bottom: 1rem;
+      }
+      .hero-title-thai {
+        font-size: 1.15rem;
+        margin-bottom: 0.8rem;
+      }
+      .hero-lead-desc {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 1.8rem;
+      }
+
+      /* Sections Mobile Spacing */
+      .bidwells-statement-section,
+      .bidwells-map-section,
+      .bidwells-faculties-section,
+      .bidwells-teal-section,
+      .bidwells-budget-section,
+      .bidwells-curved-track-section,
+      .bidwells-green-section,
+      .bidwells-hospital-section,
+      .bidwells-circuit-section,
+      .bidwells-finish-section {
+        padding: 68px 1.25rem 60px !important;
+      }
+
+      h2 {
+        font-size: clamp(1.75rem, 6vw, 2.3rem) !important;
+        line-height: 1.28 !important;
+      }
+
+      /* Leaflet Mobile Map */
+      #campusLeafletMap {
+        height: 300px;
+      }
+      .map-toolbar-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      .map-style-toggle-group {
+        display: flex;
+        width: 100%;
+      }
+      .map-style-btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 0.78rem;
+        padding: 6px 8px;
+      }
+
+      /* Grids and Strips */
+      .campus-metrics-strip, .faculties-kpi-row, .demographic-chips-row, .shift-metrics-grid,
+      .visual-metric-strip, .hospital-metric-strip {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .hospital-kpi-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .hospital-kpi-card {
+        padding: 16px;
+      }
+      .hospital-kpi-num {
+        font-size: 1.7rem;
+      }
+      .green-cards-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
       }
-      #campusLeafletMap {
-        height: 330px;
+      .green-highlight-box {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .green-sdg-num {
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+      }
+      .green-visual-card, .hospital-visual-card {
+        padding: 20px 16px;
+      }
+      .green-visual-header, .hospital-visual-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      /* Floating Scrubber Mobile Adaptation */
+      .bidwells-floating-scrubber {
+        bottom: 10px;
+        max-width: 95vw;
+        padding: 5px 10px;
+        gap: 6px;
+      }
+      .scrubber-track-container {
+        width: 100px;
+      }
+      .scrubber-topic-indicator {
+        max-width: 130px;
+        font-size: 0.72rem;
+        padding: 4px 8px;
+      }
+
+      /* Modals Mobile */
+      .flourish-modal-content, .faculties-modal-content {
+        width: 95vw;
+        max-height: 92vh;
+        padding: 16px;
+        border-radius: 16px;
       }
       .flourish-modal-body {
         grid-template-columns: 1fr;
@@ -2422,7 +2975,29 @@
         max-height: 160px;
       }
       .finish-milestone-card {
-        padding: 30px 20px;
+        padding: 30px 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-brand-title {
+        font-size: 0.85rem;
+      }
+      .header-colab-btn span, .header-flourish-btn span {
+        display: none;
+      }
+      .header-colab-btn, .header-flourish-btn {
+        padding: 7px 9px;
+      }
+      .central-track-stage {
+        width: 96vw;
+      }
+      .scrubber-track-container {
+        width: 80px;
+      }
+      .scrubber-topic-indicator {
+        max-width: 110px;
+        font-size: 0.68rem;
       }
     }
   </style>
@@ -2468,8 +3043,90 @@
         <i class="fa-solid fa-chart-pie"></i>
         <span>Flourish (10 ฉาก)</span>
       </button>
+      <!-- Mobile Hamburger Toggle Button -->
+      <button class="mobile-menu-toggle-btn" id="mobileMenuBtn" onclick="toggleMobileNav()" aria-label="เปิดเมนูนำทาง">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
   </header>
+
+  <!-- ==========================================================================
+       MOBILE NAVIGATION DRAWER (Full Convenient Navigation on Phone)
+       ========================================================================== -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-header">
+      <div class="mobile-nav-title">
+        <i class="fa-solid fa-dharmachakra" style="color: var(--bidwells-crimson);"></i>
+        <span>สารบัญ 10 ข้อยุทธศาสตร์</span>
+      </div>
+      <button class="mobile-nav-close-btn" onclick="closeMobileNav()" aria-label="ปิดเมนู">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="mobile-nav-links">
+      <a href="#hero" class="mobile-nav-item active" onclick="closeMobileNav()">
+        <span class="nav-item-num"><i class="fa-solid fa-flag-checkered"></i></span>
+        <span class="nav-item-label">หน้าแรก: จุดเริ่มต้น 90 ปี</span>
+      </a>
+      <a href="#topic-01" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">01</span>
+        <span class="nav-item-label">1. ปฐมบท 2477: ตลาดวิชาเพื่อราษฎร</span>
+      </a>
+      <a href="#topic-02" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">02</span>
+        <span class="nav-item-label">2. ศูนย์การศึกษา: การกระจายโอกาส 4 ภูมิภาค</span>
+      </a>
+      <a href="#topic-03" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">03</span>
+        <span class="nav-item-label">3. คณะและเกณฑ์ TCAS: 26 คณะวิชา 4 คลัสเตอร์</span>
+      </a>
+      <a href="#topic-04" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">04</span>
+        <span class="nav-item-label">4. มิติประชากร: ความหลากหลายทางเพศภาวะ</span>
+      </a>
+      <a href="#topic-05" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">05</span>
+        <span class="nav-item-label">5. การโยกย้ายศูนย์กลาง: กำเนิดศูนย์รังสิต</span>
+      </a>
+      <a href="#topic-06" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">06</span>
+        <span class="nav-item-label">6. วินัยการคลัง: งบประมาณ 15,350 ล้านบาท</span>
+      </a>
+      <a href="#topic-07" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">07</span>
+        <span class="nav-item-label">7. มาตรฐานสากล: อันดับโลก QS & Triple Crown</span>
+      </a>
+      <a href="#topic-08" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">08</span>
+        <span class="nav-item-label">8. แคมปัสสีเขียว: ผู้นำโลก SDG 11 & สวนป๋วย</span>
+      </a>
+      <a href="#topic-09" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">09</span>
+        <span class="nav-item-label">9. รพ.ธรรมศาสตร์: ที่พึ่งแห่งประชาชนในยามวิกฤต</span>
+      </a>
+      <a href="#topic-10" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num">10</span>
+        <span class="nav-item-label">10. ยุทธศาสตร์ TU 2034: ก้าวสู่ 100 ปี</span>
+      </a>
+      <a href="#finish" class="mobile-nav-item" onclick="closeMobileNav()">
+        <span class="nav-item-num"><i class="fa-solid fa-trophy"></i></span>
+        <span class="nav-item-label">ศตวรรษ 90 ปี (Milestone)</span>
+      </a>
+    </div>
+
+    <div class="mobile-nav-actions">
+      <a href="https://colab.research.google.com/github/kondee-rgb/BI304-Thammasat-Data-Storytelling/blob/main/BI304_Thammasat_Data_Storytelling.ipynb" target="_blank" rel="noopener noreferrer" class="mobile-drawer-btn btn-colab">
+        <img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colab" style="width: 18px; height: 18px;" />
+        <span>เปิดโค้ด Google Colab</span>
+      </a>
+      <button class="mobile-drawer-btn btn-flourish" onclick="closeMobileNav(); openFlourishHubModal();">
+        <i class="fa-solid fa-chart-pie"></i>
+        <span>Flourish Hub (ครบทั้ง 10 ฉาก)</span>
+      </button>
+    </div>
+  </div>
 
   <!-- ==========================================================================
        2. FIXED BOTTOM SCRUBBER PILL (10 Topics Progress Indicator)
@@ -3228,6 +3885,45 @@
           <div class="green-card-desc">ลดการปล่อยก๊าซเรือนกระจกอย่างต่อเนื่อง เดินหน้าสู่เป้าหมายความเป็นกลางทางคาร์บอนของมหาวิทยาลัย</div>
           <div class="green-card-stat">-24,000 ตัน/ปี</div>
         </div>
+      <!-- Dedicated Interactive Visual: Clean Energy & Sustainability Metrics -->
+      <div class="green-visual-card">
+        <div class="green-visual-header">
+          <h3 class="green-visual-title">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>ระบบนิเวศพลังงานสะอาดและดัชนีความยั่งยืน 4 มิติ (Green Energy & SDG 11)</span>
+          </h3>
+          <div class="green-toggle-group">
+            <button class="green-toggle-btn active" id="btnGreenEnergy" onclick="switchGreenVisual('energy')">
+              <i class="fa-solid fa-solar-panel"></i> โซลาร์เซลล์ & ลดคาร์บอน (Trajectory)
+            </button>
+            <button class="green-toggle-btn" id="btnGreenRadar" onclick="switchGreenVisual('radar')">
+              <i class="fa-solid fa-chart-pie"></i> 4 เสาหลัก THE Impact SDG 11
+            </button>
+          </div>
+        </div>
+
+        <div style="position: relative; height: 320px; width: 100%;">
+          <canvas id="greenSustainabilityCanvas"></canvas>
+        </div>
+
+        <div class="visual-metric-strip">
+          <div class="visual-metric-pill">
+            <div class="val">35.8 MWp</div>
+            <div class="lbl">กำลังการผลิตโซลาร์เซลล์รวม</div>
+          </div>
+          <div class="visual-metric-pill">
+            <div class="val">25,500 ตัน</div>
+            <div class="lbl">ลดการปล่อยก๊าซเรือนกระจก/ปี</div>
+          </div>
+          <div class="visual-metric-pill">
+            <div class="val">22,000 ตร.ม.</div>
+            <div class="lbl">พื้นที่สวนหลังคาป๋วย 100 ปี</div>
+          </div>
+          <div class="visual-metric-pill">
+            <div class="val">98.4 / 100</div>
+            <div class="lbl">คะแนนโลก SDG 11 (Top 10)</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -3299,6 +3995,45 @@
           <div>
             <h4 style="font-size: 1.2rem; font-weight: 700; color: var(--bidwells-navy); margin-bottom: 6px;">ศูนย์บริการสุขภาพปฐมภูมิและผู้สูงวัย</h4>
             <p style="font-size: 0.88rem; color: #64748b; line-height: 1.6; margin: 0;">การดูแลสุขภาพองค์รวม การส่งเสริมสุขภาพ และการดูแลผู้สูงอายุอย่างอบอุ่นตามวิถีชุมชน</p>
+          </div>
+        </div>
+      <!-- Dedicated Interactive Visual: Thammasat Hospital Capacity & Patient Volume -->
+      <div class="hospital-visual-card">
+        <div class="hospital-visual-header">
+          <h3 class="hospital-visual-title">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>สถิติการให้บริการทางการแพทย์และการขยายตัวของขีดความสามารถ (2562 — 2567)</span>
+          </h3>
+          <div class="hospital-toggle-group">
+            <button class="hospital-toggle-btn active" id="btnHospTrend" onclick="switchHospitalVisual('trend')">
+              <i class="fa-solid fa-users"></i> สถิติผู้ป่วยนอก & ผู้ป่วยใน 6 ปี
+            </button>
+            <button class="hospital-toggle-btn" id="btnHospBeds" onclick="switchHospitalVisual('beds')">
+              <i class="fa-solid fa-bed-pulse"></i> โครงสร้างการจัดสรรเตียง 1,400 เตียง
+            </button>
+          </div>
+        </div>
+
+        <div style="position: relative; height: 320px; width: 100%;">
+          <canvas id="hospitalCapacityCanvas"></canvas>
+        </div>
+
+        <div class="hospital-metric-strip">
+          <div class="hospital-metric-pill">
+            <div class="val">1,480,000+</div>
+            <div class="lbl">จำนวนผู้ป่วยนอก/ปี (OPD Visits)</div>
+          </div>
+          <div class="hospital-metric-pill">
+            <div class="val">58,400 ราย</div>
+            <div class="lbl">ผู้ป่วยในรับไว้รักษา/ปี (IPD)</div>
+          </div>
+          <div class="hospital-metric-pill">
+            <div class="val">1,400 เตียง</div>
+            <div class="lbl">ขีดความสามารถรองรับรวม</div>
+          </div>
+          <div class="hospital-metric-pill">
+            <div class="val">3,083 เตียง</div>
+            <div class="lbl">รพ.สนามแห่งแรกของไทยยามวิกฤต</div>
           </div>
         </div>
       </div>
@@ -4414,7 +5149,290 @@
     // 11. Chart.js Initializations
     let campusDistChart = null;
 
-    function initCharts() {
+    // Mobile Nav Drawer Handlers
+    function toggleMobileNav() {
+      const drawer = document.getElementById('mobileNavDrawer');
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      if (drawer && backdrop) {
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+          closeMobileNav();
+        } else {
+          drawer.classList.add('open');
+          backdrop.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    }
+
+    function closeMobileNav() {
+      const drawer = document.getElementById('mobileNavDrawer');
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      if (drawer && backdrop) {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Topic 08 Green Sustainability Chart Switcher
+    let greenChartInstance = null;
+    function initGreenSustainabilityChart() {
+      const ctx = document.getElementById('greenSustainabilityCanvas');
+      if (!ctx) return;
+      
+      greenChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['2020', '2021', '2022', '2023', '2024', '2030 (เป้าหมาย Net-Zero)'],
+          datasets: [
+            {
+              type: 'bar',
+              label: 'กำลังผลิต Solar Rooftop (MWp)',
+              data: [12.5, 18.2, 24.6, 30.1, 35.8, 55.0],
+              backgroundColor: 'rgba(16, 185, 129, 0.85)',
+              borderRadius: 6,
+              barThickness: 20,
+              maxBarThickness: 26,
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: 'ลดก๊าซเรือนกระจกสะสม (พันตัน CO2e/ปี)',
+              data: [8.4, 12.1, 16.8, 21.2, 25.5, 42.0],
+              borderColor: '#ffc72c',
+              backgroundColor: 'rgba(255, 199, 44, 0.2)',
+              borderWidth: 3,
+              pointBackgroundColor: '#ffc72c',
+              pointRadius: 5,
+              tension: 0.35,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: { color: '#ffffff', font: { family: 'Prompt', size: 12 } }
+            },
+            tooltip: {
+              callbacks: {
+                label: (c) => `${c.dataset.label}: ${c.parsed.y} ${c.dataset.type === 'bar' ? 'MWp' : 'พันตัน'}`
+              }
+            }
+          },
+          scales: {
+            y: {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              ticks: { color: '#94a3b8', callback: (v) => v + ' MW' },
+              grid: { color: 'rgba(255, 255, 255, 0.08)' }
+            },
+            y1: {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#ffc72c', callback: (v) => v + 'k t' }
+            },
+            x: {
+              ticks: { color: '#ffffff', font: { family: 'Prompt' } },
+              grid: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    function switchGreenVisual(mode) {
+      const btnEnergy = document.getElementById('btnGreenEnergy');
+      const btnRadar = document.getElementById('btnGreenRadar');
+      if (!greenChartInstance) return;
+
+      if (mode === 'radar') {
+        btnEnergy.classList.remove('active');
+        btnRadar.classList.add('active');
+        greenChartInstance.destroy();
+        const ctx = document.getElementById('greenSustainabilityCanvas');
+        greenChartInstance = new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: [
+              '1. การสนับสนุนมรดก & ศิลปวัฒนธรรม',
+              '2. มาตรฐานอาคารเขียว & พลังงาน',
+              '3. ขนส่งคาร์บอนต่ำ (EV 100%)',
+              '4. พื้นที่สีเขียว & สวนป๋วย 100 ปี'
+            ],
+            datasets: [{
+              label: 'คะแนนการประเมิน THE Impact Rankings SDG 11 (คะแนนเต็ม 100)',
+              data: [99.2, 97.8, 98.6, 98.0],
+              backgroundColor: 'rgba(16, 185, 129, 0.35)',
+              borderColor: '#10b981',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#ffc72c',
+              pointRadius: 5
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'top',
+                labels: { color: '#ffffff', font: { family: 'Prompt', size: 12 } }
+              }
+            },
+            scales: {
+              r: {
+                min: 80,
+                max: 100,
+                ticks: { display: false },
+                pointLabels: { color: '#ffffff', font: { family: 'Prompt', size: 11 } },
+                grid: { color: 'rgba(255, 255, 255, 0.15)' },
+                angleLines: { color: 'rgba(255, 255, 255, 0.2)' }
+              }
+            }
+          }
+        });
+      } else {
+        btnEnergy.classList.add('active');
+        btnRadar.classList.remove('active');
+        greenChartInstance.destroy();
+        initGreenSustainabilityChart();
+      }
+    }
+
+    // Topic 09 Hospital Service Capacity Chart Switcher
+    let hospitalChartInstance = null;
+    function initHospitalCapacityChart() {
+      const ctx = document.getElementById('hospitalCapacityCanvas');
+      if (!ctx) return;
+
+      hospitalChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['2562', '2563', '2564 (วิกฤตโควิด)', '2565', '2566', '2567'],
+          datasets: [
+            {
+              label: 'ผู้ป่วยนอก OPD (แสนคน/ปี)',
+              data: [10.5, 11.8, 13.2, 13.8, 14.2, 14.8],
+              borderColor: '#c51944',
+              backgroundColor: 'rgba(197, 25, 68, 0.12)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: '#c51944',
+              pointRadius: 5,
+              yAxisID: 'y'
+            },
+            {
+              label: 'ผู้ป่วยใน IPD (หมื่นคน/ปี)',
+              data: [3.8, 4.2, 4.9, 5.1, 5.4, 5.8],
+              borderColor: '#0b163b',
+              backgroundColor: 'transparent',
+              borderWidth: 2.5,
+              borderDash: [5, 5],
+              pointBackgroundColor: '#0b163b',
+              pointRadius: 4,
+              tension: 0.35,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: { color: '#0f172a', font: { family: 'Prompt', size: 12 } }
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y} ${ctx.datasetIndex === 0 ? 'แสนคน' : 'หมื่นคน'}`
+              }
+            }
+          },
+          scales: {
+            y: {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              ticks: { color: '#64748b', callback: (v) => v + ' แสน' },
+              grid: { color: 'rgba(0, 0, 0, 0.05)' }
+            },
+            y1: {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              grid: { drawOnChartArea: false },
+              ticks: { color: '#0b163b', callback: (v) => v + ' หมื่น' }
+            },
+            x: {
+              ticks: { color: '#334155', font: { family: 'Prompt' } },
+              grid: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    function switchHospitalVisual(mode) {
+      const btnTrend = document.getElementById('btnHospTrend');
+      const btnBeds = document.getElementById('btnHospBeds');
+      if (!hospitalChartInstance) return;
+
+      if (mode === 'beds') {
+        btnTrend.classList.remove('active');
+        btnBeds.classList.add('active');
+        hospitalChartInstance.destroy();
+        const ctx = document.getElementById('hospitalCapacityCanvas');
+        hospitalChartInstance = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: [
+              'อายุรกรรม & วิกฤต ICU (390 เตียง)',
+              'ศัลยกรรม & อุบัติเหตุฉุกเฉิน (336 เตียง)',
+              'กุมารเวช & สูติ-นรีเวชกรรม (252 เตียง)',
+              'จักษุ & โสต ศอ นาสิก (224 เตียง)',
+              'ศูนย์จีโนมิกส์ & การแพทย์ชั้นสูง (198 เตียง)'
+            ],
+            datasets: [{
+              data: [390, 336, 252, 224, 198],
+              backgroundColor: ['#c51944', '#0b163b', '#ffc72c', '#00857c', '#a6d2e6'],
+              borderWidth: 2,
+              borderColor: '#ffffff'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: { color: '#0f172a', font: { family: 'Prompt', size: 12 }, boxWidth: 16 }
+              },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => `${ctx.label}: ${ctx.raw} เตียง`
+                }
+              }
+            }
+          }
+        });
+      } else {
+        btnTrend.classList.add('active');
+        btnBeds.classList.remove('active');
+        hospitalChartInstance.destroy();
+        initHospitalCapacityChart();
+      }
+    }
+
+        function initCharts() {
       // Budget 5-Year Chart (Topic 06)
       const ctxBudget = document.getElementById('budgetChartCanvas');
       if (ctxBudget) {
@@ -4606,6 +5624,8 @@
       initFacultiesTcasChart();
       initCharts();
       initTuLeafletMap();
+      initGreenSustainabilityChart();
+      initHospitalCapacityChart();
     });
   </script>
 </body>
