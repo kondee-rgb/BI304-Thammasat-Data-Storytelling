@@ -32,3 +32,18 @@
 * **ไฟล์เก็บถาวร:** `v1/index.html` และ `archive/classic_edition/index.html`
 * **ภาพรวม:** หน้าเว็บแสดงผลแบบ 2 โหมด (Scrollytelling + Flourish Story Mode 10 สไลด์พร้อมตัวเล่นอัตโนมัติ) 
 * **สถานะ:** บันทึกเก็บรักษาไว้ในโฟลเดอร์แยกต่างหากอย่างสมบูรณ์เพื่อใช้อ้างอิงย้อนหลัง
+
+## Change Snapshot: 20261022_003737
+- Archived previous iteration before applying full Bidwells scrollytelling template matching user video recording.
+- Requirements incorporated:
+  1. Full Bidwells visual architecture (crisp white header, bottom floating scrubber pill with interactive timeline & download button).
+  2. Student walking character on central campus milestone avenue (replacing F1 car).
+  3. Straight Line Chart with Event Milestones (closed system reform & 4 campuses).
+  4. Pretty Dotted Matrix Map for 4 strategic campuses (matching Bidwells / BMW Group report).
+  5. 26 Faculties structure with interactive TCAS admission scores and detail modal.
+  6. Demographic headline exact text: "มิติประชากร: หญิง 62.4% พลังขับเคลื่อนแห่งอนาคต".
+  7. Clear multi-era campus distribution chart (replacing streamgraph).
+  8. 5-year budget comparison (2563-2567) with interactive drill-down.
+  9. Comprehensive Business School benchmarking (TBS vs CBS, Sasin, CMMU, NIDA).
+  10. SDG 11, Hospital, TU 2034 cockpits.
+  11. Absolute removal of explicit version numbers from UI.
