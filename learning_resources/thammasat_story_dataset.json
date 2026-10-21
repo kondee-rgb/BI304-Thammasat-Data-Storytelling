@@ -1,0 +1,58 @@
+[
+  {
+    "scene": 1,
+    "topic": "Genesis_Enrollment_Surge",
+    "timeline": [
+      {"year": 1934, "students": 7094, "event": "สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง (ตลาดวิชา)"},
+      {"year": 1945, "students": 9800, "event": "สิ้นสุดสงครามโลกครั้งที่ 2"},
+      {"year": 1952, "students": 4200, "event": "ปรับเปลี่ยนเป็นมหาวิทยาลัยระบบปิด"},
+      {"year": 1976, "students": 15800, "event": "ยุคประชาธิปไตยเบ่งบาน"},
+      {"year": 1986, "students": 21000, "event": "เริ่มขยายสู่ศูนย์รังสิต"},
+      {"year": 2005, "students": 33200, "event": "ย้ายปริญญาตรีสู่รังสิตครบถ้วน"},
+      {"year": 2026, "students": 42650, "event": "ปัจจุบัน สู่มหาวิทยาลัยวิจัยสมบูรณ์แบบ"}
+    ]
+  },
+  {
+    "scene": 2,
+    "topic": "Campus_Geospatial",
+    "campuses": [
+      {"campus": "ท่าพระจันทร์", "lat": 13.7557, "lng": 100.4930, "area_rai": 49, "students": 6500, "focus": "นานาชาติ และ บัณฑิตศึกษา"},
+      {"campus": "ศูนย์รังสิต", "lat": 14.0736, "lng": 100.6067, "area_rai": 1757, "students": 32000, "focus": "ปริญญาตรี วิทยาศาสตร์สุขภาพ และอุทยานสวนป๋วย"},
+      {"campus": "ศูนย์ลำปาง", "lat": 18.2982, "lng": 99.4897, "area_rai": 464, "students": 2200, "focus": "การศึกษาและพัฒนาสังคมภาคเหนือ"},
+      {"campus": "ศูนย์พัทยา", "lat": 12.9236, "lng": 100.9925, "area_rai": 566, "students": 1500, "focus": "นวัตกรรมยานยนต์และระเบียงเศรษฐกิจ EEC"}
+    ]
+  },
+  {
+    "scene": 3,
+    "topic": "Faculty_Clusters",
+    "clusters": [
+      {"cluster": "สังคมศาสตร์และมนุษยศาสตร์", "share_pct": 42.0, "students": 17900, "faculties": ["นิติศาสตร์", "พาณิชยศาสตร์ฯ (TBS)", "รัฐศาสตร์", "เศรษฐศาสตร์", "ศิลปศาสตร์", "วารสารศาสตร์ฯ", "สังคมวิทยาฯ"]},
+      {"cluster": "วิทยาศาสตร์และเทคโนโลยี", "share_pct": 26.0, "students": 11100, "faculties": ["วิศวกรรมศาสตร์ (TSE)", "วิทยาศาสตร์และเทคโนโลยี", "สถาปัตยกรรมศาสตร์ฯ", "นวัตกรรม"]},
+      {"cluster": "วิทยาศาสตร์สุขภาพ", "share_pct": 18.0, "students": 7650, "faculties": ["แพทยศาสตร์", "ทันตแพทยศาสตร์", "สหเวชศาสตร์", "พยาบาลศาสตร์", "เภสัชศาสตร์", "สาธารณสุขศาสตร์"]},
+      {"cluster": "นานาชาติและสถาบันบูรณาการ", "share_pct": 14.0, "students": 6000, "faculties": ["SIIT", "วิทยาลัยนานาชาติปรีดี", "วิทยาลัยสหวิทยาการ", "วิทยาลัยพัฒนศาสตร์ ป๋วย"]}
+    ]
+  },
+  {
+    "scene": 6,
+    "topic": "Financial_Revenue_Structure",
+    "budget_year_2025_mb": {
+      "government_subsidy": 3600,
+      "tuition_and_education_fees": 4200,
+      "academic_services_and_hospital": 1800,
+      "external_research_grants": 1100,
+      "endowment_and_property_income": 800,
+      "total_budget": 11500
+    }
+  },
+  {
+    "scene": 8,
+    "topic": "Sustainability_SDG_Scores",
+    "the_impact_rankings": [
+      {"sdg": "SDG 11: Sustainable Cities & Communities", "score": 98.5, "global_rank": "Top 10 Global (#1 Thailand)"},
+      {"sdg": "SDG 7: Affordable & Clean Energy", "score": 92.0, "global_rank": "Top 50 Global"},
+      {"sdg": "SDG 13: Climate Action", "score": 88.4, "global_rank": "Top 60 Global"},
+      {"sdg": "SDG 3: Good Health & Well-being", "score": 85.0, "global_rank": "Top 80 Global"},
+      {"sdg": "SDG 4: Quality Education", "score": 91.2, "global_rank": "Top 40 Global"}
+    ]
+  }
+]

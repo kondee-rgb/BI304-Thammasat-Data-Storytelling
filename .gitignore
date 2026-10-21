@@ -1,0 +1,11 @@
+*.mp4
+video_analysis/
+video_samples/
+push_payload.json
+push_index.json
+build_html.py
+temp_script.js
+test_thai.pdf
+search_keywords.py
+*.pyc
+__pycache__/
