@@ -817,57 +817,70 @@
     }
 
     @media (max-width: 768px) {
-      /* Header & Branding */
+      /* Header & Branding: Clean 2-Row Layout, No Overflow */
       .app-header {
-        padding: 8px 12px;
+        height: auto;
+        position: sticky;
+        top: 0;
+        padding: 6px 12px 8px;
+        background: rgba(255, 255, 255, 0.98);
+        border-bottom: 2px solid var(--tu-gold);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        z-index: 1000;
       }
       .header-inner {
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: space-between;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding: 0;
+      }
+      .brand-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
       }
       .brand-emblem {
-        width: 34px;
-        height: 34px;
-        font-size: 15px;
+        width: 30px;
+        height: 30px;
+        font-size: 13.5px;
+        border-radius: 6px;
       }
       .brand-text h1 {
-        font-size: 14px;
+        font-size: 13.5px;
       }
       .brand-text span {
         display: none; /* Hide subtitle on mobile to save vertical space */
       }
       .mode-switch-group {
+        width: 100%;
+        display: flex;
         padding: 2px;
+        border-radius: 20px;
       }
       .mode-tab {
-        padding: 5px 11px;
+        flex: 1;
+        justify-content: center;
+        padding: 5px 8px;
         font-size: 11.5px;
+        border-radius: 16px;
       }
       .header-links {
-        width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
-        padding-top: 4px;
-        gap: 6px;
-        -webkit-overflow-scrolling: touch;
-      }
-      .action-btn {
-        padding: 5px 9px;
-        font-size: 11px;
-        flex-shrink: 0;
+        display: none; /* Hidden from sticky header on mobile so it doesn't float over the chart */
       }
 
       /* Hero Banner */
       .hero-banner {
-        padding: 28px 16px 32px;
+        padding: 24px 14px 28px;
       }
       .hero-tag {
         font-size: 11px;
         padding: 4px 10px;
       }
       .hero-banner h1 {
-        font-size: 21px;
+        font-size: 20px;
         line-height: 1.35;
         margin-bottom: 10px;
       }
@@ -878,55 +891,58 @@
       }
       .hero-kpis {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 8px;
         margin-bottom: 20px;
       }
       .kpi-card {
-        padding: 12px 10px;
+        padding: 10px 8px;
       }
       .kpi-card .val {
-        font-size: 22px;
+        font-size: 20px;
       }
       .kpi-card .lbl {
-        font-size: 10.5px;
+        font-size: 10px;
       }
       .hero-btn {
         width: 100%;
-        max-width: 300px;
-        font-size: 13px;
-        padding: 9px 16px;
+        max-width: 320px;
+        font-size: 12.5px;
+        padding: 8px 14px;
         justify-content: center;
       }
 
       /* Flourish Player Controller Bar */
       .flourish-player-bar {
-        padding: 6px 12px;
+        padding: 6px 10px;
         flex-wrap: wrap;
         gap: 6px;
-        top: auto;
+        top: 80px;
+        background: #FFFFFF;
+        border-bottom: 1px solid var(--border-color);
+        z-index: 999;
       }
       .flourish-btn-group {
         gap: 4px;
         flex-wrap: wrap;
       }
       .flourish-nav-btn {
-        padding: 5px 9px;
-        font-size: 11.5px;
+        padding: 4px 8px;
+        font-size: 11px;
       }
       .slide-progress-dots {
-        gap: 4px;
+        gap: 3px;
       }
       .slide-dot {
-        width: 6px;
-        height: 6px;
+        width: 5px;
+        height: 5px;
       }
       .slide-dot.active {
-        width: 14px;
+        width: 12px;
       }
 
       /* Scrollytelling Layout on Mobile */
       .story-layout {
-        padding: 10px 10px 50px;
+        padding: 8px 10px 50px;
         gap: 12px;
         flex-direction: column-reverse;
       }
@@ -934,11 +950,14 @@
         width: 100%;
         height: 38vh;
         min-height: 250px;
-        max-height: 310px;
+        max-height: 300px;
         position: sticky;
-        top: 96px;
+        top: 88px;
         margin-bottom: 14px;
         border-radius: 12px;
+        background: #FFFFFF;
+        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+        z-index: 20;
       }
       .viz-frame-header {
         padding: 6px 10px;
@@ -948,7 +967,7 @@
         padding: 2px 7px;
       }
       .viz-frame-title {
-        font-size: 12.5px;
+        font-size: 12px;
       }
       .viz-tool-badge {
         display: none; /* Hide tool badge on mobile to allow title room */
@@ -966,22 +985,22 @@
         border-left-width: 4px;
       }
       .card-box h2 {
-        font-size: 16.5px;
+        font-size: 16px;
         margin-bottom: 8px;
         line-height: 1.35;
       }
       .narrative-body {
-        font-size: 13.5px;
+        font-size: 13px;
         line-height: 1.6;
         margin-bottom: 12px;
       }
       .stat-callout {
-        font-size: 12px;
+        font-size: 11.5px;
         padding: 8px 10px;
         margin-bottom: 10px;
       }
       .tufte-badge {
-        font-size: 11px;
+        font-size: 10.5px;
         padding-top: 6px;
       }
 
@@ -990,7 +1009,7 @@
         overflow-y: hidden;
       }
       body.is-flourish-mode .story-layout {
-        height: calc(100vh - 150px);
+        height: calc(100vh - 135px);
         padding: 6px 10px;
         flex-direction: column;
         overflow: hidden;
@@ -1018,7 +1037,7 @@
         width: 100%;
       }
       body.is-flourish-mode .card-box {
-        padding: 14px 12px;
+        padding: 12px 12px;
         max-height: 100%;
         overflow-y: auto;
       }
@@ -1027,26 +1046,26 @@
       .map-campus-nav {
         overflow-x: auto;
         white-space: nowrap;
-        padding: 6px 8px;
-        gap: 5px;
+        padding: 5px 6px;
+        gap: 4px;
         -webkit-overflow-scrolling: touch;
       }
       .map-nav-btn {
-        padding: 4px 8px;
-        font-size: 11px;
+        padding: 4px 7px;
+        font-size: 10.5px;
         flex-shrink: 0;
       }
 
       /* Modal on Mobile */
       .modal-content-card {
-        padding: 18px 14px;
-        margin: 12px;
+        padding: 16px 12px;
+        margin: 10px;
         border-radius: 12px;
       }
       .flourish-file-item {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 6px;
       }
       .flourish-file-item .action-btn {
         align-self: flex-end;
@@ -1153,8 +1172,14 @@
           <i class="fa-solid fa-arrow-down"></i> เริ่มต้นสำรวจเรื่องราว (Scroll Down)
         </a>
         <a href="story%20board.pdf" download="story board.pdf" target="_blank" class="hero-btn hero-btn-secondary">
-          <i class="fa-solid fa-file-pdf"></i> เปิดเอกสาร Storyboard PDF
+          <i class="fa-solid fa-file-pdf"></i> Storyboard PDF
         </a>
+        <a href="https://colab.research.google.com/drive/1sdrD6KVf0j_Io2faa8zUJ7LSGcYukzPJ?usp=sharing" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-secondary">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Google Colab
+        </a>
+        <button class="hero-btn hero-btn-secondary" onclick="openFlourishDataModal()">
+          <i class="fa-solid fa-table-list"></i> Flourish 10 ฉาก (CSV)
+        </button>
       </div>
     </div>
   </section>
