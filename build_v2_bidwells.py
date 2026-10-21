@@ -1,14 +1,24 @@
 # -*- coding: utf-8 -*-
 """
-Polished Builder for Bidwells-Style 90 Years of Thammasat University Scrollytelling Experience
-Fully refined for pristine header layout, crystal-clear typography, and perfect bottom scrubber.
+Authentic Bidwells-Style Scrollytelling Builder for 90 Years of Thammasat University
+Refined Edition:
+1. Central Racetrack with Top-Down F1 Race Cars (car-white.png and car-pink.png) replacing walking avatar.
+2. Two-stage Hero sequence: Cover Title (0vh) -> Reveal of Starting Grid & Pole Position (100vh) -> Accelerated scroll into Statement.
+3. High-Key Statement section with photo card, speech quote, watermark '90', and 3 winning cards with colored blocks.
+4. Expanding Circular Wipe in Thammasat Crimson to Dark Blue Cluster Map with dotted matrix map & multi-era distribution chart.
+5. Expanding Circular Wipe to Teal section with floating white 'Cost Cap' budget & demographic cards (Female 62.4%).
+6. Curved Racetrack section using Track2.jpg with turning race cars & TBS Triple Crown benchmarking.
+7. Silverstone-style Circuit Milestone Track with synchronized floating card & TU 2034 Strategy Cockpit.
+8. Checkered Finish Line crossing (finish.svg) with speed trails (car-trials.svg) & download card.
+9. Floating Bottom Scrubber Pill with progress bar and Classic Archive button (Strictly NO version numbers).
+10. Preserves all 10 required Thammasat data storytelling topics with full interactive drilldown.
 """
 
 import os
 import sys
 
-def build_bidwells_html():
-    html = '''<!DOCTYPE html>
+def generate_bidwells_html():
+    html_code = '''<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
@@ -16,12 +26,12 @@ def build_bidwells_html():
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>90 Years of Thammasat University | รายงานข้อมูลเชิงลึก 9 ทศวรรษ</title>
+  <title>90 Years of Thammasat University | Driving Innovation & Knowledge at Speed</title>
 
-  <!-- Google Fonts: Merriweather for luxury editorial serif, Prompt & Plus Jakarta Sans for modern sans -->
+  <!-- Google Fonts: Merriweather for luxury editorial serif, Plus Jakarta Sans & Prompt for modern sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -39,23 +49,25 @@ def build_bidwells_html():
        ========================================================================== */
     :root {
       --bidwells-navy: #0b163b;
-      --bidwells-dark-blue: #111d4a;
+      --bidwells-dark-blue: #101c3d;
       --bidwells-crimson: #c51944;
       --tu-crimson: #9e1b32;
       --tu-crimson-hover: #b31b34;
       --tu-gold: #ffc72c;
       --tu-gold-dark: #d99b00;
       --bidwells-sky-blue: #bfe5f2;
+      --bidwells-sky-dark: #8acfe5;
       --bidwells-emerald: #00857c;
+      --bidwells-teal: #006b68;
       --bidwells-offwhite: #f5f5f3;
       --bidwells-cream: #faf9f6;
       --bidwells-border: #e2e8f0;
       --bidwells-card-border: #111d4a;
       --bidwells-text: #1a202c;
       --bidwells-text-muted: #5a6578;
-      --bidwells-radius: 14px;
+      --bidwells-radius: 16px;
       --bidwells-shadow: 0 12px 35px rgba(11, 22, 59, 0.08);
-      --bidwells-shadow-lg: 0 20px 50px rgba(11, 22, 59, 0.14);
+      --bidwells-shadow-lg: 0 24px 60px rgba(11, 22, 59, 0.16);
       --font-serif: 'Merriweather', 'Sarabun', Georgia, serif;
       --font-sans: 'Plus Jakarta Sans', 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
     }
@@ -86,7 +98,7 @@ def build_bidwells_html():
     }
 
     /* ==========================================================================
-       1. FIXED TOP HEADER (Pure White Luxury Corporate Style - Bidwells)
+       1. FIXED TOP HEADER (Pure White Luxury Corporate Style - Exact Bidwells)
        ========================================================================== */
     .bidwells-header {
       position: fixed;
@@ -101,42 +113,41 @@ def build_bidwells_html():
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.25rem;
+      padding: 0 2rem;
       transition: all 0.3s ease;
     }
 
     .header-logo-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       flex-shrink: 0;
+      cursor: pointer;
     }
 
-    .header-dome-emblem {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+    .header-brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
       background: linear-gradient(135deg, var(--tu-crimson) 0%, var(--bidwells-navy) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--tu-gold);
-      font-size: 19px;
+      font-size: 18px;
       box-shadow: 0 4px 12px rgba(158, 27, 50, 0.25);
-      flex-shrink: 0;
     }
 
     .header-brand-text {
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
 
     .header-brand-title {
       font-family: var(--font-serif);
-      font-size: 0.98rem;
+      font-size: 1.05rem;
       font-weight: 900;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: var(--bidwells-navy);
       text-transform: uppercase;
       line-height: 1.2;
@@ -145,21 +156,19 @@ def build_bidwells_html():
     .header-brand-sub {
       font-size: 0.72rem;
       color: var(--bidwells-text-muted);
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      line-height: 1.2;
-      margin-top: 2px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      flex-wrap: nowrap;
+      gap: 1.5rem;
     }
 
     .header-nav-link {
-      font-size: 0.78rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: #334155;
       position: relative;
@@ -190,17 +199,17 @@ def build_bidwells_html():
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       flex-shrink: 0;
     }
 
     .btn-bidwells-pill {
       background: var(--bidwells-crimson);
       color: #ffffff;
-      padding: 8px 16px;
+      padding: 9px 20px;
       border-radius: 9999px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -219,7 +228,7 @@ def build_bidwells_html():
 
     .header-archive-btn {
       color: #475569;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 600;
       padding: 8px 16px;
       border-radius: 9999px;
@@ -230,6 +239,7 @@ def build_bidwells_html():
       white-space: nowrap;
       transition: all 0.2s ease;
       background: #ffffff;
+      cursor: pointer;
     }
 
     .header-archive-btn:hover {
@@ -239,7 +249,7 @@ def build_bidwells_html():
     }
 
     /* ==========================================================================
-       2. FIXED BOTTOM SCRUBBER PILL (The Signature Bidwells Navigation Capsule)
+       2. FIXED BOTTOM SCRUBBER PILL (Exact Bidwells Floating Capsule)
        ========================================================================== */
     .bidwells-floating-scrubber {
       position: fixed;
@@ -249,9 +259,9 @@ def build_bidwells_html():
       z-index: 9999;
       background: #ffffff;
       border-radius: 9999px;
-      box-shadow: 0 14px 40px rgba(11, 22, 59, 0.18);
+      box-shadow: 0 14px 40px rgba(11, 22, 59, 0.22);
       border: 1px solid rgba(0, 0, 0, 0.08);
-      padding: 6px 10px 6px 24px;
+      padding: 7px 12px 7px 24px;
       display: flex;
       align-items: center;
       gap: 22px;
@@ -263,7 +273,7 @@ def build_bidwells_html():
       display: flex;
       align-items: center;
       position: relative;
-      width: 290px;
+      width: 280px;
       height: 24px;
       cursor: pointer;
     }
@@ -292,12 +302,12 @@ def build_bidwells_html():
       left: 0%;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       background: var(--bidwells-crimson);
-      border: 2.5px solid #ffffff;
+      border: 3px solid #ffffff;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(197, 25, 68, 0.6);
+      box-shadow: 0 0 12px rgba(197, 25, 68, 0.7);
       transition: left 0.1s linear;
       pointer-events: none;
     }
@@ -313,8 +323,8 @@ def build_bidwells_html():
     }
 
     .scrubber-pip {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       background: #94a3b8;
       border-radius: 50%;
       transition: all 0.2s ease;
@@ -328,10 +338,10 @@ def build_bidwells_html():
     .scrubber-download-btn {
       background: var(--bidwells-navy);
       color: #ffffff;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 9999px;
-      font-size: 0.86rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       border: none;
       cursor: pointer;
       display: inline-flex;
@@ -347,1004 +357,1479 @@ def build_bidwells_html():
     }
 
     /* ==========================================================================
-       3. SCROLLYTELLING RUNNER LANE (Thammasat Student Walking Along Timeline)
+       3. HERO SECTION & STARTING RACETRACK (Exact Frames 000s - 007s)
        ========================================================================== */
-    .scrolly-runner-lane {
-      position: fixed;
-      left: 32px;
-      top: 110px;
-      bottom: 90px;
-      width: 76px;
-      z-index: 900;
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
+    .hero-track-section {
+      position: relative;
+      min-height: 220vh;
+      background-color: var(--bidwells-navy);
+      background-image: 
+        radial-gradient(circle at 50% 30%, #162a5b 0%, var(--bidwells-navy) 70%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 30px, transparent 30px, transparent 60px);
+      color: #ffffff;
+      overflow: hidden;
+      padding-top: 76px;
     }
 
-    .scrolly-runner-lane.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .runner-track-line {
+    /* Central Vertical Racetrack Stage */
+    .central-track-stage {
       position: absolute;
       top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, rgba(197,25,68,0.2) 0%, rgba(197,25,68,0.8) 50%, rgba(197,25,68,0.2) 100%);
       left: 50%;
       transform: translateX(-50%);
+      width: 640px;
+      height: 100%;
+      background: #09122d;
+      border-left: 2px solid rgba(255, 255, 255, 0.15);
+      border-right: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      z-index: 1;
     }
 
-    .runner-avatar-wrapper {
+    /* Left Checkerboard Racing Curb (like frame 006s) */
+    .central-track-curb-left {
       position: absolute;
-      top: 0%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      transition: top 0.12s linear;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      top: 0;
+      left: 0;
+      width: 44px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        #e2e8f0 0px,
+        #e2e8f0 40px,
+        #1e293b 40px,
+        #1e293b 80px
+      );
+      opacity: 0.85;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    .runner-avatar-img {
-      width: 68px;
-      height: auto;
-      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3));
-      animation: gentle-bob 1s ease-in-out infinite alternate;
-    }
-
-    .runner-badge-year {
-      background: var(--bidwells-navy);
-      color: var(--tu-gold);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-top: 4px;
-      white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      border: 1px solid rgba(255, 199, 44, 0.4);
-    }
-
-    @keyframes gentle-bob {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-4px) scale(1.02); }
-    }
-
-    /* ==========================================================================
-       4. HERO SECTION (Bidwells Grand Cover Frame 000s)
-       ========================================================================== */
-    .hero-section {
-      min-height: 100vh;
-      background: radial-gradient(circle at 75% 30%, #172c5b 0%, #0b163b 65%, #060d24 100%);
-      color: #ffffff;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 120px 8% 80px;
-      overflow: hidden;
-    }
-
-    .hero-bg-graphic {
+    /* Right Track Border Curb */
+    .central-track-curb-right {
       position: absolute;
       top: 0;
       right: 0;
-      width: 58%;
+      width: 14px;
       height: 100%;
-      background: url('assets/tha_prachan_dome_editorial.jpg') center right/cover no-repeat;
-      opacity: 0.40;
-      mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.6) 0px,
+        rgba(255, 255, 255, 0.6) 30px,
+        transparent 30px,
+        transparent 60px
+      );
+    }
+
+    /* Dashed Center Road Line */
+    .central-track-centerline {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.35) 0px,
+        rgba(255, 255, 255, 0.35) 40px,
+        transparent 40px,
+        transparent 80px
+      );
+    }
+
+    /* Starting Grid Stage at Scroll 800px */
+    .grid-box {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .grid-box-pole {
+      top: 820px;
+      left: 170px;
+      width: 130px;
+      height: 18px;
+    }
+
+    .grid-box-slot2 {
+      top: 1040px;
+      left: 380px;
+      width: 130px;
+      height: 18px;
+    }
+
+    .grid-box-label {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.65);
+      white-space: nowrap;
+    }
+
+    /* The F1 Race Cars on the Grid */
+    .f1-car-container {
+      position: absolute;
+      z-index: 10;
+      transition: transform 0.08s linear;
+      will-change: transform;
+    }
+
+    .f1-car-pole {
+      top: 690px;
+      left: 180px;
+      width: 110px;
+    }
+
+    .f1-car-slot2 {
+      top: 910px;
+      left: 390px;
+      width: 110px;
+    }
+
+    .f1-car-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.75));
+    }
+
+    .f1-car-trails {
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 220px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+      opacity: 0.55;
       pointer-events: none;
     }
 
-    .hero-geometric-mesh {
+    .f1-car-badge {
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(11, 22, 59, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--tu-gold);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Hero Typography & Overlays */
+    .hero-content-overlay {
+      position: relative;
+      z-index: 20;
+      max-width: 1200px;
+      min-height: calc(100vh - 76px);
+      margin: 0 auto;
+      padding: 100px 2rem 60px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(197, 25, 68, 0.16);
+      border: 1px solid rgba(197, 25, 68, 0.45);
+      color: #ff9cb1;
+      padding: 6px 20px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-main-title {
+      font-family: var(--font-serif);
+      font-size: 4.6rem;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-main-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--bidwells-sky-blue);
+      display: inline-block;
+    }
+
+    .hero-title-thai {
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-lead-desc {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 820px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-scroll-pill-btn {
+      background: var(--bidwells-sky-blue);
+      color: var(--bidwells-navy);
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(191, 229, 242, 0.35);
+      transition: all 0.25s ease;
+      animation: float-pill 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes float-pill {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-6px); }
+    }
+
+    .hero-scroll-pill-btn:hover {
+      background: #ffffff;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(191, 229, 242, 0.5);
+    }
+
+    /* ==========================================================================
+       4. SECTION 1: HIGH-KEY STATEMENT & 3 WINNING STAT CARDS (Frames 008s - 016s)
+       ========================================================================== */
+    .bidwells-statement-section {
+      background-color: var(--bidwells-offwhite);
+      padding: 120px 2rem 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .watermark-giant-num {
+      position: absolute;
+      top: 40px;
+      right: 5%;
+      font-family: var(--font-serif);
+      font-size: 26rem;
+      font-weight: 900;
+      line-height: 0.8;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(17, 29, 74, 0.05);
+      pointer-events: none;
+      z-index: 0;
+      user-select: none;
+    }
+
+    .statement-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Left Photo Card + Overlapping Quote Box (Frame 009s) */
+    .statement-quote-grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 90px;
+    }
+
+    .editorial-photo-card {
+      position: relative;
+    }
+
+    .editorial-photo-frame {
+      width: 100%;
+      height: 480px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid var(--bidwells-navy);
+      box-shadow: var(--bidwells-shadow-lg);
+      background: url('assets/tha_prachan_dome_editorial.jpg') center/cover no-repeat;
+    }
+
+    .overlapping-quote-card {
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 380px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 30px 32px;
+      box-shadow: 0 16px 40px rgba(11, 22, 59, 0.16);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .quote-icon-mark {
+      font-family: var(--font-serif);
+      font-size: 3.2rem;
+      color: var(--bidwells-crimson);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .quote-text-primary {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .quote-text-sub {
+      font-size: 0.88rem;
+      color: var(--bidwells-text-muted);
+      line-height: 1.6;
+    }
+
+    .statement-narrative-box {
+      padding-left: 20px;
+    }
+
+    .statement-main-text {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      line-height: 1.35;
+      color: var(--bidwells-navy);
+      font-weight: 400;
+      margin-bottom: 1.8rem;
+    }
+
+    .bidwells-highlight {
+      background-color: #ffef8a;
+      color: var(--bidwells-navy);
+      padding: 0 6px;
+      font-weight: 700;
+      border-radius: 4px;
+    }
+
+    .statement-sub-text {
+      font-size: 1.05rem;
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    /* 3 High-Contrast Vertical Cards with Colored Blocks (Frames 013s - 014s) */
+    .winning-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .winning-stat-card {
+      background: #ffffff;
+      border: 2.5px solid var(--bidwells-card-border);
+      border-radius: 18px;
+      height: 440px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      box-shadow: var(--bidwells-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .winning-stat-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--bidwells-shadow-lg);
+    }
+
+    .winning-card-top {
+      padding: 32px 30px;
+    }
+
+    .winning-number-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .winning-number {
+      font-family: var(--font-sans);
+      font-size: 4.2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--bidwells-navy);
+      letter-spacing: -0.03em;
+    }
+
+    .winning-unit {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+    }
+
+    .winning-top-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    .winning-color-block {
+      margin: 0 16px 16px;
+      padding: 28px 24px;
+      border-radius: 14px;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 190px;
+    }
+
+    .block-sky-blue {
+      background: #a6d2e6;
+      color: var(--bidwells-navy);
+    }
+
+    .block-crimson {
+      background: #d71945;
+      color: #ffffff;
+    }
+
+    .block-emerald {
+      background: #0a7b6b;
+      color: #ffffff;
+    }
+
+    .block-team-name {
+      font-size: 1.55rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .block-team-loc {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+
+    /* ==========================================================================
+       5. SECTION 2: DARK BLUE CLUSTER MAP & 4 CAMPUSES (017s - 024s)
+       ========================================================================== */
+    .bidwells-map-section {
+      background-color: var(--bidwells-navy);
+      color: #ffffff;
+      padding: 110px 2rem 100px;
+      position: relative;
+      overflow: hidden;
+      border-top: 4px solid var(--bidwells-crimson);
+    }
+
+    .map-section-header {
+      max-width: 1200px;
+      margin: 0 auto 50px;
+    }
+
+    .section-eyebrow {
+      color: var(--tu-gold);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-headline {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 15px;
+    }
+
+    .section-headline em {
+      font-style: italic;
+      color: var(--bidwells-sky-blue);
+      font-weight: 400;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      max-width: 780px;
+      line-height: 1.7;
+    }
+
+    /* Map Interface Container (Frames 020s - 021s) */
+    .cluster-map-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .cluster-selector-pillbox {
+      background: rgba(16, 28, 61, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .cluster-select-btn {
+      background: transparent;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      color: #94a3b8;
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .cluster-select-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cluster-select-btn.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      font-weight: 700;
+    }
+
+    .cluster-select-btn.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 4px;
+      border-radius: 0 4px 4px 0;
+      background: var(--bidwells-crimson);
+    }
+
+    .cluster-map-canvas-card {
+      background: radial-gradient(circle at center, #13244e 0%, #09132e 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--bidwells-shadow-lg);
+      overflow: hidden;
+    }
+
+    /* Dotted Matrix Grid Background (Matching frame 015s / 020s) */
+    .dotted-matrix-bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-      background-size: 32px 32px;
+      background-image: radial-gradient(rgba(171, 216, 237, 0.18) 1.5px, transparent 1.5px);
+      background-size: 20px 20px;
       pointer-events: none;
     }
 
-    .hero-content {
+    .cluster-svg-stage {
       position: relative;
-      z-index: 2;
-      max-width: 760px;
+      width: 100%;
+      height: 380px;
     }
 
-    .hero-tag-pill {
-      display: inline-flex;
+    .campus-target-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      transition: transform 0.2s ease;
+      z-index: 5;
+    }
+
+    .campus-target-node:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .target-ring-pulsing {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid var(--tu-crimson);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse-ring 2s infinite;
+      background: rgba(197, 25, 68, 0.25);
+    }
+
+    .target-dot-center {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--tu-gold);
+    }
+
+    .campus-node-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 6px;
+      white-space: nowrap;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 0.3; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+
+    /* Campus Info Strip */
+    .campus-metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: rgba(11, 22, 59, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      z-index: 5;
+    }
+
+    .campus-metric-item .val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--tu-gold);
+    }
+
+    .campus-metric-item .lbl {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Multi-Era Campus Distribution Chart */
+    .campus-distribution-card {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      background: rgba(16, 28, 61, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .distribution-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .era-pill-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .era-pill-btn.active {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      border-color: var(--bidwells-crimson);
+    }
+
+    /* Straight Line Milestone Chart (Closed system reform 2496-2503) */
+    .milestones-strip-section {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      background: rgba(16, 28, 61, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .milestone-stepper-track {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding: 0 20px;
+    }
+
+    .stepper-bg-line {
+      position: absolute;
+      top: 15px;
+      left: 30px;
+      right: 30px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.15);
+      z-index: 0;
+    }
+
+    .stepper-node {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .stepper-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bidwells-navy);
+      border: 2.5px solid #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94a3b8;
+      transition: all 0.2s ease;
+    }
+
+    .stepper-node.active .stepper-circle {
+      background: var(--bidwells-crimson);
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: scale(1.15);
+      box-shadow: 0 0 15px rgba(197, 25, 68, 0.6);
+    }
+
+    .stepper-year {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-top: 8px;
+    }
+
+    .stepper-node-title {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      max-width: 100px;
+      text-align: center;
+      line-height: 1.3;
+      margin-top: 2px;
+    }
+
+    .milestone-event-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    /* ==========================================================================
+       6. SECTION 3: CIRCULAR WIPE TO TEAL - COST CAP & BUDGET (025s - 035s)
+       ========================================================================== */
+    .bidwells-teal-section {
+      background-color: var(--bidwells-teal);
+      background-image: radial-gradient(circle at 80% 20%, #00857c 0%, var(--bidwells-teal) 70%);
+      color: #ffffff;
+      padding: 120px 2rem 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .teal-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Floating White Card: Cost Cap Budget Analysis (Frame 030s) */
+    .cost-cap-white-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 48px;
+      color: var(--bidwells-text);
+      box-shadow: var(--bidwells-shadow-lg);
+      margin-bottom: 50px;
+    }
+
+    .cost-cap-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .cost-cap-narrative .cost-cap-title {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .cost-cap-narrative .cost-cap-lead {
+      font-size: 1.05rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .drilldown-pills-row {
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      background: rgba(197, 25, 68, 0.18);
-      border: 1px solid rgba(197, 25, 68, 0.45);
-      color: #ff9cb1;
-      padding: 6px 18px;
-      border-radius: 9999px;
+      margin-top: 14px;
+    }
+
+    .drilldown-pill {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 999px;
       font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1.8rem;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .hero-title {
+    .drilldown-pill:hover, .drilldown-pill.active {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      border-color: var(--bidwells-crimson);
+    }
+
+    /* Demographic Card: Female 62.4% */
+    .demographic-white-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 44px;
+      color: var(--bidwells-text);
+      box-shadow: var(--bidwells-shadow-lg);
+      margin-bottom: 50px;
+    }
+
+    .demographic-headline {
       font-family: var(--font-serif);
-      font-size: 3.8rem;
-      line-height: 1.15;
+      font-size: 1.95rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      font-weight: 400;
-      color: #9cd5ea;
-      display: inline-block;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: #cbd5e1;
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-    }
-
-    .hero-scroll-btn {
-      background: var(--bidwells-sky-blue);
       color: var(--bidwells-navy);
-      padding: 14px 34px;
-      border-radius: 9999px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .demographic-sub {
       font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 28px;
+    }
+
+    .demographic-ratio-bar-wrap {
+      margin-bottom: 30px;
+    }
+
+    .ratio-bar {
+      height: 38px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .ratio-female {
+      width: 62.4%;
+      background: linear-gradient(90deg, #ec4899 0%, #db2777 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .ratio-male {
+      width: 37.6%;
+      background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    /* 26 Faculties Grid & TCAS Drilldown */
+    .faculties-white-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 44px;
+      color: var(--bidwells-text);
+      box-shadow: var(--bidwells-shadow-lg);
+    }
+
+    .faculties-filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .fac-pill {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .fac-pill.active {
+      background: var(--bidwells-navy);
+      color: #ffffff;
+      border-color: var(--bidwells-navy);
+    }
+
+    .faculties-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 16px;
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .faculty-item-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .faculty-item-card:hover {
+      background: #ffffff;
+      border-color: var(--bidwells-crimson);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(11, 22, 59, 0.08);
+    }
+
+    .faculty-item-card .fac-name {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--bidwells-navy);
+      margin-bottom: 4px;
+    }
+
+    .faculty-item-card .fac-meta {
+      font-size: 0.74rem;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ==========================================================================
+       7. SECTION 4: THE CURVED RACETRACK & S-TURN WITH RACE CARS (Frames 037s - 040s)
+       ========================================================================== */
+    .bidwells-curved-track-section {
+      position: relative;
+      min-height: 140vh;
+      background-color: var(--bidwells-navy);
+      background-image: url('assets/Track2.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      overflow: hidden;
+      padding: 120px 2rem;
+    }
+
+    .curved-track-overlay-dim {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 22, 59, 0.75);
+      pointer-events: none;
+    }
+
+    .curved-track-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Turning Cars along the S-Curve */
+    .turning-cars-stage {
+      position: relative;
+      height: 520px;
+      margin: 40px 0;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .turning-car-wrap {
+      position: absolute;
+      transition: transform 0.1s linear;
+    }
+
+    .turning-car-1 {
+      top: 18%;
+      left: 36%;
+      width: 120px;
+      transform: rotate(-18deg);
+    }
+
+    .turning-car-2 {
+      top: 50%;
+      left: 48%;
+      width: 130px;
+      transform: rotate(24deg);
+    }
+
+    .turning-car-3 {
+      top: 76%;
+      left: 60%;
+      width: 120px;
+      transform: rotate(-12deg);
+    }
+
+    /* Business School Benchmarking Card */
+    .tbs-benchmark-card {
+      background: rgba(16, 28, 61, 0.95);
+      border: 2px solid var(--tu-gold);
+      border-radius: 20px;
+      padding: 36px 40px;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+    }
+
+    .tbs-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .triple-crown-badges-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .crown-badge {
+      background: linear-gradient(135deg, var(--tu-gold) 0%, #d99b00 100%);
+      color: var(--bidwells-navy);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .benchmark-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+    }
+
+    .benchmark-table th {
+      text-align: left;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .benchmark-table td {
+      padding: 14px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .benchmark-table tr.highlight-tbs {
+      background: rgba(255, 199, 44, 0.12);
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       8. SECTION 5: SILVERSTONE-STYLE CIRCUIT MILESTONE TRACK (Frames 041s - 050s)
+       ========================================================================== */
+    .bidwells-circuit-section {
+      background-color: #f1f8fa;
+      padding: 120px 2rem 100px;
+      position: relative;
+    }
+
+    .circuit-layout-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    /* Silverstone Circuit Vector */
+    .silverstone-svg-container {
+      position: relative;
+      width: 100%;
+      height: 480px;
+    }
+
+    .circuit-milestone-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3.5px solid #00857c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+      color: #00857c;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s ease;
+    }
+
+    .circuit-milestone-node.active {
+      background: var(--bidwells-crimson);
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: translate(-50%, -50%) scale(1.3);
+      box-shadow: 0 0 16px rgba(197, 25, 68, 0.6);
+    }
+
+    /* Synchronized White Insight Card (Frame 045s) */
+    .circuit-insight-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 40px;
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .circuit-card-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .circuit-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .circuit-card-img {
+      width: 100%;
+      height: 200px;
+      border-radius: 14px;
+      object-fit: cover;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .circuit-card-desc {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* TU 2034 Strategy Cockpit Card */
+    .cockpit-strategy-card {
+      max-width: 1200px;
+      margin: 50px auto 0;
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 44px;
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .cockpit-sliders-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .cockpit-slider-item {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .cockpit-slider-item label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .cockpit-range-input {
+      width: 100%;
+      accent-color: var(--bidwells-crimson);
+      cursor: pointer;
+    }
+
+    .cockpit-val-disp {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       9. SECTION 6: CHECKERED FINISH LINE CROSSING & REPORT DOWNLOAD (051s - 054s)
+       ========================================================================== */
+    .bidwells-finish-section {
+      background-color: var(--bidwells-offwhite);
+      padding: 100px 2rem 140px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Authentic Checkered Finish Line Banner */
+    .checkered-finish-banner {
+      width: 100%;
+      height: 70px;
+      background-image: url('assets/finish.svg');
+      background-repeat: repeat-x;
+      background-size: contain;
+      background-position: center;
+      margin-bottom: 60px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .finish-cars-crossing-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 70px;
+      position: relative;
+    }
+
+    .finish-car-item {
+      position: relative;
+      width: 130px;
+    }
+
+    .finish-car-trail-line {
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 140px;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(200, 200, 200, 0.8) 100%);
+      pointer-events: none;
+    }
+
+    /* Download Report Full Box (Frame 053s) */
+    .download-report-card {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 50px 60px;
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .download-report-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .download-report-desc {
+      font-size: 1.02rem;
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .download-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .form-input-field {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 0.92rem;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input-field:focus {
+      border-color: var(--bidwells-crimson);
+    }
+
+    .btn-submit-download {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 9999px;
+      font-size: 1rem;
       font-weight: 700;
       border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      box-shadow: 0 8px 24px rgba(191, 229, 242, 0.3);
-      transition: all 0.25s ease;
-    }
-
-    .hero-scroll-btn:hover {
-      background: #e2f4fb;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(191, 229, 242, 0.45);
-    }
-
-    .hero-stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 4.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .hero-stat-card {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .hero-stat-num {
-      font-family: var(--font-serif);
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .hero-stat-desc {
-      font-size: 0.85rem;
-      color: #94a3b8;
-      line-height: 1.4;
-    }
-
-    /* ==========================================================================
-       5. EDITORIAL SECTIONS (General Layout)
-       ========================================================================== */
-    .bidwells-section {
-      min-height: 100vh;
-      padding: 120px 8% 100px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .section-light {
-      background: var(--bidwells-offwhite);
-      color: var(--bidwells-text);
-    }
-
-    .section-cream {
-      background: #faf8f5;
-      color: var(--bidwells-text);
-    }
-
-    .section-dark {
-      background: var(--bidwells-navy);
-      color: #ffffff;
-    }
-
-    .section-teal {
-      background: #0d4b4a;
-      color: #ffffff;
-    }
-
-    .editorial-header {
-      max-width: 860px;
-      margin-bottom: 3.5rem;
-    }
-
-    .editorial-tag {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--bidwells-crimson);
-      margin-bottom: 0.8rem;
-      display: inline-block;
-    }
-
-    .section-dark .editorial-tag,
-    .section-teal .editorial-tag {
-      color: #ff9cb1;
-    }
-
-    .editorial-title {
-      font-family: var(--font-serif);
-      font-size: 2.8rem;
-      font-weight: 700;
-      line-height: 1.22;
-      margin-bottom: 1.2rem;
-      letter-spacing: -0.015em;
-    }
-
-    .editorial-title em {
-      font-style: italic;
-      color: var(--bidwells-crimson);
-    }
-
-    .section-dark .editorial-title em,
-    .section-teal .editorial-title em {
-      color: #9cd5ea;
-    }
-
-    .editorial-desc {
-      font-size: 1.15rem;
-      color: var(--bidwells-text-muted);
-      line-height: 1.7;
-      font-weight: 400;
-    }
-
-    .section-dark .editorial-desc,
-    .section-teal .editorial-desc {
-      color: #cbd5e1;
-    }
-
-    /* ==========================================================================
-       6. SCENE 1: STRAIGHT LINE CHART WITH EVENT MILESTONES (กราฟ 1)
-       ========================================================================== */
-    .timeline-milestones-container {
-      background: #ffffff;
-      border-radius: var(--bidwells-radius);
-      border: 2px solid var(--bidwells-navy);
-      box-shadow: var(--bidwells-shadow);
-      padding: 3rem;
-      position: relative;
-    }
-
-    .straight-line-track {
-      position: relative;
-      margin: 3rem 0;
-      padding: 2rem 0;
-    }
-
-    .straight-line-axis {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: #e2e8f0;
-      transform: translateY(-50%);
-      border-radius: 999px;
-    }
-
-    .straight-line-progress {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--tu-crimson) 0%, var(--bidwells-crimson) 100%);
-      transform: translateY(-50%);
-      border-radius: 999px;
-    }
-
-    .milestone-nodes-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      position: relative;
-      z-index: 2;
-    }
-
-    .milestone-node {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      text-align: center;
-      padding: 0 4px;
-    }
-
-    .milestone-dot {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 4px solid var(--bidwells-crimson);
-      box-shadow: 0 0 10px rgba(197, 25, 68, 0.4);
-      margin-bottom: 12px;
-      transition: all 0.25s ease;
-    }
-
-    .milestone-node:hover .milestone-dot,
-    .milestone-node.active .milestone-dot {
-      background: var(--bidwells-crimson);
-      transform: scale(1.35);
-      border-color: #ffffff;
-      box-shadow: 0 0 16px rgba(197, 25, 68, 0.8);
-    }
-
-    .milestone-year {
-      font-family: var(--font-serif);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--bidwells-navy);
-      margin-bottom: 4px;
-    }
-
-    .milestone-title-short {
-      font-size: 0.78rem;
-      color: var(--bidwells-text-muted);
-      line-height: 1.3;
-      font-weight: 600;
-    }
-
-    .milestone-detail-card {
-      background: #f8fafc;
-      border-left: 4px solid var(--bidwells-crimson);
-      border-radius: 8px;
-      padding: 1.8rem;
-      margin-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-
-    .milestone-detail-info h4 {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      color: var(--bidwells-navy);
-      margin-bottom: 0.4rem;
-    }
-
-    .milestone-detail-info p {
-      font-size: 0.95rem;
-      color: #475569;
-      max-width: 720px;
-      line-height: 1.6;
-    }
-
-    .milestone-detail-badge {
-      text-align: right;
-    }
-
-    .milestone-detail-badge .val {
-      font-family: var(--font-serif);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--bidwells-crimson);
-    }
-
-    .milestone-detail-badge .lbl {
-      font-size: 0.75rem;
-      color: #64748b;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    /* ==========================================================================
-       7. SCENE 2: BIDWELLS DOTTED MATRIX MAP & 4 STRATEGIC CAMPUSES (กราฟ 2)
-       ========================================================================== */
-    .bidwells-map-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    .map-svg-card {
-      background: var(--bidwells-navy);
-      border-radius: var(--bidwells-radius);
-      border: 2px solid #1e293b;
-      box-shadow: var(--bidwells-shadow-lg);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .map-orbital-badge {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      border-radius: 8px;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
       gap: 10px;
-      color: #ffffff;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .map-orbital-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
-    }
-
-    .campus-card-selector {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .campus-pill-btn {
-      background: #ffffff;
-      border: 2px solid var(--bidwells-navy);
-      border-radius: 10px;
-      padding: 1.2rem 1.6rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(197, 25, 68, 0.3);
       transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
 
-    .campus-pill-btn:hover,
-    .campus-pill-btn.active {
-      background: var(--bidwells-navy);
-      color: #ffffff;
-      transform: translateX(8px);
-      box-shadow: 0 8px 24px rgba(11, 22, 59, 0.18);
-    }
-
-    .campus-pill-btn:hover .campus-pill-desc,
-    .campus-pill-btn.active .campus-pill-desc {
-      color: #94a3b8;
-    }
-
-    .campus-pill-title {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .campus-pill-desc {
-      font-size: 0.78rem;
-      color: var(--bidwells-text-muted);
-      margin-top: 2px;
-    }
-
-    .campus-pill-stat {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--bidwells-crimson);
-    }
-
-    .campus-pill-btn.active .campus-pill-stat {
-      color: var(--tu-gold);
-    }
-
-    /* ==========================================================================
-       8. SCENE 3: BIDWELLS 3-COLUMN NUMBER CARDS & 26 FACULTIES (กราฟ 3)
-       ========================================================================== */
-    .bidwells-3col-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .bidwells-num-card {
-      background: #ffffff;
-      border: 2px solid var(--bidwells-navy);
-      border-radius: var(--bidwells-radius);
-      box-shadow: var(--bidwells-shadow);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: transform 0.25s ease;
-    }
-
-    .bidwells-num-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--bidwells-shadow-lg);
-    }
-
-    .num-card-body {
-      padding: 2.2rem 2rem 1.8rem;
-      flex-grow: 1;
-    }
-
-    .num-card-metric {
-      font-family: var(--font-serif);
-      font-size: 3.8rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--bidwells-navy);
-      margin-bottom: 0.6rem;
-    }
-
-    .num-card-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--bidwells-navy);
-      margin-bottom: 0.4rem;
-    }
-
-    .num-card-sub {
-      font-size: 0.88rem;
-      color: var(--bidwells-text-muted);
-      line-height: 1.5;
-    }
-
-    .num-card-footer-block {
-      padding: 1.4rem 2rem;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .num-card-footer-block.bg-sky {
-      background: #73b8d4;
-      color: #0b163b;
-    }
-
-    .num-card-footer-block.bg-crimson {
-      background: var(--bidwells-crimson);
-    }
-
-    .num-card-footer-block.bg-emerald {
-      background: var(--bidwells-emerald);
-    }
-
-    .footer-block-main {
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .footer-block-sub {
-      font-size: 0.78rem;
-      opacity: 0.85;
-    }
-
-    .faculty-pills-shelf {
-      background: #ffffff;
-      border: 2px solid var(--bidwells-navy);
-      border-radius: var(--bidwells-radius);
-      padding: 2rem;
-      box-shadow: var(--bidwells-shadow);
-    }
-
-    .shelf-heading {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--bidwells-navy);
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .faculty-tags-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .faculty-tag-pill {
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      color: #334155;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-    }
-
-    .faculty-tag-pill:hover {
-      background: var(--bidwells-navy);
-      color: #ffffff;
-      border-color: var(--bidwells-navy);
+    .btn-submit-download:hover {
+      background: #a91238;
       transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(197, 25, 68, 0.4);
     }
 
-    /* Modal / Drawer for Faculty Details */
-    .faculty-modal-overlay {
+    /* Modal for TCAS & Drilldowns */
+    .drilldown-modal-backdrop {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(11, 22, 59, 0.6);
-      backdrop-filter: blur(6px);
-      z-index: 20000;
+      background: rgba(11, 22, 59, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 12000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
 
-    .faculty-modal-card {
+    .drilldown-modal-card {
       background: #ffffff;
-      border-radius: var(--bidwells-radius);
-      border: 2px solid var(--bidwells-navy);
+      border-radius: 20px;
       max-width: 680px;
       width: 100%;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-      padding: 2.5rem;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 36px;
       position: relative;
-      animation: modal-enter 0.25s ease-out;
-    }
-
-    @keyframes modal-enter {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
 
     .modal-close-btn {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 24px;
+      right: 24px;
       background: #f1f5f9;
       border: none;
       width: 36px;
       height: 36px;
       border-radius: 50%;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #475569;
-      cursor: pointer;
       font-size: 16px;
-    }
-
-    /* ==========================================================================
-       9. SCENE 4: DEMOGRAPHIC METRIC (กราฟ 4)
-       ========================================================================== */
-    .demographics-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    .bidwells-stat-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 2.2rem;
-    }
-
-    .stat-stack-item {
-      display: flex;
-      align-items: baseline;
-      gap: 24px;
-    }
-
-    .stat-stack-number {
-      font-family: var(--font-serif);
-      font-size: 4.8rem;
-      font-weight: 700;
-      color: var(--bidwells-crimson);
-      line-height: 1;
-      min-width: 220px;
-    }
-
-    .stat-stack-text {
-      font-size: 1.15rem;
-      color: var(--bidwells-text);
-      line-height: 1.5;
-    }
-
-    .stat-stack-text strong {
-      color: var(--bidwells-navy);
-      font-weight: 700;
-    }
-
-    /* ==========================================================================
-       10. SCENE 5: CLEAR MULTI-ERA CAMPUS DISTRIBUTION (กราฟ 5 - แทนสายธาร)
-       ========================================================================== */
-    .distribution-card {
-      background: #ffffff;
-      border-radius: var(--bidwells-radius);
-      border: 2px solid var(--bidwells-navy);
-      box-shadow: var(--bidwells-shadow);
-      padding: 3rem;
-    }
-
-    .distribution-toggle-bar {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 2rem;
-    }
-
-    .dist-toggle-btn {
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #475569;
-      cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .dist-toggle-btn.active {
-      background: var(--bidwells-navy);
-      color: #ffffff;
-      border-color: var(--bidwells-navy);
+    .modal-close-btn:hover {
+      background: #e2e8f0;
+      color: var(--bidwells-crimson);
     }
 
-    /* ==========================================================================
-       11. SCENE 6: 5-YEAR BUDGET COMPARISON & DRILL-DOWN (กราฟ 6 - Bidwells Cost Cap)
-       ========================================================================== */
-    .bidwells-cost-card {
-      background: #ffffff;
-      border-radius: var(--bidwells-radius);
-      border: 2px solid var(--bidwells-navy);
-      box-shadow: var(--bidwells-shadow-lg);
-      padding: 3.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 3.5rem;
-      position: relative;
-    }
-
-    .cost-card-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .cost-card-title {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--bidwells-navy);
-      margin-bottom: 1rem;
-    }
-
-    .cost-card-desc {
-      font-size: 1.05rem;
-      color: var(--bidwells-text-muted);
-      line-height: 1.65;
-      margin-bottom: 1.8rem;
-    }
-
-    .budget-drilldown-box {
-      background: #f8fafc;
-      border-radius: 8px;
-      padding: 1.4rem;
-      border-left: 3px solid var(--bidwells-crimson);
-    }
-
-    .budget-drilldown-year {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--bidwells-navy);
-      margin-bottom: 8px;
-    }
-
-    /* ==========================================================================
-       12. SCENE 7: BUSINESS SCHOOL BENCHMARKING (กราฟ 7 - TBS vs CBS, etc.)
-       ========================================================================== */
-    .benchmark-card-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 3rem;
-      background: #ffffff;
-      border-radius: var(--bidwells-radius);
-      border: 2px solid var(--bidwells-navy);
-      box-shadow: var(--bidwells-shadow);
-      padding: 3rem;
-    }
-
-    .matrix-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      font-size: 0.88rem;
-    }
-
-    .matrix-table th {
-      text-align: left;
-      padding: 12px 14px;
-      background: #f8fafc;
-      border-bottom: 2px solid #e2e8f0;
-      color: var(--bidwells-navy);
-      font-weight: 700;
-    }
-
-    .matrix-table td {
-      padding: 12px 14px;
-      border-bottom: 1px solid #f1f5f9;
-      color: #334155;
-    }
-
-    .matrix-table tr.highlight-tbs {
-      background: rgba(197, 25, 68, 0.04);
-      font-weight: 600;
-    }
-
-    .matrix-badge-crown {
-      background: #fef3c7;
-      color: #b45309;
-      padding: 3px 8px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* ==========================================================================
-       13. SCENE 8: SUSTAINABLE TECH CIRCUIT (กราฟ 8 - Frame 043s)
-       ========================================================================== */
-    .circuit-milestone-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    .circuit-svg-container {
-      position: relative;
-      background: #ffffff;
-      border: 2px solid var(--bidwells-navy);
-      border-radius: var(--bidwells-radius);
-      padding: 2.5rem;
-      box-shadow: var(--bidwells-shadow);
-    }
-
-    .circuit-floating-card {
-      background: #ffffff;
-      border: 2px solid var(--bidwells-navy);
-      border-radius: var(--bidwells-radius);
-      padding: 2.5rem;
-      box-shadow: var(--bidwells-shadow-lg);
-    }
-
-    /* ==========================================================================
-       14. FOOTER (Bidwells Corporate Style)
-       ========================================================================== */
-    .bidwells-footer {
-      background: #060d24;
-      color: #94a3b8;
-      padding: 80px 8% 120px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr repeat(3, 1fr);
-      gap: 3.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .footer-brand h3 {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      color: #ffffff;
-      margin-bottom: 1rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.92rem;
-      line-height: 1.6;
-      max-width: 380px;
-    }
-
-    .footer-col h4 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col li {
-      margin-bottom: 0.7rem;
-    }
-
-    .footer-col a {
-      color: #94a3b8;
-      font-size: 0.88rem;
-      transition: color 0.2s ease;
-    }
-
-    .footer-col a:hover {
-      color: #ffffff;
-    }
-
-    .footer-bottom {
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 1100px) {
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+      .cluster-map-layout, .cost-cap-grid, .circuit-layout-grid, .statement-quote-grid, .cockpit-sliders-grid {
+        grid-template-columns: 1fr;
+      }
+      .winning-cards-row {
+        grid-template-columns: 1fr;
+      }
+      .central-track-stage {
+        width: 100%;
+      }
+      .bidwells-header {
+        padding: 0 1rem;
+      }
       .header-nav {
         display: none;
-      }
-      .scrolly-runner-lane {
-        display: none;
-      }
-      .bidwells-map-layout,
-      .demographics-grid,
-      .bidwells-cost-card,
-      .benchmark-card-grid,
-      .circuit-milestone-layout,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .bidwells-3col-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero-title {
-        font-size: 2.8rem;
       }
     }
   </style>
@@ -1352,1338 +1837,1305 @@ def build_bidwells_html():
 <body>
 
   <!-- ==========================================================================
-       1. FIXED TOP HEADER (Pure White Luxury Corporate Style - Bidwells)
+       1. FIXED TOP HEADER (Exact Bidwells Luxury Style)
        ========================================================================== -->
-  <header class="bidwells-header">
-    <div class="header-logo-group">
-      <div class="header-dome-emblem">
-        <i class="fa-solid fa-landmark-dome"></i>
+  <header class="bidwells-header" id="mainHeader">
+    <div class="header-logo-group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <div class="header-brand-mark">
+        <i class="fa-solid fa-dharmachakra"></i>
       </div>
       <div class="header-brand-text">
-        <span class="header-brand-title">THAMMASAT UNIVERSITY</span>
-        <span class="header-brand-sub">90th Anniversary Intelligence Report</span>
+        <span class="header-brand-title">THAMMASAT 90 YEARS</span>
+        <span class="header-brand-sub">DRIVING INNOVATION AT SPEED</span>
       </div>
     </div>
 
     <nav class="header-nav">
-      <a href="#scene1" class="header-nav-link">9 ทศวรรษ</a>
-      <a href="#scene2" class="header-nav-link">4 ศูนย์ยุทธศาสตร์</a>
-      <a href="#scene3" class="header-nav-link">26 คณะ & หลักสูตร</a>
-      <a href="#scene4" class="header-nav-link">มิติประชากร</a>
-      <a href="#scene5" class="header-nav-link">การกระจายตัว</a>
-      <a href="#scene6" class="header-nav-link">งบประมาณ 5 ปี</a>
-      <a href="#scene7" class="header-nav-link">TBS Benchmark</a>
-      <a href="#scene8" class="header-nav-link">ความยั่งยืน & รพ.</a>
-      <a href="#scene10" class="header-nav-link">สู่อนาคต 2034</a>
+      <a href="#hero" class="header-nav-link active">จุดสตาร์ท (Grid)</a>
+      <a href="#statement" class="header-nav-link">หมุดหมาย 90 ปี</a>
+      <a href="#campuses" class="header-nav-link">4 วิทยาเขตยุทธศาสตร์</a>
+      <a href="#budget" class="header-nav-link">วินัยงบประมาณ (Cost Cap)</a>
+      <a href="#racing-curve" class="header-nav-link">การแข่งขันระดับสากล</a>
+      <a href="#circuit" class="header-nav-link">วงจรนวัตกรรม (Circuit)</a>
+      <a href="#finish" class="header-nav-link">เส้นชัย (Finish Line)</a>
     </nav>
 
     <div class="header-actions">
-      <a href="archive/classic_edition/index.html" target="_blank" class="header-archive-btn" title="เข้าชมคลังบันทึกประวัติ">
-        <i class="fa-solid fa-clock-rotate-left"></i> ฉบับคลาสสิก
+      <a href="archive/classic_edition/index.html" class="header-archive-btn" title="เข้าสู่คลังบันทึกประวัติ">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span>คลังบันทึกประวัติ (Classic Archive)</span>
       </a>
-      <button class="btn-bidwells-pill" onclick="downloadReportModal()">
-        <span>ดาวน์โหลดรายงาน</span>
+      <button class="btn-bidwells-pill" onclick="openDownloadModal()">
+        <span>ดาวน์โหลดรายงานฉบับเต็ม</span>
         <i class="fa-solid fa-arrow-right"></i>
       </button>
     </div>
   </header>
 
   <!-- ==========================================================================
-       2. FIXED BOTTOM SCRUBBER PILL (The Signature Bidwells Navigation Capsule)
-       ========================================================================== -->
+       2. FIXED BOTTOM SCRUBBER PILL (Exact Bidwells Floating Capsule)
+       ========================================================================== */
+  -->
   <div class="bidwells-floating-scrubber" id="floatingScrubber">
-    <div class="scrubber-track-container" id="scrubberTrack" title="เลื่อนตามเส้นเวลา">
+    <div class="scrubber-track-container" id="scrubberTrack" onclick="handleScrubberClick(event)">
       <div class="scrubber-track-bg"></div>
       <div class="scrubber-track-fill" id="scrubberFill"></div>
       <div class="scrubber-thumb" id="scrubberThumb"></div>
       <div class="scrubber-pips">
-        <span class="scrubber-pip" data-target="hero"></span>
-        <span class="scrubber-pip" data-target="scene1"></span>
-        <span class="scrubber-pip" data-target="scene2"></span>
-        <span class="scrubber-pip" data-target="scene3"></span>
-        <span class="scrubber-pip" data-target="scene4"></span>
-        <span class="scrubber-pip" data-target="scene5"></span>
-        <span class="scrubber-pip" data-target="scene6"></span>
-        <span class="scrubber-pip" data-target="scene7"></span>
-        <span class="scrubber-pip" data-target="scene8"></span>
-        <span class="scrubber-pip" data-target="scene10"></span>
+        <div class="scrubber-pip active" data-target="hero"></div>
+        <div class="scrubber-pip" data-target="statement"></div>
+        <div class="scrubber-pip" data-target="campuses"></div>
+        <div class="scrubber-pip" data-target="budget"></div>
+        <div class="scrubber-pip" data-target="racing-curve"></div>
+        <div class="scrubber-pip" data-target="circuit"></div>
+        <div class="scrubber-pip" data-target="finish"></div>
       </div>
     </div>
-    <button class="scrubber-download-btn" onclick="downloadReportModal()">
-      <i class="fa-solid fa-file-arrow-down"></i>
-      <span>ดาวน์โหลดรายงาน</span>
+    <button class="scrubber-download-btn" onclick="openDownloadModal()">
+      <span>Download report</span>
     </button>
   </div>
 
   <!-- ==========================================================================
-       3. SCROLLYTELLING RUNNER LANE (Thammasat Student Walking Along Timeline)
+       3. HERO SECTION & CENTRAL STARTING RACETRACK (Exact Frames 000s - 007s)
        ========================================================================== -->
-  <aside class="scrolly-runner-lane" id="runnerLane">
-    <div class="runner-track-line"></div>
-    <div class="runner-avatar-wrapper" id="runnerAvatar">
-      <img src="assets/tu_student_walking.png" alt="Thammasat Student Walking" class="runner-avatar-img" />
-      <span class="runner-badge-year" id="runnerYearBadge">พ.ศ. 2477</span>
-    </div>
-  </aside>
+  <section class="hero-track-section" id="hero">
+    <!-- The Central Vertical Asphalt Racetrack -->
+    <div class="central-track-stage">
+      <!-- Alternating Checkerboard Curb on the left (as in frame 006s) -->
+      <div class="central-track-curb-left"></div>
+      <div class="central-track-curb-right"></div>
+      <div class="central-track-centerline"></div>
 
-  <!-- ==========================================================================
-       4. HERO SECTION (Bidwells Grand Cover Frame 000s)
-       ========================================================================== -->
-  <section class="hero-section" id="hero">
-    <div class="hero-bg-graphic"></div>
-    <div class="hero-geometric-mesh"></div>
-
-    <div class="hero-content">
-      <div class="hero-tag-pill">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <span>รายงานยุทธศาสตร์และการขับเคลื่อนสังคม • 2477 — 2567</span>
+      <!-- Starting Grid Box Brackets [   ] at scroll 900px -->
+      <div class="grid-box grid-box-pole">
+        <span class="grid-box-label">POLE POSITION</span>
+      </div>
+      <div class="grid-box grid-box-slot2">
+        <span class="grid-box-label">GRID 02</span>
       </div>
 
-      <h1 class="hero-title">
-        ก้าวสู่วาระ 90 ปี<br>
-        <em>มหาวิทยาลัยธรรมศาสตร์</em>
+      <!-- Car 1: White F1 Car in Pole Position (car-white.png) -->
+      <div class="f1-car-container f1-car-pole" id="f1CarPole">
+        <img src="assets/car-white.png" alt="Thammasat F1 Race Car White" class="f1-car-img" />
+        <div class="f1-car-trails"></div>
+        <div class="f1-car-badge">TU-01 • Pole Position</div>
+      </div>
+
+      <!-- Car 2: Pink/Crimson F1 Car in Slot 2 (car-pink.png) -->
+      <div class="f1-car-container f1-car-slot2" id="f1CarSlot2">
+        <img src="assets/car-pink.png" alt="Thammasat F1 Race Car Crimson" class="f1-car-img" />
+        <div class="f1-car-trails"></div>
+        <div class="f1-car-badge">TU-90 • Thammasat Crimson</div>
+      </div>
+    </div>
+
+    <!-- Hero Content Overlay (First Screen) -->
+    <div class="hero-content-overlay">
+      <div class="hero-category-tag">
+        <i class="fa-solid fa-flag-checkered"></i>
+        <span>รายงานวิจัยและยุทธศาสตร์ข้อมูล • 2477 — 2567</span>
+      </div>
+
+      <h1 class="hero-main-title">
+        Driving Innovation<br>
+        <em>at Speed</em>
       </h1>
 
-      <p class="hero-subtitle">
-        จาก "มหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง" สู่มหาวิทยาลัยวิจัยระดับโลกเพื่อประชาชน
-        การเดินทาง 9 ทศวรรษผ่านข้อมูลประชากร งบประมาณ ยุทธศาสตร์ 4 ศูนย์การศึกษา
-        และความเป็นเลิศทางวิชาการ
+      <div class="hero-title-thai">
+        ขับเคลื่อนปัญญาและนวัตกรรม ด้วยความเร็วแห่งอนาคต
+      </div>
+
+      <p class="hero-lead-desc">
+        90 ปี มหาวิทยาลัยธรรมศาสตร์: จาก "ตลาดวิชา" แห่งประวัติศาสตร์ สู่มหาวิทยาลัยวิจัยชั้นนำของโลก
+        ผู้นำ Triple Crown และพลังแห่งการพัฒนาสังคมอย่างยั่งยืน
       </p>
 
-      <button class="hero-scroll-btn" onclick="scrollToElement('scene1')">
-        <span>เลื่อนลงเพื่อสำรวจ</span>
+      <button class="hero-scroll-pill-btn" onclick="scrollToElement('statement')">
+        <span>Scroll down to race</span>
         <i class="fa-solid fa-arrow-down"></i>
       </button>
-
-      <div class="hero-stats-row">
-        <div class="hero-stat-card">
-          <span class="hero-stat-num">90 ปี</span>
-          <span class="hero-stat-desc">หมุดหมายแห่งประชาธิปไตยและการอุดมศึกษาไทย</span>
-        </div>
-        <div class="hero-stat-card">
-          <span class="hero-stat-num">42,650</span>
-          <span class="hero-stat-desc">ประชากรนักศึกษาปัจจุบันใน 4 ศูนย์ยุทธศาสตร์</span>
-        </div>
-        <div class="hero-stat-card">
-          <span class="hero-stat-num">Triple Crown</span>
-          <span class="hero-stat-desc">TBS รับรอง 3 สากล ติด 1 ใน 1% ของโลก</span>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       5. SCENE 1: STRAIGHT LINE CHART WITH EVENT MILESTONES (กราฟ 1)
+       4. SECTION 1: HIGH-KEY STATEMENT & 3 WINNING STAT CARDS (Frames 008s - 016s)
        ========================================================================== -->
-  <section class="bidwells-section section-light" id="scene1">
-    <div class="editorial-header">
-      <span class="editorial-tag">01 / หมุดหมายประวัติศาสตร์</span>
-      <h2 class="editorial-title">วิวัฒนาการ 9 ทศวรรษ: <em>จากระบบเปิดสู่ระบบปิด</em> และการขยาย 4 ศูนย์</h2>
-      <p class="editorial-desc">
-        ธรรมศาสตร์เริ่มต้นในฐานะ "ตลาดวิชา" เพื่อให้ประชาชนเข้าถึงการศึกษาได้อย่างเสมอภาค
-        ก่อนจะปฏิรูปสู่ "ระบบปิด" (Selective Admission) เพื่อยกระดับความเข้มข้นทางวิชาการ
-        และขยายศูนย์การศึกษาตอบรับการพัฒนาชาติ
-      </p>
-    </div>
+  <section class="bidwells-statement-section" id="statement">
+    <!-- Giant Watermark Outline Number 90 -->
+    <div class="watermark-giant-num">90</div>
 
-    <div class="timeline-milestones-container">
-      <div class="straight-line-track">
-        <div class="straight-line-axis"></div>
-        <div class="straight-line-progress" id="milestoneProgressLine"></div>
-        <div class="milestone-nodes-grid">
-          <div class="milestone-node active" onclick="selectMilestone(0)">
-            <div class="milestone-dot"></div>
-            <div class="milestone-year">2477</div>
-            <div class="milestone-title-short">สถาปนา มธก. (ระบบเปิด)</div>
-          </div>
-          <div class="milestone-node" onclick="selectMilestone(1)">
-            <div class="milestone-dot"></div>
-            <div class="milestone-year">2495</div>
-            <div class="milestone-title-short">เปลี่ยนชื่อ มธ.</div>
-          </div>
-          <div class="milestone-node" onclick="selectMilestone(2)">
-            <div class="milestone-dot"></div>
-            <div class="milestone-year">2496-03</div>
-            <div class="milestone-title-short">ปฏิรูป "ระบบปิด"</div>
-          </div>
-          <div class="milestone-node" onclick="selectMilestone(3)">
-            <div class="milestone-dot"></div>
-            <div class="milestone-year">2529</div>
-            <div class="milestone-title-short">เปิดศูนย์รังสิต</div>
-          </div>
-          <div class="milestone-node" onclick="selectMilestone(4)">
-            <div class="milestone-dot"></div>
-            <div class="milestone-year">2535</div>
-            <div class="milestone-title-short">ขยายศูนย์ลำปาง</div>
-          </div>
-          <div class="milestone-node" onclick="selectMilestone(5)">
-            <div class="milestone-dot"></div>
-            <div class="milestone-year">2538</div>
-            <div class="milestone-title-short">ขยายศูนย์พัทยา</div>
-          </div>
-          <div class="milestone-node" onclick="selectMilestone(6)">
-            <div class="milestone-dot"></div>
-            <div class="milestone-year">2567</div>
-            <div class="milestone-title-short">วาระ 90 ปี</div>
+    <div class="statement-container">
+      <!-- Left Photo Card + Overlapping Quote Box (Frame 009s) -->
+      <div class="statement-quote-grid">
+        <div class="editorial-photo-card">
+          <div class="editorial-photo-frame"></div>
+          <div class="overlapping-quote-card">
+            <div class="quote-icon-mark">“</div>
+            <div class="quote-text-primary">
+              Thanks to everyone back at the university
+            </div>
+            <div class="quote-text-sub">
+              ขอขอบคุณประชาคมธรรมศาสตร์ทุกคน — ผู้เป็นฟันเฟืองและพลังเบื้องหลังความสำเร็จตลอด 9 ทศวรรษ
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="milestone-detail-card" id="milestoneCard">
-        <div class="milestone-detail-info">
-          <h4 id="msTitle">พ.ศ. 2477 — สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง</h4>
-          <p id="msDesc">
-            ศ.ดร.ปรีดี พนมยงค์ ก่อตั้ง มธก. ในฐานะ "ตลาดวิชา" (ระบบเปิด) มีผู้สมัครเข้าเรียนรุ่นแรกสูงถึง 7,094 คน
-            เน้นการสอนวิชากฎหมาย การเมือง และเศรษฐกิจเพื่อรองรับการปกครองระบอบประชาธิปไตย
+        <div class="statement-narrative-box">
+          <h2 class="statement-main-text">
+            For most, that foundation lies within <span class="bidwells-highlight">มหาวิทยาลัยธรรมศาสตร์:</span> the global epicentre of knowledge, leadership and social transformation.
+          </h2>
+          <p class="statement-sub-text">
+            ตลอด 90 ปีที่ผ่านมา ธรรมศาสตร์ผลิตบัณฑิตและผู้นำที่ร่วมสร้างประวัติศาสตร์ ขับเคลื่อนเศรษฐกิจ และยกระดับคุณภาพชีวิตของประชาชนในทุกมิติ
+            ด้วย 26 คณะวิชา และ 4 วิทยาเขตยุทธศาสตร์ทั่วประเทศ
           </p>
         </div>
-        <div class="milestone-detail-badge">
-          <div class="val" id="msVal">7,094</div>
-          <div class="lbl" id="msLbl">นักศึกษารุ่นแรก</div>
-        </div>
       </div>
 
-      <div style="margin-top: 2.5rem; height: 260px;">
-        <canvas id="milestoneChartCanvas"></canvas>
+      <!-- 3 High-Contrast Vertical Cards with Colored Blocks (Frames 013s - 014s) -->
+      <div class="winning-cards-row">
+        <!-- Card 1: 90 Years / Sky Blue -->
+        <div class="winning-stat-card">
+          <div class="winning-card-top">
+            <div class="winning-number-row">
+              <span class="winning-number">90</span>
+              <span class="winning-unit">ปี</span>
+            </div>
+            <div class="winning-top-title">ประวัติศาสตร์แห่งเสรีภาพและความเสมอภาค</div>
+          </div>
+          <div class="winning-color-block block-sky-blue">
+            <div class="block-team-name">Tha Prachan</div>
+            <div class="block-team-loc">ศูนย์กลางมรดกทางปัญญา • Bangkok, TH</div>
+          </div>
+        </div>
+
+        <!-- Card 2: 26 Faculties / Crimson -->
+        <div class="winning-stat-card">
+          <div class="winning-card-top">
+            <div class="winning-number-row">
+              <span class="winning-number">26</span>
+              <span class="winning-unit">คณะ</span>
+            </div>
+            <div class="winning-top-title">4 เสาหลักทางวิชาการและสหวิทยาการ</div>
+          </div>
+          <div class="winning-color-block block-crimson">
+            <div class="block-team-name">Rangsit Cluster</div>
+            <div class="block-team-loc">ศูนย์วิจัยและนวัตกรรมขนาดใหญ่ 2,644 ไร่ • Pathum Thani, TH</div>
+          </div>
+        </div>
+
+        <!-- Card 3: Top 5 World SDG 11 / Emerald -->
+        <div class="winning-stat-card">
+          <div class="winning-card-top">
+            <div class="winning-number-row">
+              <span class="winning-number">Top 5</span>
+              <span class="winning-unit">โลก</span>
+            </div>
+            <div class="winning-top-title">อันดับโลกด้าน SDG 11 เมืองและชุมชนยั่งยืน</div>
+          </div>
+          <div class="winning-color-block block-emerald">
+            <div class="block-team-name">Green Circuit</div>
+            <div class="block-team-loc">อาคารป๋วย 100 ปี & สวนเกษตรอินทรีย์ลอยฟ้า • Global Impact</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       6. SCENE 2: BIDWELLS PRETTY DOTTED MATRIX MAP & 4 CAMPUSES (กราฟ 2)
+       5. SECTION 2: DARK BLUE CLUSTER MAP & 4 STRATEGIC CAMPUSES (017s - 024s)
        ========================================================================== -->
-  <section class="bidwells-section section-cream" id="scene2">
-    <div class="editorial-header">
-      <span class="editorial-tag">02 / ยุทธศาสตร์เครือข่าย</span>
-      <h2 class="editorial-title">ยุทธศาสตร์ 4 ศูนย์การศึกษา: <em>The Strategic Four Campuses</em></h2>
-      <p class="editorial-desc">
-        จากการตั้งมั่นริมฝั่งเจ้าพระยา สู่การกระจายโอกาสทางการศึกษาและศูนย์กลางวิจัย 4 แห่ง
-        ที่เชื่อมโยงกันอย่างเป็นเอกภาพ ตอบสนองการพัฒนาเศรษฐกิจ สังคม และนวัตกรรมแห่งอนาคต
+  <section class="bidwells-map-section" id="campuses">
+    <div class="map-section-header">
+      <div class="section-eyebrow">02 / เครือข่ายวิทยาเขตยุทธศาสตร์</div>
+      <h2 class="section-headline">
+        The Thammasat <em>Strategic Cluster</em>
+      </h2>
+      <p class="section-lead">
+        การกระจายตัวอย่างทรงพลังของ 4 ศูนย์การศึกษาหลัก: ท่าพระจันทร์, รังสิต, พัทยา และลำปาง
+        สร้างโครงข่ายการวิจัย นวัตกรรมการแพทย์ และการบริการสังคมที่เชื่อมโยงถึงกันอย่างสมบูรณ์แบบ
       </p>
     </div>
 
-    <div class="bidwells-map-layout">
-      <!-- Dotted Matrix Map (Bidwells Style) -->
-      <div class="map-svg-card">
-        <div class="map-orbital-badge">
-          <span class="map-orbital-dot"></span>
-          <span>เครือข่าย 4 ศูนย์ยุทธศาสตร์ (Thailand Matrix)</span>
-        </div>
-        
-        <svg viewBox="0 0 460 520" style="width: 100%; height: auto; display: block;">
-          <!-- Stylized Thailand Dotted Matrix Grid -->
-          <g fill="#1e293b" opacity="0.65">
-            <!-- Northern dots -->
-            <circle cx="160" cy="80" r="3"/> <circle cx="180" cy="70" r="3"/> <circle cx="200" cy="85" r="3"/>
-            <circle cx="170" cy="100" r="3"/> <circle cx="190" cy="110" r="3"/> <circle cx="210" cy="115" r="3"/>
-            <!-- Central dots -->
-            <circle cx="180" cy="200" r="3"/> <circle cx="200" cy="210" r="3"/> <circle cx="220" cy="215" r="3"/>
-            <circle cx="170" cy="240" r="3"/> <circle cx="190" cy="250" r="3"/> <circle cx="210" cy="255" r="3"/>
-            <circle cx="230" cy="260" r="3"/> <circle cx="180" cy="280" r="3"/> <circle cx="200" cy="285" r="3"/>
-            <!-- Isan dots -->
-            <circle cx="250" cy="180" r="3"/> <circle cx="270" cy="190" r="3"/> <circle cx="290" cy="200" r="3"/>
-            <circle cx="260" cy="220" r="3"/> <circle cx="280" cy="230" r="3"/> <circle cx="300" cy="240" r="3"/>
-            <!-- Southern dots -->
-            <circle cx="170" cy="350" r="3"/> <circle cx="180" cy="380" r="3"/> <circle cx="190" cy="410" r="3"/>
-            <circle cx="200" cy="440" r="3"/> <circle cx="210" cy="470" r="3"/>
-          </g>
+    <div class="cluster-map-layout">
+      <!-- Left Pill Menu (Frames 020s - 021s) -->
+      <div class="cluster-selector-pillbox">
+        <button class="cluster-select-btn active" onclick="selectCampusTab(0)">
+          <span>ท่าพระจันทร์ (Tha Prachan)</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button class="cluster-select-btn" onclick="selectCampusTab(1)">
+          <span>ศูนย์รังสิต (Rangsit)</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button class="cluster-select-btn" onclick="selectCampusTab(2)">
+          <span>ศูนย์พัทยา (Pattaya EEC)</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button class="cluster-select-btn" onclick="selectCampusTab(3)">
+          <span>ศูนย์ลำปาง (Lampang)</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button class="cluster-select-btn" onclick="selectCampusTab(4)">
+          <span>เครือข่าย 4 วิทยาเขตครบวงจร</span>
+          <i class="fa-solid fa-network-wired"></i>
+        </button>
+      </div>
 
-          <!-- Orbital Connecting Trajectories -->
-          <path d="M 185 110 Q 190 190 200 270" fill="none" stroke="rgba(197, 25, 68, 0.4)" stroke-width="2" stroke-dasharray="4 4" />
-          <path d="M 200 270 L 205 285" fill="none" stroke="rgba(197, 25, 68, 0.6)" stroke-width="2" />
-          <path d="M 205 285 Q 225 310 240 330" fill="none" stroke="rgba(197, 25, 68, 0.4)" stroke-width="2" stroke-dasharray="4 4" />
+      <!-- Right Interactive Map Canvas Card -->
+      <div class="cluster-map-canvas-card">
+        <div class="dotted-matrix-bg"></div>
 
-          <!-- Pulsing Target Rings & Markers -->
-          <!-- 1. Lampang -->
-          <g transform="translate(185, 110)" class="map-campus-marker" onclick="selectCampus(3)" style="cursor: pointer;">
-            <circle cx="0" cy="0" r="14" fill="none" stroke="#ffc72c" stroke-width="1.5" opacity="0.4">
-              <animate attributeName="r" values="8;18;8" dur="2.5s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="0" cy="0" r="6" fill="#ffc72c"/>
-            <text x="14" y="4" fill="#ffffff" font-size="11" font-weight="700">ลำปาง</text>
-          </g>
+        <div class="cluster-svg-stage" id="campusMapStage">
+          <!-- Orbital Connection Curves (SVG) -->
+          <svg width="100%" height="100%" viewBox="0 0 800 380" fill="none" style="position: absolute; top:0; left:0;">
+            <!-- Dashed Orbital Ellipses -->
+            <path d="M 180 200 C 260 80, 520 80, 600 200 C 520 320, 260 320, 180 200" stroke="#8acfe5" stroke-width="2" stroke-dasharray="6 6" opacity="0.45" />
+            <path d="M 280 220 C 350 140, 480 140, 550 220" stroke="#c51944" stroke-width="2" stroke-dasharray="4 4" opacity="0.65" />
+          </svg>
+
+          <!-- 4 Strategic Campus Nodes with Pulsing Target Rings -->
+          <!-- 1. Tha Prachan -->
+          <div class="campus-target-node" style="top: 220px; left: 240px;" onclick="selectCampusTab(0)">
+            <div class="target-ring-pulsing">
+              <div class="target-dot-center"></div>
+            </div>
+            <div class="campus-node-label">ท่าพระจันทร์ (49 ไร่)</div>
+          </div>
 
           <!-- 2. Rangsit -->
-          <g transform="translate(200, 270)" class="map-campus-marker" onclick="selectCampus(1)" style="cursor: pointer;">
-            <circle cx="0" cy="0" r="18" fill="none" stroke="#c51944" stroke-width="2" opacity="0.5">
-              <animate attributeName="r" values="10;22;10" dur="2s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="0" cy="0" r="8" fill="#c51944"/>
-            <text x="16" y="4" fill="#ffffff" font-size="12" font-weight="700">รังสิต (ศูนย์ใหญ่)</text>
-          </g>
-
-          <!-- 3. Tha Prachan -->
-          <g transform="translate(195, 290)" class="map-campus-marker" onclick="selectCampus(0)" style="cursor: pointer;">
-            <circle cx="0" cy="0" r="12" fill="none" stroke="#bfe5f2" stroke-width="1.5" opacity="0.6">
-              <animate attributeName="r" values="6;16;6" dur="2.2s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="0" cy="0" r="5" fill="#bfe5f2"/>
-            <text x="-75" y="4" fill="#bfe5f2" font-size="11" font-weight="700">ท่าพระจันทร์</text>
-          </g>
-
-          <!-- 4. Pattaya -->
-          <g transform="translate(240, 330)" class="map-campus-marker" onclick="selectCampus(2)" style="cursor: pointer;">
-            <circle cx="0" cy="0" r="12" fill="none" stroke="#00857c" stroke-width="1.5" opacity="0.6">
-              <animate attributeName="r" values="6;15;6" dur="2.8s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="0" cy="0" r="5" fill="#00857c"/>
-            <text x="14" y="4" fill="#ffffff" font-size="11" font-weight="700">พัทยา (EEC)</text>
-          </g>
-        </svg>
-      </div>
-
-      <!-- Campus Selectors & Factsheet -->
-      <div class="campus-card-selector">
-        <div class="campus-pill-btn active" onclick="selectCampus(0)">
-          <div>
-            <div class="campus-pill-title">ศูนย์ท่าพระจันทร์</div>
-            <div class="campus-pill-desc">49.5 ไร่ • ศูนย์กลางประวัติศาสตร์, บัณฑิตศึกษา และหลักสูตรนานาชาติ</div>
+          <div class="campus-target-node" style="top: 130px; left: 340px;" onclick="selectCampusTab(1)">
+            <div class="target-ring-pulsing">
+              <div class="target-dot-center"></div>
+            </div>
+            <div class="campus-node-label">ศูนย์รังสิต (2,644 ไร่)</div>
           </div>
-          <div class="campus-pill-stat">8,240 คน</div>
-        </div>
 
-        <div class="campus-pill-btn" onclick="selectCampus(1)">
-          <div>
-            <div class="campus-pill-title">ศูนย์รังสิต</div>
-            <div class="campus-pill-desc">1,757 ไร่ • วิทยาศาสตร์, เทคโนโลยี, สุขภาพ, ศูนย์กีฬา, อุทยานป๋วย 100 ปี</div>
+          <!-- 3. Pattaya -->
+          <div class="campus-target-node" style="top: 260px; left: 520px;" onclick="selectCampusTab(2)">
+            <div class="target-ring-pulsing">
+              <div class="target-dot-center"></div>
+            </div>
+            <div class="campus-node-label">ศูนย์พัทยา (566 ไร่)</div>
           </div>
-          <div class="campus-pill-stat">31,520 คน</div>
-        </div>
 
-        <div class="campus-pill-btn" onclick="selectCampus(2)">
-          <div>
-            <div class="campus-pill-title">ศูนย์พัทยา</div>
-            <div class="campus-pill-desc">566 ไร่ • ศูนย์นวัตกรรม EEC, ยานยนต์สมัยใหม่, ดิจิทัล & Medical Valley</div>
+          <!-- 4. Lampang -->
+          <div class="campus-target-node" style="top: 80px; left: 460px;" onclick="selectCampusTab(3)">
+            <div class="target-ring-pulsing">
+              <div class="target-dot-center"></div>
+            </div>
+            <div class="campus-node-label">ศูนย์ลำปาง (848 ไร่)</div>
           </div>
-          <div class="campus-pill-stat">1,280 คน</div>
         </div>
 
-        <div class="campus-pill-btn" onclick="selectCampus(3)">
-          <div>
-            <div class="campus-pill-title">ศูนย์ลำปาง</div>
-            <div class="campus-pill-desc">864 ไร่ • ศูนย์กลางล้านนาสร้างสรรค์, การพัฒนาชุมชนและเศรษฐกิจภาคเหนือ</div>
+        <!-- Campus Info Strip -->
+        <div class="campus-metrics-strip" id="campusMetricsBox">
+          <div class="campus-metric-item">
+            <div class="val" id="cArea">49 ไร่</div>
+            <div class="lbl">พื้นที่วิทยาเขต</div>
           </div>
-          <div class="campus-pill-stat">1,610 คน</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       7. SCENE 3: BIDWELLS 3-COLUMN NUMBER CARDS & 26 FACULTIES (กราฟ 3)
-       ========================================================================== -->
-  <section class="bidwells-section section-light" id="scene3">
-    <div class="editorial-header">
-      <span class="editorial-tag">03 / โครงสร้างวิชาการ</span>
-      <h2 class="editorial-title">26 คณะ & สถาบัน: <em>ความเป็นเลิศระดับสากลและข้อมูลสอบเข้า</em></h2>
-      <p class="editorial-desc">
-        โครงสร้างวิชาการครอบคลุม 3 กลุ่มสาขาวิชาหลัก พร้อมเกณฑ์การคัดเลือก TCAS อัตราการได้งานทำ
-        และการรับรองมาตรฐานระดับโลก คลิกลงบนแต่ละคณะเพื่อดูรายละเอียดเชิงลึก
-      </p>
-    </div>
-
-    <!-- 3 High-Contrast Bidwells Number Cards -->
-    <div class="bidwells-3col-grid">
-      <div class="bidwells-num-card">
-        <div class="num-card-body">
-          <div class="num-card-metric">10</div>
-          <div class="num-card-title">สังคมศาสตร์ & มนุษยศาสตร์</div>
-          <div class="num-card-sub">นิติศาสตร์, พาณิชย์ฯ, รัฐศาสตร์, เศรษฐศาสตร์, วารสารฯ, ศิลปศาสตร์, สังคมสงเคราะห์, ศิลปกรรม, วิทยาลัยนวัตกรรม, สหวิทยาการ</div>
-        </div>
-        <div class="num-card-footer-block bg-crimson">
-          <span class="footer-block-main">เสาหลักประชาธิปไตย & การค้า</span>
-          <span class="footer-block-sub">นศ. รวม 21,800 คน • สัดส่วนหญิง 66.8%</span>
-        </div>
-      </div>
-
-      <div class="bidwells-num-card">
-        <div class="num-card-body">
-          <div class="num-card-metric">8</div>
-          <div class="num-card-title">วิทยาศาสตร์ & เทคโนโลยี</div>
-          <div class="num-card-sub">วิทยาศาสตร์ฯ, วิศวกรรมศาสตร์, สถาปัตยกรรมและการผังเมือง, SIIT, นวัตกรรมยาง, นวัตกรรมบริการ, ปัญญาประดิษฐ์</div>
-        </div>
-        <div class="num-card-footer-block bg-sky">
-          <span class="footer-block-main">วิศวกรรม & AI ขับเคลื่อนอนาคต</span>
-          <span class="footer-block-sub">นศ. รวม 12,450 คน • การจ้างงาน 94.2%</span>
-        </div>
-      </div>
-
-      <div class="bidwells-num-card">
-        <div class="num-card-body">
-          <div class="num-card-metric">8</div>
-          <div class="num-card-title">วิทยาศาสตร์สุขภาพและการแพทย์</div>
-          <div class="num-card-sub">แพทยศาสตร์, ทันตแพทยศาสตร์, สหเวชศาสตร์, พยาบาลศาสตร์, สาธารณสุขศาสตร์, เภสัชศาสตร์, CICM, แพทย์แผนไทยประยุกต์</div>
-        </div>
-        <div class="num-card-footer-block bg-emerald">
-          <span class="footer-block-main">ศูนย์การแพทย์ตติยภูมิชั้นสูง</span>
-          <span class="footer-block-sub">นศ. รวม 8,400 คน • รพ.ธรรมศาสตร์ 810 เตียง</span>
+          <div class="campus-metric-item">
+            <div class="val" id="cStudents">6,310 คน</div>
+            <div class="lbl">ประชากรนักศึกษา</div>
+          </div>
+          <div class="campus-metric-item">
+            <div class="val" id="cRole">มรดกประชาธิปไตย</div>
+            <div class="lbl">อัตลักษณ์ยุทธศาสตร์</div>
+          </div>
+          <div class="campus-metric-item">
+            <div class="val" id="cFocus">นานาชาติ / บัณฑิตศึกษา</div>
+            <div class="lbl">ทิศทางวิชาการ</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 26 Faculties Interactive Grid -->
-    <div class="faculty-pills-shelf">
-      <div class="shelf-heading">
-        <span><i class="fa-solid fa-compass"></i> คลิกเลือกคณะเพื่อดูคะแนนสอบเข้า TCAS และรายละเอียดเชิงลึก</span>
-        <span style="font-size: 0.85rem; color: #64748b; font-weight: normal;">ครอบคลุมทั้ง 26 คณะ & สถาบัน</span>
-      </div>
-      <div class="faculty-tags-flex" id="facultyTagsContainer">
-        <!-- Rendered via JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Modal for Faculty Details -->
-  <div class="faculty-modal-overlay" id="facultyModal">
-    <div class="faculty-modal-card">
-      <button class="modal-close-btn" onclick="closeFacultyModal()"><i class="fa-solid fa-xmark"></i></button>
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem;">
-        <span style="background: var(--bidwells-crimson); color: #fff; padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 700;" id="modalCategory">กลุ่มสังคมศาสตร์</span>
-        <span style="font-size: 0.85rem; color: #64748b;" id="modalCode">THAMMASAT UNIVERSITY</span>
-      </div>
-      <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--bidwells-navy); margin-bottom: 0.6rem;" id="modalName">คณะพาณิชยศาสตร์และการบัญชี (TBS)</h3>
-      <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" id="modalDesc">
-        สถาบันการศึกษาบริหารธุรกิจชั้นนำแห่งแรกของไทยที่ได้รับรองมาตรฐานระดับโลกครบ 3 มงกุฎ (Triple Crown)
-      </p>
-
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; background: #f8fafc; padding: 1.2rem; border-radius: 8px; margin-bottom: 1.5rem;">
+    <!-- Multi-Era Student Distribution Chart -->
+    <div class="campus-distribution-card">
+      <div class="distribution-controls-row">
         <div>
-          <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase;">คะแนน TCAS เฉลี่ย</div>
-          <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--bidwells-crimson);" id="modalScore">74.5 / 100</div>
+          <h4 style="font-size: 1.15rem; font-weight: 700; color: #ffffff;">การกระจายสัดส่วนนักศึกษาตามยุคสมัย (Campus Distribution Shift)</h4>
+          <p style="font-size: 0.85rem; color: #94a3b8;">จากท่าพระจันทร์ 100% สู่การเป็นศูนย์กลางวิชาการขนาดใหญ่ที่รังสิตและเครือข่ายภูมิภาค</p>
         </div>
-        <div>
-          <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase;">อัตราได้งานทำ</div>
-          <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--bidwells-navy);" id="modalEmploy">96.8%</div>
-        </div>
-        <div>
-          <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase;">มาตรฐานสากล</div>
-          <div style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: #00857c;" id="modalAccred">Triple Crown</div>
+        <div style="display: flex; gap: 8px;">
+          <button class="era-pill-btn active" onclick="setDistributionEra('all')">วิวัฒนาการ 4 ยุค</button>
+          <button class="era-pill-btn" onclick="setDistributionEra('2567')">สัดส่วนปัจจุบัน (2567)</button>
         </div>
       </div>
-
-      <div style="border-top: 1px solid #e2e8f0; padding-top: 1rem; font-size: 0.88rem; color: #64748b;">
-        <strong>จุดเด่นและหลักสูตรแนะนำ:</strong> <span id="modalHighlight">BBA International, MSF Master in Finance, MIM การตลาดระดับโลก, โครงการแลกเปลี่ยนมหาวิทยาลัยพันธมิตรกว่า 100 แห่งทั่วโลก</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
-       8. SCENE 4: DEMOGRAPHIC METRIC (กราฟ 4)
-       ========================================================================== -->
-  <section class="bidwells-section section-cream" id="scene4">
-    <div class="editorial-header">
-      <span class="editorial-tag">04 / มิติประชากรศาสตร์</span>
-      <!-- Exact Title Requested By User -->
-      <h2 class="editorial-title">มิติประชากร: หญิง 62.4% พลังขับเคลื่อนแห่งอนาคต</h2>
-      <p class="editorial-desc">
-        สะท้อนบทบาทสตรีในการกำหนดทิศทางสังคมและการพัฒนาประเทศ สัดส่วนนักศึกษาหญิงมีบทบาทโดดเด่น
-        ทั้งในกลุ่มวิทยาศาสตร์สุขภาพ สังคมศาสตร์ และการบริหารจัดการระดับสูง
-      </p>
-    </div>
-
-    <div class="demographics-grid">
-      <!-- Bidwells Frame 011s Style Large Numbers -->
-      <div class="bidwells-stat-stack">
-        <div class="stat-stack-item">
-          <div class="stat-stack-number">62.4%</div>
-          <div class="stat-stack-text">
-            <strong>นักศึกษาหญิง (26,613 คน)</strong><br>
-            เป็นเสียงส่วนใหญ่ในเกือบทุกกลุ่มสาขาวิชา และครองตำแหน่งผู้นำกิจกรรมนักศึกษา
-          </div>
-        </div>
-
-        <div class="stat-stack-item">
-          <div class="stat-stack-number" style="color: var(--bidwells-navy);">37.6%</div>
-          <div class="stat-stack-text">
-            <strong>นักศึกษาชาย (16,037 คน)</strong><br>
-            มีสัดส่วนหนาแน่นในกลุ่มวิศวกรรมศาสตร์ เทคโนโลยี และวิทยาศาสตร์ประยุกต์
-          </div>
-        </div>
-
-        <div class="stat-stack-item">
-          <div class="stat-stack-number" style="color: #00857c;">1.66 : 1</div>
-          <div class="stat-stack-text">
-            <strong>อัตราส่วนหญิงต่อชาย</strong><br>
-            สอดคล้องกับแนวโน้มมหาวิทยาลัยชั้นนำระดับนานาชาติด้านความเสมอภาคทางการศึกษา
-          </div>
-        </div>
-      </div>
-
-      <div style="background: #ffffff; border: 2px solid var(--bidwells-navy); border-radius: var(--bidwells-radius); padding: 2.5rem; box-shadow: var(--bidwells-shadow);">
-        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--bidwells-navy); margin-bottom: 1.2rem;">
-          สัดส่วนเพศแยกตามกลุ่มสาขาวิชา (%)
-        </h4>
-        <div style="height: 280px;">
-          <canvas id="genderGroupChartCanvas"></canvas>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       9. SCENE 5: CLEAR MULTI-ERA CAMPUS DISTRIBUTION (กราฟ 5 - แทนสายธาร)
-       ========================================================================== -->
-  <section class="bidwells-section section-light" id="scene5">
-    <div class="editorial-header">
-      <span class="editorial-tag">05 / พลวัตพื้นที่</span>
-      <h2 class="editorial-title">การกระจายตัวและการย้ายศูนย์การศึกษา: <em>คมชัด เข้าใจง่ายในพริบตา</em></h2>
-      <p class="editorial-desc">
-        แทนกราฟสายธารที่ซับซ้อนด้วยแผนภาพการกระจายตัวของประชากรนักศึกษาระหว่าง 4 ศูนย์
-        เปรียบเทียบวิวัฒนาการตั้งแต่ยุคเริ่มต้น 100% ที่ท่าพระจันทร์ สู่การเป็นรังสิตเมกะแคมปัสในปัจจุบัน
-      </p>
-    </div>
-
-    <div class="distribution-card">
-      <div class="distribution-toggle-bar">
-        <button class="dist-toggle-btn active" onclick="setDistributionMode('stacked')">สัดส่วนร้อยละ (%)</button>
-        <button class="dist-toggle-btn" onclick="setDistributionMode('count')">จำนวนนักศึกษาจริง (คน)</button>
-      </div>
-
-      <div style="height: 380px;">
+      <div style="height: 240px;">
         <canvas id="campusDistributionCanvas"></canvas>
       </div>
     </div>
+
+    <!-- Straight Line Milestone Chart (Closed System Reform 2496-2503) -->
+    <div class="milestones-strip-section">
+      <div style="font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 20px;">
+        <i class="fa-solid fa-timeline" style="color: var(--tu-gold); margin-right: 10px;"></i>
+        วิวัฒนาการระบบการศึกษา: <em>การปฏิรูป "ระบบปิด" (2496–2503)</em> และการขยายวิทยาเขต
+      </div>
+
+      <div class="milestone-stepper-track">
+        <div class="stepper-bg-line"></div>
+        <div class="stepper-node active" onclick="setMilestoneStep(0)">
+          <div class="stepper-circle">1</div>
+          <div class="stepper-year">2477</div>
+          <div class="stepper-node-title">สถาปนา มธก. (ระบบเปิด)</div>
+        </div>
+        <div class="stepper-node" onclick="setMilestoneStep(1)">
+          <div class="stepper-circle">2</div>
+          <div class="stepper-year">2495</div>
+          <div class="stepper-node-title">เปลี่ยนชื่อ มธ.</div>
+        </div>
+        <div class="stepper-node" onclick="setMilestoneStep(2)">
+          <div class="stepper-circle">3</div>
+          <div class="stepper-year">2496-03</div>
+          <div class="stepper-node-title">ปฏิรูปสู่ "ระบบปิด"</div>
+        </div>
+        <div class="stepper-node" onclick="setMilestoneStep(3)">
+          <div class="stepper-circle">4</div>
+          <div class="stepper-year">2529</div>
+          <div class="stepper-node-title">เปิดศูนย์รังสิต</div>
+        </div>
+        <div class="stepper-node" onclick="setMilestoneStep(4)">
+          <div class="stepper-circle">5</div>
+          <div class="stepper-year">2535</div>
+          <div class="stepper-node-title">เปิดศูนย์ลำปาง</div>
+        </div>
+        <div class="stepper-node" onclick="setMilestoneStep(5)">
+          <div class="stepper-circle">6</div>
+          <div class="stepper-year">2538</div>
+          <div class="stepper-node-title">เปิดศูนย์พัทยา</div>
+        </div>
+        <div class="stepper-node" onclick="setMilestoneStep(6)">
+          <div class="stepper-circle">7</div>
+          <div class="stepper-year">2567</div>
+          <div class="stepper-node-title">วาระ 90 ปี</div>
+        </div>
+      </div>
+
+      <div class="milestone-event-card" id="milestoneEventCard">
+        <div>
+          <h4 id="mEventTitle" style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">
+            พ.ศ. 2477 — สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง
+          </h4>
+          <p id="mEventDesc" style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6;">
+            ศ.ดร.ปรีดี พนมยงค์ สถาปนา มธก. ในฐานะ "ตลาดวิชา" มีผู้สมัครเข้าเรียนรุ่นแรกสูงถึง 7,094 คน เพื่อเป็นบ่อน้ำบำบัดความกระหายของราษฎร
+          </p>
+        </div>
+        <div style="text-align: right; min-width: 130px;">
+          <div id="mEventStat" style="font-size: 2rem; font-weight: 800; color: var(--tu-gold);">7,094</div>
+          <div id="mEventLabel" style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">นักศึกษารุ่นแรก</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ==========================================================================
-       10. SCENE 6: 5-YEAR BUDGET COMPARISON & DRILL-DOWN (กราฟ 6 - Bidwells Cost Cap)
+       6. SECTION 3: TEAL SECTION - COST CAP & BUDGET ANALYSIS (025s - 035s)
        ========================================================================== -->
-  <section class="bidwells-section section-teal" id="scene6">
-    <div class="editorial-header">
-      <span class="editorial-tag">06 / การเงินและงบประมาณ</span>
-      <h2 class="editorial-title">งบประมาณ 5 ปี (2563 — 2567): <em>คลิกที่แท่งเพื่อเจาะลึก 5 แหล่งรายได้</em></h2>
-      <p class="editorial-desc">
-        สะท้อนความมั่นคงทางการเงินและการบริหารจัดการตนเองอย่างมีประสิทธิภาพ
-        งบประมาณรวมเติบโตเฉลี่ย 3.8% ต่อปี จากการขยายงานบริการทางการแพทย์และการวิจัย
-      </p>
-    </div>
+  <section class="bidwells-teal-section" id="budget">
+    <div class="teal-container">
+      <div style="margin-bottom: 40px;">
+        <div style="font-size: 0.8rem; font-weight: 800; color: var(--tu-gold); letter-spacing: 0.12em; text-transform: uppercase;">03 / วินัยทางการเงินและโครงสร้างประชากร</div>
+        <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 700; line-height: 1.25;">
+          The Drive to <em>Innovate</em>
+        </h2>
+      </div>
 
-    <div class="bidwells-cost-card">
-      <div class="cost-card-left">
-        <h3 class="cost-card-title">ความมั่นคงทางการเงิน</h3>
-        <p class="cost-card-desc">
-          มหาวิทยาลัยธรรมศาสตร์สามารถพึ่งพาตนเองได้สูงถึง 72% ผ่านค่าธรรมเนียมการศึกษา
-          บริการทางการแพทย์ของ รพ.ธรรมศาสตร์เฉลิมพระเกียรติ และการวิจัยร่วมกับภาคอุตสาหกรรม
+      <!-- Card 1: 5-Year Budget Comparison (Cost Cap Style Frame 030s) -->
+      <div class="cost-cap-white-card">
+        <div class="cost-cap-grid">
+          <div class="cost-cap-narrative">
+            <h3 class="cost-cap-title">Financial Performance & Budget Growth</h3>
+            <p class="cost-cap-lead">
+              เปรียบเทียบงบประมาณรายรับ 5 ปีต่อเนื่อง (2563–2567) เติบโตจาก 13,420 ล้านบาท สู่ 15,350 ล้านบาท
+              ด้วยการบริหารจัดการที่เป็นอิสระ เสริมสร้างความเข้มแข็งของ 5 แหล่งรายได้หลัก
+            </p>
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--bidwells-navy); margin-bottom: 6px;">คลิกเพื่อเจาะลึก 5 แหล่งรายได้หลัก:</div>
+            <div class="drilldown-pills-row">
+              <button class="drilldown-pill active" onclick="drilldownStream(0)">1. งบแผ่นดิน (35.8%)</button>
+              <button class="drilldown-pill" onclick="drilldownStream(1)">2. ค่าธรรมเนียมศึกษา (32.4%)</button>
+              <button class="drilldown-pill" onclick="drilldownStream(2)">3. ทรัพย์สิน & ลงทุน (18.2%)</button>
+              <button class="drilldown-pill" onclick="drilldownStream(3)">4. ทุนวิจัยบริการ (8.6%)</button>
+              <button class="drilldown-pill" onclick="drilldownStream(4)">5. บริการการแพทย์ (5.0%)</button>
+            </div>
+            <div id="streamDetailBox" style="margin-top: 16px; padding: 14px; background: #f8fafc; border-radius: 10px; font-size: 0.84rem; color: #475569; border-left: 3px solid var(--bidwells-crimson);">
+              <strong>งบประมาณแผ่นดิน (35.8% • 5,495 ล้านบาท):</strong> เงินอุดหนุนทั่วไปและโครงการพัฒนาเชิงยุทธศาสตร์ระดับชาติ
+            </div>
+          </div>
+
+          <div style="height: 320px;">
+            <canvas id="budgetChartCanvas"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Demographic Balance - Female 62.4% -->
+      <div class="demographic-white-card">
+        <h3 class="demographic-headline">มิติประชากร: หญิง 62.4% พลังขับเคลื่อนแห่งอนาคต</h3>
+        <p class="demographic-sub">
+          สัดส่วนนักศึกษาหญิงมีบทบาทสำคัญในทุกกลุ่มสาขาวิชา สะท้อนความเป็นผู้นำและความเสมอภาคทางโอกาสในศตวรรษที่ 21
         </p>
 
-        <div class="budget-drilldown-box" id="budgetDrilldownBox">
-          <div class="budget-drilldown-year" id="drilldownYear">ปีงบประมาณ 2567 (12,890 ล้านบาท)</div>
-          <ul style="list-style: none; font-size: 0.88rem; line-height: 1.8; color: #475569;" id="drilldownList">
-            <li>• ค่าธรรมเนียมการศึกษา: 4,382.6 ลบ. (34.0%)</li>
-            <li>• เงินอุดหนุนรัฐบาล: 3,609.2 ลบ. (28.0%)</li>
-            <li>• รายได้บริการการแพทย์/รพ.: 3,093.6 ลบ. (24.0%)</li>
-            <li>• วิจัย & บริการวิชาการ: 1,160.1 ลบ. (9.0%)</li>
-            <li>• ผลประโยชน์ทรัพย์สิน & ลงทุน: 644.5 ลบ. (5.0%)</li>
-          </ul>
+        <div class="demographic-ratio-bar-wrap">
+          <div class="ratio-bar">
+            <div class="ratio-female">หญิง 62.4% (26,613 คน)</div>
+            <div class="ratio-male">ชาย 37.6% (16,037 คน)</div>
+          </div>
+        </div>
+
+        <div style="height: 260px;">
+          <canvas id="genderGroupChartCanvas"></canvas>
         </div>
       </div>
 
-      <div>
-        <div style="height: 340px;">
-          <canvas id="budgetBarChartCanvas"></canvas>
+      <!-- Card 3: 26 Faculties Grid & TCAS Drilldown -->
+      <div class="faculties-white-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--bidwells-navy);">
+              โครงสร้าง 26 คณะ & เกณฑ์การรับเข้า TCAS
+            </h3>
+            <p style="font-size: 0.88rem; color: #64748b;">
+              คลิกที่แต่ละคณะวิชาเพื่อเปิดดูเกณฑ์คะแนนขั้นต่ำ อัตราการแข่งขัน และเส้นทางอาชีพ
+            </p>
+          </div>
         </div>
-        <div style="text-align: center; margin-top: 12px; font-size: 0.78rem; color: #64748b;">
-          * คลิกที่แท่งปีงบประมาณเพื่อสลับดูการแจกแจงรายได้ของปีนั้น
+
+        <div class="faculties-filter-pills">
+          <button class="fac-pill active" onclick="filterFaculties('all')">ทั้งหมด (26 คณะ)</button>
+          <button class="fac-pill" onclick="filterFaculties('soc')">สังคมศาสตร์และมนุษยศาสตร์</button>
+          <button class="fac-pill" onclick="filterFaculties('sci')">วิทยาศาสตร์และเทคโนโลยี</button>
+          <button class="fac-pill" onclick="filterFaculties('med')">วิทยาศาสตร์สุขภาพ</button>
+          <button class="fac-pill" onclick="filterFaculties('inter')">วิทยาลัยนานาชาติและนวัตกรรม</button>
+        </div>
+
+        <div class="faculties-cards-grid" id="facultiesGrid">
+          <!-- Populated by JavaScript -->
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       11. SCENE 7: BUSINESS SCHOOL BENCHMARKING (กราฟ 7 - TBS vs CBS, Sasin, etc.)
+       7. SECTION 4: CURVED RACETRACK & TBS TRIPLE CROWN BENCHMARKING (037s - 040s)
        ========================================================================== -->
-  <section class="bidwells-section section-light" id="scene7">
-    <div class="editorial-header">
-      <span class="editorial-tag">07 / การเปรียบเทียบมาตรฐานสากล</span>
-      <h2 class="editorial-title">TBS Benchmark: <em>เปรียบเทียบกับ Business Schools ชั้นนำของไทย</em></h2>
-      <p class="editorial-desc">
-        คณะพาณิชยศาสตร์และการบัญชี มหาวิทยาลัยธรรมศาสตร์ (TBS) เทียบเคียงกับ Chulalongkorn Business School (CBS),
-        Sasin School of Management, CMMU (มหิดล) และ NIDA Business School
-      </p>
-    </div>
+  <section class="bidwells-curved-track-section" id="racing-curve">
+    <div class="curved-track-overlay-dim"></div>
 
-    <div class="benchmark-card-grid">
-      <!-- Comparative Table -->
-      <div>
-        <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--bidwells-navy); margin-bottom: 1rem;">
-          ตารางเปรียบเทียบมาตรฐานสากล (Top Thai Business Schools)
-        </h4>
-        <table class="matrix-table">
+    <div class="curved-track-content">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <div style="font-size: 0.8rem; font-weight: 800; color: var(--tu-gold); letter-spacing: 0.12em; text-transform: uppercase;">04 / การแข่งขันและมาตรฐานระดับโลก</div>
+        <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 700; line-height: 1.2;">
+          Navigating Curves: <em>Triple Crown Leadership</em>
+        </h2>
+        <p style="font-size: 1.1rem; color: #cbd5e1; max-width: 800px; margin: 10px auto 0;">
+          การขับเคี่ยวบนสนามการศึกษามาตรฐานสากล: คณะพาณิชยศาสตร์และการบัญชี (TBS) คว้า 3 มงกุฎระดับโลก
+        </p>
+      </div>
+
+      <!-- S-Turn Track Stage with Dynamic Turning F1 Cars -->
+      <div class="turning-cars-stage">
+        <!-- Car 1 (White) entering the curve -->
+        <div class="turning-car-wrap turning-car-1" id="turnCar1">
+          <img src="assets/car-white.png" alt="TBS F1 Car White" class="f1-car-img" />
+        </div>
+        <!-- Car 2 (Pink) on apex of curve -->
+        <div class="turning-car-wrap turning-car-2" id="turnCar2">
+          <img src="assets/car-pink.png" alt="Thammasat F1 Car Pink" class="f1-car-img" />
+        </div>
+        <!-- Car 3 (Blue) in pursuit -->
+        <div class="turning-car-wrap turning-car-3" id="turnCar3">
+          <img src="assets/car-blue.png" alt="Competitor F1 Car Blue" class="f1-car-img" />
+        </div>
+      </div>
+
+      <!-- Benchmarking Matrix Card -->
+      <div class="tbs-benchmark-card">
+        <div class="tbs-header-row">
+          <div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: #ffffff;">
+              Thailand Business School Excellence Race
+            </h3>
+            <p style="font-size: 0.85rem; color: #cbd5e1;">TBS มหาวิทยาลัยธรรมศาสตร์ ครองการรับรองครบ 3 สถาบันหลักระดับโลก</p>
+          </div>
+          <div class="triple-crown-badges-row">
+            <span class="crown-badge">AACSB (USA)</span>
+            <span class="crown-badge">EQUIS (EU)</span>
+            <span class="crown-badge">AMBA (UK)</span>
+          </div>
+        </div>
+
+        <table class="benchmark-table">
           <thead>
             <tr>
-              <th>สถาบัน</th>
-              <th>การรับรองระดับโลก</th>
-              <th>QS Subject Ranking</th>
-              <th>หลักสูตร FT Ranking</th>
+              <th>สถาบันการศึกษา</th>
+              <th>สถานะมงกุฎ</th>
+              <th>AACSB</th>
+              <th>EQUIS</th>
+              <th>AMBA</th>
+              <th>การจัดอันดับโลก</th>
             </tr>
           </thead>
           <tbody>
             <tr class="highlight-tbs">
-              <td><strong>TBS (ธรรมศาสตร์)</strong></td>
-              <td><span class="matrix-badge-crown"><i class="fa-solid fa-crown"></i> Triple Crown</span> (AACSB+EQUIS+AMBA)</td>
-              <td>#1 ในไทย / Top 150 โลก</td>
-              <td>MSF & MIM ติดอันดับโลก</td>
+              <td><strong>ธรรมศาสตร์ (TBS)</strong></td>
+              <td><span style="color: var(--tu-gold);">👑 Triple Crown (100%)</span></td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td>Top 1% ของโลก (Eduniversal 5 Palms)</td>
             </tr>
             <tr>
-              <td><strong>CBS (จุฬาลงกรณ์)</strong></td>
-              <td>Dual Accreditation (AACSB + EQUIS)</td>
-              <td>#1-2 ในไทย / Top 150 โลก</td>
-              <td>MSc in Finance</td>
+              <td>จุฬาลงกรณ์ (CBS)</td>
+              <td>Dual Crown (66%)</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><i class="fa-solid fa-circle-xmark" style="color: #94a3b8;"></i> กำลังพัฒนา</td>
+              <td>Top Tier Business School</td>
             </tr>
             <tr>
-              <td><strong>Sasin (SASIN)</strong></td>
-              <td>Dual Accreditation (AACSB + EQUIS)</td>
-              <td>เน้น Executive MBA</td>
-              <td>EMBA Top Tier เอเชีย</td>
+              <td>ศศินทร์ (Sasin)</td>
+              <td>Dual Crown (66%)</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><i class="fa-solid fa-circle-xmark" style="color: #94a3b8;"></i> -</td>
+              <td>Global Executive Education</td>
             </tr>
             <tr>
-              <td><strong>CMMU (มหิดล)</strong></td>
-              <td>AACSB Accredited</td>
-              <td>Top 300 โลก (Management)</td>
-              <td>General Management</td>
+              <td>มหิดล (CMMU)</td>
+              <td>Single Crown (33%)</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><i class="fa-solid fa-circle-xmark" style="color: #94a3b8;"></i> -</td>
+              <td><i class="fa-solid fa-circle-xmark" style="color: #94a3b8;"></i> -</td>
+              <td>Management Innovation</td>
             </tr>
             <tr>
-              <td><strong>NIDA Business School</strong></td>
-              <td>AACSB Accredited</td>
-              <td>ระดับประเทศ</td>
-              <td>MBA & DBA</td>
+              <td>นิด้า (NIDA Business School)</td>
+              <td>Single Crown (33%)</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><i class="fa-solid fa-circle-xmark" style="color: #94a3b8;"></i> -</td>
+              <td><i class="fa-solid fa-circle-xmark" style="color: #94a3b8;"></i> -</td>
+              <td>Graduate Leadership</td>
             </tr>
           </tbody>
         </table>
       </div>
-
-      <!-- Radar Chart -->
-      <div>
-        <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--bidwells-navy); margin-bottom: 1rem;">
-          เรดาร์เปรียบเทียบมิติความแข็งแกร่ง (TBS vs CBS)
-        </h4>
-        <div style="height: 320px;">
-          <canvas id="businessSchoolRadarCanvas"></canvas>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       12. SCENE 8: SUSTAINABLE TECH CIRCUIT & HOSPITAL (กราฟ 8 & 9 - Frame 043s)
+       8. SECTION 5: SILVERSTONE CIRCUIT MILESTONE TRACK (Frames 041s - 050s)
        ========================================================================== -->
-  <section class="bidwells-section section-cream" id="scene8">
-    <div class="editorial-header">
-      <span class="editorial-tag">08 / ความยั่งยืนและสุขภาวะสังคม</span>
-      <h2 class="editorial-title">SDG 11 & สุขภาวะ: <em>อันดับ 1 ของไทยสู่ศูนย์การแพทย์ตติยภูมิ</em></h2>
-      <p class="editorial-desc">
-        สถาปัตยกรรมอุทยานเรียนรู้ป๋วย 100 ปี หลังคาเขียวฟาร์มเกษตรอินทรีย์ที่ใหญ่ที่สุดในเอเชีย
-        เคียงคู่กับโรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ เสาหลักสุขภาวะแห่งกรุงเทพฯ ตอนเหนือ
+  <section class="bidwells-circuit-section" id="circuit">
+    <div style="max-width: 1200px; margin: 0 auto 40px;">
+      <div style="font-size: 0.8rem; font-weight: 800; color: var(--bidwells-crimson); letter-spacing: 0.12em; text-transform: uppercase;">05 / วงจรนวัตกรรมและพันธกิจสังคม</div>
+      <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 700; color: var(--bidwells-navy); line-height: 1.25;">
+        The Strategic <em>Innovation Circuit</em>
+      </h2>
+      <p style="font-size: 1.05rem; color: #64748b; max-width: 780px; line-height: 1.7;">
+        เส้นทางหมุดหมายสำคัญ 4 ด้านที่ขับเคลื่อนความก้าวหน้าของมหาวิทยาลัยธรรมศาสตร์สู่ระดับสากล
       </p>
     </div>
 
-    <div class="circuit-milestone-layout">
-      <!-- Circuit SVG Map (Bidwells Frame 043s Style) -->
-      <div class="circuit-svg-container">
-        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--bidwells-navy); margin-bottom: 1rem;">
-          เส้นทางนวัตกรรมสีเขียวและความยั่งยืน (Green Circuit)
-        </h4>
-        <svg viewBox="0 0 400 320" style="width: 100%; height: auto;">
-          <!-- Circuit Loop Track -->
-          <path d="M 60 160 C 60 60, 200 40, 320 80 C 380 110, 360 260, 240 280 C 140 300, 60 240, 60 160 Z"
-                fill="none" stroke="#bfe5f2" stroke-width="6" stroke-linecap="round"/>
-          <path d="M 60 160 C 60 60, 200 40, 320 80"
-                fill="none" stroke="#c51944" stroke-width="6" stroke-linecap="round"/>
+    <div class="circuit-layout-grid">
+      <!-- Silverstone SVG Vector Track Outline -->
+      <div class="silverstone-svg-container">
+        <svg width="100%" height="100%" viewBox="0 0 680 460" fill="none">
+          <!-- Circuit Outer Boundary Path (Silverstone layout from frame 044s) -->
+          <path id="circuitBasePath" d="M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160 C 620 200, 600 290, 540 340 C 470 390, 360 410, 300 370 C 240 330, 180 340, 150 290 C 110 240, 110 210, 120 180 Z" stroke="#00857c" stroke-width="6" opacity="0.45" stroke-linecap="round" stroke-linejoin="round" />
+          
+          <!-- Animated Progress Path -->
+          <path id="circuitActivePath" d="M 120 180 C 130 90, 220 80, 280 140" stroke="#c51944" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
 
-          <!-- Circuit Nodes -->
-          <g transform="translate(60, 160)" onclick="selectCircuit(0)" style="cursor: pointer;">
-            <circle cx="0" cy="0" r="10" fill="#c51944" stroke="#ffffff" stroke-width="3"/>
-            <text x="-45" y="24" fill="#0b163b" font-size="10" font-weight="700">อุทยานป๋วย</text>
-          </g>
-
-          <g transform="translate(190, 48)" onclick="selectCircuit(1)" style="cursor: pointer;">
-            <circle cx="0" cy="0" r="10" fill="#c51944" stroke="#ffffff" stroke-width="3"/>
-            <text x="-25" y="-12" fill="#0b163b" font-size="10" font-weight="700">SDG 11 Top 5 โลก</text>
-          </g>
-
-          <g transform="translate(320, 80)" onclick="selectCircuit(2)" style="cursor: pointer;">
-            <circle cx="0" cy="0" r="10" fill="#00857c" stroke="#ffffff" stroke-width="3"/>
-            <text x="14" y="4" fill="#0b163b" font-size="10" font-weight="700">TU EV Shuttle</text>
-          </g>
-
-          <g transform="translate(240, 280)" onclick="selectCircuit(3)" style="cursor: pointer;">
-            <circle cx="0" cy="0" r="10" fill="#00857c" stroke="#ffffff" stroke-width="3"/>
-            <text x="-40" y="24" fill="#0b163b" font-size="10" font-weight="700">รพ.ธรรมศาสตร์ (810 เตียง)</text>
-          </g>
+          <!-- Inner Chicane Curves -->
+          <path d="M 280 140 C 310 190, 240 240, 220 280" stroke="#00857c" stroke-width="4" stroke-dasharray="6 6" opacity="0.35" />
         </svg>
+
+        <!-- 4 Milestone Nodes along the Track -->
+        <div class="circuit-milestone-node active" style="top: 180px; left: 120px;" onclick="selectCircuitNode(0)">1</div>
+        <div class="circuit-milestone-node" style="top: 140px; left: 280px;" onclick="selectCircuitNode(1)">2</div>
+        <div class="circuit-milestone-node" style="top: 160px; left: 560px;" onclick="selectCircuitNode(2)">3</div>
+        <div class="circuit-milestone-node" style="top: 370px; left: 300px;" onclick="selectCircuitNode(3)">4</div>
       </div>
 
-      <!-- Circuit Floating Content Card -->
-      <div class="circuit-floating-card" id="circuitCard">
-        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--bidwells-navy); margin-bottom: 0.8rem;" id="circuitTitle">
-          อุทยานการเรียนรู้ป๋วย 100 ปี
-        </h3>
-        <p style="font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1.5rem;" id="circuitDesc">
-          หลังคาเขียวฟาร์มเกษตรอินทรีย์ลอยฟ้าขนาดใหญ่ที่สุดในเอเชีย (22,000 ตร.ม.)
-          ออกแบบโดยสถาปัตยกรรมผังเมืองธรรมศาสตร์เพื่อลดอุณหภูมิเมือง ดักจับน้ำฝน และเป็นแหล่งเรียนรู้ความมั่นคงทางอาหาร
+      <!-- Synchronized Insight Card (Frame 045s) -->
+      <div class="circuit-insight-card">
+        <div class="circuit-card-tag" id="cInsightTag">HEALTHCARE & HOSPITAL HUB</div>
+        <h3 class="circuit-card-title" id="cInsightTitle">โรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ</h3>
+        <img src="assets/tha_prachan_dome_editorial.jpg" alt="Circuit Insight" class="circuit-card-img" id="cInsightImg" />
+        <p class="circuit-card-desc" id="cInsightDesc">
+          ศูนย์การแพทย์ระดับตติยภูมิชั้นสูง 810 เตียง ให้บริการผู้ป่วยกว่า 1.4 ล้านครั้งต่อปี 
+          รองรับการรักษาโรคซับซ้อนและการฝึกอบรมแพทย์-บุคลากรสาธารณสุขชั้นนำของประเทศ
         </p>
-        <div style="display: flex; gap: 1.5rem;">
+        <div style="display: flex; gap: 20px; border-top: 1px solid #f1f5f9; padding-top: 16px;">
           <div>
-            <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase;">พื้นที่หลังคาเขียว</div>
-            <div style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: #00857c;" id="circuitStat1">22,000 ตร.ม.</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--bidwells-crimson);" id="cStat1">810</div>
+            <div style="font-size: 0.72rem; color: #64748b; text-transform: uppercase;" id="cStatLbl1">เตียงผู้ป่วย</div>
           </div>
           <div>
-            <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase;">THE Impact Ranking</div>
-            <div style="font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; color: var(--bidwells-crimson);" id="circuitStat2">อันดับ 5 โลก</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--bidwells-navy);" id="cStat2">1.4M+</div>
+            <div style="font-size: 0.72rem; color: #64748b; text-transform: uppercase;" id="cStatLbl2">ผู้รับบริการต่อปี</div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive TU 2034 Strategy Cockpit -->
+    <div class="cockpit-strategy-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--bidwells-navy);">
+            TU 2034 Centennial Strategy Cockpit
+          </h3>
+          <p style="font-size: 0.88rem; color: #64748b;">
+            ปรับคันเร่งยุทธศาสตร์ 4 ด้านเพื่อจำลองดัชนีความพร้อมสู่ 100 ปี ธรรมศาสตร์
+          </p>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 2.2rem; font-weight: 900; color: var(--bidwells-crimson);" id="cockpitCompositeScore">92.4</div>
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Centennial Readiness Index</div>
+        </div>
+      </div>
+
+      <div class="cockpit-sliders-grid">
+        <div class="cockpit-slider-item">
+          <label>1. ทุนวิจัยระดับโลก (Global Research)</label>
+          <input type="range" class="cockpit-range-input" min="50" max="100" value="90" id="sliderResearch" oninput="updateCockpit()" />
+          <div class="cockpit-val-disp" id="dispResearch">90%</div>
+        </div>
+        <div class="cockpit-slider-item">
+          <label>2. บัณฑิตทักษะ AI & นวัตกรรม</label>
+          <input type="range" class="cockpit-range-input" min="50" max="100" value="95" id="sliderSkills" oninput="updateCockpit()" />
+          <div class="cockpit-val-disp" id="dispSkills">95%</div>
+        </div>
+        <div class="cockpit-slider-item">
+          <label>3. วิทยาเขตคาร์บอนต่ำ (SDG Green)</label>
+          <input type="range" class="cockpit-range-input" min="50" max="100" value="88" id="sliderGreen" oninput="updateCockpit()" />
+          <div class="cockpit-val-disp" id="dispGreen">88%</div>
+        </div>
+        <div class="cockpit-slider-item">
+          <label>4. สุขภาพและการแพทย์เพื่อชุมชน</label>
+          <input type="range" class="cockpit-range-input" min="50" max="100" value="96" id="sliderHealth" oninput="updateCockpit()" />
+          <div class="cockpit-val-disp" id="dispHealth">96%</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       13. SCENE 10: TU 2034 — STRATEGIC COCKPIT (กราฟ 10)
+       9. SECTION 6: CHECKERED FINISH LINE CROSSING & REPORT DOWNLOAD (051s - 054s)
        ========================================================================== -->
-  <section class="bidwells-section section-dark" id="scene10">
-    <div class="editorial-header">
-      <span class="editorial-tag">10 / สู่ศตวรรษที่ 1</span>
-      <h2 class="editorial-title">TU 2034: <em>ค็อกพิทจำลองยุทธศาสตร์แห่งอนาคต</em></h2>
-      <p class="editorial-desc">
-        ปรับตัวแปรการลงทุนด้านการวิจัย ทุนการศึกษา และการบูรณาการ AI & ESG
-        เพื่อประเมินสถานะของมหาวิทยาลัยธรรมศาสตร์ในวาระก้าวสู่ 100 ปี (พ.ศ. 2577)
+  <section class="bidwells-finish-section" id="finish">
+    <!-- Authentic Checkered Finish Line Banner (finish.svg) -->
+    <div class="checkered-finish-banner"></div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 50px;">
+      <div style="font-size: 0.82rem; font-weight: 800; color: var(--bidwells-crimson); letter-spacing: 0.12em; text-transform: uppercase;">06 / ข้ามเส้นชัยแห่งเกียรติภูมิ 90 ปี</div>
+      <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 700; color: var(--bidwells-navy); line-height: 1.25; margin: 12px 0 16px;">
+        The Racing Cluster Crossing the <em>Finish Line</em>
+      </h2>
+      <p style="font-size: 1.1rem; color: #475569; line-height: 1.7;">
+        ธรรมศาสตร์ 90 ปี สู่ศตวรรษแห่งการสร้างผู้นำ การขับเคลื่อนนวัตกรรม และการเปลี่ยนแปลงเพื่อประโยชน์สูงสุดของสังคม
       </p>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(255, 255, 255, 0.15); border-radius: var(--bidwells-radius); padding: 3rem;">
-      <div>
-        <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: #ffffff; margin-bottom: 1.5rem;">
-          ตัวแปรนโยบายยุทธศาสตร์ (Strategic Policy Sliders)
-        </h4>
-
-        <div style="margin-bottom: 1.5rem;">
-          <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 6px;">
-            <span>การลงทุนด้านวิจัยและสิทธิบัตร AI (%)</span>
-            <strong id="sliderVal1" style="color: var(--tu-gold);">15%</strong>
-          </div>
-          <input type="range" min="5" max="30" value="15" style="width: 100%; accent-color: var(--bidwells-crimson);" oninput="updateCockpit()">
-        </div>
-
-        <div style="margin-bottom: 1.5rem;">
-          <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 6px;">
-            <span>สัดส่วนทุนการศึกษาความเสมอภาค (%)</span>
-            <strong id="sliderVal2" style="color: var(--tu-gold);">20%</strong>
-          </div>
-          <input type="range" min="10" max="40" value="20" style="width: 100%; accent-color: var(--bidwells-crimson);" oninput="updateCockpit()">
-        </div>
-
-        <div style="margin-bottom: 1.5rem;">
-          <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 6px;">
-            <span>ความเป็นสากล & มหาวิทยาลัยพันธมิตร (แห่ง)</span>
-            <strong id="sliderVal3" style="color: var(--tu-gold);">180</strong>
-          </div>
-          <input type="range" min="100" max="350" value="180" style="width: 100%; accent-color: var(--bidwells-crimson);" oninput="updateCockpit()">
-        </div>
+    <!-- Two Racing Cars Crossing Side-by-Side (Frame 051s) -->
+    <div class="finish-cars-crossing-row">
+      <!-- Car White with trails -->
+      <div class="finish-car-item">
+        <div class="finish-car-trail-line"></div>
+        <img src="assets/car-white.png" alt="TU Car White Finish" class="f1-car-img" />
       </div>
+      <!-- Car Pink with trails -->
+      <div class="finish-car-item">
+        <div class="finish-car-trail-line"></div>
+        <img src="assets/car-pink.png" alt="TU Car Crimson Finish" class="f1-car-img" />
+      </div>
+    </div>
 
-      <div style="display: flex; flex-direction: column; justify-content: center; background: rgba(0, 0, 0, 0.25); padding: 2rem; border-radius: 8px;">
-        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: #9cd5ea; margin-bottom: 1rem;">
-          การคาดการณ์ผลกระทบในปี 2034 (100 ปี ธรรมศาสตร์)
-        </h4>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+    <!-- Download the Full Report Card (Frame 053s) -->
+    <div class="download-report-card">
+      <h3 class="download-report-title">Download the full research report</h3>
+      <p class="download-report-desc">
+        รับชุดข้อมูลฉบับสมบูรณ์ประกอบด้วยรายงาน 9 ทศวรรษมหาวิทยาลัยธรรมศาสตร์ สถิติประชากร การเงิน และยุทธศาสตร์ TU 2034 ในรูปแบบ PDF คุณภาพสูง
+      </p>
+
+      <form id="downloadForm" onsubmit="handleDownloadSubmit(event)">
+        <div class="download-form-grid">
           <div>
-            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">คาดการณ์อันดับ QS World</div>
-            <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: #ffffff;" id="projRank">Top 350</div>
+            <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #334155; margin-bottom: 6px;">First Name*</label>
+            <input type="text" class="form-input-field" placeholder="ชื่อจริง" required />
           </div>
           <div>
-            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">งานวิจัยตอบโจทย์สังคม/ปี</div>
-            <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: var(--tu-gold);" id="projResearch">1,850 ชิ้น</div>
+            <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #334155; margin-bottom: 6px;">Last Name*</label>
+            <input type="text" class="form-input-field" placeholder="นามสกุล" required />
           </div>
           <div>
-            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">ผู้รับทุนเสมอภาค/ปี</div>
-            <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: #10b981;" id="projScholar">8,500 คน</div>
+            <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #334155; margin-bottom: 6px;">Work Email*</label>
+            <input type="email" class="form-input-field" placeholder="อีเมลองค์กร / สถาบัน" required />
           </div>
           <div>
-            <div style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">การลดก๊าซเรือนกระจก</div>
-            <div style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; color: #38bdf8;" id="projCarbon">Net Zero</div>
+            <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #334155; margin-bottom: 6px;">Organization / Role</label>
+            <input type="text" class="form-input-field" placeholder="หน่วยงาน / ภาคส่วน" />
           </div>
         </div>
-      </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <button type="submit" class="btn-submit-download">
+            <span>Download Full Report (PDF)</span>
+            <i class="fa-solid fa-cloud-arrow-down"></i>
+          </button>
+          <a href="archive/classic_edition/index.html" class="header-archive-btn">
+            <i class="fa-solid fa-archive"></i>
+            <span>คลังบันทึกประวัติ (Classic Archive)</span>
+          </a>
+        </div>
+      </form>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       14. FOOTER (Bidwells Corporate Style)
-       ========================================================================== -->
-  <footer class="bidwells-footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <h3>THAMMASAT UNIVERSITY</h3>
-        <p>
-          มหาวิทยาลัยวิจัยระดับโลกเพื่อประชาชน มุ่งมั่นพัฒนาปัญญา ความเสมอภาค
-          และนวัตกรรมเพื่อการพัฒนาสังคมอย่างยั่งยืน
-        </p>
+  <!-- TCAS Drilldown Modal -->
+  <div class="drilldown-modal-backdrop" id="facultyModal">
+    <div class="drilldown-modal-card">
+      <button class="modal-close-btn" onclick="closeFacultyModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div style="font-size: 0.75rem; font-weight: 800; color: var(--bidwells-crimson); text-transform: uppercase;" id="mFacPillar">เสาหลักทางวิชาการ</div>
+      <h3 style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: var(--bidwells-navy); margin: 6px 0 16px;" id="mFacTitle">ชื่อคณะวิชา</h3>
+      <p style="font-size: 0.92rem; color: #475569; line-height: 1.7; margin-bottom: 24px;" id="mFacDesc">รายละเอียดของหลักสูตรและพันธกิจ</p>
+
+      <div style="background: #f8fafc; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+        <div style="font-weight: 700; font-size: 0.88rem; color: var(--bidwells-navy); margin-bottom: 10px;">เกณฑ์คะแนนเฉลี่ย TCAS (รอบที่ 3 Admission):</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--bidwells-crimson);" id="mFacCutoff">72.5 / 100</div>
+            <div style="font-size: 0.72rem; color: #64748b;">คะแนนตัดต่ำสุด</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--bidwells-navy);" id="mFacAccept">1 : 4.8</div>
+            <div style="font-size: 0.72rem; color: #64748b;">อัตราการแข่งขัน</div>
+          </div>
+        </div>
       </div>
 
-      <div class="footer-col">
-        <h4>4 ศูนย์ยุทธศาสตร์</h4>
-        <ul>
-          <li><a href="#scene2">ศูนย์ท่าพระจันทร์ (กรุงเทพฯ)</a></li>
-          <li><a href="#scene2">ศูนย์รังสิต (ปทุมธานี)</a></li>
-          <li><a href="#scene2">ศูนย์พัทยา (ชลบุรี EEC)</a></li>
-          <li><a href="#scene2">ศูนย์ลำปาง (ลำปาง)</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>ข้อมูลและรายงาน</h4>
-        <ul>
-          <li><a href="javascript:void(0)" onclick="downloadReportModal()">รายงานฉบับสมบูรณ์ (PDF)</a></li>
-          <li><a href="archive/classic_edition/index.html" target="_blank">คลังบันทึกประวัติ (Classic Archive)</a></li>
-          <li><a href="#scene7">TBS Triple Crown Data</a></li>
-          <li><a href="#scene6">งบประมาณ 5 ปี เจาะลึก</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>วิชาการ & การรับรอง</h4>
-        <ul>
-          <li><a href="https://tu.ac.th" target="_blank">เว็บไซต์มหาวิทยาลัย</a></li>
-          <li><a href="https://tbs.tu.ac.th" target="_blank">คณะพาณิชย์ฯ (TBS)</a></li>
-          <li><a href="https://hospital.tu.ac.th" target="_blank">รพ.ธรรมศาสตร์เฉลิมพระเกียรติ</a></li>
-          <li><a href="#scene8">อุทยานเรียนรู้ป๋วย 100 ปี</a></li>
-        </ul>
+      <div style="font-size: 0.85rem; color: #64748b;">
+        <strong>เส้นทางวิชาชีพที่รองรับ:</strong> <span id="mFacCareers">นักกฎหมาย, ที่ปรึกษานโยบาย, นักการทูต</span>
       </div>
     </div>
+  </div>
 
-    <div class="footer-bottom">
-      <div>© 2026 มหาวิทยาลัยธรรมศาสตร์ — BI304 Data Visualization & Scrollytelling Intelligence</div>
-      <div style="display: flex; gap: 1rem;">
-        <span>Free Open Source Data Framework</span>
-        <span>•</span>
-        <span>Bidwells Editorial Layout Standard</span>
+  <!-- Download Report Thank You Modal -->
+  <div class="drilldown-modal-backdrop" id="downloadModal">
+    <div class="drilldown-modal-card" style="text-align: center;">
+      <button class="modal-close-btn" onclick="closeDownloadModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: #dcfce7; color: #15803d; font-size: 28px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <i class="fa-solid fa-check"></i>
       </div>
+      <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--bidwells-navy); margin-bottom: 10px;">
+        ขอบคุณสำหรับการติดตาม
+      </h3>
+      <p style="font-size: 0.95rem; color: #64748b; line-height: 1.7; margin-bottom: 24px;">
+        รายงานสรุป 90 ปีมหาวิทยาลัยธรรมศาสตร์ ฉบับเต็ม ได้ถูกส่งไปยังอีเมลของท่านเรียบร้อยแล้ว
+      </p>
+      <button class="btn-bidwells-pill" onclick="closeDownloadModal()" style="margin: 0 auto;">
+        <span>กลับสู่หน้าหลัก</span>
+      </button>
     </div>
-  </footer>
+  </div>
 
   <!-- ==========================================================================
-       JAVASCRIPT INTERACTIONS & ENGINE
+       JAVASCRIPT INTERACTIONS & DATA INITIALIZATION
        ========================================================================== -->
   <script>
-    // --- 1. DATA REPOSITORY ---
+    // 1. Data Store
+    const CAMPUSES_DATA = [
+      { name: "ท่าพระจันทร์ (Tha Prachan)", area: "49 ไร่", students: "6,310 คน", role: "มรดกประชาธิปไตย", focus: "นานาชาติ / บัณฑิตศึกษา" },
+      { name: "ศูนย์รังสิต (Rangsit)", area: "2,644 ไร่", students: "31,350 คน", role: "ศูนย์วิจัย & นวัตกรรม", focus: "วิทย์-เทคโน / วิทย์สุขภาพ / ปริญญาตรี" },
+      { name: "ศูนย์พัทยา (Pattaya)", area: "566 ไร่", students: "1,920 คน", role: "EEC Medical Valley", focus: "การแพทย์ชั้นสูง & เทคโนโลยีดิจิทัล" },
+      { name: "ศูนย์ลำปาง (Lampang)", area: "848 ไร่", students: "3,070 คน", role: "ศูนย์การเรียนรู้ภาคเหนือ", focus: "พัฒนาชุมชน & ศิลปวัฒนธรรมล้านนา" },
+      { name: "เครือข่าย 4 วิทยาเขต", area: "4,107 ไร่", students: "42,650 คน", role: "เครือข่ายบูรณาการ", focus: "สหวิทยาการและผลกระทบสังคม" }
+    ];
+
     const MILESTONES_DATA = [
-      {
-        year: "2477",
-        title: "พ.ศ. 2477 — สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง (มธก.)",
-        desc: "ศ.ดร.ปรีดี พนมยงค์ สถาปนามหาวิทยาลัยในฐานะ 'ตลาดวิชา' (ระบบเปิด) จัดการเรียนการสอนด้านกฎหมาย การเมือง และเศรษฐกิจเพื่อรองรับการปกครองระบอบประชาธิปไตย มีผู้สมัครเรียนรุ่นแรก 7,094 คน",
-        val: "7,094",
-        lbl: "นักศึกษารุ่นแรก (ระบบเปิด)"
-      },
-      {
-        year: "2495",
-        title: "พ.ศ. 2495 — สถาปนาชื่อ 'มหาวิทยาลัยธรรมศาสตร์'",
-        desc: "ตัดคำว่า 'การเมือง' ออกตามบริบททางการเมืองในยุคนั้น พร้อมทั้งเริ่มปรับรูปแบบการเรียนการสอนและการบริหารคณะให้มีความเป็นสากล",
-        val: "4 คณะหลัก",
-        lbl: "นิติ รัฐศาสตร์ พาณิชย์ เศรษฐศาสตร์"
-      },
-      {
-        year: "2496-2503",
-        title: "พ.ศ. 2496-2503 — การปฏิรูปสู่ 'ระบบปิด' (Selective Admission)",
-        desc: "เปลี่ยนผ่านจากระบบตลาดวิชาสู่ 'ระบบปิด' เต็มรูปแบบ มีการจัดสอบคัดเลือก (Entrance Examination) เพื่อควบคุมสัดส่วนอาจารย์ต่อนักศึกษา และยกระดับคุณภาพทางวิชาการให้เข้มข้นทัดเทียมนานาชาติ",
-        val: "Selective",
-        lbl: "สอบคัดเลือกมาตรฐานสูง"
-      },
-      {
-        year: "2529",
-        title: "พ.ศ. 2529 — ก่อตั้งศูนย์รังสิต (1,757 ไร่)",
-        desc: "เปิดพื้นที่ศูนย์รังสิตเพื่อขยายการจัดการศึกษาด้านวิทยาศาสตร์ เทคโนโลยี และแพทยศาสตร์ รองรับการขยายตัวของประเทศ",
-        val: "1,757 ไร่",
-        lbl: "พื้นที่ศูนย์รังสิต"
-      },
-      {
-        year: "2535",
-        title: "พ.ศ. 2535 — ขยายสู่ศูนย์ลำปาง",
-        desc: "จัดตั้งศูนย์การศึกษาภาคเหนือที่จังหวัดลำปาง ขยายโอกาสทางการศึกษาและสนับสนุนเศรษฐกิจสร้างสรรค์ระดับภูมิภาค",
-        val: "864 ไร่",
-        lbl: "ศูนย์กลางล้านนาสร้างสรรค์"
-      },
-      {
-        year: "2538",
-        title: "พ.ศ. 2538 — ขยายสู่ศูนย์พัทยา",
-        desc: "จัดตั้งศูนย์พัทยาเพื่อรองรับการเติบโตของเขตเศรษฐกิจพิเศษภาคตะวันออก (EEC) และอุตสาหกรรมเป้าหมาย New S-Curve",
-        val: "566 ไร่",
-        lbl: "EEC Innovation Hub"
-      },
-      {
-        year: "2567",
-        title: "พ.ศ. 2567 — ครบรอบ 90 ปี มหาวิทยาลัยธรรมศาสตร์",
-        desc: "ก้าวสู่วาระ 90 ปีในฐานะมหาวิทยาลัยวิจัยระดับโลกเพื่อประชาชน พร้อม 26 คณะและสถาบัน นักศึกษารวมกว่า 42,650 คน",
-        val: "42,650",
-        lbl: "นักศึกษาปัจจุบัน (4 ศูนย์)"
-      }
+      { year: "2477", title: "พ.ศ. 2477 — สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง", desc: "ศ.ดร.ปรีดี พนมยงค์ ก่อตั้ง มธก. ในฐานะ 'ตลาดวิชา' ระบบเปิด มีผู้สมัครเข้าเรียนรุ่นแรกสูงถึง 7,094 คน เน้นวิชากฎหมายและการเมืองเพื่อประชาชน", stat: "7,094", lbl: "นักศึกษารุ่นแรก" },
+      { year: "2495", title: "พ.ศ. 2495 — สถาปนาชื่อทางการ 'มหาวิทยาลัยธรรมศาสตร์'", desc: "เปลี่ยนชื่อจาก มธก. เป็น 'มหาวิทยาลัยธรรมศาสตร์' (มธ.) เพื่อสะท้อนการขยายการเรียนการสอนสู่สาขาวิชาที่ครอบคลุมมากยิ่งขึ้น", stat: "2495", lbl: "ปีเปลี่ยนชื่อ" },
+      { year: "2496-03", title: "พ.ศ. 2496–2503 — ปฏิรูปสู่ 'ระบบปิด' (Selective Admission)", desc: "ปรับเปลี่ยนกระบวนการรับเข้าจากการเป็นตลาดวิชาสู่ 'ระบบปิด' เพื่อยกระดับความเข้มข้นทางวิชาการและการวิจัย เริ่มการสอบคัดเลือกอย่างเป็นทางการ", stat: "100%", lbl: "ระบบคัดเลือกเข้มข้น" },
+      { year: "2529", title: "พ.ศ. 2529 — เปิดศูนย์รังสิต เพื่อการศึกษาวิทยาศาสตร์และเทคโนโลยี", desc: "ขยายวิทยาเขตครั้งประวัติศาสตร์สู่ศูนย์รังสิต 2,644 ไร่ รองรับการเปิดคณะด้านวิทยาศาสตร์ เทคโนโลยี และแพทยศาสตร์", stat: "2,644", lbl: "พื้นที่ไร่" },
+      { year: "2535", title: "พ.ศ. 2535 — ขยายศูนย์การศึกษาลำปาง สู่ภาคเหนือ", desc: "สถาปนาศูนย์ลำปาง เพื่อขยายโอกาสทางการศึกษาสู่ภูมิภาค เน้นการพัฒนาท้องถิ่นและอนุรักษ์ศิลปวัฒนธรรม", stat: "848", lbl: "พื้นที่ไร่" },
+      { year: "2538", title: "พ.ศ. 2538 — ขยายศูนย์พัทยา เพื่ออุตสาหกรรมและนวัตกรรม", desc: "เปิดศูนย์พัทยา จ.ชลบุรี เพื่อรองรับการขยายตัวทางเศรษฐกิจภาคตะวันออก มุ่งสู่ EEC Medical Valley ในปัจจุบัน", stat: "566", lbl: "พื้นที่ไร่" },
+      { year: "2567", title: "พ.ศ. 2567 — วาระครบรอบ 90 ปี มหาวิทยาลัยธรรมศาสตร์", desc: "เฉลิมฉลอง 9 ทศวรรษแห่งความภาคภูมิใจ มุ่งสู่มหาวิทยาลัยวิจัยระดับโลกเพื่อประชาชนและยุทธศาสตร์ TU 2034 สู่ศตวรรษที่หนึ่ง", stat: "90", lbl: "ทศวรรษแห่งเกียรติภูมิ" }
     ];
 
     const FACULTIES_DATA = [
-      { name: "คณะพาณิชยศาสตร์และการบัญชี (TBS)", cat: "สังคมศาสตร์", code: "TBS", score: "74.8 / 100", employ: "96.8%", accred: "Triple Crown (AACSB+EQUIS+AMBA)", desc: "1 ใน 1% ของสถาบันบริหารธุรกิจทั่วโลกที่ได้รับรองมาตรฐานระดับโลก 3 มงกุฎ", hl: "BBA International, MSF Finance, MIM Marketing" },
-      { name: "คณะนิติศาสตร์", cat: "สังคมศาสตร์", code: "LAW", score: "76.2 / 100", employ: "94.5%", accred: "สภาทนายความ / เนติบัณฑิต", desc: "ต้นกำเนิดแห่งนิติศาสตร์ไทย เสาหลักความยุติธรรมและหลักนิติธรรมของประเทศ", hl: "นิติศาสตรบัณฑิต, กฎหมายธุรกิจระหว่างประเทศ" },
-      { name: "คณะรัฐศาสตร์", cat: "สังคมศาสตร์", code: "POL", score: "72.4 / 100", employ: "92.3%", accred: "สากลด้านความสัมพันธ์ระหว่างประเทศ", desc: "ผลิตนักการทูตและผู้นำภาครัฐและเอกชนขับเคลื่อนนโยบายสาธารณะ", hl: "การเมืองการปกครอง, ความสัมพันธ์ระหว่างประเทศ (BIR)" },
-      { name: "คณะเศรษฐศาสตร์", cat: "สังคมศาสตร์", code: "ECON", score: "73.1 / 100", employ: "95.1%", accred: "สากลด้านการวิจัยเศรษฐศาสตร์", desc: "สถาบันผลิตนักเศรษฐศาสตร์และผู้วิเคราะห์นโยบายการเงินการคลังชั้นแนวหน้า", hl: "BE International, เศรษฐศาสตร์การเงินและข้อมูล" },
-      { name: "คณะวารสารศาสตร์และสื่อสารมวลชน", cat: "สังคมศาสตร์", code: "JC", score: "71.8 / 100", employ: "93.4%", accred: "ผู้นำสื่อสารมวลชนระดับประเทศ", desc: "ผู้นำด้านสื่อสารมวลชน ดิจิทัลคอนเทนต์ และการสื่อสารเชิงกลยุทธ์", hl: "B.J.M. International, สื่อดิจิทัลและวารสารศาสตร์" },
-      { name: "คณะศิลปศาสตร์", cat: "สังคมศาสตร์", code: "ARTS", score: "70.5 / 100", employ: "92.8%", accred: "เครือข่ายภาษานานาชาติ", desc: "ศูนย์กลางภาษาศาสตร์ มนุษยศาสตร์ และประวัติศาสตร์วัฒนธรรมระดับนานาชาติ", hl: "ภาษาอังกฤษ, ภาษาและวรรณคดีเอเชียตะวันออก, อินเดียศึกษา" },
-      { name: "คณะแพทยศาสตร์", cat: "วิทยาศาสตร์สุขภาพ", code: "MED", score: "82.6 / 100", employ: "99.5%", accred: "แพทยสภา / WFME มาตรฐานสากล", desc: "ผลิตแพทย์แห่งอนาคตที่เข้าใจมนุษย์ พร้อมศูนย์ความเป็นเลิศทางการแพทย์และจีโนมิกส์", hl: "แพทยศาสตรบัณฑิต, ศูนย์การแพทย์แม่นยำ" },
-      { name: "คณะทันตแพทยศาสตร์", cat: "วิทยาศาสตร์สุขภาพ", code: "DENT", score: "79.8 / 100", employ: "99.0%", accred: "ทันตแพทยสภา", desc: "ทันตกรรมสมัยใหม่ด้วยเทคโนโลยีดิจิทัลและทันตศัลยศาสตร์ขั้นสูง", hl: "ทันตแพทยศาสตรบัณฑิต, ทันตกรรมรากเทียมดิจิทัล" },
-      { name: "คณะสหเวชศาสตร์", cat: "วิทยาศาสตร์สุขภาพ", code: "AHS", score: "68.4 / 100", employ: "95.2%", accred: "สภาวิชาชีพเทคนิคการแพทย์/กายภาพ", desc: "เสาหลักด้านการวินิจฉัยโรค กายภาพบำบัด และวิทยาศาสตร์การกีฬา", hl: "เทคนิคการแพทย์, กายภาพบำบัด, วิทยาศาสตร์การกีฬา" },
-      { name: "คณะพยาบาลศาสตร์", cat: "วิทยาศาสตร์สุขภาพ", code: "NURSE", score: "66.2 / 100", employ: "98.8%", accred: "สภาการพยาบาล", desc: "ผลิตพยาบาลวิชาชีพมาตรฐานสากล บริการสุขภาพชุมชนและผู้ป่วยวิกฤต", hl: "พยาบาลศาสตรบัณฑิต, การพยาบาลผู้สูงอายุ" },
-      { name: "คณะเภสัชศาสตร์", cat: "วิทยาศาสตร์สุขภาพ", code: "PHARM", score: "74.0 / 100", employ: "97.5%", accred: "สภาเภสัชกรรม", desc: "นวัตกรรมยาและเภสัชวิทยา การบริบาลทางเภสัชกรรมและชีวเภสัชภัณฑ์", hl: "เภสัชศาสตรบัณฑิต 6 ปี, นวัตกรรมยาและสมุนไพร" },
-      { name: "คณะสาธารณสุขศาสตร์", cat: "วิทยาศาสตร์สุขภาพ", code: "PH", score: "65.0 / 100", employ: "93.0%", accred: "สภาการสาธารณสุขชุมชน", desc: "ส่งเสริมสุขภาพระดับประชากรและการจัดการสุขภาวะชุมชนและสิ่งแวดล้อม", hl: "อนามัยสิ่งแวดล้อม, อาชีวอนามัยและความปลอดภัย" },
-      { name: "คณะวิศวกรรมศาสตร์ (TSE)", cat: "วิทยาศาสตร์ฯ", code: "TSE", score: "71.2 / 100", employ: "95.6%", accred: "สภาวิศวกร / Washington Accord Tier", desc: "วิศวกรรมยานยนต์ EV, ปัญญาประดิษฐ์, โยธา และหลักสูตรสองสถาบันระดับโลก", hl: "TEPE นานาชาติ, วิศวกรรมซอฟต์แวร์, ยานยนต์สมัยใหม่" },
-      { name: "สถาบันเทคโนโลยีนานาชาติสิรินธร (SIIT)", cat: "วิทยาศาสตร์ฯ", code: "SIIT", score: "73.5 / 100", employ: "97.2%", accred: "ABET / มาตรฐานสากล", desc: "สถาบันเทคโนโลยีนานาชาติชั้นนำ การเรียนการสอนภาษาอังกฤษ 100%", hl: "AI and Data Science, Chemical Engineering, Computer Eng." },
-      { name: "คณะวิทยาศาสตร์และเทคโนโลยี", cat: "วิทยาศาสตร์ฯ", code: "SCI", score: "67.8 / 100", employ: "93.8%", accred: "สภาวิชาชีพวิทยาศาสตร์", desc: "ศูนย์กลางวิทยาศาสตร์ข้อมูล, วิทยาการคอมพิวเตอร์, เทคโนโลยีชีวภาพ", hl: "วิทยาการคอมพิวเตอร์, Data Science, เทคโนโลยีชีวภาพ" },
-      { name: "คณะสถาปัตยกรรมศาสตร์และการผังเมือง (TDS)", cat: "วิทยาศาสตร์ฯ", code: "TDS", score: "72.0 / 100", employ: "94.0%", accred: "สภาสถาปนิก", desc: "ออกแบบเมืองเพื่อความยั่งยืน ผู้ออกแบบอุทยานเรียนรู้ป๋วย 100 ปี", hl: "สถาปัตยกรรมเพื่อความยั่งยืน, การออกแบบพัฒนาชุมชนเมือง" }
+      { name: "คณะนิติศาสตร์", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "รากฐานแห่งนิติศาสตร์ไทย ผลิตนักกฎหมายและผู้นำการเปลี่ยนแปลง", cutoff: "74.8", accept: "1 : 5.2", careers: "ผู้พิพากษา, อัยการ, นิติกร, ทนายความระหว่างประเทศ" },
+      { name: "คณะพาณิชยศาสตร์และการบัญชี (TBS)", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "ผู้นำ Triple Crown หนึ่งเดียวในไทย ติด 1% ของโลก", cutoff: "76.2", accept: "1 : 6.1", careers: "CFO, ผู้สอบบัญชี, นักวิเคราะห์การลงทุน, ผู้ประกอบการ" },
+      { name: "คณะรัฐศาสตร์", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "สิงห์แดงชั้นนำ เสาหลักนโยบายสาธารณะและการทูตสากล", cutoff: "73.5", accept: "1 : 4.9", careers: "นักการทูต, ข้าราชการพลเรือน, นักวิเคราะห์นโยบาย" },
+      { name: "คณะเศรษฐศาสตร์", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "เศรษฐศาสตร์ทฤษฎีและนโยบายพัฒนาเศรษฐกิจระดับชาติ", cutoff: "72.9", accept: "1 : 4.5", careers: "นักเศรษฐศาสตร์, ผู้กำหนดนโยบาย ธปท., นักวิจัย" },
+      { name: "คณะสังคมวิทยาและมานุษยวิทยา", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "เข้าใจโครงสร้างสังคม มนุษย์ และความหลากหลายทางวัฒนธรรม", cutoff: "69.4", accept: "1 : 3.8", careers: "นักวิจัยสังคม, ที่ปรึกษา ESG, นักสื่อสารชุมชน" },
+      { name: "คณะวารสารศาสตร์และสื่อสารมวลชน", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "ผู้นำสื่อสารมวลชนยุคดิจิทัลและสร้างสรรค์คอนเทนต์ระดับโลก", cutoff: "73.8", accept: "1 : 5.8", careers: "ผู้ผลิตสื่อ, ครีเอทีฟ, นักกลยุทธ์แบรนด์" },
+      { name: "คณะสังคมสงเคราะห์ศาสตร์", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "พัฒนาคุณภาพชีวิต สร้างความเสมอภาคและสวัสดิการสังคม", cutoff: "68.2", accept: "1 : 3.5", careers: "นักสังคมสงเคราะห์, ผู้บริหารองค์กรไม่แสวงหากำไร" },
+      { name: "คณะศิลปศาสตร์", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "สหภาษาศาสตร์ มนุษยศาสตร์ และวรรณคดีเปรียบเทียบ", cutoff: "71.6", accept: "1 : 4.4", careers: "นักแปล, ล่าม, นักวิชาการภาษา, เจ้าหน้าที่ระหว่างประเทศ" },
+      { name: "คณะวิทยาศาสตร์และเทคโนโลยี", pillar: "sci", pillarName: "วิทย์-เทคโน", desc: "วิทยาการข้อมูล AI ชีวเคมี และนวัตกรรมอุตสาหกรรม", cutoff: "67.8", accept: "1 : 3.6", careers: "Data Scientist, นักวิจัยเคมี, ผู้พัฒนา AI" },
+      { name: "คณะวิศวกรรมศาสตร์ (TSE)", pillar: "sci", pillarName: "วิทย์-เทคโน", desc: "วิศวกรรมสากล ยานยนต์ไฟฟ้า หุ่นยนต์ และการบิน", cutoff: "71.2", accept: "1 : 4.8", careers: "วิศวกรระบบ, วิศวกรยานยนต์, วิศวกรปัญญาประดิษฐ์" },
+      { name: "คณะสถาปัตยกรรมศาสตร์และการผังเมือง", pillar: "sci", pillarName: "วิทย์-เทคโน", desc: "ผู้นำการออกแบบเมืองอัจฉริยะและการพัฒนาอย่างยั่งยืน", cutoff: "72.4", accept: "1 : 5.0", careers: "สถาปนิก, นักผังเมือง, นักออกแบบนวัตกรรม" },
+      { name: "สถาบันเทคโนโลยีนานาชาติสิรินธร (SIIT)", pillar: "inter", pillarName: "นานาชาติ", desc: "หลักสูตรวิศวกรรมและเทคโนโลยีนานาชาติระดับท็อปของเอเชีย", cutoff: "75.0", accept: "1 : 5.5", careers: "วิศวกรข้ามชาติ, Tech Entrepreneur, นักวิจัยระดับสากล" },
+      { name: "คณะแพทยศาสตร์", pillar: "med", pillarName: "วิทยาศาสตร์สุขภาพ", desc: "ผลิตแพทย์ผู้เชี่ยวชาญระดับตติยภูมิ ดูแลสุขภาวะประชาชน", cutoff: "82.4", accept: "1 : 12.5", careers: "แพทย์ผู้เชี่ยวชาญ, นักวิจัยการแพทย์, ผู้บริหารสาธารณสุข" },
+      { name: "คณะทันตแพทยศาสตร์", pillar: "med", pillarName: "วิทยาศาสตร์สุขภาพ", desc: "ความเป็นเลิศด้านทันตกรรมและศัลยศาสตร์ช่องปาก", cutoff: "79.8", accept: "1 : 9.2", careers: "ทันตแพทย์, ศัลยแพทย์ช่องปาก" },
+      { name: "คณะเภสัชศาสตร์", pillar: "med", pillarName: "วิทยาศาสตร์สุขภาพ", desc: "วิทยาการทางเภสัชกรรมและการบริบาลเภสัชกรรม", cutoff: "77.1", accept: "1 : 7.4", careers: "เภสัชกรโรงพยาบาล, เภสัชกรอุตสาหกรรมยา" },
+      { name: "คณะพยาบาลศาสตร์", pillar: "med", pillarName: "วิทยาศาสตร์สุขภาพ", desc: "พยาบาลวิชาชีพเพื่อการดูแลผู้ป่วยขั้นวิกฤตและชุมชน", cutoff: "70.2", accept: "1 : 4.2", careers: "พยาบาลวิชาชีพ, ผู้เชี่ยวชาญการดูแลผู้สูงอายุ" },
+      { name: "คณะสหเวชศาสตร์", pillar: "med", pillarName: "วิทยาศาสตร์สุขภาพ", desc: "เทคนิคการแพทย์ กายภาพบำบัด และรังสีเทคนิค", cutoff: "72.0", accept: "1 : 4.7", careers: "นักเทคนิคการแพทย์, นักกายภาพบำบัด" },
+      { name: "คณะสาธารณสุขศาสตร์", pillar: "med", pillarName: "วิทยาศาสตร์สุขภาพ", desc: "การควบคุมโรค อนามัยสิ่งแวดล้อม และอาชีวอนามัย", cutoff: "68.9", accept: "1 : 3.7", careers: "นักวิชาการสาธารณสุข, เจ้าหน้าที่ความปลอดภัย (จป.)" },
+      { name: "วิทยาลัยสหวิทยาการ", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "บูรณาการศาสตร์ตอบสนองความท้าทายยุคใหม่ (รังสิต-ลำปาง)", cutoff: "69.1", accept: "1 : 3.4", careers: "นักวิเคราะห์ข้อมูลสังคม, ที่ปรึกษานวัตกรรม" },
+      { name: "วิทยาลัยนวัตกรรม (CITU)", pillar: "inter", pillarName: "นานาชาติ", desc: "การจัดการเทคโนโลยี นวัตกรรมบริการ และธุรกิจดิจิทัล", cutoff: "71.5", accept: "1 : 4.3", careers: "Innovation Manager, ผู้ประกอบการดิจิทัล" },
+      { name: "วิทยาลัยนานาชาติปรีดี พนมยงค์ (PBIC)", pillar: "inter", pillarName: "นานาชาติ", desc: "จีนศึกษา ไทยศึกษา อินเดียศึกษา ระดับนานาชาติ", cutoff: "74.2", accept: "1 : 4.8", careers: "นักการทูต, นักกลยุทธ์ระหว่างประเทศ" },
+      { name: "วิทยาลัยพัฒนศาสตร์ ป๋วย อึ๊งภากรณ์ (PSDS)", pillar: "soc", pillarName: "สังคมศาสตร์", desc: "พัฒนาชนบท ชุมชนเข้มแข็ง และความยั่งยืนตามแนวทาง อ.ป๋วย", cutoff: "67.4", accept: "1 : 3.2", careers: "นักพัฒนาชุมชน, ที่ปรึกษา CSR/SDGs" },
+      { name: "วิทยาลัยแพทยศาสตร์นานาชาติจุฬาภรณ์ (CICM)", pillar: "med", pillarName: "วิทยาศาสตร์สุขภาพ", desc: "หลักสูตรแพทยศาสตร์นานาชาติและทันตแพทยศาสตร์สากล", cutoff: "83.1", accept: "1 : 14.0", careers: "แพทย์สากล, นักวิจัยชีวการแพทย์" },
+      { name: "คณะพยาบาลศาสตร์ (ศูนย์ลำปาง)", pillar: "med", pillarName: "วิทยาศาสตร์สุขภาพ", desc: "ผลิตพยาบาลเพื่อดูแลชุมชนสุขภาพภาคเหนือ", cutoff: "69.8", accept: "1 : 4.0", careers: "พยาบาลวิชาชีพ" },
+      { name: "สถาบันเสริมศึกษาและทรัพยากรมนุษย์", pillar: "inter", pillarName: "นานาชาติ", desc: "Upskill & Reskill การเรียนรู้ตลอดชีวิตสำหรับประชาชนทุกวัย", cutoff: "70.0", accept: "1 : 3.5", careers: "ผู้เชี่ยวชาญการเรียนรู้และพัฒนาองค์กร" }
     ];
 
-    const BUDGET_DATA = {
-      2563: { total: 11240, edu: 3821.6, gov: 3372.0, hosp: 2472.8, res: 1011.6, asset: 562.0 },
-      2564: { total: 11480, edu: 3903.2, gov: 3329.2, hosp: 2640.4, res: 1033.2, asset: 574.0 },
-      2565: { total: 11920, edu: 4052.8, gov: 3456.8, hosp: 2860.8, res: 1072.8, asset: 596.0 },
-      2566: { total: 12350, edu: 4199.0, gov: 3581.5, hosp: 2964.0, res: 1111.5, asset: 617.5 },
-      2567: { total: 12890, edu: 4382.6, gov: 3609.2, hosp: 3093.6, res: 1160.1, asset: 644.5 }
-    };
+    const CIRCUIT_DATA = [
+      {
+        tag: "HEALTHCARE & HOSPITAL HUB",
+        title: "โรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ",
+        desc: "ศูนย์การแพทย์ตติยภูมิชั้นสูง 810 เตียง ดูแลรักษาโรคซับซ้อน ผ่าตัดหัวใจ หลอดเลือดสมอง และโรคมะเร็ง พร้อมหน่วยแพทย์ฉุกเฉินและระบบบริการดิจิทัลระดับประเทศ",
+        img: "assets/tha_prachan_dome_editorial.jpg",
+        stat1: "810", lbl1: "เตียงผู้ป่วย", stat2: "1.4M+", lbl2: "ผู้รับบริการต่อปี"
+      },
+      {
+        tag: "GREEN CAMPUS & SUSTAINABILITY",
+        title: "อาคารป๋วย 100 ปี & สวนเกษตรอินทรีย์ลอยฟ้า",
+        desc: "ต้นแบบสถาปัตยกรรมสีเขียวเพื่อการเรียนรู้ สวนลอยฟ้าออร์แกนิกขนาดใหญ่ที่สุดในเอเชียตะวันออกเฉียงใต้ รองรับการดูดซับคาร์บอนและระบบบำบัดน้ำหมุนเวียน",
+        img: "assets/tha_prachan_dome_editorial.jpg",
+        stat1: "อันดับ 1", lbl1: "สวนลอยฟ้าเอเชีย", stat2: "Top 5", lbl2: "SDG 11 ของโลก"
+      },
+      {
+        tag: "GLOBAL IMPACT & RANKINGS",
+        title: "SDG 11 อันดับ 5 ของโลก จาก THE Impact Rankings",
+        desc: "ธรรมศาสตร์ได้รับการจัดอันดับให้เป็น Top 5 ของโลกด้านเมืองและชุมชนยั่งยืน จากผลงานการพัฒนาสิ่งแวดล้อม การขนส่งพลังงานสะอาด และการบริการเพื่อประชาชน",
+        img: "assets/tha_prachan_dome_editorial.jpg",
+        stat1: "Top 5", lbl1: "อันดับโลก SDG 11", stat2: "อันดับ 1", lbl2: "ในประเทศไทย"
+      },
+      {
+        tag: "CENTENNIAL STRATEGY 2034",
+        title: "ยุทธศาสตร์ TU 2034 สู่ศตวรรษแห่งความยั่งยืน",
+        desc: "พิมพ์เขียวการเปลี่ยนผ่านสู่ทศวรรษที่ 10 ของมหาวิทยาลัย: ก้าวสู่การเป็นมหาวิทยาลัยชั้นนำระดับโลกที่สร้างผู้นำการเปลี่ยนแปลงทางปัญญาและนวัตกรรม",
+        img: "assets/tha_prachan_dome_editorial.jpg",
+        stat1: "100 ปี", lbl1: "เป้าหมายศตวรรษ", stat2: "4 เสาหลัก", lbl2: "ยุทธศาสตร์ขับเคลื่อน"
+      }
+    ];
 
-    // --- 2. INITIALIZATION & SCROLL ENGINE ---
-    document.addEventListener("DOMContentLoaded", () => {
-      initScrubber();
-      initMilestoneChart();
-      initCampusDistributionChart();
-      initGenderGroupChart();
-      initBudgetChart();
-      initRadarChart();
-      renderFacultyTags();
-      setupScrollListener();
-    });
+    // 2. Scroll-Linked Car Motion and Scroller
+    function initScrollInteractions() {
+      const carPole = document.getElementById('f1CarPole');
+      const carSlot2 = document.getElementById('f1CarSlot2');
+      const scrubberFill = document.getElementById('scrubberFill');
+      const scrubberThumb = document.getElementById('scrubberThumb');
+      const pips = document.querySelectorAll('.scrubber-pip');
+      const navLinks = document.querySelectorAll('.header-nav-link');
 
-    // Scroller synchronization with runner character and bottom scrubber
-    function setupScrollListener() {
-      const runnerLane = document.getElementById("runnerLane");
-      const runnerAvatar = document.getElementById("runnerAvatar");
-      const runnerYearBadge = document.getElementById("runnerYearBadge");
-      const scrubberFill = document.getElementById("scrubberFill");
-      const scrubberThumb = document.getElementById("scrubberThumb");
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
 
-      window.addEventListener("scroll", () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = Math.min(Math.max(scrollTop / docHeight, 0), 1);
-
-        // Update Bottom Scrubber
-        const pct = progress * 100;
-        scrubberFill.style.width = pct + "%";
-        scrubberThumb.style.left = pct + "%";
-
-        // Show Runner after Hero
-        if (scrollTop > 300) {
-          runnerLane.classList.add("visible");
-          runnerAvatar.style.top = (progress * 100) + "%";
-
-          // Dynamically update year badge as student travels
-          if (progress < 0.15) runnerYearBadge.innerText = "พ.ศ. 2477";
-          else if (progress < 0.28) runnerYearBadge.innerText = "พ.ศ. 2496";
-          else if (progress < 0.42) runnerYearBadge.innerText = "พ.ศ. 2529";
-          else if (progress < 0.55) runnerYearBadge.innerText = "พ.ศ. 2535";
-          else if (progress < 0.70) runnerYearBadge.innerText = "พ.ศ. 2567";
-          else if (progress < 0.88) runnerYearBadge.innerText = "พ.ศ. 2570";
-          else runnerYearBadge.innerText = "พ.ศ. 2577";
-        } else {
-          runnerLane.classList.remove("visible");
+        // Update Scrubber Fill and Thumb
+        if (scrubberFill && scrubberThumb) {
+          scrubberFill.style.width = (progress * 100) + '%';
+          scrubberThumb.style.left = (progress * 100) + '%';
         }
-      });
+
+        // Hero Cars Scroll Acceleration (Starts after scrolling down to the grid)
+        const carStartScroll = 400;
+        if (scrollTop <= carStartScroll) {
+          if (carPole) carPole.style.transform = 'translateY(0px)';
+          if (carSlot2) carSlot2.style.transform = 'translateY(0px)';
+        } else if (scrollTop < window.innerHeight * 2.2) {
+          const delta = scrollTop - carStartScroll;
+          if (carPole) carPole.style.transform = `translateY(${delta * 0.95}px)`;
+          if (carSlot2) carSlot2.style.transform = `translateY(${delta * 0.88}px)`;
+        }
+
+        // Turning Cars Animation in S-Curve
+        const curveSection = document.getElementById('racing-curve');
+        if (curveSection) {
+          const rect = curveSection.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const curveProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+            const turnCar1 = document.getElementById('turnCar1');
+            const turnCar2 = document.getElementById('turnCar2');
+            const turnCar3 = document.getElementById('turnCar3');
+            if (turnCar1) turnCar1.style.transform = `rotate(${-18 + curveProgress * 20}deg) translate(${curveProgress * 30}px, ${curveProgress * 20}px)`;
+            if (turnCar2) turnCar2.style.transform = `rotate(${24 - curveProgress * 30}deg) translate(${-curveProgress * 20}px, ${curveProgress * 25}px)`;
+            if (turnCar3) turnCar3.style.transform = `rotate(${-12 + curveProgress * 15}deg) translate(${curveProgress * 25}px, ${curveProgress * 15}px)`;
+          }
+        }
+
+        // Update active nav links & pips
+        const sections = ['hero', 'statement', 'campuses', 'budget', 'racing-curve', 'circuit', 'finish'];
+        sections.forEach((secId, idx) => {
+          const sec = document.getElementById(secId);
+          if (sec) {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= window.innerHeight * 0.4) {
+              pips.forEach(p => p.classList.remove('active'));
+              if (pips[idx]) pips[idx].classList.add('active');
+
+              navLinks.forEach(l => l.classList.remove('active'));
+              if (navLinks[idx]) navLinks[idx].classList.add('active');
+            }
+          }
+        });
+      }, { passive: true });
     }
 
-    function initScrubber() {
-      const track = document.getElementById("scrubberTrack");
-      track.addEventListener("click", (e) => {
-        const rect = track.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const ratio = clickX / rect.width;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        window.scrollTo({ top: ratio * docHeight, behavior: "smooth" });
+    // 3. Scrubber click handler
+    function handleScrubberClick(e) {
+      const track = document.getElementById('scrubberTrack');
+      const rect = track.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const ratio = Math.min(Math.max(clickX / rect.width, 0), 1);
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo({
+        top: ratio * scrollHeight,
+        behavior: 'smooth'
       });
     }
 
     function scrollToElement(id) {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
-    // --- 3. SCENE 1: MILESTONES CONTROLLER ---
-    let milestoneChart;
-    function selectMilestone(idx) {
-      const data = MILESTONES_DATA[idx];
-      document.getElementById("msTitle").innerText = data.title;
-      document.getElementById("msDesc").innerText = data.desc;
-      document.getElementById("msVal").innerText = data.val;
-      document.getElementById("msLbl").innerText = data.lbl;
+    // 4. Campus Selector Tab
+    function selectCampusTab(idx) {
+      const btns = document.querySelectorAll('.cluster-select-btn');
+      btns.forEach((b, i) => b.classList.toggle('active', i === idx));
 
-      // Update node styles
-      const nodes = document.querySelectorAll(".milestone-node");
-      nodes.forEach((n, i) => {
-        if (i === idx) n.classList.add("active");
-        else n.classList.remove("active");
+      const data = CAMPUSES_DATA[idx];
+      document.getElementById('cArea').textContent = data.area;
+      document.getElementById('cStudents').textContent = data.students;
+      document.getElementById('cRole').textContent = data.role;
+      document.getElementById('cFocus').textContent = data.focus;
+    }
+
+    // 5. Milestone Step Selector
+    function setMilestoneStep(idx) {
+      const nodes = document.querySelectorAll('.stepper-node');
+      nodes.forEach((n, i) => n.classList.toggle('active', i === idx));
+
+      const item = MILESTONES_DATA[idx];
+      document.getElementById('mEventTitle').textContent = item.title;
+      document.getElementById('mEventDesc').textContent = item.desc;
+      document.getElementById('mEventStat').textContent = item.stat;
+      document.getElementById('mEventLabel').textContent = item.lbl;
+    }
+
+    // 6. Circuit Milestone Selector
+    function selectCircuitNode(idx) {
+      const nodes = document.querySelectorAll('.circuit-milestone-node');
+      nodes.forEach((n, i) => n.classList.toggle('active', i === idx));
+
+      const c = CIRCUIT_DATA[idx];
+      document.getElementById('cInsightTag').textContent = c.tag;
+      document.getElementById('cInsightTitle').textContent = c.title;
+      document.getElementById('cInsightDesc').textContent = c.desc;
+      document.getElementById('cStat1').textContent = c.stat1;
+      document.getElementById('cStatLbl1').textContent = c.lbl1;
+      document.getElementById('cStat2').textContent = c.stat2;
+      document.getElementById('cStatLbl2').textContent = c.lbl2;
+
+      // Update active SVG stroke
+      const activePath = document.getElementById('circuitActivePath');
+      if (activePath) {
+        const segments = [
+          "M 120 180 C 130 90, 220 80, 280 140",
+          "M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160",
+          "M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160 C 620 200, 600 290, 540 340",
+          "M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160 C 620 200, 600 290, 540 340 C 470 390, 360 410, 300 370 Z"
+        ];
+        activePath.setAttribute('d', segments[idx] || segments[0]);
+      }
+    }
+
+    // 7. Budget Stream Drilldown
+    const STREAMS_DATA = [
+      { name: "งบประมาณแผ่นดิน", share: "35.8%", amount: "5,495 ล้านบาท", desc: "เงินอุดหนุนทั่วไปและโครงการพัฒนาเชิงยุทธศาสตร์ระดับชาติเพื่อความเป็นเลิศทางวิชาการ" },
+      { name: "ค่าธรรมเนียมการศึกษา", share: "32.4%", amount: "4,973 ล้านบาท", desc: "รายได้จากหลักสูตรปกติ หลักสูตรพิเศษ และหลักสูตรนานาชาติคุณภาพสูง" },
+      { name: "ทรัพย์สินและการลงทุน", share: "18.2%", amount: "2,793 ล้านบาท", desc: "การบริหารจัดการอสังหาริมทรัพย์ พื้นที่พาณิชย์ และกองทุนพัฒนามหาวิทยาลัย" },
+      { name: "ทุนวิจัยและบริการวิชาการ", share: "8.6%", amount: "1,320 ล้านบาท", desc: "ทุนวิจัยจากภาคเอกชน รัฐวิสาหกิจ และองค์กรวิจัยระดับนานาชาติ" },
+      { name: "บริการทางการแพทย์และคลินิก", share: "5.0%", amount: "769 ล้านบาท", desc: "การให้บริการรักษาพยาบาล คลินิกทันตกรรม และศูนย์ตรวจสุขภาพเฉพาะทาง" }
+    ];
+
+    function drilldownStream(idx) {
+      const pills = document.querySelectorAll('.drilldown-pill');
+      pills.forEach((p, i) => p.classList.toggle('active', i === idx));
+
+      const s = STREAMS_DATA[idx];
+      document.getElementById('streamDetailBox').innerHTML = `
+        <strong>${s.name} (${s.share} • ${s.amount}):</strong> ${s.desc}
+      `;
+    }
+
+    // 8. Faculties Rendering & Modal
+    function renderFaculties(filter) {
+      const container = document.getElementById('facultiesGrid');
+      container.innerHTML = '';
+      const list = filter === 'all' ? FACULTIES_DATA : FACULTIES_DATA.filter(f => f.pillar === filter);
+      list.forEach((fac, idx) => {
+        const card = document.createElement('div');
+        card.className = 'faculty-item-card';
+        card.onclick = () => openFacultyModal(fac);
+        card.innerHTML = `
+          <div class="fac-name">${fac.name}</div>
+          <div class="fac-meta">
+            <span>${fac.pillarName}</span>
+            <span style="color: var(--bidwells-crimson); font-weight: 700;">TCAS: ${fac.cutoff}</span>
+          </div>
+        `;
+        container.appendChild(card);
       });
-
-      // Update progress line
-      const pct = (idx / (MILESTONES_DATA.length - 1)) * 100;
-      document.getElementById("milestoneProgressLine").style.width = pct + "%";
     }
 
-    function initMilestoneChart() {
-      const ctx = document.getElementById("milestoneChartCanvas").getContext("2d");
-      milestoneChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['2477 (ตลาดวิชา)', '2495', '2503 (ระบบปิด)', '2529 (รังสิต)', '2535 (ลำปาง)', '2538 (พัทยา)', '2567 (90 ปี)'],
-          datasets: [{
-            label: 'จำนวนนักศึกษา (คน)',
-            data: [7094, 9500, 12800, 19200, 26500, 31200, 42650],
-            borderColor: '#c51944',
-            backgroundColor: 'rgba(197, 25, 68, 0.08)',
-            borderWidth: 3,
-            fill: true,
-            tension: 0.35,
-            pointBackgroundColor: '#ffffff',
-            pointBorderColor: '#c51944',
-            pointBorderWidth: 2,
-            pointRadius: 6,
-            pointHoverRadius: 8
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: '#0b163b',
-              padding: 10,
-              titleFont: { family: 'Prompt', weight: 'bold' },
-              bodyFont: { family: 'Prompt' }
-            }
-          },
-          scales: {
-            y: {
-              grid: { color: '#f1f5f9' },
-              ticks: { font: { family: 'Prompt' } }
-            },
-            x: {
-              grid: { display: false },
-              ticks: { font: { family: 'Prompt' } }
-            }
-          }
-        }
-      });
+    function filterFaculties(pillar) {
+      const pills = document.querySelectorAll('.fac-pill');
+      pills.forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+      renderFaculties(pillar);
     }
 
-    // --- 4. SCENE 2: CAMPUS CONTROLLER ---
-    function selectCampus(idx) {
-      const btns = document.querySelectorAll(".campus-pill-btn");
-      btns.forEach((b, i) => {
-        if (i === idx) b.classList.add("active");
-        else b.classList.remove("active");
-      });
-    }
-
-    // --- 5. SCENE 3: 26 FACULTIES CONTROLLER ---
-    function renderFacultyTags() {
-      const container = document.getElementById("facultyTagsContainer");
-      container.innerHTML = "";
-      FACULTIES_DATA.forEach((f, idx) => {
-        const pill = document.createElement("button");
-        pill.className = "faculty-tag-pill";
-        pill.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${f.name}`;
-        pill.onclick = () => openFacultyModal(idx);
-        container.appendChild(pill);
-      });
-    }
-
-    function openFacultyModal(idx) {
-      const f = FACULTIES_DATA[idx];
-      document.getElementById("modalCategory").innerText = f.cat;
-      document.getElementById("modalCode").innerText = "TU • " + f.code;
-      document.getElementById("modalName").innerText = f.name;
-      document.getElementById("modalDesc").innerText = f.desc;
-      document.getElementById("modalScore").innerText = f.score;
-      document.getElementById("modalEmploy").innerText = f.employ;
-      document.getElementById("modalAccred").innerText = f.accred;
-      document.getElementById("modalHighlight").innerText = f.hl;
-
-      document.getElementById("facultyModal").style.display = "flex";
+    function openFacultyModal(fac) {
+      document.getElementById('mFacPillar').textContent = fac.pillarName;
+      document.getElementById('mFacTitle').textContent = fac.name;
+      document.getElementById('mFacDesc').textContent = fac.desc;
+      document.getElementById('mFacCutoff').textContent = fac.cutoff + ' / 100';
+      document.getElementById('mFacAccept').textContent = fac.accept;
+      document.getElementById('mFacCareers').textContent = fac.careers;
+      document.getElementById('facultyModal').style.display = 'flex';
     }
 
     function closeFacultyModal() {
-      document.getElementById("facultyModal").style.display = "none";
+      document.getElementById('facultyModal').style.display = 'none';
     }
 
-    // --- 6. SCENE 4: GENDER BREAKDOWN CHART ---
-    function initGenderGroupChart() {
-      const ctx = document.getElementById("genderGroupChartCanvas").getContext("2d");
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['สังคมศาสตร์/มนุษย์', 'วิทยาศาสตร์/เทคโนฯ', 'วิทยาศาสตร์สุขภาพ'],
-          datasets: [
-            {
-              label: 'หญิง (%)',
-              data: [66.8, 48.5, 74.2],
-              backgroundColor: '#c51944',
-              borderRadius: 6
-            },
-            {
-              label: 'ชาย (%)',
-              data: [33.2, 51.5, 25.8],
-              backgroundColor: '#0b163b',
-              borderRadius: 6
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'top', labels: { font: { family: 'Prompt', weight: '600' } } },
-            tooltip: { backgroundColor: '#0b163b' }
-          },
-          scales: {
-            x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Prompt' } } },
-            y: { stacked: true, max: 100, ticks: { callback: v => v + '%', font: { family: 'Prompt' } } }
-          }
-        }
-      });
+    function openDownloadModal() {
+      document.getElementById('downloadModal').style.display = 'flex';
     }
 
-    // --- 7. SCENE 5: CLEAR CAMPUS DISTRIBUTION (REPLACING STREAMGRAPH) ---
-    let distChart;
-    const DIST_DATA_PCT = {
-      labels: ['2477 (สถาปนา)', '2500 (ระบบปิด)', '2530 (ต้นรังสิต)', '2550 (ขยายศูนย์)', '2567 (ปัจจุบัน)'],
-      datasets: [
-        { label: 'รังสิต', data: [0, 0, 22.0, 68.0, 73.9], backgroundColor: '#c51944' },
-        { label: 'ท่าพระจันทร์', data: [100, 100, 78.0, 22.0, 16.1], backgroundColor: '#0b163b' },
-        { label: 'ลำปาง', data: [0, 0, 0, 7.0, 7.0], backgroundColor: '#ffc72c' },
-        { label: 'พัทยา', data: [0, 0, 0, 3.0, 3.0], backgroundColor: '#00857c' }
-      ]
-    };
-
-    const DIST_DATA_COUNT = {
-      labels: ['2477 (สถาปนา)', '2500 (ระบบปิด)', '2530 (ต้นรังสิต)', '2550 (ขยายศูนย์)', '2567 (ปัจจุบัน)'],
-      datasets: [
-        { label: 'รังสิต', data: [0, 0, 4200, 24140, 31520], backgroundColor: '#c51944' },
-        { label: 'ท่าพระจันทร์', data: [7094, 11500, 15000, 7810, 8240], backgroundColor: '#0b163b' },
-        { label: 'ลำปาง', data: [0, 0, 0, 2485, 1610], backgroundColor: '#ffc72c' },
-        { label: 'พัทยา', data: [0, 0, 0, 1065, 1280], backgroundColor: '#00857c' }
-      ]
-    };
-
-    function initCampusDistributionChart() {
-      const ctx = document.getElementById("campusDistributionCanvas").getContext("2d");
-      distChart = new Chart(ctx, {
-        type: 'bar',
-        data: DIST_DATA_PCT,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'top', labels: { font: { family: 'Prompt', weight: 'bold' } } },
-            tooltip: { backgroundColor: '#0b163b' }
-          },
-          scales: {
-            x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Prompt' } } },
-            y: { stacked: true, max: 100, ticks: { callback: v => v + '%', font: { family: 'Prompt' } } }
-          }
-        }
-      });
+    function closeDownloadModal() {
+      document.getElementById('downloadModal').style.display = 'none';
     }
 
-    function setDistributionMode(mode) {
-      const btns = document.querySelectorAll(".dist-toggle-btn");
-      if (mode === 'stacked') {
-        btns[0].classList.add("active");
-        btns[1].classList.remove("active");
-        distChart.data = DIST_DATA_PCT;
-        distChart.options.scales.y.max = 100;
-        distChart.options.scales.y.ticks.callback = v => v + '%';
-      } else {
-        btns[1].classList.add("active");
-        btns[0].classList.remove("active");
-        distChart.data = DIST_DATA_COUNT;
-        delete distChart.options.scales.y.max;
-        distChart.options.scales.y.ticks.callback = v => v.toLocaleString() + ' คน';
+    function handleDownloadSubmit(e) {
+      e.preventDefault();
+      if (typeof confetti === 'function') {
+        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
       }
-      distChart.update();
+      openDownloadModal();
     }
 
-    // --- 8. SCENE 6: 5-YEAR BUDGET CHART & DRILLDOWN ---
-    let budgetChart;
-    function initBudgetChart() {
-      const ctx = document.getElementById("budgetBarChartCanvas").getContext("2d");
-      budgetChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['2563', '2564', '2565', '2566', '2567'],
-          datasets: [{
-            label: 'งบประมาณรวม (ล้านบาท)',
-            data: [11240, 11480, 11920, 12350, 12890],
-            backgroundColor: ['#e2e8f0', '#e2e8f0', '#e2e8f0', '#e2e8f0', '#c51944'],
-            borderRadius: 8
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          onClick: (evt, elements) => {
-            if (elements.length > 0) {
-              const idx = elements[0].index;
-              const years = [2563, 2564, 2565, 2566, 2567];
-              drilldownBudget(years[idx], idx);
-            }
-          },
-          plugins: {
-            legend: { display: false },
-            tooltip: { backgroundColor: '#0b163b', callbacks: { label: c => c.raw.toLocaleString() + ' ล้านบาท' } }
-          },
-          scales: {
-            x: { grid: { display: false }, ticks: { font: { family: 'Prompt', weight: 'bold' } } },
-            y: { ticks: { callback: v => (v/1000).toFixed(0) + ' พันลบ.', font: { family: 'Prompt' } } }
-          }
-        }
-      });
-    }
-
-    function drilldownBudget(year, idx) {
-      const d = BUDGET_DATA[year];
-      document.getElementById("drilldownYear").innerText = `ปีงบประมาณ ${year} (${d.total.toLocaleString()} ล้านบาท)`;
-      document.getElementById("drilldownList").innerHTML = `
-        <li>• ค่าธรรมเนียมการศึกษา: ${d.edu.toLocaleString()} ลบ. (${((d.edu/d.total)*100).toFixed(1)}%)</li>
-        <li>• เงินอุดหนุนรัฐบาล: ${d.gov.toLocaleString()} ลบ. (${((d.gov/d.total)*100).toFixed(1)}%)</li>
-        <li>• รายได้บริการการแพทย์/รพ.: ${d.hosp.toLocaleString()} ลบ. (${((d.hosp/d.total)*100).toFixed(1)}%)</li>
-        <li>• วิจัย & บริการวิชาการ: ${d.res.toLocaleString()} ลบ. (${((d.res/d.total)*100).toFixed(1)}%)</li>
-        <li>• ผลประโยชน์ทรัพย์สิน & ลงทุน: ${d.asset.toLocaleString()} ลบ. (${((d.asset/d.total)*100).toFixed(1)}%)</li>
-      `;
-
-      // Update bar highlight
-      const bgColors = ['#e2e8f0', '#e2e8f0', '#e2e8f0', '#e2e8f0', '#e2e8f0'];
-      bgColors[idx] = '#c51944';
-      budgetChart.data.datasets[0].backgroundColor = bgColors;
-      budgetChart.update();
-    }
-
-    // --- 9. SCENE 7: BUSINESS SCHOOL RADAR CHART ---
-    function initRadarChart() {
-      const ctx = document.getElementById("businessSchoolRadarCanvas").getContext("2d");
-      new Chart(ctx, {
-        type: 'radar',
-        data: {
-          labels: ['การรับรองระดับโลก (AACSB/EQUIS/AMBA)', 'ความคุ้มค่าการศึกษา (ROI)', 'เครือข่ายศิษย์เก่า C-Level', 'หลักสูตรนานาชาติ/สองปริญญา', 'การวิจัยด้านธุรกิจสากล'],
-          datasets: [
-            {
-              label: 'TBS (ธรรมศาสตร์)',
-              data: [98, 92, 95, 96, 94],
-              backgroundColor: 'rgba(197, 25, 68, 0.2)',
-              borderColor: '#c51944',
-              borderWidth: 2,
-              pointBackgroundColor: '#c51944'
-            },
-            {
-              label: 'CBS (จุฬาลงกรณ์)',
-              data: [90, 91, 96, 94, 95],
-              backgroundColor: 'rgba(11, 22, 59, 0.15)',
-              borderColor: '#0b163b',
-              borderWidth: 2,
-              pointBackgroundColor: '#0b163b'
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { position: 'top', labels: { font: { family: 'Prompt', weight: 'bold' } } }
-          },
-          scales: {
-            r: {
-              angleLines: { color: '#e2e8f0' },
-              grid: { color: '#e2e8f0' },
-              pointLabels: { font: { family: 'Prompt', size: 10 } },
-              suggestedMin: 50,
-              suggestedMax: 100
-            }
-          }
-        }
-      });
-    }
-
-    // --- 10. SCENE 8: CIRCUIT CONTROLLER ---
-    const CIRCUIT_DATA = [
-      {
-        title: "อุทยานการเรียนรู้ป๋วย 100 ปี",
-        desc: "หลังคาเขียวฟาร์มเกษตรอินทรีย์ลอยฟ้าขนาดใหญ่ที่สุดในเอเชีย (22,000 ตร.ม.) ออกแบบโดยสถาปัตยกรรมผังเมืองธรรมศาสตร์เพื่อลดอุณหภูมิเมือง ดักจับน้ำฝน และเป็นแหล่งเรียนรู้ความมั่นคงทางอาหาร",
-        s1: "22,000 ตร.ม.",
-        s2: "อันดับ 5 โลก"
-      },
-      {
-        title: "THE Impact Rankings (SDG 11)",
-        desc: "ได้รับการจัดอันดับเป็นอันดับ 1 ของประเทศไทย และอันดับ 5 ของโลก ด้านเมืองและชุมชนยั่งยืน (SDG 11) โดย Times Higher Education จากการบริหารพื้นที่และการจัดการสิ่งแวดล้อมที่เชื่อมโยงกับชุมชน",
-        s1: "อันดับ 1 ในไทย",
-        s2: "Top 5 ของโลก"
-      },
-      {
-        title: "TU EV Shuttle & Zero Emission",
-        desc: "ระบบขนส่งภายในศูนย์รังสิตใช้ยานยนต์ไฟฟ้า EV 100% เชื่อมต่อสถานีรถไฟฟ้าสายสีแดง หอพัก และอาคารเรียน พร้อมสถานีชาร์จพลังงานแสงอาทิตย์",
-        s1: "100% EV",
-        s2: "Zero Emission"
-      },
-      {
-        title: "รพ.ธรรมศาสตร์เฉลิมพระเกียรติ (810 เตียง)",
-        desc: "โรงพยาบาลมหาวิทยาลัยระดับตติยภูมิชั้นสูงแห่งกรุงเทพฯ ตอนเหนือ รองรับผู้ป่วยนอกกว่า 1.4 ล้านรายต่อปี มีศูนย์ความเป็นเลิศทางการแพทย์และศูนย์จีโนมิกส์แม่นยำระดับชาติ",
-        s1: "810 เตียง",
-        s2: "1.4 ล้านราย/ปี"
-      }
-    ];
-
-    function selectCircuit(idx) {
-      const d = CIRCUIT_DATA[idx];
-      document.getElementById("circuitTitle").innerText = d.title;
-      document.getElementById("circuitDesc").innerText = d.desc;
-      document.getElementById("circuitStat1").innerText = d.s1;
-      document.getElementById("circuitStat2").innerText = d.s2;
-    }
-
-    // --- 11. SCENE 10: COCKPIT CONTROLLER ---
+    // 9. TU 2034 Strategy Cockpit Real-time Calculator
     function updateCockpit() {
-      const s1 = parseInt(document.querySelectorAll("input[type=range]")[0].value);
-      const s2 = parseInt(document.querySelectorAll("input[type=range]")[1].value);
-      const s3 = parseInt(document.querySelectorAll("input[type=range]")[2].value);
+      const r = parseFloat(document.getElementById('sliderResearch').value);
+      const s = parseFloat(document.getElementById('sliderSkills').value);
+      const g = parseFloat(document.getElementById('sliderGreen').value);
+      const h = parseFloat(document.getElementById('sliderHealth').value);
 
-      document.getElementById("sliderVal1").innerText = s1 + "%";
-      document.getElementById("sliderVal2").innerText = s2 + "%";
-      document.getElementById("sliderVal3").innerText = s3;
+      document.getElementById('dispResearch').textContent = r + '%';
+      document.getElementById('dispSkills').textContent = s + '%';
+      document.getElementById('dispGreen').textContent = g + '%';
+      document.getElementById('dispHealth').textContent = h + '%';
 
-      // Calculate dynamic projections
-      let rank = 400 - Math.floor((s1 * 4) + (s3 * 0.4));
-      if (rank < 200) rank = 200;
-      document.getElementById("projRank").innerText = "Top " + rank;
-
-      let research = Math.floor(1000 + (s1 * 60) + (s3 * 2));
-      document.getElementById("projResearch").innerText = research.toLocaleString() + " ชิ้น";
-
-      let scholar = Math.floor(4000 + (s2 * 250));
-      document.getElementById("projScholar").innerText = scholar.toLocaleString() + " คน";
+      const composite = (r * 0.3 + s * 0.25 + g * 0.25 + h * 0.2).toFixed(1);
+      document.getElementById('cockpitCompositeScore').textContent = composite;
     }
 
-    // --- 12. DOWNLOAD REPORT MODAL ---
-    function downloadReportModal() {
-      confetti({ particleCount: 50, spread: 60, origin: { y: 0.85 } });
-      window.open('Storyboard_Thammasat_BI304.pdf', '_blank');
+    // 10. Chart.js Initializations
+    let campusDistChart = null;
+
+    function initCharts() {
+      // Budget 5-Year Chart
+      const ctxBudget = document.getElementById('budgetChartCanvas');
+      if (ctxBudget) {
+        new Chart(ctxBudget, {
+          type: 'line',
+          data: {
+            labels: ['2563', '2564', '2565', '2566', '2567'],
+            datasets: [{
+              label: 'งบประมาณรวม (ล้านบาท)',
+              data: [13420, 13850, 14210, 14780, 15350],
+              borderColor: '#c51944',
+              backgroundColor: 'rgba(197, 25, 68, 0.08)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: '#c51944',
+              pointRadius: 6,
+              pointHoverRadius: 8
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => `${ctx.parsed.y.toLocaleString()} ล้านบาท`
+                }
+              }
+            },
+            scales: {
+              y: {
+                min: 12000,
+                max: 16000,
+                ticks: {
+                  callback: (v) => v.toLocaleString() + ' ลบ.'
+                },
+                grid: { color: 'rgba(0, 0, 0, 0.05)' }
+              },
+              x: { grid: { display: false } }
+            }
+          }
+        });
+      }
+
+      // Demographic Group Chart
+      const ctxGender = document.getElementById('genderGroupChartCanvas');
+      if (ctxGender) {
+        new Chart(ctxGender, {
+          type: 'bar',
+          data: {
+            labels: ['สังคมศาสตร์', 'วิทย์-เทคโนโลยี', 'วิทยาศาสตร์สุขภาพ', 'วิทยาลัยนานาชาติ'],
+            datasets: [
+              {
+                label: 'หญิง (%)',
+                data: [64.2, 53.8, 71.5, 59.8],
+                backgroundColor: '#ec4899',
+                borderRadius: 6
+              },
+              {
+                label: 'ชาย (%)',
+                data: [35.8, 46.2, 28.5, 40.2],
+                backgroundColor: '#3b82f6',
+                borderRadius: 6
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y}%`
+                }
+              }
+            },
+            scales: {
+              y: {
+                stacked: true,
+                max: 100,
+                ticks: { callback: (v) => v + '%' },
+                grid: { color: 'rgba(0,0,0,0.05)' }
+              },
+              x: { stacked: true, grid: { display: false } }
+            }
+          }
+        });
+      }
+
+      // Campus Multi-Era Distribution Chart
+      const ctxDist = document.getElementById('campusDistributionCanvas');
+      if (ctxDist) {
+        campusDistChart = new Chart(ctxDist, {
+          type: 'bar',
+          data: {
+            labels: ['พ.ศ. 2500', 'พ.ศ. 2530', 'พ.ศ. 2545', 'พ.ศ. 2567 (ปัจจุบัน)'],
+            datasets: [
+              {
+                label: 'ท่าพระจันทร์ (%)',
+                data: [100, 68, 22, 14.8],
+                backgroundColor: '#a6d2e6'
+              },
+              {
+                label: 'ศูนย์รังสิต (%)',
+                data: [0, 32, 70, 73.5],
+                backgroundColor: '#c51944'
+              },
+              {
+                label: 'ศูนย์ลำปาง (%)',
+                data: [0, 0, 5, 7.2],
+                backgroundColor: '#ffc72c'
+              },
+              {
+                label: 'ศูนย์พัทยา (%)',
+                data: [0, 0, 3, 4.5],
+                backgroundColor: '#00857c'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top', labels: { color: '#ffffff' } },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y}%`
+                }
+              }
+            },
+            scales: {
+              x: { stacked: true, grid: { display: false }, ticks: { color: '#cbd5e1' } },
+              y: { stacked: true, max: 100, ticks: { callback: (v) => v + '%', color: '#cbd5e1' }, grid: { color: 'rgba(255,255,255,0.08)' } }
+            }
+          }
+        });
+      }
     }
+
+    function setDistributionEra(mode) {
+      const btns = document.querySelectorAll('.era-pill-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (!campusDistChart) return;
+      if (mode === '2567') {
+        campusDistChart.data.labels = ['พ.ศ. 2567 (ปัจจุบัน)'];
+        campusDistChart.data.datasets[0].data = [14.8];
+        campusDistChart.data.datasets[1].data = [73.5];
+        campusDistChart.data.datasets[2].data = [7.2];
+        campusDistChart.data.datasets[3].data = [4.5];
+      } else {
+        campusDistChart.data.labels = ['พ.ศ. 2500', 'พ.ศ. 2530', 'พ.ศ. 2545', 'พ.ศ. 2567 (ปัจจุบัน)'];
+        campusDistChart.data.datasets[0].data = [100, 68, 22, 14.8];
+        campusDistChart.data.datasets[1].data = [0, 32, 70, 73.5];
+        campusDistChart.data.datasets[2].data = [0, 0, 5, 7.2];
+        campusDistChart.data.datasets[3].data = [0, 0, 3, 4.5];
+      }
+      campusDistChart.update();
+    }
+
+    // Window Onload
+    window.addEventListener('DOMContentLoaded', () => {
+      initScrollInteractions();
+      renderFaculties('all');
+      initCharts();
+    });
   </script>
 </body>
-</html>
-'''
-    with open('d:/BI304/index.html', 'w', encoding='utf-8') as f:
+</html>'''
+    return html_code
+
+def main():
+    html = generate_bidwells_html()
+    output_path = os.path.join(os.path.dirname(__file__), 'index.html')
+    with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html)
-    print("Successfully built polished Bidwells-style experience in d:/BI304/index.html")
+    print(f"Successfully generated refined authentic Bidwells-style experience to {output_path}")
 
 if __name__ == '__main__':
-    build_bidwells_html()
+    main()
