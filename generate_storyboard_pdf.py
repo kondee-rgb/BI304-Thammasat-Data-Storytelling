@@ -440,7 +440,7 @@ def build_pdf(filename="Storyboard_Thammasat_BI304.pdf"):
     end_box = [
         [
             Paragraph("<b>สรุปสิ่งที่ต้องส่ง (พร้อมส่งมอบ):</b><br/>"
-                      "1. <b>Storyboard (PDF):</b> ไฟล์เอกสารฉบับนี้ (Storyboard_Thammasat_BI304.pdf)<br/>"
+                      "1. <b>Storyboard (PDF):</b> ไฟล์เอกสารฉบับนี้ (story board.pdf)<br/>"
                       "2. <b>Data Scrollytelling (Web):</b> เว็บไซต์ index.html ที่รองรับทั้งโหมด Scrollytelling และ Flourish Story<br/>"
                       "3. <b>Google Colab Notebook:</b> ไฟล์ BI304_Thammasat_Data_Storytelling.ipynb พร้อมรัน 100%",
                       caption_style)
@@ -460,4 +460,7 @@ def build_pdf(filename="Storyboard_Thammasat_BI304.pdf"):
     print(f"Successfully generated {filename}, size: {os.path.getsize(filename)} bytes")
 
 if __name__ == "__main__":
-    build_pdf()
+    build_pdf("story board.pdf")
+    import shutil
+    shutil.copy("story board.pdf", "Storyboard_Thammasat_BI304.pdf")
+    print("Copied to Storyboard_Thammasat_BI304.pdf")
