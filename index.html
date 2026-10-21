@@ -833,8 +833,8 @@
         <a href="BI304_Thammasat_Data_Storytelling.ipynb" download class="action-btn btn-colab-link" title="ดาวน์โหลดไฟล์ Colab Notebook เพื่อนำไปรันบน Google Colab">
           <i class="fa-solid fa-code"></i> โหลด Colab (.ipynb)
         </a>
-        <button class="action-btn btn-flourish-link" onclick="openFlourishDataModal()" title="ดูชุดข้อมูล CSV 6 ชุดสำหรับ Flourish">
-          <i class="fa-solid fa-table-list"></i> ชุดข้อมูล Flourish (CSV)
+        <button class="action-btn btn-flourish-link" onclick="openFlourishDataModal()" title="ดูชุดข้อมูล CSV ครบทั้ง 10 ฉากสำหรับ Flourish Story">
+          <i class="fa-solid fa-table-list"></i> ชุดข้อมูล Flourish 10 ฉาก (CSV)
         </button>
       </div>
     </div>
@@ -1184,55 +1184,82 @@
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeFlourishDataModal()"><i class="fa-solid fa-xmark"></i></button>
       <h2 style="color: var(--tu-red); font-size: 20px; margin-bottom: 8px; font-family: var(--font-heading);">
-        <i class="fa-solid fa-chart-pie"></i> ชุดข้อมูลสำหรับการสร้าง Flourish Story
+        <i class="fa-solid fa-chart-pie"></i> ชุดข้อมูลสำหรับการสร้าง Flourish Story ครบ 10 ฉาก (Scenes 1 - 10)
       </h2>
       <p style="font-size: 13.5px; color: #475569; margin-bottom: 16px;">
-        ไฟล์ CSV ทั้ง 6 ชุด ถูกสร้างและจัดรูปแบบตามแม่แบบ (Templates) ของ Flourish Studio 
-        สามารถนำไปอัปโหลดสร้าง Story สำหรับนำเสนอได้ทันที:
+        ไฟล์ CSV ทั้ง 10 ชุด ถูกจัดเตรียมและปรับโครงสร้างตรงตามแม่แบบ (Templates) ของ Flourish Studio และตรงตาม Storyboard 1:1 สามารถนำไปสร้าง Story 10 สไลด์ได้ทันที:
       </p>
 
       <ul class="flourish-file-list">
         <li class="flourish-file-item">
           <div>
-            <b>01_flourish_bar_chart_race_faculties.csv</b><br>
-            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Bar chart race / Line chart</b> (วิวัฒนาการยอดนักศึกษา 2477-2567)</span>
+            <b>01_flourish_scene1_student_growth.csv</b> (ฉากที่ 1)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Line chart</b> หรือ <b>Bar chart race</b> (วิวัฒนาการยอดนักศึกษา 2477-2567 สู่ 42,650 คน)</span>
           </div>
-          <a href="flourish_data/01_flourish_bar_chart_race_faculties.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+          <a href="flourish_data/01_flourish_scene1_student_growth.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
         </li>
         <li class="flourish-file-item">
           <div>
-            <b>02_flourish_campuses_map.csv</b><br>
-            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Marker map / Projection map</b> (พิกัด 4 ศูนย์การศึกษาทั่วไทย)</span>
+            <b>02_flourish_scene2_campus_locations.csv</b> (ฉากที่ 2)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Marker map</b> หรือ <b>Projection map</b> (พิกัด 4 ศูนย์การศึกษาทั่วไทย ท่าพระจันทร์-รังสิต-ลำปาง-พัทยา)</span>
           </div>
-          <a href="flourish_data/02_flourish_campuses_map.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+          <a href="flourish_data/02_flourish_scene2_campus_locations.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
         </li>
         <li class="flourish-file-item">
           <div>
-            <b>03_flourish_hierarchy_clusters.csv</b><br>
-            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Hierarchy / Treemap / Sunburst</b> (โครงสร้าง 19 คณะ ใน 4 คลัสเตอร์)</span>
+            <b>03_flourish_scene3_faculty_hierarchy.csv</b> (ฉากที่ 3)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Hierarchy / Treemap / Sunburst</b> (โครงสร้าง 19 คณะ ใน 4 คลัสเตอร์วิชาการ)</span>
           </div>
-          <a href="flourish_data/03_flourish_hierarchy_clusters.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+          <a href="flourish_data/03_flourish_scene3_faculty_hierarchy.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
         </li>
         <li class="flourish-file-item">
           <div>
-            <b>04_flourish_demographics_gender.csv</b><br>
-            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Grouped bar chart</b> (สัดส่วนเพศ หญิง 62.4% vs ชาย 37.6%)</span>
+            <b>04_flourish_scene4_gender_diversity.csv</b> (ฉากที่ 4)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Grouped / Stacked bar chart</b> (สัดส่วนเพศ หญิง 62.4% vs ชาย 37.6% รายกลุ่มสาขา)</span>
           </div>
-          <a href="flourish_data/04_flourish_demographics_gender.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+          <a href="flourish_data/04_flourish_scene4_gender_diversity.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
         </li>
         <li class="flourish-file-item">
           <div>
-            <b>05_flourish_rankings_time_series.csv</b><br>
-            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Rankings / Slope chart</b> (อันดับมหาวิทยาลัยโลกและเอเชีย)</span>
+            <b>05_flourish_scene5_migration_flow_sankey.csv</b> (ฉากที่ 5)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Sankey diagram</b> (สายธารการโยกย้ายศูนย์การศึกษา จากท่าพระจันทร์สู่รังสิตและภูมิภาค)</span>
           </div>
-          <a href="flourish_data/05_flourish_rankings_time_series.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+          <a href="flourish_data/05_flourish_scene5_migration_flow_sankey.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
         </li>
         <li class="flourish-file-item">
           <div>
-            <b>06_flourish_sdg_scores.csv</b><br>
-            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Radar chart</b> (สมรรถนะเป้าหมายการพัฒนาที่ยั่งยืน UN SDGs)</span>
+            <b>06_flourish_scene6_budget_waterfall.csv</b> (ฉากที่ 6)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Bar chart (Waterfall / Column)</b> (โครงสร้างรายรับงบประมาณ 11,500 ล้านบาท พึ่งพารัฐเพียง 31.7%)</span>
           </div>
-          <a href="flourish_data/06_flourish_sdg_scores.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+          <a href="flourish_data/06_flourish_scene6_budget_waterfall.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>07_flourish_scene7_rankings_trend.csv</b> (ฉากที่ 7)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Line chart</b> หรือ <b>Slope chart</b> (อันดับมหาวิทยาลัยโลก QS World, Asia และ TBS อันดับ 1)</span>
+          </div>
+          <a href="flourish_data/07_flourish_scene7_rankings_trend.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>08_flourish_scene8_sdg_radar.csv</b> (ฉากที่ 8)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Radar chart</b> (สมรรถนะเป้าหมายการพัฒนาที่ยั่งยืน UN SDGs เทียบค่าเฉลี่ยสากล)</span>
+          </div>
+          <a href="flourish_data/08_flourish_scene8_sdg_radar.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>09_flourish_scene9_hospital_growth.csv</b> (ฉากที่ 9)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Line chart</b> หรือ <b>Dual-axis Bar & Line</b> (วิวัฒนาการ รพ.ธรรมศาสตร์ ผู้ป่วย 1.46 ล้านครั้ง/ปี)</span>
+          </div>
+          <a href="flourish_data/09_flourish_scene9_hospital_growth.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>10_flourish_scene10_strategic_gauges.csv</b> (ฉากที่ 10)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Cards</b> หรือ <b>Gauge / Progress</b> (ตัวชี้วัดยุทธศาสตร์สู่อนาคต Net-Zero 78% และ 88 Sandbox 62%)</span>
+          </div>
+          <a href="flourish_data/10_flourish_scene10_strategic_gauges.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
         </li>
       </ul>
 

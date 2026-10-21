@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>90 ปี มหาวิทยาลัยธรรมศาสตร์: Data Scrollytelling & Flourish Story | BI304 TBS</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Interactive Plotly & Leaflet Engines -->
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    :root {
+      --tu-red: #C62828;
+      --tu-red-dark: #8E0000;
+      --tu-red-light: #FFEBEE;
+      --tu-gold: #F9A825;
+      --tu-gold-dark: #C17900;
+      --tu-gold-light: #FFF9C4;
+      --slate-dark: #0F172A;
+      --slate-navy: #1E293B;
+      --slate-gray: #475569;
+      --slate-light: #F8FAFC;
+      --border-color: #E2E8F0;
+      --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+      --card-shadow-hover: 0 12px 30px -4px rgba(15, 23, 42, 0.16);
+      --font-heading: 'Prompt', sans-serif;
+      --font-body: 'Sarabun', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--slate-navy);
+      background-color: #F8FAFC;
+      line-height: 1.65;
+      overflow-x: hidden;
+      font-size: 15px;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: var(--font-heading);
+    }
+
+    /* Fixed Application Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 62px;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .header-inner {
+      max-width: 1500px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-emblem {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--tu-red) 0%, var(--tu-red-dark) 100%);
+      color: #FFFFFF;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 18px;
+      border: 2px solid var(--tu-gold);
+      box-shadow: 0 2px 8px rgba(198, 40, 40, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--slate-dark);
+      line-height: 1.2;
+    }
+
+    .brand-text span {
+      font-size: 11.5px;
+      color: var(--slate-gray);
+      font-weight: 500;
+    }
+
+    /* Mode Switcher Pill */
+    .mode-switch-group {
+      display: flex;
+      background: #F1F5F9;
+      border-radius: 30px;
+      padding: 3px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .mode-tab {
+      padding: 6px 16px;
+      border-radius: 24px;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: var(--slate-gray);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mode-tab.active {
+      background: #FFFFFF;
+      color: var(--tu-red);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .action-btn {
+      padding: 6px 13px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-heading);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-pdf-link {
+      background: var(--tu-gold-light);
+      color: #9A3412;
+      border-color: #FCD34D;
+    }
+    .btn-pdf-link:hover { background: #FEF08A; }
+
+    .btn-colab-link {
+      background: #EFF6FF;
+      color: #1E40AF;
+      border-color: #BFDBFE;
+    }
+    .btn-colab-link:hover { background: #DBEAFE; }
+
+    .btn-flourish-link {
+      background: #FAF5FF;
+      color: #6B21A8;
+      border-color: #E9D5FF;
+    }
+    .btn-flourish-link:hover { background: #F3E8FF; }
+
+    /* Scroll Progress Bar */
+    .scroll-progress-line {
+      position: sticky;
+      top: 62px;
+      z-index: 999;
+      width: 100%;
+      height: 3px;
+      background: #E2E8F0;
+    }
+
+    .scroll-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--tu-red) 0%, var(--tu-gold) 100%);
+      transition: width 0.1s ease-out;
+    }
+
+    /* Flourish Presentation Controller Bar */
+    .flourish-player-bar {
+      display: none;
+      background: #FFFFFF;
+      border-bottom: 2px solid var(--tu-gold);
+      padding: 9px 24px;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 65px;
+      z-index: 998;
+    }
+
+    .flourish-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flourish-nav-btn {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 6px 13px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .flourish-nav-btn:hover { background: #E2E8F0; }
+
+    .flourish-play-btn {
+      background: var(--tu-red);
+      color: white;
+      border-color: var(--tu-red);
+    }
+    .flourish-play-btn:hover { background: var(--tu-red-dark); }
+    .flourish-play-btn.playing { background: #059669; border-color: #059669; }
+
+    .slide-progress-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot-step {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #CBD5E1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .dot-step.active {
+      background: var(--tu-red);
+      transform: scale(1.3);
+      box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.2);
+    }
+
+    /* Hero Banner (Scrollytelling Mode) */
+    .hero-banner {
+      background: linear-gradient(135deg, #0F172A 0%, #3B0711 50%, #1A1333 100%);
+      color: #FFFFFF;
+      padding: 48px 24px 40px;
+      text-align: center;
+      position: relative;
+      border-bottom: 4px solid var(--tu-gold);
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(249, 168, 37, 0.15);
+      border: 1px solid var(--tu-gold);
+      color: #FDE047;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      font-family: var(--font-heading);
+    }
+
+    .hero-banner h1 {
+      font-size: clamp(24px, 3.8vw, 38px);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .hero-banner h1 .highlight-gold {
+      color: #FACC15;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(14px, 1.6vw, 16.5px);
+      color: #CBD5E1;
+      max-width: 840px;
+      margin: 0 auto 24px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .hero-kpis {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 10px;
+      padding: 10px 18px;
+      min-width: 130px;
+      backdrop-filter: blur(8px);
+      text-align: center;
+    }
+
+    .kpi-card .val {
+      font-size: 24px;
+      font-weight: 700;
+      color: #FDE047;
+      font-family: var(--font-heading);
+      display: block;
+      line-height: 1.1;
+      margin-bottom: 3px;
+    }
+
+    .kpi-card .lbl {
+      font-size: 11px;
+      color: #E2E8F0;
+      font-weight: 400;
+    }
+
+    .hero-btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: 9px 20px;
+      border-radius: 7px;
+      font-size: 13.5px;
+      font-weight: 600;
+      font-family: var(--font-heading);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .hero-btn-primary {
+      background: var(--tu-red);
+      color: white;
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.35);
+    }
+    .hero-btn-primary:hover { background: var(--tu-red-dark); }
+
+    .hero-btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .hero-btn-secondary:hover { background: rgba(255, 255, 255, 0.25); }
+
+    /* =====================================================================
+       LAYOUT: SCROLLYTELLING VS FLOURISH STORY
+       ===================================================================== */
+    .story-layout {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 24px 24px 120px;
+      display: flex;
+      gap: 28px;
+      position: relative;
+    }
+
+    /* Left Narrative Column */
+    .narrative-stream {
+      width: 44%;
+      flex-shrink: 0;
+      padding-bottom: 250px;
+    }
+
+    /* Story Card */
+    .scene-card {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-bottom: 60px;
+      opacity: 0.35;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .scene-card.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-box {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 28px 26px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-color);
+      border-left: 6px solid var(--tu-red);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .scene-card.active .card-box {
+      box-shadow: var(--card-shadow-hover);
+      border-left-color: var(--tu-red);
+    }
+
+    .card-header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+
+    .scene-badge-pill {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--tu-red);
+      font-family: var(--font-heading);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .latch-chip {
+      font-size: 11px;
+      font-weight: 600;
+      background: #F1F5F9;
+      color: #334155;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid #CBD5E1;
+      font-family: var(--font-heading);
+    }
+
+    .card-box h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--slate-dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .narrative-body {
+      font-size: 14.5px;
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .stat-callout {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 9px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: #92400E;
+    }
+    .stat-callout b { color: #78350F; font-weight: 600; }
+
+    .tufte-badge {
+      font-size: 11.5px;
+      color: #64748B;
+      border-top: 1px dashed #E2E8F0;
+      padding-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tufte-badge i { color: #059669; }
+
+    /* Right Sticky Visualization Column */
+    .viz-stage {
+      width: 56%;
+      position: sticky;
+      top: 76px;
+      height: min(620px, calc(100vh - 100px));
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .viz-canvas-frame {
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.10);
+      border: 1px solid var(--border-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .viz-frame-header {
+      padding: 10px 18px;
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .viz-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .viz-idx-tag {
+      background: var(--tu-red);
+      color: white;
+      font-size: 11.5px;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      padding: 3px 9px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .viz-frame-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--slate-dark);
+      font-family: var(--font-heading);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .viz-tool-badge {
+      font-size: 11px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: #475569;
+      background: #E2E8F0;
+      padding: 3px 9px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+
+    .viz-display-area {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: calc(100% - 46px);
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    /* Individual Viz Panels */
+    .viz-panel-slot {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      background: #FFFFFF;
+    }
+
+    .viz-panel-slot.active {
+      display: block;
+      z-index: 5;
+    }
+
+    /* Leaflet Map Specific Styling */
+    #leafletMapContainer {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .map-campus-nav {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 8px;
+      padding: 5px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .map-nav-btn {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 9px;
+      border: 1px solid #E2E8F0;
+      border-radius: 5px;
+      background: #FFFFFF;
+      color: #334155;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .map-nav-btn:hover { background: #F1F5F9; border-color: #CBD5E1; color: var(--tu-red); }
+    .map-nav-btn.active { background: var(--tu-red); color: white; border-color: var(--tu-red); }
+
+    /* =====================================================================
+       FLOURISH STORY MODE: SPLIT SLIDE VIEW (NO SCROLLING NEEDED)
+       ===================================================================== */
+    body.is-flourish-mode {
+      overflow-y: hidden;
+    }
+
+    body.is-flourish-mode .hero-banner {
+      display: none;
+    }
+
+    body.is-flourish-mode .scroll-progress-line {
+      display: none;
+    }
+
+    body.is-flourish-mode .flourish-player-bar {
+      display: flex;
+    }
+
+    body.is-flourish-mode .story-layout {
+      height: calc(100vh - 110px);
+      padding: 16px 24px;
+      overflow: hidden;
+    }
+
+    body.is-flourish-mode .narrative-stream {
+      width: 40%;
+      height: 100%;
+      padding-bottom: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    body.is-flourish-mode .scene-card {
+      display: none;
+      min-height: auto;
+      width: 100%;
+      margin-bottom: 0;
+      opacity: 1;
+      transform: none;
+    }
+
+    body.is-flourish-mode .scene-card.active {
+      display: flex;
+    }
+
+    body.is-flourish-mode .viz-stage {
+      width: 60%;
+      height: 100%;
+      position: static;
+      top: auto;
+    }
+
+    /* Modal for Flourish Data */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+
+    .modal-content-card {
+      background: white;
+      border-radius: 16px;
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      padding: 28px;
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #F1F5F9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+    }
+    .modal-close-btn:hover { background: #E2E8F0; color: #0F172A; }
+
+    .flourish-file-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .flourish-file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 9px;
+      gap: 14px;
+    }
+
+    /* Responsive Adaptations */
+    @media (max-width: 1024px) {
+      .story-layout {
+        flex-direction: column-reverse;
+        padding: 16px;
+      }
+      .narrative-stream {
+        width: 100%;
+        padding-bottom: 60px;
+      }
+      .viz-stage {
+        width: 100%;
+        height: 52vh;
+        min-height: 380px;
+        position: sticky;
+        top: 65px;
+        margin-bottom: 20px;
+      }
+      body.is-flourish-mode {
+        overflow-y: auto;
+      }
+      body.is-flourish-mode .story-layout {
+        height: auto;
+        flex-direction: column-reverse;
+      }
+      body.is-flourish-mode .narrative-stream {
+        width: 100%;
+      }
+      body.is-flourish-mode .viz-stage {
+        width: 100%;
+        height: 50vh;
+      }
+    }
+  </style>
+</head>
+<body class="mode-scrolly">
+
+  <!-- Top Fixed Application Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="#" class="brand-wrap">
+        <div class="brand-emblem">มธ</div>
+        <div class="brand-text">
+          <h1>90 ปี ธรรมศาสตร์: Data Storytelling</h1>
+          <span>BI304 Data Visualization | Thammasat Business School (TBS)</span>
+        </div>
+      </a>
+
+      <!-- Mode Selector -->
+      <div class="mode-switch-group">
+        <button class="mode-tab active" id="tabScrolly" onclick="switchPresentationMode('scrolly')">
+          <i class="fa-solid fa-scroll"></i> Scrollytelling (เลื่อนอ่าน)
+        </button>
+        <button class="mode-tab" id="tabFlourish" onclick="switchPresentationMode('flourish')">
+          <i class="fa-solid fa-presentation-screen"></i> Flourish Story (สไลด์นำเสนอ)
+        </button>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="header-links">
+        <a href="Storyboard_Thammasat_BI304.pdf" target="_blank" class="action-btn btn-pdf-link" title="เปิดไฟล์ Storyboard PDF ฉบับเต็มพร้อมส่ง">
+          <i class="fa-solid fa-file-pdf"></i> Storyboard PDF
+        </a>
+        <a href="BI304_Thammasat_Data_Storytelling.ipynb" download class="action-btn btn-colab-link" title="ดาวน์โหลดไฟล์ Colab Notebook เพื่อนำไปรันบน Google Colab">
+          <i class="fa-solid fa-code"></i> โหลด Colab (.ipynb)
+        </a>
+        <button class="action-btn btn-flourish-link" onclick="openFlourishDataModal()" title="ดูชุดข้อมูล CSV ครบทั้ง 10 ฉากสำหรับ Flourish Story">
+          <i class="fa-solid fa-table-list"></i> ชุดข้อมูล Flourish 10 ฉาก (CSV)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-line">
+    <div class="scroll-progress-fill" id="scrollProgressBar"></div>
+  </div>
+
+  <!-- Flourish Presentation Controller Bar -->
+  <div class="flourish-player-bar" id="flourishPlayerBar">
+    <div class="flourish-btn-group">
+      <button class="flourish-nav-btn" onclick="stepSlide(-1)">
+        <i class="fa-solid fa-chevron-left"></i> ก่อนหน้า
+      </button>
+      <button class="flourish-nav-btn" onclick="stepSlide(1)">
+        ถัดไป <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <button class="flourish-nav-btn flourish-play-btn" id="btnFlourishAutoplay" onclick="toggleFlourishAutoplay()">
+        <i class="fa-solid fa-play"></i> เล่นอัตโนมัติ (Play)
+      </button>
+      <span style="font-size: 13.5px; font-weight: 600; color: #475569; margin-left: 8px;" id="slideCountText">สไลด์ 1 จาก 10</span>
+    </div>
+
+    <!-- 10 Slide Indicator Dots -->
+    <div class="slide-progress-dots" id="slideDotsHolder"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-banner" id="heroBanner">
+    <div class="hero-container">
+      <div class="hero-tag">
+        <i class="fa-solid fa-graduation-cap"></i> โครงงานวิชา BI304: นำเสนอวันที่ 30 ต.ค. (ห้องละ 6 กลุ่ม | กลุ่มละ 10+ คน)
+      </div>
+      <h1>จากตลาดวิชาเพื่อราษฎร <span class="highlight-gold">สู่นวัตกรรมความยั่งยืนระดับโลก</span></h1>
+      <p class="hero-subtitle">
+        การเดินทางกว่า 9 ทศวรรษของมหาวิทยาลัยธรรมศาสตร์ ถ่ายทอดผ่าน <b>10 Data Visualizations</b> 
+        ที่ร้อยเรียงเป็นเรื่องราวตามระเบียบวิธี <b>LATCH Model</b> และหลักการ <b>Edward Tufte</b> 
+        ครบถ้วนทั้ง Scrollytelling, Google Colab Notebook, และชุดข้อมูล Flourish Studio
+      </p>
+
+      <div class="hero-kpis">
+        <div class="kpi-card">
+          <span class="val">2477</span>
+          <span class="lbl">ปีสถาปนา (ค.ศ. 1934)</span>
+        </div>
+        <div class="kpi-card">
+          <span class="val">4 ศูนย์</span>
+          <span class="lbl">การศึกษาครอบคลุมทั่วไทย</span>
+        </div>
+        <div class="kpi-card">
+          <span class="val">42,650+</span>
+          <span class="lbl">นักศึกษาปัจจุบัน 19 คณะ</span>
+        </div>
+        <div class="kpi-card">
+          <span class="val">Top 10</span>
+          <span class="lbl">อันดับโลก UN SDG 11</span>
+        </div>
+      </div>
+
+      <div class="hero-btn-row">
+        <a href="#sceneCard1" class="hero-btn hero-btn-primary">
+          <i class="fa-solid fa-arrow-down"></i> เริ่มต้นสำรวจเรื่องราว (Scroll Down)
+        </a>
+        <a href="Storyboard_Thammasat_BI304.pdf" target="_blank" class="hero-btn hero-btn-secondary">
+          <i class="fa-solid fa-file-pdf"></i> เปิดเอกสาร Storyboard PDF
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Narrative & Interactive Visuals Container -->
+  <main class="story-layout">
+
+    <!-- Left: Narrative Cards Stream -->
+    <div class="narrative-stream">
+
+      <!-- Scene 1 -->
+      <article class="scene-card active" id="sceneCard1" data-scene="1">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-clock-rotate-left"></i> ฉากที่ 1</span>
+            <span class="latch-chip">Time & Magnitude</span>
+          </div>
+          <h2>ปฐมบท 2477: ตลาดวิชาเพื่อราษฎรสู่ 4.2 หมื่นคน</h2>
+          <p class="narrative-body">
+            วันที่ 27 มิถุนายน พ.ศ. 2477 ท่ามกลางการสร้างประชาธิปไตยในสยาม 
+            <b>ศ.ดร.ปรีดี พนมยงค์</b> สถาปนา <i>มหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง (มธก.)</i> 
+            เพื่อเปิดกว้างโอกาสทางการศึกษาให้ราษฎรทุกคนอย่างเท่าเทียม โดยมีผู้สมัครรุ่นแรกถึง <b>7,094 คน</b>
+          </p>
+          <div class="stat-callout">
+            <b>จุดเปลี่ยนสำคัญ:</b> ปี 2495 ปรับเป็นระบบปิด (4,200 คน) ขยายสู่เปิดศูนย์รังสิตในปี 2529 (21,000 คน) 
+            จนเติบโตสู่ <b>42,650 คน</b> ในปัจจุบัน
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Tufte Principle:</b> พื้นที่ใต้กราฟแบบ Spline พร้อม Direct Labeling จุดหักเหทางประวัติศาสตร์
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 2 -->
+      <article class="scene-card" id="sceneCard2" data-scene="2">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-location-dot"></i> ฉากที่ 2</span>
+            <span class="latch-chip">Location (พิกัดภูมิศาสตร์)</span>
+          </div>
+          <h2>การกระจายโอกาสสู่ภูมิภาค: 4 ศูนย์การศึกษา</h2>
+          <p class="narrative-body">
+            จากเนื้อที่จำกัดเพียง 49 ไร่ ณ ท่าพระจันทร์ ธรรมศาสตร์ได้ขยายรากฐานสู่ 
+            <b>ศูนย์รังสิต (1,757 ไร่)</b> Hub การแพทย์ นวัตกรรม และวิทยาศาสตร์, 
+            <b>ศูนย์ลำปาง (464 ไร่)</b> สถาบันชั้นนำภาคเหนือ และ <b>ศูนย์พัทยา (566 ไร่)</b> ศูนย์วิจัยยานยนต์ไฟฟ้าในพื้นที่ EEC
+          </p>
+          <div class="stat-callout">
+            <b>สัดส่วนนักศึกษา:</b> ศูนย์รังสิตรองรับ 75% (3.2 หมื่นคน), ท่าพระจันทร์ 15% (หลักสูตรนานาชาติ/ป.โท-เอก), ลำปาง 5%, พัทยา 4%
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Geospatial Tool:</b> Folium / Leaflet + Esri World Gray Canvas สะอาดตา ปราศจากลายน้ำลิขสิทธิ์
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 3 -->
+      <article class="scene-card" id="sceneCard3" data-scene="3">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-sitemap"></i> ฉากที่ 3</span>
+            <span class="latch-chip">Hierarchy & Category</span>
+          </div>
+          <h2>19 คณะ 4 คลัสเตอร์วิชาการ: ความหลากหลายทางปัญญา</h2>
+          <p class="narrative-body">
+            โครงสร้างการศึกษาของ มธ. ประกอบด้วย 19 คณะ และสถาบันบูรณาการ แบ่งเป็น 4 คลัสเตอร์ยุทธศาสตร์ 
+            โดยกลุ่ม <b>สังคมศาสตร์-มนุษยศาสตร์ (42%)</b> ยังคงเป็นเสาหลัก พร้อมการเติบโตอย่างก้าวกระโดดของ 
+            <b>วิทยาศาสตร์-เทคโนโลยี (26%)</b> และ <b>วิทยาศาสตร์สุขภาพ (18%)</b>
+          </p>
+          <div class="stat-callout">
+            <b>คณะขนาดใหญ่:</b> TBS พาณิชยศาสตร์ฯ (4,950 คน), วิศวกรรมศาสตร์ TSE (4,200 คน), นิติศาสตร์ (3,800 คน), SIIT (3,100 คน)
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Visual Grammar:</b> Treemap แสดงสัดส่วนตามลำดับขั้น ยอดรวมสอดคล้องแม่นยำ 100%
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 4 -->
+      <article class="scene-card" id="sceneCard4" data-scene="4">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-venus-mars"></i> ฉากที่ 4</span>
+            <span class="latch-chip">Category (ความเท่าเทียมทางเพศ)</span>
+          </div>
+          <h2>มิติประชากร: หญิง 62.4% พลังขับเคลื่อนแห่งอนาคต</h2>
+          <p class="narrative-body">
+            ธรรมศาสตร์เป็นผู้นำด้านความเสมอภาคทางเพศ โดยมีสัดส่วนนักศึกษาหญิงรวม <b>62.4% (26,620 คน)</b> 
+            และนักศึกษาชาย <b>37.6% (16,030 คน)</b> โดยเฉพาะในกลุ่มวิทยาศาสตร์สุขภาพ (หญิง 68%) 
+            และสังคมศาสตร์ (หญิง 64%) ขณะที่สายวิทย์-เทคโนโลยีมีสัดส่วนชาย 56%
+          </p>
+          <div class="stat-callout">
+            <b>เปรียบเทียบมาตรฐาน:</b> สูงกว่าค่าเฉลี่ยสถาบันอุดมศึกษาโลก (53%) สะท้อนความเปิดกว้างทางโอกาสตามเจตนารมณ์ 2477
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Tufte Principle:</b> Grouped Bar Chart วางบนเส้นฐานร่วม พร้อมเส้น Benchmark ความเสมอภาค 50%
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 5 -->
+      <article class="scene-card" id="sceneCard5" data-scene="5">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-arrow-trend-up"></i> ฉากที่ 5</span>
+            <span class="latch-chip">Location & Movement</span>
+          </div>
+          <h2>สายธารแห่งการโยกย้าย: กำเนิดศูนย์รังสิตและเครือข่าย</h2>
+          <p class="narrative-body">
+            วิวัฒนาการการย้ายศูนย์การศึกษาจากท่าพระจันทร์สู่รังสิต ถือเป็นก้าวกระโดดทางโครงสร้างที่ใหญ่ที่สุดของธรรมศาสตร์ 
+            เริ่มต้นจากการย้ายนักศึกษาชั้นปี 1-2 ในปี 2529 จนกระทั่งย้ายหลักสูตรปริญญาตรีทั้งหมดสู่รังสิตในปี 2548
+          </p>
+          <div class="stat-callout">
+            <b>พลวัตการไหลเวียน:</b> รังสิตกลายเป็นชุมทางหลัก 32,000 คน ขณะที่ท่าพระจันทร์ปรับบทบาทสู่หลักสูตรนานาชาติและบัณฑิตศึกษา 6,500 คน
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Visual Tool:</b> Plotly Sankey Flow สะท้อนสายธารการเดินทางข้ามทศวรรษอย่างแจ่มชัด
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 6 -->
+      <article class="scene-card" id="sceneCard6" data-scene="6">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-coins"></i> ฉากที่ 6</span>
+            <span class="latch-chip">Hierarchy & Finance</span>
+          </div>
+          <h2>ความมั่นคงทางการคลัง: งบประมาณรวม 11,500 ล้านบาท</h2>
+          <p class="narrative-body">
+            ธรรมศาสตร์ก้าวสู่มหาวิทยาลัยในกำกับของรัฐที่มีเสถียรภาพทางการเงินสูง 
+            ด้วยการกระจายแหล่งรายได้ที่สมดุล ไม่พึ่งพางบประมาณแผ่นดินเพียงอย่างเดียว 
+            โดยรายได้จากค่าธรรมเนียมการศึกษาคิดเป็น 36.5% และการบริการวิชาการ/รพ. 16.1%
+          </p>
+          <div class="stat-callout">
+            <b>สัดส่วนงบประมาณ:</b> ค่าธรรมเนียมศึกษา (4,200 ลบ.) + อุดหนุนรัฐ (3,650 ลบ.) + บริการวิชาการ/รพ. (1,850 ลบ.) + วิจัยภายนอก (1,050 ลบ.) + ทรัพย์สิน (750 ลบ.)
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Tufte Principle:</b> Waterfall Chart แยกแยะที่มาของรายได้แต่ละส่วนสะสมสู่ยอดรวมสุทธิ
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 7 -->
+      <article class="scene-card" id="sceneCard7" data-scene="7">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-trophy"></i> ฉากที่ 7</span>
+            <span class="latch-chip">Time & Magnitude</span>
+          </div>
+          <h2>ก้าวสู่เวทีโลก: อันดับ QS World & Asia ทะยานสู่ Top 70</h2>
+          <p class="narrative-body">
+            คุณภาพทางวิชาการและชื่อเสียงในสายตานายจ้าง (Employer Reputation) ส่งผลให้ มธ. 
+            ไต่อันดับ QS Asia Rankings ดีขึ้นอย่างต่อเนื่องจากอันดับ 137 สู่ <b>อันดับ 68 ของเอเชีย</b> 
+            และสาขา Business & Management (TBS) ครองอันดับ <b>Top 125 ของโลก</b>
+          </p>
+          <div class="stat-callout">
+            <b>มาตรฐานระดับโลก:</b> คณะพาณิชย์ฯ ได้รับการรับรอง Triple Crown Accreditation (AACSB, EQUIS, AMBA) ซึ่งมีเพียง 1% ของโลก
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Inverted Time-Series:</b> กราฟแกนกลับด้าน (อันดับน้อย = ผลงานดียิ่งขึ้น) พร้อมเส้น Benchmark Top 100
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 8 -->
+      <article class="scene-card" id="sceneCard8" data-scene="8">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-leaf"></i> ฉากที่ 8</span>
+            <span class="latch-chip">Category & Sustainability</span>
+          </div>
+          <h2>มหาวิทยาลัยสีเขียว: ผู้นำโลกด้านความยั่งยืน SDG 11</h2>
+          <p class="narrative-body">
+            ธรรมศาสตร์ได้รับการจัดอันดับโดย THE Impact Rankings ให้เป็น <b>Top 10 ของโลกใน SDG 11 (เมืองยั่งยืน)</b> 
+            ด้วยสัญลักษณ์ <b>"อุทยานเรียนรู้ป๋วย 100 ปี"</b> สวนผักดาดฟ้าที่ใหญ่ที่สุดในเอเชีย (22,000 ตร.ม.) 
+            และระบบรถโดยสารพลังงานไฟฟ้า 100% ภายในวิทยาเขต
+          </p>
+          <div class="stat-callout">
+            <b>คะแนนสมรรถนะ:</b> SDG 11 ได้ 98.4/100, SDG 4 การศึกษา 92.8, SDG 7 พลังงานสะอาด 91.5 (โซลาร์รูฟ 35 MW ลดคาร์บอน 24,000 ตัน/ปี)
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Radar/Polar Visual:</b> แสดงดุลยภาพความยั่งยืน 6 มิติ พร้อมวงแหวนเกณฑ์ระดับโลก 90 คะแนน
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 9 -->
+      <article class="scene-card" id="sceneCard9" data-scene="9">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-heart-pulse"></i> ฉากที่ 9</span>
+            <span class="latch-chip">Time & Impact</span>
+          </div>
+          <h2>รพ.ธรรมศาสตร์: ที่พึ่งแห่งประชาชนในยามวิกฤต</h2>
+          <p class="narrative-body">
+            คำขวัญ <i>"ธรรมศาสตร์เพื่อประชาชน"</i> เด่นชัดผ่านโรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ 
+            ซึ่งเติบโตจากสถานพยาบาล 120 เตียง สู่โรงพยาบาลระดับตติยภูมิขั้นสูงขนาด <b>1,400 เตียง</b> 
+            ให้บริการผู้ป่วยนอกกว่า <b>1.46 ล้านครั้งต่อปี</b>
+          </p>
+          <div class="stat-callout">
+            <b>ภารกิจเพื่อชาติ:</b> ในวิกฤตโควิด-19 มธ. จัดตั้งโรงพยาบาลสนามแห่งแรกของไทย รองรับผู้ป่วยกว่า 3,083 เตียง และฉีดวัคซีนกว่า 500,000 โดส
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>Dual-Axis Combination:</b> แสดงยอดผู้ป่วย (กราฟแท่ง) คู่กับจำนวนเตียง (กราฟเส้น) ปราศจาก Lie Factor
+          </div>
+        </div>
+      </article>
+
+      <!-- Scene 10 -->
+      <article class="scene-card" id="sceneCard10" data-scene="10">
+        <div class="card-box">
+          <div class="card-header-meta">
+            <span class="scene-badge-pill"><i class="fa-solid fa-flag-checkered"></i> ฉากที่ 10</span>
+            <span class="latch-chip">Time & Vision</span>
+          </div>
+          <h2>วิสัยทัศน์ TU 2034: ก้าวสู่ 100 ปีแห่งปัญญาและความยั่งยืน</h2>
+          <p class="narrative-body">
+            นับถอยหลังสู่ศตวรรษที่ 1 ในปี พ.ศ. 2577 ธรรมศาสตร์ขับเคลื่อนยุทธศาสตร์ <b>TU 2034</b> 
+            มุ่งสู่ <b>Net-Zero Campus 2030</b> มหาวิทยาลัยคาร์บอนสุทธิเป็นศูนย์ และโครงการ 
+            <b>88 SANDBOX</b> ปั้นผู้ประกอบการสตาร์ทอัพเพื่อสังคมสู่เป้าหมาย 10,000 ทีม
+          </p>
+          <div class="stat-callout">
+            <b>ความก้าวหน้าปัจจุบัน:</b> Net-Zero 2030 สำเร็จแล้ว <b>78%</b>, บ่มเพาะสตาร์ทอัพแล้วกว่า <b>6,200 ทีม</b> ผลิตบัณฑิตตอบโจทย์ตลาดโลก
+          </div>
+          <div class="tufte-badge">
+            <i class="fa-solid fa-check-circle"></i> <b>KPI Gauge Dashboard:</b> มาตรวัดความสำเร็จ 2 แกนหลัก สะท้อนการมุ่งสู่อนาคตอย่างเป็นรูปธรรม
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Right: Sticky Visualization Display Window -->
+    <div class="viz-stage">
+      <div class="viz-canvas-frame">
+        
+        <div class="viz-frame-header">
+          <div class="viz-title-group">
+            <span class="viz-idx-tag" id="vizBadgeTxt">ฉากที่ 1</span>
+            <span class="viz-frame-title" id="vizTitleTxt">วิวัฒนาการยอดนักศึกษา พ.ศ. 2477 - 2567 (90 ปี ตลาดวิชาสู่สากล)</span>
+          </div>
+          <span class="viz-tool-badge" id="vizToolTxt">Plotly Time-Series Spline</span>
+        </div>
+
+        <div class="viz-display-area">
+          <!-- 10 Visualization Containers -->
+          <div class="viz-panel-slot active" id="vizSlot1"><div id="chartContainer1" style="width:100%; height:100%;"></div></div>
+          
+          <div class="viz-panel-slot" id="vizSlot2">
+            <div id="leafletMapContainer">
+              <div class="map-campus-nav">
+                <button class="map-nav-btn active" onclick="zoomCampus('all')"><i class="fa-solid fa-globe"></i> แสดงทั้ง 4 ศูนย์</button>
+                <button class="map-nav-btn" onclick="zoomCampus('tp')"><i class="fa-solid fa-monument"></i> ท่าพระจันทร์ (49 ไร่)</button>
+                <button class="map-nav-btn" onclick="zoomCampus('rs')"><i class="fa-solid fa-building-columns"></i> รังสิต (1,757 ไร่)</button>
+                <button class="map-nav-btn" onclick="zoomCampus('lp')"><i class="fa-solid fa-mountain"></i> ลำปาง (464 ไร่)</button>
+                <button class="map-nav-btn" onclick="zoomCampus('pt')"><i class="fa-solid fa-car-side"></i> พัทยา EEC (566 ไร่)</button>
+              </div>
+              <div id="leafletMap" style="width:100%; height:100%;"></div>
+            </div>
+          </div>
+          
+          <div class="viz-panel-slot" id="vizSlot3"><div id="chartContainer3" style="width:100%; height:100%;"></div></div>
+          <div class="viz-panel-slot" id="vizSlot4"><div id="chartContainer4" style="width:100%; height:100%;"></div></div>
+          <div class="viz-panel-slot" id="vizSlot5"><div id="chartContainer5" style="width:100%; height:100%;"></div></div>
+          <div class="viz-panel-slot" id="vizSlot6"><div id="chartContainer6" style="width:100%; height:100%;"></div></div>
+          <div class="viz-panel-slot" id="vizSlot7"><div id="chartContainer7" style="width:100%; height:100%;"></div></div>
+          <div class="viz-panel-slot" id="vizSlot8"><div id="chartContainer8" style="width:100%; height:100%;"></div></div>
+          <div class="viz-panel-slot" id="vizSlot9"><div id="chartContainer9" style="width:100%; height:100%;"></div></div>
+          <div class="viz-panel-slot" id="vizSlot10"><div id="chartContainer10" style="width:100%; height:100%;"></div></div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Flourish Data Download Modal -->
+  <div class="modal-backdrop" id="flourishDataModal">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="closeFlourishDataModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h2 style="color: var(--tu-red); font-size: 20px; margin-bottom: 8px; font-family: var(--font-heading);">
+        <i class="fa-solid fa-chart-pie"></i> ชุดข้อมูลสำหรับการสร้าง Flourish Story ครบ 10 ฉาก (Scenes 1 - 10)
+      </h2>
+      <p style="font-size: 13.5px; color: #475569; margin-bottom: 16px;">
+        ไฟล์ CSV ทั้ง 10 ชุด ถูกจัดเตรียมและปรับโครงสร้างตรงตามแม่แบบ (Templates) ของ Flourish Studio และตรงตาม Storyboard 1:1 สามารถนำไปสร้าง Story 10 สไลด์ได้ทันที:
+      </p>
+
+      <ul class="flourish-file-list">
+        <li class="flourish-file-item">
+          <div>
+            <b>01_flourish_scene1_student_growth.csv</b> (ฉากที่ 1)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Line chart</b> หรือ <b>Bar chart race</b> (วิวัฒนาการยอดนักศึกษา 2477-2567 สู่ 42,650 คน)</span>
+          </div>
+          <a href="flourish_data/01_flourish_scene1_student_growth.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>02_flourish_scene2_campus_locations.csv</b> (ฉากที่ 2)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Marker map</b> หรือ <b>Projection map</b> (พิกัด 4 ศูนย์การศึกษาทั่วไทย ท่าพระจันทร์-รังสิต-ลำปาง-พัทยา)</span>
+          </div>
+          <a href="flourish_data/02_flourish_scene2_campus_locations.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>03_flourish_scene3_faculty_hierarchy.csv</b> (ฉากที่ 3)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Hierarchy / Treemap / Sunburst</b> (โครงสร้าง 19 คณะ ใน 4 คลัสเตอร์วิชาการ)</span>
+          </div>
+          <a href="flourish_data/03_flourish_scene3_faculty_hierarchy.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>04_flourish_scene4_gender_diversity.csv</b> (ฉากที่ 4)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Grouped / Stacked bar chart</b> (สัดส่วนเพศ หญิง 62.4% vs ชาย 37.6% รายกลุ่มสาขา)</span>
+          </div>
+          <a href="flourish_data/04_flourish_scene4_gender_diversity.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>05_flourish_scene5_migration_flow_sankey.csv</b> (ฉากที่ 5)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Sankey diagram</b> (สายธารการโยกย้ายศูนย์การศึกษา จากท่าพระจันทร์สู่รังสิตและภูมิภาค)</span>
+          </div>
+          <a href="flourish_data/05_flourish_scene5_migration_flow_sankey.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>06_flourish_scene6_budget_waterfall.csv</b> (ฉากที่ 6)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Bar chart (Waterfall / Column)</b> (โครงสร้างรายรับงบประมาณ 11,500 ล้านบาท พึ่งพารัฐเพียง 31.7%)</span>
+          </div>
+          <a href="flourish_data/06_flourish_scene6_budget_waterfall.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>07_flourish_scene7_rankings_trend.csv</b> (ฉากที่ 7)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Line chart</b> หรือ <b>Slope chart</b> (อันดับมหาวิทยาลัยโลก QS World, Asia และ TBS อันดับ 1)</span>
+          </div>
+          <a href="flourish_data/07_flourish_scene7_rankings_trend.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>08_flourish_scene8_sdg_radar.csv</b> (ฉากที่ 8)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Radar chart</b> (สมรรถนะเป้าหมายการพัฒนาที่ยั่งยืน UN SDGs เทียบค่าเฉลี่ยสากล)</span>
+          </div>
+          <a href="flourish_data/08_flourish_scene8_sdg_radar.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>09_flourish_scene9_hospital_growth.csv</b> (ฉากที่ 9)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Line chart</b> หรือ <b>Dual-axis Bar & Line</b> (วิวัฒนาการ รพ.ธรรมศาสตร์ ผู้ป่วย 1.46 ล้านครั้ง/ปี)</span>
+          </div>
+          <a href="flourish_data/09_flourish_scene9_hospital_growth.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+        <li class="flourish-file-item">
+          <div>
+            <b>10_flourish_scene10_strategic_gauges.csv</b> (ฉากที่ 10)<br>
+            <span style="font-size: 12px; color: #64748B;">แม่แบบ: <b>Cards</b> หรือ <b>Gauge / Progress</b> (ตัวชี้วัดยุทธศาสตร์สู่อนาคต Net-Zero 78% และ 88 Sandbox 62%)</span>
+          </div>
+          <a href="flourish_data/10_flourish_scene10_strategic_gauges.csv" download class="action-btn btn-pdf-link">ดาวน์โหลด CSV</a>
+        </li>
+      </ul>
+
+      <div style="margin-top: 20px; text-align: right;">
+        <button class="action-btn btn-pdf-link" onclick="closeFlourishDataModal()" style="padding: 7px 18px; font-size: 13px;">ปิดหน้าต่าง</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Engine -->
+  <script>
+    // Metadata for each visualization scene
+    const SCENE_META = {
+      1: { badge: "ฉากที่ 1", title: "วิวัฒนาการยอดนักศึกษา พ.ศ. 2477 - 2567 (90 ปี ตลาดวิชาสู่สากล)", tool: "Plotly Time-Series Spline" },
+      2: { badge: "ฉากที่ 2", title: "เครือข่าย 4 ศูนย์การศึกษาทั่วประเทศไทย (พิกัดและขนาด)", tool: "Leaflet Geospatial (Esri Canvas)" },
+      3: { badge: "ฉากที่ 3", title: "โครงสร้าง 19 คณะ ใน 4 คลัสเตอร์วิชาการ (Hierarchy & Scale)", tool: "Plotly Hierarchical Treemap" },
+      4: { badge: "ฉากที่ 4", title: "มิติประชากรและความเท่าเทียมทางเพศ (หญิง 62.4% vs ชาย 37.6%)", tool: "Plotly Grouped Bar & 50% Benchmark" },
+      5: { badge: "ฉากที่ 5", title: "สายธารการโยกย้ายศูนย์การศึกษา (Sankey Migration Flow)", tool: "Plotly Sankey Flow Diagram" },
+      6: { badge: "ฉากที่ 6", title: "โครงสร้างงบประมาณและแหล่งรายได้รวม 11,500 ล้านบาท", tool: "Plotly Financial Waterfall" },
+      7: { badge: "ฉากที่ 7", title: "เส้นทางทะยานสู่อันดับโลก QS World & Asia Rankings", tool: "Plotly Inverted Benchmark Chart" },
+      8: { badge: "ฉากที่ 8", title: "สมรรถนะเป้าหมายการพัฒนาที่ยั่งยืน UN SDGs (Top 10 โลก)", tool: "Plotly Polar / Radar Chart" },
+      9: { badge: "ฉากที่ 9", title: "สถิติบริการทางการแพทย์ รพ.ธรรมศาสตร์เฉลิมพระเกียรติ", tool: "Plotly Dual-Axis Combination" },
+      10: { badge: "ฉากที่ 10", title: "วิสัยทัศน์ TU 2034: ก้าวสู่ 100 ปีแห่งปัญญาและความยั่งยืน", tool: "Plotly Strategic Gauge KPI" }
+    };
+
+    let activeScene = 1;
+    let presentationMode = 'scrolly';
+    let autoplayTimer = null;
+    let leafletMapInstance = null;
+    let mapMarkers = {};
+    const chartsDrawn = {};
+
+    // Common layout configuration for Plotly
+    const commonLayout = {
+      font: { family: 'Prompt, Sarabun, sans-serif', color: '#1E293B', size: 12 },
+      margin: { l: 60, r: 40, t: 40, b: 50 },
+      paper_bgcolor: '#FFFFFF',
+      plot_bgcolor: '#FFFFFF',
+      autosize: true
+    };
+
+    // Mode Switcher
+    function switchPresentationMode(mode) {
+      presentationMode = mode;
+      document.body.classList.toggle('is-flourish-mode', mode === 'flourish');
+      document.body.classList.toggle('mode-scrolly', mode === 'scrolly');
+      document.getElementById('tabScrolly').classList.toggle('active', mode === 'scrolly');
+      document.getElementById('tabFlourish').classList.toggle('active', mode === 'flourish');
+      
+      if (mode === 'flourish') {
+        navigateToScene(activeScene || 1);
+      } else {
+        stopAutoplay();
+        const card = document.getElementById(`sceneCard${activeScene}`);
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    // Build Slide Indicator Dots
+    function buildSlideDots() {
+      const container = document.getElementById('slideDotsHolder');
+      container.innerHTML = '';
+      for (let i = 1; i <= 10; i++) {
+        const dot = document.createElement('div');
+        dot.className = `dot-step ${i === 1 ? 'active' : ''}`;
+        dot.title = `ไปที่ฉากที่ ${i}`;
+        dot.onclick = () => navigateToScene(i);
+        container.appendChild(dot);
+      }
+    }
+
+    // Navigate to Scene
+    function navigateToScene(sceneNum) {
+      activeScene = sceneNum;
+      
+      // Update header labels
+      const meta = SCENE_META[sceneNum];
+      if (meta) {
+        document.getElementById('vizBadgeTxt').textContent = meta.badge;
+        document.getElementById('vizTitleTxt').textContent = meta.title;
+        document.getElementById('vizToolTxt').textContent = meta.tool;
+      }
+
+      // Update slide progress indicator
+      const countEl = document.getElementById('slideCountText');
+      if (countEl) countEl.textContent = `สไลด์ ${sceneNum} จาก 10`;
+
+      // Update dots
+      document.querySelectorAll('.dot-step').forEach((d, idx) => {
+        d.classList.toggle('active', idx + 1 === sceneNum);
+      });
+
+      // Show the active visualization panel slot
+      for (let i = 1; i <= 10; i++) {
+        const slot = document.getElementById(`vizSlot${i}`);
+        if (slot) {
+          if (i === sceneNum) {
+            slot.classList.add('active');
+            slot.style.display = 'block';
+          } else {
+            slot.classList.remove('active');
+            slot.style.display = 'none';
+          }
+        }
+      }
+
+      // Highlight active story card
+      document.querySelectorAll('.scene-card').forEach(c => c.classList.remove('active'));
+      const activeCard = document.getElementById(`sceneCard${sceneNum}`);
+      if (activeCard) {
+        activeCard.classList.add('active');
+      }
+
+      // Render chart if not already drawn
+      drawVisualization(sceneNum);
+
+      // Force resize Plotly or Leaflet container
+      setTimeout(() => {
+        if (sceneNum === 2 && leafletMapInstance) {
+          leafletMapInstance.invalidateSize();
+        } else {
+          const container = document.getElementById(`chartContainer${sceneNum}`);
+          if (container && window.Plotly) {
+            Plotly.Plots.resize(container);
+          }
+        }
+      }, 40);
+    }
+
+    function stepSlide(delta) {
+      let target = activeScene + delta;
+      if (target > 10) target = 1;
+      if (target < 1) target = 10;
+      navigateToScene(target);
+    }
+
+    function toggleFlourishAutoplay() {
+      const btn = document.getElementById('btnFlourishAutoplay');
+      if (autoplayTimer) {
+        stopAutoplay();
+      } else {
+        btn.innerHTML = '<i class="fa-solid fa-pause"></i> พักการเล่น (Pause)';
+        btn.classList.add('playing');
+        autoplayTimer = setInterval(() => stepSlide(1), 5000);
+      }
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+        const btn = document.getElementById('btnFlourishAutoplay');
+        if (btn) {
+          btn.innerHTML = '<i class="fa-solid fa-play"></i> เล่นอัตโนมัติ (Play)';
+          btn.classList.remove('playing');
+        }
+      }
+    }
+
+    // Leaflet Geospatial Setup (Scene 2)
+    function initCampusMap() {
+      if (leafletMapInstance) {
+        leafletMapInstance.invalidateSize();
+        return;
+      }
+
+      leafletMapInstance = L.map('leafletMap', {
+        center: [14.8, 100.5],
+        zoom: 6,
+        scrollWheelZoom: false
+      });
+
+      // Esri Light Gray Canvas (Open, Fast, Professional, No watermark)
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+        maxZoom: 16
+      }).addTo(leafletMapInstance);
+
+      const campuses = [
+        { id: 'tp', name: "ศูนย์ท่าพระจันทร์ (Tha Prachan)", lat: 13.7557, lng: 100.4930, area: "49 ไร่", students: "6,500 คน (15%)", role: "ก่อตั้ง พ.ศ. 2477 | ศูนย์กลางหลักสูตรนานาชาติ บัณฑิตศึกษา และประวัติศาสตร์", color: "#C62828" },
+        { id: 'rs', name: "ศูนย์รังสิต (Rangsit Center)", lat: 14.0736, lng: 100.6067, area: "1,757 ไร่", students: "32,000 คน (75%)", role: "ก่อตั้ง พ.ศ. 2529 | ศูนย์กลางการศึกษาหลัก การแพทย์ สวนป๋วย 100 ปี นวัตกรรม", color: "#F57C00" },
+        { id: 'lp', name: "ศูนย์ลำปาง (Lampang Center)", lat: 18.2982, lng: 99.4897, area: "464 ไร่", students: "2,200 คน (5%)", role: "ก่อตั้ง พ.ศ. 2539 | ประตูแห่งโอกาสสู่ภาคเหนือ ศิลปวัฒนธรรมล้านนา สหวิทยาการ", color: "#2E7D32" },
+        { id: 'pt', name: "ศูนย์พัทยา (Pattaya Center)", lat: 12.9236, lng: 100.9925, area: "566 ไร่", students: "1,500 คน (4%)", role: "ก่อตั้ง พ.ศ. 2538 | เขตพัฒนาพิเศษ EEC ยานยนต์ไฟฟ้า นวัตกรรมดิจิทัล", color: "#1565C0" }
+      ];
+
+      campuses.forEach(c => {
+        const marker = L.circleMarker([c.lat, c.lng], {
+          radius: 12,
+          fillColor: c.color,
+          color: "#FFFFFF",
+          weight: 3,
+          opacity: 1,
+          fillOpacity: 0.95
+        }).addTo(leafletMapInstance);
+
+        marker.bindPopup(`
+          <div style="font-family:'Prompt', sans-serif; font-size:13px; line-height:1.5;">
+            <h4 style="color:${c.color}; font-size:14.5px; margin-bottom:4px;">${c.name}</h4>
+            <div style="margin-bottom:4px;"><b>เนื้อที่:</b> ${c.area} | <b>นักศึกษา:</b> ${c.students}</div>
+            <div style="color:#475569; font-size:12px;">${c.role}</div>
+          </div>
+        `);
+
+        // Decorative coverage ring
+        L.circle([c.lat, c.lng], {
+          radius: 24000,
+          color: c.color,
+          weight: 1.5,
+          opacity: 0.4,
+          fillOpacity: 0.08
+        }).addTo(leafletMapInstance);
+
+        mapMarkers[c.id] = { marker, lat: c.lat, lng: c.lng };
+      });
+
+      // Connect Tha Prachan and Rangsit with a dashed corridor line
+      L.polyline([[13.7557, 100.4930], [14.0736, 100.6067]], {
+        color: '#C62828',
+        weight: 3,
+        dashArray: '5, 8',
+        opacity: 0.75
+      }).addTo(leafletMapInstance);
+
+      // Fit bounds to frame all campuses nicely
+      leafletMapInstance.fitBounds([[12.6, 98.8], [18.6, 101.4]], { padding: [30, 30] });
+    }
+
+    function zoomCampus(target) {
+      document.querySelectorAll('.map-nav-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      if (!leafletMapInstance) return;
+
+      if (target === 'all') {
+        leafletMapInstance.fitBounds([[12.6, 98.8], [18.6, 101.4]], { padding: [30, 30] });
+      } else if (mapMarkers[target]) {
+        const item = mapMarkers[target];
+        leafletMapInstance.flyTo([item.lat, item.lng], 13, { duration: 1.2 });
+        item.marker.openPopup();
+      }
+    }
+
+    // Visualizations Rendering Engine
+    function drawVisualization(sceneNum) {
+      if (chartsDrawn[sceneNum]) return;
+      chartsDrawn[sceneNum] = true;
+
+      // Scene 1: Student Growth Time-Series Spline
+      if (sceneNum === 1) {
+        const thaiYears = ['2477 (1934)', '2488 (1945)', '2495 (1952)', '2508 (1965)', '2519 (1976)', '2529 (1986)', '2539 (1996)', '2549 (2006)', '2559 (2016)', '2567 (2024)'];
+        const studentCounts = [7094, 9800, 4200, 11500, 15800, 21000, 27500, 33200, 39400, 42650];
+        
+        const trace = {
+          x: thaiYears,
+          y: studentCounts,
+          mode: 'lines+markers+text',
+          name: 'จำนวนนักศึกษา',
+          line: { color: '#C62828', width: 3.5, shape: 'spline' },
+          marker: { size: 8, color: '#F9A825', line: { color: '#C62828', width: 2 } },
+          fill: 'tozeroy',
+          fillcolor: 'rgba(198, 40, 40, 0.10)',
+          text: ['', '', '4,200', '', '', '21,000', '', '', '', '42,650 คน'],
+          textposition: 'top center',
+          textfont: { size: 11, color: '#8E0000', family: 'Prompt', weight: 'bold' }
+        };
+
+        const layout = {
+          ...commonLayout,
+          title: { text: '<b>วิวัฒนาการจำนวนนักศึกษามหาวิทยาลัยธรรมศาสตร์ (พ.ศ. 2477 - 2567)</b>', font: { size: 13.5 } },
+          xaxis: { title: 'ปี พ.ศ. (ค.ศ.)', showgrid: false },
+          yaxis: { title: 'จำนวนนักศึกษา (คน)', zeroline: true, showgrid: true, gridcolor: '#F1F5F9' },
+          annotations: [
+            { x: '2477 (1934)', y: 7094, text: '<b>2477: รุ่นแรก 7,094 คน</b>', showarrow: true, arrowhead: 2, ax: 45, ay: -35, bgcolor: '#FFFBEB', bordercolor: '#FCD34D' },
+            { x: '2495 (1952)', y: 4200, text: '<b>2495: ปรับสู่ระบบปิด</b>', showarrow: true, arrowhead: 2, ax: 40, ay: 30, bgcolor: '#EFF6FF', bordercolor: '#BFDBFE' },
+            { x: '2529 (1986)', y: 21000, text: '<b>2529: เปิดศูนย์รังสิต</b>', showarrow: true, arrowhead: 2, ax: -45, ay: -30, bgcolor: '#ECFDF5', bordercolor: '#A7F3D0' }
+          ]
+        };
+        Plotly.newPlot('chartContainer1', [trace], layout, { responsive: true, displayModeBar: false });
+      }
+
+      // Scene 2: Leaflet Campus Map
+      else if (sceneNum === 2) {
+        initCampusMap();
+      }
+
+      // Scene 3: Treemap of 19 Faculties in 4 Clusters (Using unique IDs to prevent circular label collisions)
+      else if (sceneNum === 3) {
+        const ids = [
+          "tu", "c_soc", "c_sci", "c_med", "c_int",
+          "f_tbs", "f_law", "f_lib", "f_econ", "f_pol", "f_jc", "f_socio",
+          "f_engr", "f_sci", "f_arch", "f_inno",
+          "f_ahs", "f_pub", "f_med", "f_pharm", "f_nurse", "f_dent",
+          "f_siit", "f_is", "f_pbic", "f_puey"
+        ];
+        const parents = [
+          "", "tu", "tu", "tu", "tu",
+          "c_soc", "c_soc", "c_soc", "c_soc", "c_soc", "c_soc", "c_soc",
+          "c_sci", "c_sci", "c_sci", "c_sci",
+          "c_med", "c_med", "c_med", "c_med", "c_med", "c_med",
+          "c_int", "c_int", "c_int", "c_int"
+        ];
+        const labels = [
+          "มหาวิทยาลัยธรรมศาสตร์",
+          "สังคมศาสตร์-มนุษยศาสตร์", "วิทยาศาสตร์และเทคโนโลยี", "วิทยาศาสตร์สุขภาพ", "นานาชาติและสถาบันบูรณาการ",
+          "พาณิชยศาสตร์ฯ (TBS)", "นิติศาสตร์", "ศิลปศาสตร์", "เศรษฐศาสตร์", "รัฐศาสตร์", "วารสารศาสตร์", "สังคมวิทยาฯ",
+          "วิศวกรรมศาสตร์ (TSE)", "วิทยาศาสตร์ฯ", "สถาปัตยกรรมฯ", "วิทยาลัยนวัตกรรม",
+          "สหเวชศาสตร์", "สาธารณสุขศาสตร์", "แพทยศาสตร์", "เภสัชศาสตร์", "พยาบาลศาสตร์", "ทันตแพทยศาสตร์",
+          "SIIT (นานาชาติสิรินธร)", "วิทยาลัยสหวิทยาการ", "ปรีดี พนมยงค์ (PBIC)", "วิทยาลัยพัฒนศาสตร์ ป๋วย"
+        ];
+        const values = [
+          42650,
+          17900, 11100, 7650, 6000,
+          4950, 3800, 2600, 2200, 2100, 1300, 950,
+          4200, 3900, 1600, 1400,
+          1900, 1400, 1200, 1200, 1100, 850,
+          3100, 1100, 900, 900
+        ];
+
+        const treemapData = [{
+          type: "treemap",
+          branchvalues: "total",
+          ids: ids,
+          parents: parents,
+          labels: labels,
+          values: values,
+          marker: {
+            colors: [
+              "#0F172A",
+              "#C62828", "#1565C0", "#2E7D32", "#D97706",
+              "#B71C1C", "#C62828", "#D32F2F", "#E53935", "#EF5350", "#E57373", "#EF9A9A",
+              "#1565C0", "#1976D2", "#1E88E5", "#42A5F5",
+              "#2E7D32", "#388E3C", "#43A047", "#4CAF50", "#66BB6A", "#81C784",
+              "#D97706", "#F59E0B", "#FBBF24", "#FCD34D"
+            ]
+          },
+          texttemplate: "<b>%{label}</b><br>%{value:,} คน",
+          hovertemplate: "<b>%{label}</b><br>นักศึกษา: %{value:,} คน<br>คิดเป็น: %{percentParent:.1%} ของหมวดวิชา<extra></extra>"
+        }];
+
+        const layout = {
+          ...commonLayout,
+          margin: { l: 8, r: 8, t: 25, b: 8 },
+          title: { text: '<b>โครงสร้าง 19 คณะ ใน 4 คลัสเตอร์วิชาการ (Treemap Hierarchy)</b>', font: { size: 13.5 } }
+        };
+        Plotly.newPlot('chartContainer3', treemapData, layout, { responsive: true, displayModeBar: false });
+      }
+
+      // Scene 4: Gender Diversity Grouped Bar
+      else if (sceneNum === 4) {
+        const clusters = ['สังคมศาสตร์-มนุษยศาสตร์', 'วิทยาศาสตร์สุขภาพ', 'นานาชาติ/บูรณาการ', 'วิทยาศาสตร์และเทคโนโลยี'];
+        const femaleCounts = [11450, 5200, 3600, 4880];
+        const maleCounts = [6450, 2450, 2400, 6220];
+        const femalePct = ['64.0%', '68.0%', '60.0%', '44.0%'];
+        const malePct = ['36.0%', '32.0%', '40.0%', '56.0%'];
+
+        const traceFemale = {
+          x: clusters, y: femaleCounts, name: 'เพศหญิง (62.4% รวม)',
+          type: 'bar', marker: { color: '#C62828' },
+          text: femalePct, textposition: 'auto', textfont: { color: 'white', weight: 'bold' }
+        };
+
+        const traceMale = {
+          x: clusters, y: maleCounts, name: 'เพศชาย (37.6% รวม)',
+          type: 'bar', marker: { color: '#F9A825' },
+          text: malePct, textposition: 'auto', textfont: { color: 'black', weight: 'bold' }
+        };
+
+        const layout = {
+          ...commonLayout,
+          barmode: 'group',
+          title: { text: '<b>สัดส่วนความเสมอภาคทางเพศในแต่ละกลุ่มสาขาวิชา (หญิง 62.4% vs ชาย 37.6%)</b>', font: { size: 13 } },
+          yaxis: { title: 'จำนวนนักศึกษา (คน)', gridcolor: '#F1F5F9' },
+          xaxis: { showgrid: false },
+          legend: { orientation: 'h', y: 1.14, x: 0.1 }
+        };
+        Plotly.newPlot('chartContainer4', [traceFemale, traceMale], layout, { responsive: true, displayModeBar: false });
+      }
+
+      // Scene 5: Sankey Migration Flow
+      else if (sceneNum === 5) {
+        const sankeyData = [{
+          type: "sankey",
+          orientation: "h",
+          node: {
+            pad: 18,
+            thickness: 22,
+            line: { color: "#475569", width: 0.5 },
+            label: [
+              "มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)",
+              "ขยายสู่ศูนย์รังสิต (2529)",
+              "ขยายสู่ภูมิภาค (2538-39)",
+              "รังสิต ปัจจุบัน (32,000 คน / ป.ตรี)",
+              "ท่าพระจันทร์ ปัจจุบัน (6,500 คน / นานาชาติ)",
+              "ลำปาง ปัจจุบัน (2,200 คน)",
+              "พัทยา EEC ปัจจุบัน (1,500 คน)"
+            ],
+            color: ["#C62828", "#F57C00", "#0284C7", "#EA580C", "#991B1B", "#16A34A", "#2563EB"]
+          },
+          link: {
+            source: [0, 0, 0, 1, 2, 2],
+            target: [3, 4, 1, 3, 5, 6],
+            value: [18000, 6500, 14000, 14000, 2200, 1500],
+            color: [
+              "rgba(198, 40, 40, 0.35)",
+              "rgba(153, 27, 27, 0.35)",
+              "rgba(245, 124, 0, 0.35)",
+              "rgba(234, 88, 12, 0.35)",
+              "rgba(22, 163, 74, 0.35)",
+              "rgba(37, 99, 235, 0.35)"
+            ]
+          }
+        }];
+
+        const layout = {
+          ...commonLayout,
+          margin: { l: 20, r: 20, t: 30, b: 20 },
+          title: { text: '<b>สายธารการโยกย้ายศูนย์การศึกษา (Sankey Migration Flow)</b>', font: { size: 13.5 } }
+        };
+        Plotly.newPlot('chartContainer5', sankeyData, layout, { responsive: true, displayModeBar: false });
+      }
+
+      // Scene 6: Financial Waterfall Chart
+      else if (sceneNum === 6) {
+        const trace = {
+          name: "งบประมาณ",
+          type: "waterfall",
+          orientation: "v",
+          measure: ["relative", "relative", "relative", "relative", "relative", "total"],
+          x: ['งบอุดหนุนรัฐ', 'ค่าธรรมเนียมศึกษา', 'บริการวิชาการ/รพ.', 'ทุนวิจัยภายนอก', 'ผลประโยชน์ทรัพย์สิน', 'งบประมาณรวม 2567'],
+          text: ["+3,650", "+4,200", "+1,850", "+1,050", "+750", "11,500 ลบ."],
+          y: [3650, 4200, 1850, 1050, 750, 11500],
+          connector: { line: { color: "#94A3B8" } },
+          increasing: { marker: { color: "#C62828" } },
+          totals: { marker: { color: "#0F172A" } }
+        };
+
+        const layout = {
+          ...commonLayout,
+          title: { text: '<b>โครงสร้างรายได้และแหล่งงบประมาณรวม 11,500 ล้านบาท</b>', font: { size: 13.5 } },
+          yaxis: { title: "ล้านบาท (THB)", gridcolor: '#F1F5F9' },
+          xaxis: { showgrid: false }
+        };
+        Plotly.newPlot('chartContainer6', [trace], layout, { responsive: true, displayModeBar: false });
+      }
+
+      // Scene 7: QS Rankings Inverted Benchmark
+      else if (sceneNum === 7) {
+        const years = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+        const asiaRanks = [137, 134, 119, 111, 107, 96, 81, 73, 68];
+        const tbsRanks = [250, 225, 210, 195, 175, 160, 150, 135, 125];
+
+        const traceAsia = {
+          x: years, y: asiaRanks, name: 'QS Asia University Ranking (มธ.)',
+          mode: 'lines+markers+text',
+          line: { color: '#C62828', width: 3.5 },
+          marker: { size: 8, color: '#C62828' },
+          text: ['', '', '', '', '', '96', '81', '73', 'อันดับ 68'],
+          textposition: 'top center',
+          textfont: { size: 11, color: '#C62828', weight: 'bold' }
+        };
+
+        const traceTBS = {
+          x: years, y: tbsRanks, name: 'QS World: Business & Management (TBS)',
+          mode: 'lines+markers+text',
+          line: { color: '#F59E0B', width: 3, dash: 'dot' },
+          marker: { size: 7, color: '#F59E0B' },
+          text: ['', '', '', '', '', '', '', '', 'Top 125 โลก'],
+          textposition: 'bottom center',
+          textfont: { size: 11, color: '#B45309', weight: 'bold' }
+        };
+
+        const layout = {
+          ...commonLayout,
+          title: { text: '<b>การไต่อันดับโลก QS Asia และสาขาบริหารธุรกิจ TBS (แกนกลับด้าน)</b>', font: { size: 13 } },
+          yaxis: { autorange: 'reversed', title: 'อันดับ (อันดับน้อย = ผลงานดียิ่งขึ้น)', gridcolor: '#F1F5F9' },
+          xaxis: { title: 'ปี ค.ศ.', showgrid: false },
+          legend: { orientation: 'h', y: 1.14, x: 0.05 },
+          shapes: [{
+            type: 'line', x0: 2018, x1: 2026, y0: 100, y1: 100,
+            line: { color: '#059669', width: 2, dash: 'dash' }
+          }],
+          annotations: [{
+            x: 2021, y: 100, text: '<b>★ เกณฑ์มาตรฐาน Top 100 เอเชีย</b>', showarrow: false, yshift: 14, font: { color: '#059669', size: 11 }
+          }]
+        };
+        Plotly.newPlot('chartContainer7', [traceAsia, traceTBS], layout, { responsive: true, displayModeBar: false });
+      }
+
+      // Scene 8: SDG Polar Radar Chart
+      else if (sceneNum === 8) {
+        const radarData = [{
+          type: 'scatterpolar',
+          r: [98.4, 92.8, 91.5, 90.4, 89.2, 87.6, 98.4],
+          theta: [
+            'SDG 11: เมืองยั่งยืน (Top 10)',
+            'SDG 4: การศึกษาเท่าเทียม',
+            'SDG 7: พลังงานสะอาด',
+            'SDG 17: พันธมิตรความร่วมมือ',
+            'SDG 3: สุขภาพและความเป็นอยู่',
+            'SDG 13: รับมือภูมิอากาศ',
+            'SDG 11: เมืองยั่งยืน (Top 10)'
+          ],
+          fill: 'toself',
+          fillcolor: 'rgba(5, 150, 105, 0.22)',
+          line: { color: '#059669', width: 3 },
+          marker: { size: 7, color: '#047857' }
+        }];
+
+        const layout = {
+          ...commonLayout,
+          title: { text: '<b>สมรรถนะเป้าหมายการพัฒนาที่ยั่งยืน UN SDGs (THE Impact Rankings)</b>', font: { size: 13 } },
+          polar: {
+            radialaxis: { visible: true, range: [70, 100], color: '#64748B' },
+            angularaxis: { rotation: 90, direction: 'clockwise' }
+          }
+        };
+        Plotly.newPlot('chartContainer8', radarData, layout, { responsive: true, displayModeBar: false });
+      }
+
+      // Scene 9: Thammasat Hospital Dual-Axis
+      else if (sceneNum === 9) {
+        const years = ['2530 (1987)', '2540 (1997)', '2550 (2007)', '2560 (2017)', '2564 (โควิด)', '2567 (ปัจจุบัน)'];
+        const outpatients = [50000, 210000, 520000, 980000, 1280000, 1460000];
+        const beds = [120, 350, 650, 950, 1400, 1400];
+
+        const traceOutpatient = {
+          x: years, y: outpatients, name: 'ผู้ป่วยนอก (ครั้ง/ปี)',
+          type: 'bar', marker: { color: 'rgba(198, 40, 40, 0.85)' }
+        };
+
+        const traceBeds = {
+          x: years, y: beds, name: 'จำนวนเตียงรองรับ',
+          type: 'scatter', mode: 'lines+markers', yaxis: 'y2',
+          line: { color: '#0284C7', width: 3.5 },
+          marker: { size: 8, color: '#0369A1' }
+        };
+
+        const layout = {
+          ...commonLayout,
+          title: { text: '<b>การเติบโตของ รพ.ธรรมศาสตร์เฉลิมพระเกียรติ (พ.ศ. 2530 - 2567)</b>', font: { size: 13 } },
+          yaxis: { title: 'ผู้ป่วยนอก (ครั้ง)', gridcolor: '#F1F5F9' },
+          yaxis2: { title: 'จำนวนเตียง', overlaying: 'y', side: 'right', showgrid: false },
+          legend: { orientation: 'h', y: 1.14, x: 0.1 },
+          annotations: [{
+            x: '2564 (โควิด)', y: 1280000, text: '<b>รพ.สนามแห่งแรก 3,083 เตียง</b>',
+            showarrow: true, arrowhead: 2, ax: -40, ay: -35, bgcolor: '#FEF3C7', bordercolor: '#F59E0B'
+          }]
+        };
+        Plotly.newPlot('chartContainer9', [traceOutpatient, traceBeds], layout, { responsive: true, displayModeBar: false });
+      }
+
+      // Scene 10: Dual Gauges for Strategic Vision
+      else if (sceneNum === 10) {
+        const gaugeData = [
+          {
+            type: "indicator",
+            mode: "gauge+number+delta",
+            value: 78,
+            title: { text: "<b>TU Net-Zero 2030</b><br><span style='font-size:11px;color:#64748B;'>เป้าหมายคาร์บอนสุทธิเป็นศูนย์</span>", font: { size: 12.5 } },
+            delta: { reference: 60, increasing: { color: "#059669" } },
+            gauge: {
+              axis: { range: [0, 100] },
+              bar: { color: "#C62828" },
+              steps: [
+                { range: [0, 50], color: "#FEE2E2" },
+                { range: [50, 80], color: "#FEF3C7" },
+                { range: [80, 100], color: "#D1FAE5" }
+              ],
+              threshold: { line: { color: "#059669", width: 4 }, thickness: 0.75, value: 100 }
+            },
+            domain: { row: 0, column: 0 }
+          },
+          {
+            type: "indicator",
+            mode: "gauge+number",
+            value: 6200,
+            title: { text: "<b>88 SANDBOX Startups</b><br><span style='font-size:11px;color:#64748B;'>เป้าหมาย 10,000 ทีมเพื่อสังคม</span>", font: { size: 12.5 } },
+            gauge: {
+              axis: { range: [0, 10000] },
+              bar: { color: "#F59E0B" },
+              steps: [
+                { range: [0, 5000], color: "#FEF3C7" },
+                { range: [5000, 10000], color: "#E0F2FE" }
+              ]
+            },
+            domain: { row: 0, column: 1 }
+          }
+        ];
+
+        const layout = {
+          ...commonLayout,
+          margin: { l: 20, r: 20, t: 25, b: 20 },
+          grid: { rows: 1, columns: 2, pattern: 'independent' },
+          title: { text: '<b>ดัชนีความก้าวหน้าสู่ศตวรรษที่ 1: TU 2034 Strategic Horizon</b>', font: { size: 13 } }
+        };
+        Plotly.newPlot('chartContainer10', gaugeData, layout, { responsive: true, displayModeBar: false });
+      }
+    }
+
+    // Scroll Observer for Scrollytelling Mode
+    const sceneScrollObserver = new IntersectionObserver((entries) => {
+      if (presentationMode !== 'scrolly') return;
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sceneNum = parseInt(entry.target.getAttribute('data-scene'));
+          if (sceneNum && sceneNum !== activeScene) {
+            navigateToScene(sceneNum);
+          }
+        }
+      });
+    }, { rootMargin: '-20% 0px -40% 0px', threshold: 0.1 });
+
+    document.querySelectorAll('.scene-card').forEach(card => sceneScrollObserver.observe(card));
+
+    // Scroll Progress Bar Update
+    window.addEventListener('scroll', () => {
+      if (presentationMode !== 'scrolly') return;
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('scrollProgressBar');
+      if (bar) bar.style.width = scrolled + '%';
+    });
+
+    // Window Resize Handler
+    window.addEventListener('resize', () => {
+      if (activeScene === 2 && leafletMapInstance) {
+        leafletMapInstance.invalidateSize();
+      } else {
+        const container = document.getElementById(`chartContainer${activeScene}`);
+        if (container && window.Plotly) {
+          Plotly.Plots.resize(container);
+        }
+      }
+    });
+
+    // Modal Handlers
+    function openFlourishDataModal() {
+      document.getElementById('flourishDataModal').classList.add('open');
+    }
+    function closeFlourishDataModal() {
+      document.getElementById('flourishDataModal').classList.remove('open');
+    }
+
+    // Initialize on Page Ready
+    window.addEventListener('DOMContentLoaded', () => {
+      buildSlideDots();
+      navigateToScene(1);
+    });
+  </script>
+</body>
+</html>
