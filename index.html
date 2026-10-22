@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <link rel="preload" as="image" href="assets/tu_student_walking.webp" type="image/webp" fetchpriority="high">
   <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
@@ -194,15 +195,15 @@
 
       <!-- Starting Grid Box Brackets [   ] at scroll 900px -->
       <div class="grid-box grid-box-pole">
-        <span class="grid-box-label">TU PIONEER 01</span>
+        <span class="grid-box-label"><i class="fa-solid fa-landmark"></i> 2477 • ปฐมบทตลาดวิชา</span>
       </div>
       <div class="grid-box grid-box-slot2">
-        <span class="grid-box-label">TU SCHOLAR 02</span>
+        <span class="grid-box-label"><i class="fa-solid fa-compass"></i> 2567 • วาระ 90 ปี</span>
       </div>
 
       <!-- Student 1: Lead Thammasat Student (tu_student_walking.png) -->
       <div class="tu-student-walker-container tu-student-leader" id="studentLeader">
-        <img src="assets/tu_student_walking.webp" alt="นักศึกษาธรรมศาสตร์ ผู้นำแห่งอนาคต (ภาพประกอบสร้างสรรค์)" width="125" height="167" loading="lazy" decoding="async" class="tu-student-walker-img" />
+        <img src="assets/tu_student_walking.webp" alt="นักศึกษาธรรมศาสตร์ ผู้นำแห่งอนาคต (ภาพประกอบสร้างสรรค์)" width="125" height="167" fetchpriority="high" decoding="async" class="tu-student-walker-img" />
         <div class="tu-student-ground-shadow"></div>
         <div class="tu-student-badge">
           <i class="fa-solid fa-graduation-cap"></i>
@@ -221,29 +222,28 @@
       </div>
     </div>
 
-    <!-- Hero Content Overlay (First Screen) -->
+    <!-- Hero Content Overlay (First Screen: Approach A) -->
     <div class="hero-content-overlay">
       <div class="hero-category-tag">
-        <i class="fa-solid fa-flag-checkered"></i>
-        <span>รายงานวิจัยและยุทธศาสตร์ข้อมูล • 2477 — 2567</span>
+        <i class="fa-solid fa-landmark-dome"></i>
+        <span>รายงานวิจัยและยุทธศาสตร์ข้อมูลวาระ 90 ปี • 2477 — 2567</span>
       </div>
 
       <h1 class="hero-main-title">
-        Driving Innovation<br>
-        <em>at Speed</em>
+        Shaping Future<br>
+        <em>Through Wisdom</em>
       </h1>
 
       <div class="hero-title-thai">
-        ขับเคลื่อนปัญญาและนวัตกรรม ด้วยความเร็วแห่งอนาคต
+        90 ปี ธรรมศาสตร์: พลังแห่งปัญญา สู่ศตวรรษแห่งความยั่งยืน
       </div>
 
       <p class="hero-lead-desc">
-        90 ปี มหาวิทยาลัยธรรมศาสตร์: จาก "ตลาดวิชา" แห่งประวัติศาสตร์ สู่มหาวิทยาลัยวิจัยชั้นนำของโลก
-        ผู้นำ Triple Crown และพลังแห่งการพัฒนาสังคมอย่างยั่งยืน
+        จาก "ตลาดวิชา" แห่งประวัติศาสตร์ สู่มหาวิทยาลัยวิจัยชั้นนำของภูมิภาค ผู้นำ Triple Crown แห่งแรกของไทย และพลังแห่งการพัฒนาสังคมที่ยั่งยืน
       </p>
 
-      <button class="hero-scroll-pill-btn" onclick="scrollToElement('topic-01')">
-        <span>Scroll down to race</span>
+      <button class="hero-scroll-pill-btn" onclick="scrollToElement('key-findings')">
+        <span>เริ่มต้นสำรวจรายงาน</span>
         <i class="fa-solid fa-arrow-down"></i>
       </button>
     </div>

@@ -1,5 +1,26 @@
 # บันทึกการเปลี่ยนแปลงของระบบ (Project Changelog)
 
+## [Phase 8] - 2026-10-22 (Hero Theme - Approach A Implementation)
+
+### สรุปการเปลี่ยนแปลง:
+- **ปรับธีม Hero Section สู่จิตวิญญาณแห่งธรรมศาสตร์ (Approach A: River of Wisdom & Centennial Timeline Arc)**:
+  - ยกเลิกอุปมาการแข่งขันความเร็ว (Racing Curb / Checkered Asphalt)
+  - เปลี่ยนผ่านสู่สายธารแห่งกาลเวลาและปัญญา (Chao Phraya River & Centennial Timeline Arc 2477 — 2577)
+  - เส้นแนวแกนกลางปรับเป็นลำธารสะท้อนแสงสีทองอร่ามและขอบสีแดงชาดอันสง่างาม
+  - หมุดหมายทางประวัติศาสตร์ปรับเป็น: 2477 (ปฐมบทตลาดวิชา มธก.), 2567 (วาระ 90 ปีแห่งเกียรติภูมิ)
+- **ปรับปรุงหัวข้อหลัก (Headings & Mission Statement)**:
+  - H1 ภาษาอังกฤษ: `Shaping Future Through Wisdom`
+  - ชื่อเรื่องภาษาไทย: `90 ปี ธรรมศาสตร์: พลังแห่งปัญญา สู่ศตวรรษแห่งความยั่งยืน`
+  - แท็กหมวดหมู่: `รายงานวิจัยและยุทธศาสตร์ข้อมูลวาระ 90 ปี • 2477 — 2567`
+  - ปุ่มนำทาง: `เริ่มต้นสำรวจรายงาน` เชื่อมต่อไปยัง Executive Summary 3 มิติสำคัญ
+- **เพิ่มประสิทธิภาพ LCP (Largest Contentful Paint)**:
+  - เพิ่มแท็ก `<link rel="preload" as="image" href="assets/tu_student_walking.webp" type="image/webp" fetchpriority="high">` ใน `<head>`
+  - กำหนด `fetchpriority="high"` บนรูปภาพนักศึกษาใน Hero Section เพื่อการเรนเดอร์ที่รวดเร็วทันใจ
+- **บันทึกภาพถ่ายหน้าจอ Phase 8**:
+  - แคปภาพ 5 Breakpoints (360px, 390px, 768px, 1024px, 1440px) ครบ 70 รูปใน `qa/phase8_screens/`
+
+---
+
 ## [Phase 7] - 2026-10-22 (Scroll & Interactive Polish)
 
 ### สรุปการเปลี่ยนแปลง:

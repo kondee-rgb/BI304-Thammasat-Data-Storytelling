@@ -427,57 +427,54 @@
       padding-top: 76px;
     }
 
-    /* Central Vertical Racetrack Stage */
+    /* Central River & Centennial Timeline Corridor (Approach A) */
     .central-track-stage {
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 640px;
+      width: 660px;
       height: 100%;
-      background: #09122d;
-      border-left: 2px solid rgba(255, 255, 255, 0.15);
-      border-right: 2px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+      background: linear-gradient(180deg, #071530 0%, #0a1f44 25%, #0b1a38 65%, #071126 100%);
+      border-left: 1px solid rgba(255, 199, 44, 0.25);
+      border-right: 1px solid rgba(255, 199, 44, 0.25);
+      box-shadow: 0 0 70px rgba(0, 0, 0, 0.7);
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Left Checkerboard Racing Curb */
+    /* Left Golden Reflection Line */
     .central-track-curb-left {
       position: absolute;
       top: 0;
       left: 0;
-      width: 44px;
+      width: 4px;
       height: 100%;
-      background: repeating-linear-gradient(
+      background: linear-gradient(
         180deg,
-        #e2e8f0 0px,
-        #e2e8f0 40px,
-        #1e293b 40px,
-        #1e293b 80px
+        rgba(255, 199, 44, 0.5) 0%,
+        rgba(197, 25, 68, 0.6) 45%,
+        rgba(255, 199, 44, 0.5) 100%
       );
-      opacity: 0.85;
-      border-right: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 10px rgba(255, 199, 44, 0.4);
     }
 
-    /* Right Track Border Curb */
+    /* Right Twilight Glow Line */
     .central-track-curb-right {
       position: absolute;
       top: 0;
       right: 0;
-      width: 14px;
+      width: 3px;
       height: 100%;
-      background: repeating-linear-gradient(
+      background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.6) 0px,
-        rgba(255, 255, 255, 0.6) 30px,
-        transparent 30px,
-        transparent 60px
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 199, 44, 0.35) 50%,
+        rgba(255, 255, 255, 0.2) 100%
       );
     }
 
-    /* Dashed Center Road Line */
+    /* River Current Timeline Centerline */
     .central-track-centerline {
       position: absolute;
       top: 0;
@@ -487,45 +484,46 @@
       height: 100%;
       background: repeating-linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.35) 0px,
-        rgba(255, 255, 255, 0.35) 40px,
-        transparent 40px,
-        transparent 80px
+        rgba(166, 210, 230, 0.35) 0px,
+        rgba(166, 210, 230, 0.35) 45px,
+        transparent 45px,
+        transparent 95px
       );
     }
 
-    /* Starting Grid Stage at Scroll 800px */
+    /* Centennial Waypoint Node Brackets */
     .grid-box {
       position: absolute;
-      border: 2px solid rgba(255, 255, 255, 0.85);
-      border-top: none;
-      border-radius: 0 0 4px 4px;
+      border: 1px solid rgba(255, 199, 44, 0.6);
+      background: rgba(11, 22, 59, 0.75);
+      backdrop-filter: blur(4px);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     }
 
     .grid-box-pole {
       top: 820px;
-      left: 170px;
-      width: 130px;
-      height: 18px;
+      left: 160px;
+      width: 150px;
+      height: 28px;
     }
 
     .grid-box-slot2 {
       top: 1040px;
-      left: 380px;
-      width: 130px;
-      height: 18px;
+      left: 360px;
+      width: 150px;
+      height: 28px;
     }
 
     .grid-box-label {
-      position: absolute;
-      top: -24px;
-      left: 50%;
-      transform: translateX(-50%);
       font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      color: rgba(255, 255, 255, 0.65);
-      white-space: nowrap;
+      font-weight: 700;
+      color: var(--tu-gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     /* The Thammasat Student Walkers on the Central Timeline Track */
