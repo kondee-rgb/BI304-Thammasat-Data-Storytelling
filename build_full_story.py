@@ -26,7 +26,7 @@ import os
 import sys
 
 def generate_bidwells_html():
-    return '''<!DOCTYPE html>
+    return r'''<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
@@ -3028,6 +3028,23 @@ def generate_bidwells_html():
         font-size: 0.68rem;
       }
     }
+
+    /* Scroll-Triggered Animated Counter Styles */
+    .stat-counter {
+      font-variant-numeric: tabular-nums;
+      will-change: contents;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .stat-counter.counter-completed {
+      animation: counter-pop 0.35s ease-out;
+    }
+    @keyframes counter-pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
   </style>
 </head>
 <body>
@@ -3293,7 +3310,7 @@ def generate_bidwells_html():
         <div class="winning-stat-card">
           <div class="winning-card-top">
             <div class="winning-number-row">
-              <span class="winning-number">90</span>
+              <span class="winning-number stat-counter">90</span>
               <span class="winning-unit">ปี</span>
             </div>
             <div class="winning-top-title">ประวัติศาสตร์แห่งเสรีภาพและความเสมอภาค</div>
@@ -3307,7 +3324,7 @@ def generate_bidwells_html():
         <div class="winning-stat-card">
           <div class="winning-card-top">
             <div class="winning-number-row">
-              <span class="winning-number">26</span>
+              <span class="winning-number stat-counter">26</span>
               <span class="winning-unit">คณะ</span>
             </div>
             <div class="winning-top-title">4 เสาหลักทางวิชาการและสหวิทยาการ</div>
@@ -3321,7 +3338,7 @@ def generate_bidwells_html():
         <div class="winning-stat-card">
           <div class="winning-card-top">
             <div class="winning-number-row">
-              <span class="winning-number">Top 10</span>
+              <span class="winning-number stat-counter">Top 10</span>
               <span class="winning-unit">โลก</span>
             </div>
             <div class="winning-top-title">อันดับโลกด้าน SDG 11 เมืองและชุมชนยั่งยืน</div>
@@ -3472,11 +3489,11 @@ def generate_bidwells_html():
 
         <div class="campus-metrics-strip" id="campusMetricsBox">
           <div class="campus-metric-item">
-            <div class="val" id="cArea">104 ไร่</div>
+            <div class="val stat-counter" id="cArea">104 ไร่</div>
             <div class="lbl">พื้นที่วิทยาเขต</div>
           </div>
           <div class="campus-metric-item">
-            <div class="val" id="cStudents">6,310 คน</div>
+            <div class="val stat-counter" id="cStudents">6,310 คน</div>
             <div class="lbl">ประชากรนักศึกษา</div>
           </div>
           <div class="campus-metric-item">
@@ -3537,11 +3554,11 @@ def generate_bidwells_html():
         <!-- 4 KPI Summary Cards -->
         <div class="faculties-kpi-row">
           <div class="fac-kpi-item">
-            <div class="kpi-num" style="color: var(--bidwells-crimson);">83.1</div>
+            <div class="kpi-num stat-counter" style="color: var(--bidwells-crimson);">83.1</div>
             <div class="kpi-lbl">คะแนนตัดต่ำสุดสูงสุด (CICM)</div>
           </div>
           <div class="fac-kpi-item">
-            <div class="kpi-num" style="color: var(--bidwells-navy);">72.8</div>
+            <div class="kpi-num stat-counter" style="color: var(--bidwells-navy);">72.8</div>
             <div class="kpi-lbl">คะแนนเฉลี่ย TCAS รวมทุกคณะ</div>
           </div>
           <div class="fac-kpi-item">
@@ -3549,7 +3566,7 @@ def generate_bidwells_html():
             <div class="kpi-lbl">อัตราการแข่งขันสูงสุด</div>
           </div>
           <div class="fac-kpi-item">
-            <div class="kpi-num" style="color: var(--tu-gold-dark);">26 คณะ</div>
+            <div class="kpi-num stat-counter" style="color: var(--tu-gold-dark);">26 คณะ</div>
             <div class="kpi-lbl">4 เสาหลักทางวิชาการ</div>
           </div>
         </div>
@@ -3596,15 +3613,15 @@ def generate_bidwells_html():
           โครงสร้างประชากรนักศึกษาและความหลากหลายทางเพศภาวะ
         </h2>
         <p style="font-size: 1.05rem; color: #64748b; max-width: 860px; line-height: 1.7;">
-          ธรรมศาสตร์มุ่งเน้นความเสมอภาคและดุลยภาพประชากรในทุกมิติวิชาการ โดยมีสัดส่วนนักศึกษาหญิงรวม 62.4% (26,620 คน) และนักศึกษาชาย 37.6% (16,030 คน) พร้อมความหลากหลายที่เปิดกว้างในทุกเพศภาวะ
+          ธรรมศาสตร์มุ่งเน้นความเสมอภาคและดุลยภาพประชากรในทุกมิติวิชาการ โดยมีสัดส่วนนักศึกษาหญิงรวม 62.4% (26,620 คน) และนักศึกษาชาย <span class="stat-counter">37.6%</span> (<span class="stat-counter">16,030</span> คน) พร้อมความหลากหลายที่เปิดกว้างในทุกเพศภาวะ
         </p>
       </div>
 
       <div class="demographic-white-card">
         <div class="demographic-ratio-bar-wrap">
           <div class="ratio-bar">
-            <div class="ratio-female">นักศึกษาหญิง 62.4% (26,620 คน)</div>
-            <div class="ratio-male">นักศึกษาชาย 37.6% (16,030 คน)</div>
+            <div class="ratio-female">นักศึกษาหญิง <span class="stat-counter">62.4%</span> (<span class="stat-counter">26,620</span> คน)</div>
+            <div class="ratio-male">นักศึกษาชาย <span class="stat-counter">37.6%</span> (<span class="stat-counter">16,030</span> คน)</div>
           </div>
         </div>
 
@@ -3719,11 +3736,12 @@ def generate_bidwells_html():
             </p>
             <div style="font-size: 0.82rem; font-weight: 700; color: var(--bidwells-navy); margin-bottom: 6px;">คลิกเพื่อเจาะลึก 5 แหล่งรายได้หลัก:</div>
             <div class="drilldown-pills-row">
-              <button class="drilldown-pill active" onclick="drilldownStream(0)">1. งบแผ่นดิน (35.8%)</button>
-              <button class="drilldown-pill" onclick="drilldownStream(1)">2. ค่าธรรมเนียมศึกษา (32.4%)</button>
-              <button class="drilldown-pill" onclick="drilldownStream(2)">3. ทรัพย์สิน & ลงทุน (18.2%)</button>
-              <button class="drilldown-pill" onclick="drilldownStream(3)">4. ทุนวิจัยบริการ (8.6%)</button>
-              <button class="drilldown-pill" onclick="drilldownStream(4)">5. บริการการแพทย์ (5.0%)</button>
+              <button class="drilldown-pill active" onclick="drilldownStream(0)"><i class="fa-solid fa-layer-group"></i> งบประมาณรวมทั้งหมด 5 ปี</button>
+              <button class="drilldown-pill" onclick="drilldownStream(1)">1. งบแผ่นดิน (35.8%)</button>
+              <button class="drilldown-pill" onclick="drilldownStream(2)">2. ค่าธรรมเนียมศึกษา (32.4%)</button>
+              <button class="drilldown-pill" onclick="drilldownStream(3)">3. ทรัพย์สิน & ลงทุน (18.2%)</button>
+              <button class="drilldown-pill" onclick="drilldownStream(4)">4. ทุนวิจัยบริการ (8.6%)</button>
+              <button class="drilldown-pill" onclick="drilldownStream(5)">5. บริการการแพทย์ (5.0%)</button>
             </div>
             <div id="streamDetailBox" style="margin-top: 16px; padding: 14px; background: #f8fafc; border-radius: 10px; font-size: 0.84rem; color: #475569; border-left: 3px solid var(--bidwells-crimson);">
               <strong>งบประมาณแผ่นดิน (35.8% • 5,495 ล้านบาท):</strong> เงินอุดหนุนทั่วไปและโครงการพัฒนาเชิงยุทธศาสตร์ระดับชาติเพื่อความเป็นเลิศทางวิชาการ
@@ -3782,7 +3800,7 @@ def generate_bidwells_html():
             <h3 style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: #ffffff;">
               Thailand Business School Excellence Race
             </h3>
-            <p style="font-size: 0.85rem; color: #cbd5e1;">TBS มหาวิทยาลัยธรรมศาสตร์ ครองการรับรองครบ 3 สถาบันหลักระดับโลก (Triple Crown)</p>
+            <p style="font-size: 0.85rem; color: #cbd5e1;">TBS มหาวิทยาลัยธรรมศาสตร์ ครองการรับรองครบ 3 สถาบันหลักระดับโลก (Triple Crown) แห่งแรกในประเทศไทย (2018) ร่วมกับสถาบันชั้นนำระดับโลก</p>
           </div>
           <div class="triple-crown-badges-row">
             <span class="crown-badge">AACSB (USA)</span>
@@ -3805,19 +3823,19 @@ def generate_bidwells_html():
           <tbody>
             <tr class="highlight-tbs">
               <td><strong>ธรรมศาสตร์ (TBS)</strong></td>
-              <td><span style="color: var(--tu-gold);">👑 Triple Crown (100%)</span></td>
-              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
-              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
-              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
+              <td><span style="color: var(--tu-gold);">👑 Triple Crown (แห่งแรกในไทย 2018)</span></td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ (2012)</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ (2012)</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ (2018)</td>
               <td>Top 1% ของโลก (Eduniversal 5 Palms)</td>
             </tr>
             <tr>
               <td>จุฬาลงกรณ์ (CBS)</td>
-              <td>Dual Crown (66%)</td>
-              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
-              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ</td>
-              <td><i class="fa-solid fa-circle-xmark" style="color: #94a3b8;"></i> กำลังพัฒนา</td>
-              <td>Top Tier Business School</td>
+              <td><span style="color: #a6d2e6;">👑 Triple Crown (100%)</span></td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ (2020)</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ (2019)</td>
+              <td><i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> ได้รับ (2023)</td>
+              <td>Top Tier Business School (Triple Crown 2023)</td>
             </tr>
             <tr>
               <td>ศศินทร์ (Sasin)</td>
@@ -3890,14 +3908,14 @@ def generate_bidwells_html():
           <div class="green-card-icon"><i class="fa-solid fa-seedling"></i></div>
           <div class="green-card-title">อุทยานเรียนรู้ป๋วย 100 ปี</div>
           <div class="green-card-desc">สวนผักดาดฟ้าที่ใหญ่ที่สุดในเอเชีย กักเก็บน้ำฝนได้กว่า 3.2 ล้านลิตร และผลิตอาหารเกษตรอินทรีย์ปลอดภัย</div>
-          <div class="green-card-stat">22,000 ตร.ม.</div>
+          <div class="green-card-stat stat-counter">22,000 ตร.ม.</div>
         </div>
 
         <div class="green-card-item">
           <div class="green-card-icon"><i class="fa-solid fa-solar-panel"></i></div>
           <div class="green-card-title">พลังงานสะอาดโซลาร์รูฟ</div>
           <div class="green-card-desc">ติดตั้งแผงโซลาร์เซลล์บนหลังคาอาคารทั่วศูนย์รังสิต ผลิตพลังงานสะอาดทดแทนการใช้ไฟฟ้าจากฟอสซิล</div>
-          <div class="green-card-stat">35 MW</div>
+          <div class="green-card-stat stat-counter">35 MW</div>
         </div>
 
         <div class="green-card-item">
@@ -3911,7 +3929,7 @@ def generate_bidwells_html():
           <div class="green-card-icon"><i class="fa-solid fa-smog"></i></div>
           <div class="green-card-title">ลดคาร์บอนสู่ Net-Zero</div>
           <div class="green-card-desc">ลดการปล่อยก๊าซเรือนกระจกอย่างต่อเนื่อง เดินหน้าสู่เป้าหมายความเป็นกลางทางคาร์บอนของมหาวิทยาลัย</div>
-          <div class="green-card-stat">-24,000 ตัน/ปี</div>
+          <div class="green-card-stat stat-counter">-24,000 ตัน/ปี</div>
         </div>
       <!-- Dedicated Interactive Visual: Clean Energy & Sustainability Metrics -->
       <div class="green-visual-card">
@@ -3936,19 +3954,19 @@ def generate_bidwells_html():
 
         <div class="visual-metric-strip">
           <div class="visual-metric-pill">
-            <div class="val">35.8 MWp</div>
+            <div class="val stat-counter">35.8 MWp</div>
             <div class="lbl">กำลังการผลิตโซลาร์เซลล์รวม</div>
           </div>
           <div class="visual-metric-pill">
-            <div class="val">25,500 ตัน</div>
+            <div class="val stat-counter">25,500 ตัน</div>
             <div class="lbl">ลดการปล่อยก๊าซเรือนกระจก/ปี</div>
           </div>
           <div class="visual-metric-pill">
-            <div class="val">22,000 ตร.ม.</div>
+            <div class="val stat-counter">22,000 ตร.ม.</div>
             <div class="lbl">พื้นที่สวนหลังคาป๋วย 100 ปี</div>
           </div>
           <div class="visual-metric-pill">
-            <div class="val">98.4 / 100</div>
+            <div class="val stat-counter">98.4 / 100</div>
             <div class="lbl">คะแนนโลก SDG 11 (Top 10)</div>
           </div>
         </div>
@@ -3975,22 +3993,22 @@ def generate_bidwells_html():
 
       <div class="hospital-kpi-row">
         <div class="hospital-kpi-card">
-          <div class="hospital-kpi-num">1,400</div>
+          <div class="hospital-kpi-num stat-counter">1,400</div>
           <div class="hospital-kpi-title">เตียงผู้ป่วยตติยภูมิ</div>
           <div class="hospital-kpi-desc">รองรับการรักษาโรคซับซ้อนและหออภิบาลผู้ป่วยวิกฤต (ICU) ทันสมัย</div>
         </div>
         <div class="hospital-kpi-card">
-          <div class="hospital-kpi-num">1.46M+</div>
+          <div class="hospital-kpi-num stat-counter">1.46M+</div>
           <div class="hospital-kpi-title">ผู้ป่วยนอกต่อปี</div>
           <div class="hospital-kpi-desc">ให้บริการตรวจรักษาครอบคลุมประชาชนในพื้นที่ภาคกลางและปริมณฑล</div>
         </div>
         <div class="hospital-kpi-card">
-          <div class="hospital-kpi-num">3,083</div>
+          <div class="hospital-kpi-num stat-counter">3,083</div>
           <div class="hospital-kpi-title">เตียง รพ.สนามโควิด</div>
           <div class="hospital-kpi-desc">จัดตั้ง รพ.สนามแห่งแรกของไทย รองรับผู้ป่วยในวิกฤตโรคระบาดระดับชาติ</div>
         </div>
         <div class="hospital-kpi-card">
-          <div class="hospital-kpi-num">500k+</div>
+          <div class="hospital-kpi-num stat-counter">500k+</div>
           <div class="hospital-kpi-title">โดสวัคซีนบริการประชาชน</div>
           <div class="hospital-kpi-desc">ศูนย์ฉีดวัคซีนขนาดใหญ่เพื่อความปลอดภัยและสุขภาพของประชาชน</div>
         </div>
@@ -4048,19 +4066,19 @@ def generate_bidwells_html():
 
         <div class="hospital-metric-strip">
           <div class="hospital-metric-pill">
-            <div class="val">1,480,000+</div>
+            <div class="val stat-counter">1,480,000+</div>
             <div class="lbl">จำนวนผู้ป่วยนอก/ปี (OPD Visits)</div>
           </div>
           <div class="hospital-metric-pill">
-            <div class="val">58,400 ราย</div>
+            <div class="val stat-counter">58,400 ราย</div>
             <div class="lbl">ผู้ป่วยในรับไว้รักษา/ปี (IPD)</div>
           </div>
           <div class="hospital-metric-pill">
-            <div class="val">1,400 เตียง</div>
+            <div class="val stat-counter">1,400 เตียง</div>
             <div class="lbl">ขีดความสามารถรองรับรวม</div>
           </div>
           <div class="hospital-metric-pill">
-            <div class="val">3,083 เตียง</div>
+            <div class="val stat-counter">3,083 เตียง</div>
             <div class="lbl">รพ.สนามแห่งแรกของไทยยามวิกฤต</div>
           </div>
         </div>
@@ -4444,11 +4462,60 @@ def generate_bidwells_html():
     ];
 
     const STREAMS_DATA = [
-      { name: "งบประมาณแผ่นดิน", share: "35.8%", amount: "5,495 ล้านบาท", desc: "เงินอุดหนุนทั่วไปและโครงการพัฒนาเชิงยุทธศาสตร์ระดับชาติเพื่อความเป็นเลิศทางวิชาการ" },
-      { name: "ค่าธรรมเนียมการศึกษา", share: "32.4%", amount: "4,973 ล้านบาท", desc: "รายได้จากหลักสูตรปกติ หลักสูตรพิเศษ และหลักสูตรนานาชาติคุณภาพสูง" },
-      { name: "ทรัพย์สินและการลงทุน", share: "18.2%", amount: "2,793 ล้านบาท", desc: "การบริหารจัดการอสังหาริมทรัพย์ พื้นที่พาณิชย์ และกองทุนพัฒนามหาวิทยาลัย" },
-      { name: "ทุนวิจัยและบริการวิชาการ", share: "8.6%", amount: "1,320 ล้านบาท", desc: "ทุนวิจัยจากภาคเอกชน รัฐวิสาหกิจ และองค์กรวิจัยระดับนานาชาติ" },
-      { name: "บริการทางการแพทย์และคลินิก", share: "5.0%", amount: "769 ล้านบาท", desc: "การให้บริการรักษาพยาบาล คลินิกทันตกรรม และศูนย์ตรวจสุขภาพเฉพาะทาง" }
+      {
+        id: "total",
+        name: "งบประมาณรวมทุกด้าน (Total Budget)",
+        share: "100%",
+        amount: "15,350 ล้านบาท",
+        data: [13420, 13850, 14210, 14780, 15350],
+        color: "#c51944",
+        desc: "งบประมาณรวมของมหาวิทยาลัยเติบโตต่อเนื่อง 5 ปีซ้อน จาก 13,420 สู่ 15,350 ล้านบาท (+14.4%) สะท้อนความมั่นคงและวินัยการคลังระดับสูง"
+      },
+      {
+        id: "gov",
+        name: "งบประมาณแผ่นดิน (Government Grants)",
+        share: "35.8%",
+        amount: "5,495 ล้านบาท",
+        data: [4920, 5060, 5170, 5320, 5495],
+        color: "#1e3a8a",
+        desc: "เงินอุดหนุนทั่วไปและโครงการพัฒนาเชิงยุทธศาสตร์ระดับชาติเพื่อความเป็นเลิศทางวิชาการและการวิจัยขั้นแนวหน้า"
+      },
+      {
+        id: "tuition",
+        name: "รายได้ค่าธรรมเนียมการศึกษา (Tuition Fees)",
+        share: "32.4%",
+        amount: "4,973 ล้านบาท",
+        data: [4280, 4450, 4610, 4790, 4973],
+        color: "#00857c",
+        desc: "ค่าธรรมเนียมการศึกษาหลักสูตรไทย หลักสูตรนานาชาติ และบัณฑิตศึกษา พึ่งพาตนเองได้อย่างมั่นคง"
+      },
+      {
+        id: "assets",
+        name: "ทรัพย์สินและผลประโยชน์ (Assets & Investments)",
+        share: "18.2%",
+        amount: "2,794 ล้านบาท",
+        data: [2340, 2420, 2540, 2680, 2794],
+        color: "#d97706",
+        desc: "การบริหารจัดการพื้นที่เชิงพาณิชย์ ทรัพย์สินทางปัญญา และผลตอบแทนจากการลงทุน เติบโตอย่างก้าวกระโดด"
+      },
+      {
+        id: "research",
+        name: "ทุนวิจัยและบริการวิชาการ (Research & Services)",
+        share: "8.6%",
+        amount: "1,320 ล้านบาท",
+        data: [1180, 1210, 1240, 1280, 1320],
+        color: "#7c3aed",
+        desc: "เงินทุนวิจัยจากแหล่งทุนภายนอก ภาครัฐและเอกชน รวมทั้งงานบริการวิชาการแก่สังคมและอุตสาหกรรมเป้าหมาย"
+      },
+      {
+        id: "medical",
+        name: "บริการทางการแพทย์และสาธารณสุข (Healthcare Services)",
+        share: "5.0%",
+        amount: "768 ล้านบาท",
+        data: [700, 710, 650, 710, 768],
+        color: "#e11d48",
+        desc: "รายได้จากการให้บริการทางการแพทย์ คลินิกพิเศษ และศูนย์บริการสุขภาพเฉพาะทางเพื่อส่งเสริมสุขภาวะประชาชน"
+      }
     ];
 
     const FLOURISH_SCENES_DATA = [
@@ -4901,15 +4968,37 @@ def generate_bidwells_html():
       }
     }
 
-    // 7. Budget Stream Drilldown
+    // 7. Budget Stream Drilldown & Interactive Chart Update
+    let budgetChartInstance = null;
+
     function drilldownStream(idx) {
       const pills = document.querySelectorAll('.drilldown-pill');
       pills.forEach((p, i) => p.classList.toggle('active', i === idx));
 
       const s = STREAMS_DATA[idx];
+      if (!s) return;
+
       document.getElementById('streamDetailBox').innerHTML = `
         <strong>${s.name} (${s.share} • ${s.amount}):</strong> ${s.desc}
       `;
+
+      if (budgetChartInstance) {
+        budgetChartInstance.data.datasets[0].label = `${s.name} (ล้านบาท)`;
+        budgetChartInstance.data.datasets[0].data = s.data;
+        budgetChartInstance.data.datasets[0].borderColor = s.color;
+        budgetChartInstance.data.datasets[0].pointBackgroundColor = s.color;
+        budgetChartInstance.data.datasets[0].backgroundColor = s.color.startsWith('#')
+          ? s.color + '18'
+          : 'rgba(197, 25, 68, 0.08)';
+
+        const minVal = Math.min(...s.data);
+        const maxVal = Math.max(...s.data);
+        const pad = Math.max((maxVal - minVal) * 0.35, 100);
+        budgetChartInstance.options.scales.y.min = Math.max(0, Math.floor((minVal - pad) / 100) * 100);
+        budgetChartInstance.options.scales.y.max = Math.ceil((maxVal + pad) / 100) * 100;
+
+        budgetChartInstance.update();
+      }
     }
 
     // 8. Faculties TCAS Chart & Cards Grid
@@ -5461,16 +5550,16 @@ def generate_bidwells_html():
     }
 
         function initCharts() {
-      // Budget 5-Year Chart (Topic 06)
+      // Budget 5-Year Chart (Topic 06 - Interactive Multi-Stream)
       const ctxBudget = document.getElementById('budgetChartCanvas');
       if (ctxBudget) {
-        new Chart(ctxBudget, {
+        budgetChartInstance = new Chart(ctxBudget, {
           type: 'line',
           data: {
             labels: ['2563', '2564', '2565', '2566', '2567'],
             datasets: [{
-              label: 'งบประมาณรวม (ล้านบาท)',
-              data: [13420, 13850, 14210, 14780, 15350],
+              label: 'งบประมาณรวมทุกด้าน (ล้านบาท)',
+              data: STREAMS_DATA[0].data,
               borderColor: '#c51944',
               backgroundColor: 'rgba(197, 25, 68, 0.08)',
               borderWidth: 3,
@@ -5485,10 +5574,14 @@ def generate_bidwells_html():
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { display: false },
+              legend: {
+                display: true,
+                position: 'top',
+                labels: { color: '#0f172a', font: { family: 'Prompt', size: 12 } }
+              },
               tooltip: {
                 callbacks: {
-                  label: (ctx) => `${ctx.parsed.y.toLocaleString()} ล้านบาท`
+                  label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()} ล้านบาท`
                 }
               }
             },
@@ -5645,6 +5738,110 @@ def generate_bidwells_html():
       campusDistChart.update();
     }
 
+
+    // ==========================================================================
+    // SCROLL-TRIGGERED ANIMATED COUNTERS (IntersectionObserver with Easing)
+    // ==========================================================================
+    function initAnimatedCounters() {
+      const counters = document.querySelectorAll('.stat-counter');
+      if (!counters.length) return;
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            runCounterAnimation(el);
+            obs.unobserve(el); // Run only once!
+          }
+        });
+      }, {
+        threshold: 0.35,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      counters.forEach(el => observer.observe(el));
+    }
+
+    function stepFrame(cb) {
+      let called = false;
+      if (typeof window.requestAnimationFrame === 'function') {
+        window.requestAnimationFrame((time) => {
+          if (!called) {
+            called = true;
+            cb(time);
+          }
+        });
+      }
+      setTimeout(() => {
+        if (!called) {
+          called = true;
+          cb(performance.now());
+        }
+      }, 25);
+    }
+
+    function runCounterAnimation(el) {
+      const originalText = el.getAttribute('data-counter-target') || el.textContent.trim();
+      
+      // Match optional prefix, the number (with comma/decimal), and optional suffix
+      const match = originalText.match(/^([^\d]*?)([\d,]+(?:\.\d+)?)(.*)$/);
+      if (!match) return;
+
+      const prefix = el.getAttribute('data-counter-prefix') !== null 
+        ? el.getAttribute('data-counter-prefix') 
+        : match[1];
+      const numRaw = match[2].replace(/,/g, '');
+      const targetVal = parseFloat(numRaw);
+      const suffix = el.getAttribute('data-counter-suffix') !== null 
+        ? el.getAttribute('data-counter-suffix') 
+        : match[3];
+
+      const hasCommas = match[2].includes(',');
+      const decimalMatch = numRaw.match(/\.(\d+)/);
+      const decimals = decimalMatch ? decimalMatch[1].length : 0;
+      const duration = parseInt(el.getAttribute('data-counter-duration') || '1800', 10);
+      const startTime = performance.now();
+
+      // Start at 0 immediately
+      const zeroFormatted = decimals > 0 ? (0).toFixed(decimals) : '0';
+      el.textContent = `${prefix}${zeroFormatted}${suffix}`;
+
+      function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease-out cubic formula: 1 - (1 - progress)^3
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const currentNum = targetVal * ease;
+
+        let numStr = decimals > 0 ? currentNum.toFixed(decimals) : Math.round(currentNum).toString();
+        
+        if (hasCommas) {
+          const parts = numStr.split('.');
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          numStr = parts.join('.');
+        }
+
+        el.textContent = `${prefix}${numStr}${suffix}`;
+
+        if (progress < 1) {
+          stepFrame(update);
+        } else {
+          // Exact final target value matching
+          let finalNum = targetVal.toFixed(decimals);
+          if (hasCommas) {
+            const parts = finalNum.split('.');
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            finalNum = parts.join('.');
+          }
+          el.textContent = `${prefix}${finalNum}${suffix}`;
+          el.classList.add('counter-completed');
+        }
+      }
+
+      stepFrame(update);
+    }
+
     // Window Onload Initialization
     window.addEventListener('DOMContentLoaded', () => {
       initScrollInteractions();
@@ -5654,6 +5851,7 @@ def generate_bidwells_html():
       initTuLeafletMap();
       initGreenSustainabilityChart();
       initHospitalCapacityChart();
+      initAnimatedCounters();
     });
   </script>
 </body>
