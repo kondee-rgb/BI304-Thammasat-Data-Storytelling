@@ -500,7 +500,10 @@
               if (pips[idx]) pips[idx].classList.add('active');
 
               navLinks.forEach(l => l.classList.remove('active'));
-              if (navLinks[idx]) navLinks[idx].classList.add('active');
+              if (navLinks[idx]) {
+                navLinks[idx].classList.add('active');
+                autoScrollHeaderNavToActive(navLinks[idx]);
+              }
 
               if (topicText) topicText.textContent = sec.name;
             }
@@ -1589,6 +1592,7 @@
 
     // Window Onload Initialization
     window.addEventListener('DOMContentLoaded', () => {
+      initHeaderNavInteractions();
       initScrollInteractions();
       renderFaculties('all');
       initFacultiesTcasChart();
@@ -1599,6 +1603,114 @@
       initAnimatedCounters();
       initBidwellsScrollMotions();
     });
+
+    // ==========================================================================
+    // HEADER NAVIGATION SCROLLBAR & CONTROLS (Smooth Scrollable to 10 Topics)
+    // ==========================================================================
+    function scrollHeaderNav(direction) {
+      const nav = document.getElementById('headerNav');
+      if (!nav) return;
+      const amount = 220 * direction;
+      nav.scrollBy({ left: amount, behavior: 'smooth' });
+      setTimeout(updateNavScrollButtons, 350);
+    }
+
+    function updateNavScrollButtons() {
+      const nav = document.getElementById('headerNav');
+      const btnPrev = document.getElementById('navScrollPrev');
+      const btnNext = document.getElementById('navScrollNext');
+      if (!nav || !btnPrev || !btnNext) return;
+
+      const maxScroll = nav.scrollWidth - nav.clientWidth;
+      if (maxScroll <= 8) {
+        btnPrev.classList.remove('visible');
+        btnNext.classList.remove('visible');
+        return;
+      }
+
+      if (nav.scrollLeft > 10) {
+        btnPrev.classList.add('visible');
+      } else {
+        btnPrev.classList.remove('visible');
+      }
+
+      if (nav.scrollLeft < maxScroll - 10) {
+        btnNext.classList.add('visible');
+      } else {
+        btnNext.classList.remove('visible');
+      }
+    }
+
+    function autoScrollHeaderNavToActive(activeLink) {
+      const nav = document.getElementById('headerNav');
+      if (!nav || !activeLink) return;
+      const linkLeft = activeLink.offsetLeft;
+      const linkWidth = activeLink.offsetWidth;
+      const navWidth = nav.clientWidth;
+      const targetScroll = linkLeft - (navWidth / 2) + (linkWidth / 2);
+      nav.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
+      updateNavScrollButtons();
+    }
+
+    function initHeaderNavInteractions() {
+      const nav = document.getElementById('headerNav');
+      if (!nav) return;
+
+      // 1. Mouse wheel horizontal scrolling
+      nav.addEventListener('wheel', (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          nav.scrollLeft += e.deltaY * 0.95;
+          updateNavScrollButtons();
+        }
+      }, { passive: false });
+
+      // 2. Click and drag to scroll (Grab to scroll)
+      let isDown = false;
+      let startX = 0;
+      let initialScroll = 0;
+      let hasDragged = false;
+
+      nav.addEventListener('mousedown', (e) => {
+        isDown = true;
+        hasDragged = false;
+        startX = e.pageX - nav.offsetLeft;
+        initialScroll = nav.scrollLeft;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDown) {
+          isDown = false;
+          setTimeout(updateNavScrollButtons, 50);
+        }
+      });
+
+      nav.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        hasDragged = true;
+        const x = e.pageX - nav.offsetLeft;
+        const walk = (x - startX) * 1.4;
+        nav.scrollLeft = initialScroll - walk;
+        updateNavScrollButtons();
+      });
+
+      // Prevent link click if the user was dragging
+      nav.querySelectorAll('.header-nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          if (hasDragged) {
+            e.preventDefault();
+            hasDragged = false;
+          }
+        });
+      });
+
+      nav.addEventListener('scroll', updateNavScrollButtons, { passive: true });
+      window.addEventListener('resize', updateNavScrollButtons, { passive: true });
+
+      // Initial button state check
+      setTimeout(updateNavScrollButtons, 100);
+    }
 
     // ==========================================================================
     // BIDWELLS SCROLL-TRIGGERED MOTION DESIGN (Luxury Editorial Entrance)
