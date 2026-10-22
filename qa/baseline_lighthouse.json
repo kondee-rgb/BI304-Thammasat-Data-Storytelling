@@ -1,0 +1,79 @@
+{
+  "audit_date": "2026-10-22T14:41:00+07:00",
+  "url": "http://localhost:8080/index.html",
+  "tag": "v1-baseline",
+  "mobile": {
+    "scores": {
+      "performance": 44,
+      "accessibility": 79,
+      "best_practices": 96,
+      "seo": 91
+    },
+    "metrics": {
+      "FCP": "6.8 s",
+      "LCP": "14.0 s",
+      "CLS": "0",
+      "TBT": "570 ms",
+      "SpeedIndex": "6.8 s"
+    },
+    "page_weight": {
+      "total_bytes": 4013923,
+      "total_display": "Total size was 3,920 KiB"
+    }
+  },
+  "desktop": {
+    "scores": {
+      "performance": 78,
+      "accessibility": 81,
+      "best_practices": 96,
+      "seo": 91
+    },
+    "metrics": {
+      "FCP": "1.6 s",
+      "LCP": "2.6 s",
+      "CLS": "0.014",
+      "TBT": "0 ms",
+      "SpeedIndex": "1.6 s"
+    },
+    "page_weight": {
+      "total_bytes": 4121125,
+      "total_display": "Total size was 4,025 KiB"
+    }
+  },
+  "assets": {
+    "count": 26,
+    "total_bytes": 9549955,
+    "total_kb": 9326.13,
+    "total_mb": 9.11,
+    "details": {
+      "car-beige-2.png": 212240,
+      "car-beige-2.png__copy1_.png": 89188,
+      "car-blue.png": 239593,
+      "car-blue.png__copy1_.png": 93730,
+      "car-blue.png__copy2_.png": 224407,
+      "car-green.png": 300336,
+      "car-pink.png": 311420,
+      "car-pink.png__copy1_.png": 117450,
+      "car-pink.png__copy3_.png": 295670,
+      "car-trials.svg": 403,
+      "car-trials.svg__copy1_.svg": 403,
+      "car-trials.svg__copy_.svg": 403,
+      "car-white.png": 262614,
+      "finish.svg": 6803,
+      "pillar_1_innovation_hub.jpg": 894938,
+      "pillar_2_future_skills.jpg": 943573,
+      "pillar_3_88sandbox.jpg": 925742,
+      "pillar_4_netzero_campus.jpg": 1020258,
+      "start-map-2.jpg": 783070,
+      "tha_prachan_dome_editorial.jpg": 861486,
+      "track.svg": 330,
+      "Track2.jpg": 742847,
+      "tu_student_walking.jpg": 287953,
+      "tu_student_walking.png": 550984,
+      "uk-cluster-map-v6.svg": 212150,
+      "uk-dots-map.svg": 171964
+    }
+  },
+  "index_html_size_bytes": 260555,
+  "index_html_size_kb": 254.45
+}

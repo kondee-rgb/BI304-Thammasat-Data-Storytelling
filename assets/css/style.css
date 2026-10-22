@@ -1,0 +1,3023 @@
+    /* ==========================================================================
+       DESIGN SYSTEM & CSS VARIABLES (Exact Bidwells / BMW Style Guide)
+       ========================================================================== */
+    :root {
+      --bidwells-navy: #0b163b;
+      --bidwells-crimson: #c51944;
+      --bidwells-sky-blue: #a6d2e6;
+      --bidwells-teal: #00857c;
+      --bidwells-teal-dark: #005f59;
+      --bidwells-offwhite: #f8fafc;
+      --bidwells-light-gray: #f1f5f9;
+      --bidwells-text: #0f172a;
+      --bidwells-muted: #64748b;
+      --tu-gold: #ffc72c;
+      --tu-gold-dark: #d97706;
+
+      --font-serif: 'Merriweather', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', 'Prompt', sans-serif;
+      --font-thai: 'Prompt', 'Sarabun', sans-serif;
+
+      --bidwells-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --bidwells-shadow-md: 0 10px 25px -3px rgba(0, 0, 0, 0.08);
+      --bidwells-shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+      --bidwells-radius-card: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: #ffffff;
+      color: var(--bidwells-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Selection Highlighting */
+    ::selection {
+      background-color: var(--bidwells-crimson);
+      color: #ffffff;
+    }
+
+    /* Section Global Headers */
+    .section-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-headline {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .section-headline em {
+      font-style: italic;
+      color: var(--bidwells-crimson);
+      font-weight: 400;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 860px;
+    }
+
+    /* ==========================================================================
+       1. FIXED TOP HEADER (Exact Bidwells Luxury Style)
+       ========================================================================== */
+    .bidwells-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      z-index: 9999;
+      transition: all 0.3s ease;
+    }
+
+    .bidwells-header.scrolled {
+      height: 64px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .header-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .header-brand-mark {
+      width: 40px;
+      height: 40px;
+      background-color: var(--bidwells-crimson);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tu-gold);
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(197, 25, 68, 0.25);
+    }
+
+    .header-brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-brand-title {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--bidwells-navy);
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+    }
+
+    .header-brand-sub {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--bidwells-muted);
+      letter-spacing: 0.12em;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      overflow-x: auto;
+      max-width: 650px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .header-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .header-nav-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #334155;
+      text-decoration: none;
+      white-space: nowrap;
+      position: relative;
+      transition: color 0.2s ease;
+      padding: 4px 0;
+    }
+
+    .header-nav-link:hover,
+    .header-nav-link.active {
+      color: var(--bidwells-crimson);
+      font-weight: 700;
+    }
+
+    .header-nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--bidwells-crimson);
+      border-radius: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-colab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #ffffff;
+      color: #334155;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 9999px;
+      padding: 7px 15px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-colab-btn:hover {
+      background: #f8fafc;
+      border-color: #f59e0b;
+      color: #b45309;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+    }
+
+    .header-flourish-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      padding: 8px 17px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+
+    .header-flourish-btn:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+    }
+
+    .btn-bidwells-pill {
+      background-color: var(--bidwells-crimson);
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      padding: 8px 20px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(197, 25, 68, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .btn-bidwells-pill:hover {
+      background-color: #a91238;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(197, 25, 68, 0.35);
+    }
+
+    /* ==========================================================================
+       2. FIXED BOTTOM SCRUBBER PILL (Exact Bidwells Floating Capsule)
+       ========================================================================== */
+    .bidwells-floating-scrubber {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+      border-radius: 9999px;
+      padding: 6px 14px 6px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .scrubber-track-container {
+      position: relative;
+      width: 260px;
+      height: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .scrubber-track-bg {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background-color: #e2e8f0;
+      border-radius: 4px;
+    }
+
+    .scrubber-track-fill {
+      position: absolute;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--bidwells-crimson), var(--tu-gold));
+      border-radius: 4px;
+      transition: width 0.1s ease-out;
+    }
+
+    .scrubber-thumb {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--bidwells-crimson);
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      pointer-events: none;
+      transition: left 0.1s ease-out;
+    }
+
+    .scrubber-pips {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .scrubber-pip {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #cbd5e1;
+      transition: background-color 0.2s ease;
+    }
+
+    .scrubber-pip.active {
+      background-color: var(--bidwells-crimson);
+      transform: scale(1.4);
+    }
+
+    .scrubber-topic-indicator {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      background: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .scrubber-topic-indicator .pip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--bidwells-crimson);
+      box-shadow: 0 0 8px var(--bidwells-crimson);
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION & CENTRAL STARTING RACETRACK (Authentic Bidwells Runway)
+       ========================================================================== */
+    .hero-track-section {
+      position: relative;
+      min-height: 220vh;
+      background-color: var(--bidwells-navy);
+      background-image: 
+        radial-gradient(circle at 50% 30%, #162a5b 0%, var(--bidwells-navy) 70%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 30px, transparent 30px, transparent 60px);
+      color: #ffffff;
+      overflow: hidden;
+      padding-top: 76px;
+    }
+
+    /* Central Vertical Racetrack Stage */
+    .central-track-stage {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 640px;
+      height: 100%;
+      background: #09122d;
+      border-left: 2px solid rgba(255, 255, 255, 0.15);
+      border-right: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Left Checkerboard Racing Curb */
+    .central-track-curb-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 44px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        #e2e8f0 0px,
+        #e2e8f0 40px,
+        #1e293b 40px,
+        #1e293b 80px
+      );
+      opacity: 0.85;
+      border-right: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Right Track Border Curb */
+    .central-track-curb-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 14px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.6) 0px,
+        rgba(255, 255, 255, 0.6) 30px,
+        transparent 30px,
+        transparent 60px
+      );
+    }
+
+    /* Dashed Center Road Line */
+    .central-track-centerline {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: repeating-linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.35) 0px,
+        rgba(255, 255, 255, 0.35) 40px,
+        transparent 40px,
+        transparent 80px
+      );
+    }
+
+    /* Starting Grid Stage at Scroll 800px */
+    .grid-box {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .grid-box-pole {
+      top: 820px;
+      left: 170px;
+      width: 130px;
+      height: 18px;
+    }
+
+    .grid-box-slot2 {
+      top: 1040px;
+      left: 380px;
+      width: 130px;
+      height: 18px;
+    }
+
+    .grid-box-label {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.65);
+      white-space: nowrap;
+    }
+
+    /* The Thammasat Student Walkers on the Central Timeline Track */
+    .tu-student-walker-container {
+      position: absolute;
+      z-index: 10;
+      transition: transform 0.08s linear;
+      will-change: transform;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tu-student-leader {
+      top: 650px;
+      left: 175px;
+      width: 125px;
+    }
+
+    .tu-student-scholar {
+      top: 870px;
+      left: 385px;
+      width: 125px;
+    }
+
+    .tu-student-walker-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.75));
+      animation: student-stride 2s ease-in-out infinite alternate;
+    }
+
+    .tu-student-pedestal {
+      width: 90px;
+      height: 18px;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, transparent 70%);
+      border-radius: 50%;
+      margin-top: -10px;
+    }
+
+    /* Soft Elliptical Grounding Shadow under student character feet */
+    .tu-student-ground-shadow {
+      width: 82px;
+      height: 12px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.42) 48%, transparent 75%);
+      border-radius: 50%;
+      margin: -6px auto 6px auto;
+      filter: blur(1.5px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
+      pointer-events: none;
+      transform: scaleY(0.42);
+    }
+
+    /* Refined Metric Unit Typography: 45-50% scale, lighter opacity, pushes number forward */
+    .unit {
+      font-size: 0.46em;
+      font-weight: 500;
+      opacity: 0.75;
+      letter-spacing: 0.02em;
+      margin-left: 3px;
+      display: inline-block;
+      vertical-align: baseline;
+      color: inherit;
+    }
+
+    .tu-student-badge {
+      margin-top: 10px;
+      background: rgba(11, 22, 59, 0.88);
+      border: 1px solid rgba(255, 199, 44, 0.5);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      color: #ffc72c;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hero Typography & Overlays */
+    .hero-content-overlay {
+      position: relative;
+      z-index: 20;
+      max-width: 1200px;
+      min-height: calc(100vh - 76px);
+      margin: 0 auto;
+      padding: 100px 2rem 60px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(197, 25, 68, 0.16);
+      border: 1px solid rgba(197, 25, 68, 0.45);
+      color: #ff9cb1;
+      padding: 6px 20px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-main-title {
+      font-family: 'Plus Jakarta Sans', var(--font-sans);
+      font-size: 5.2rem;
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-main-title em {
+      font-style: italic;
+      font-weight: 900;
+      color: #ffc72c;
+      background: linear-gradient(135deg, #ffc72c 10%, #ff9cb1 70%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      letter-spacing: 0.01em;
+      filter: drop-shadow(0 2px 14px rgba(255, 199, 44, 0.45));
+    }
+
+    .hero-title-thai {
+      font-family: 'Prompt', var(--font-sans);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-lead-desc {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 820px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-scroll-pill-btn {
+      background: var(--bidwells-sky-blue);
+      color: var(--bidwells-navy);
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(191, 229, 242, 0.35);
+      transition: all 0.25s ease;
+      animation: float-pill 2s ease-in-out infinite alternate;
+    }
+
+    .hero-scroll-pill-btn:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(191, 229, 242, 0.5);
+    }
+
+    @keyframes student-stride {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(-1.5deg); }
+      100% { transform: translateY(0px) rotate(1deg); }
+    }
+
+    @keyframes float-pill {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(6px); }
+    }
+
+    /* ==========================================================================
+       TOPIC 01: ปฐมบท 2477 (Genesis 2477)
+       ========================================================================== */
+    .bidwells-statement-section {
+      background-color: var(--bidwells-navy);
+      color: #ffffff;
+      padding: 120px 2rem 100px;
+      position: relative;
+      overflow: hidden;
+      border-top: 4px solid var(--tu-gold);
+    }
+
+    .watermark-giant-num {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 26rem;
+      font-weight: 900;
+      font-family: var(--font-sans);
+      color: rgba(255, 255, 255, 0.03);
+      line-height: 0.8;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .statement-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .statement-quote-grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 70px;
+    }
+
+    .editorial-photo-card {
+      position: relative;
+    }
+
+    .editorial-photo-frame {
+      width: 100%;
+      height: 380px;
+      border-radius: 20px;
+      background-image: url('assets/tha_prachan_dome_editorial.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 3px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .overlapping-quote-card {
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      background: rgba(255, 255, 255, 0.97);
+      color: var(--bidwells-navy);
+      padding: 24px 28px;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      max-width: 320px;
+    }
+
+    .quote-icon-mark {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      color: var(--bidwells-crimson);
+      line-height: 1;
+      height: 25px;
+    }
+
+    .quote-text-primary {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .quote-text-sub {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .statement-main-text {
+      font-family: var(--font-serif);
+      font-size: 2.3rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+
+    .statement-main-text .bidwells-highlight {
+      color: var(--tu-gold);
+    }
+
+    .statement-sub-text {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .winning-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .winning-stat-card {
+      background: #ffffff;
+      color: var(--bidwells-text);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--bidwells-shadow-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease;
+    }
+
+    .winning-stat-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .winning-card-top {
+      padding: 28px 28px 20px;
+    }
+
+    .winning-number-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .winning-number {
+      font-family: var(--font-sans);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--bidwells-navy);
+      line-height: 1;
+    }
+
+    .winning-unit {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--bidwells-crimson);
+    }
+
+    .winning-top-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #334155;
+      line-height: 1.4;
+    }
+
+    .winning-color-block {
+      padding: 16px 28px;
+      color: #ffffff;
+    }
+
+    .block-sky-blue { background: #0284c7; }
+    .block-crimson { background: var(--bidwells-crimson); }
+    .block-emerald { background: var(--bidwells-teal); }
+
+    .block-team-name {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .block-team-loc {
+      font-size: 0.72rem;
+      opacity: 0.9;
+    }
+
+    /* Milestone Stepper (Inside Topic 01) */
+    .milestones-strip-section {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-top: 50px;
+    }
+
+    .milestone-stepper-track {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 30px 0 20px;
+    }
+
+    .stepper-bg-line {
+      position: absolute;
+      top: 15px;
+      left: 10px;
+      right: 10px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.15);
+      z-index: 1;
+    }
+
+    .stepper-node {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .stepper-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0f172a;
+      border: 2.5px solid #64748b;
+      color: #cbd5e1;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    .stepper-node:hover .stepper-circle {
+      border-color: var(--tu-gold);
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    .stepper-node.active .stepper-circle {
+      background: var(--bidwells-crimson);
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: scale(1.2);
+      box-shadow: 0 0 14px rgba(197, 25, 68, 0.8);
+    }
+
+    .stepper-year {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-top: 8px;
+    }
+
+    .stepper-node.active .stepper-year {
+      color: var(--tu-gold);
+      font-weight: 800;
+    }
+
+    .stepper-node-title {
+      font-size: 0.7rem;
+      color: #cbd5e1;
+      margin-top: 3px;
+      text-align: center;
+      max-width: 110px;
+    }
+
+    .milestone-event-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* ==========================================================================
+       TOPIC 02: 4 ศูนย์การศึกษา (Strategic Campuses GIS)
+       ========================================================================== */
+    .bidwells-map-section {
+      background-color: #08112b;
+      color: #ffffff;
+      padding: 110px 2rem 100px;
+      position: relative;
+      overflow: hidden;
+      border-top: 4px solid var(--bidwells-crimson);
+    }
+
+    .cluster-map-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .cluster-selector-pillbox {
+      background: rgba(16, 28, 61, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .cluster-select-btn {
+      background: transparent;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      color: #94a3b8;
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .cluster-select-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cluster-select-btn.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      font-weight: 700;
+    }
+
+    .cluster-select-btn.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 4px;
+      border-radius: 0 4px 4px 0;
+      background: var(--bidwells-crimson);
+    }
+
+    .cluster-map-canvas-card {
+      background: radial-gradient(circle at center, #13244e 0%, #09132e 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 24px;
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: var(--bidwells-shadow-lg);
+      overflow: hidden;
+    }
+
+    .map-toolbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 5;
+    }
+
+    .map-live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--bidwells-sky-blue);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .live-dot-pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--tu-gold);
+      box-shadow: 0 0 10px var(--tu-gold);
+      animation: pulse-ring 1.8s infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+
+    .map-style-toggle-group {
+      display: flex;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .map-style-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .map-style-btn.active {
+      color: #0b163b;
+      background: var(--tu-gold);
+      font-weight: 700;
+    }
+
+    .map-tool-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .map-tool-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--tu-gold);
+    }
+
+    .map-coord-readout {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #campusLeafletMap {
+      width: 100%;
+      height: 420px;
+      border-radius: 14px;
+      overflow: hidden;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .campus-location-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      font-size: 0.82rem;
+    }
+
+    .campus-metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(11, 22, 59, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+
+    .campus-metric-item .val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--tu-gold);
+      line-height: 1.1;
+    }
+
+    .campus-metric-item .lbl {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       TOPIC 03: 26 คณะวิชา & เกณฑ์รับเข้า TCAS
+       ========================================================================== */
+    .bidwells-faculties-section {
+      background: #ffffff;
+      padding: 110px 2rem 100px;
+      position: relative;
+      border-top: 4px solid var(--bidwells-crimson);
+    }
+
+    .faculties-white-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px;
+      color: var(--bidwells-text);
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 1px solid #e2e8f0;
+    }
+
+    .faculties-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+
+    .fac-kpi-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fac-kpi-item .kpi-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .fac-kpi-item .kpi-lbl {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .faculties-view-toggle {
+      display: flex;
+      gap: 8px;
+    }
+
+    .fac-view-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .fac-view-btn:hover {
+      background: #e2e8f0;
+      color: var(--bidwells-navy);
+    }
+
+    .fac-view-btn.active {
+      background: var(--bidwells-navy);
+      color: #ffffff;
+      border-color: var(--bidwells-navy);
+    }
+
+    .faculties-legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border-radius: 10px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+
+    .legend-color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .faculties-filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .fac-pill {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .fac-pill:hover {
+      border-color: var(--bidwells-crimson);
+      color: var(--bidwells-crimson);
+    }
+
+    .fac-pill.active {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      border-color: var(--bidwells-crimson);
+    }
+
+    .faculties-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .faculty-item-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .faculty-item-card:hover {
+      border-color: var(--bidwells-crimson);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .fac-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .fac-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    /* ==========================================================================
+       TOPIC 04: โครงสร้างประชากรนักศึกษาและความหลากหลายทางเพศภาวะ
+       ========================================================================== */
+    .bidwells-demographic-section {
+      background: #f8fafc;
+      padding: 110px 2rem 100px;
+      position: relative;
+      border-top: 4px solid var(--bidwells-navy);
+    }
+
+    .demographic-white-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px;
+      color: var(--bidwells-text);
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 1px solid #e2e8f0;
+    }
+
+    .demographic-ratio-bar-wrap {
+      margin: 24px 0 30px;
+    }
+
+    .ratio-bar {
+      height: 38px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .ratio-female {
+      width: 62.4%;
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .ratio-male {
+      width: 37.6%;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .demographic-chips-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .demo-chip-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .demo-chip-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      margin-bottom: 8px;
+    }
+
+    .demo-chip-stat {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+    }
+
+    .demo-chip-sub {
+      font-size: 0.74rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       TOPIC 05: สายธารแห่งการโยกย้าย: กำเนิดศูนย์รังสิตและเครือข่าย
+       ========================================================================== */
+    .bidwells-shift-section {
+      background-color: var(--bidwells-navy);
+      color: #ffffff;
+      padding: 110px 2rem 100px;
+      position: relative;
+      border-top: 4px solid var(--tu-gold);
+    }
+
+    .campus-distribution-card {
+      background: rgba(16, 28, 61, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: var(--bidwells-shadow-lg);
+    }
+
+    .distribution-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .era-pill-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .era-pill-btn.active {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      border-color: var(--bidwells-crimson);
+      font-weight: 700;
+    }
+
+    .shift-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .shift-metric-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .shift-metric-year {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--tu-gold);
+      margin-bottom: 6px;
+    }
+
+    .shift-metric-desc {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       TOPIC 06: ความมั่นคงทางการคลัง: วินัยงบประมาณ 15,350 ล้านบาท
+       ========================================================================== */
+    .bidwells-teal-section {
+      background-color: var(--bidwells-teal-dark);
+      color: #ffffff;
+      padding: 110px 2rem 100px;
+      position: relative;
+      border-top: 4px solid var(--bidwells-sky-blue);
+    }
+
+    .teal-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cost-cap-white-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px;
+      color: var(--bidwells-text);
+      box-shadow: var(--bidwells-shadow-lg);
+    }
+
+    .cost-cap-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .cost-cap-title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      margin-bottom: 12px;
+    }
+
+    .cost-cap-lead {
+      font-size: 0.95rem;
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .drilldown-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .drilldown-pill {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .drilldown-pill.active {
+      background: var(--bidwells-navy);
+      color: #ffffff;
+      border-color: var(--bidwells-navy);
+    }
+
+    /* ==========================================================================
+       TOPIC 07: ก้าวสู่เวทีโลก: อันดับ QS Asia & Triple Crown
+       ========================================================================== */
+    .bidwells-curved-track-section {
+      background-color: #0b1426;
+      color: #ffffff;
+      padding: 120px 2rem 100px;
+      position: relative;
+      border-top: 4px solid var(--tu-gold);
+    }
+
+    .curved-track-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .turning-cars-stage {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      background: url('assets/Track2.jpg') center/cover no-repeat;
+      border-radius: 20px;
+      margin-bottom: 50px;
+      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .turning-car-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .tbs-benchmark-card {
+      background: rgba(16, 28, 61, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: var(--bidwells-shadow-lg);
+    }
+
+    .tbs-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .triple-crown-badges-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .crown-badge {
+      background: rgba(255, 199, 44, 0.15);
+      border: 1px solid var(--tu-gold);
+      color: var(--tu-gold);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+
+    .benchmark-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .benchmark-table th {
+      background: rgba(0, 0, 0, 0.35);
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 700;
+      color: #94a3b8;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .benchmark-table td {
+      padding: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+    }
+
+    .benchmark-table tr.highlight-tbs {
+      background: rgba(197, 25, 68, 0.12);
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       TOPIC 08: มหาวิทยาลัยสีเขียว: ผู้นำโลกด้านความยั่งยืน SDG 11
+       ========================================================================== */
+    .bidwells-green-section {
+      background: radial-gradient(circle at 80% 20%, #0d2822 0%, #061517 100%);
+      color: #ffffff;
+      padding: 110px 2rem 100px;
+      position: relative;
+      border-top: 4px solid #10b981;
+    }
+
+    .green-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .green-highlight-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 20px;
+      padding: 28px 36px;
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .green-sdg-badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .green-sdg-num {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: #10b981;
+      color: #061517;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .green-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .green-card-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 26px 22px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .green-card-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-4px);
+      border-color: #10b981;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+    }
+
+    .green-card-icon {
+      font-size: 1.8rem;
+      color: #10b981;
+      margin-bottom: 12px;
+    }
+
+    .green-card-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .green-card-desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .green-card-stat {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--tu-gold);
+      margin-top: 16px;
+    }
+
+    /* ==========================================================================
+       TOPIC 09: โรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ: ที่พึ่งแห่งประชาชน
+       ========================================================================== */
+    .bidwells-hospital-section {
+      background: #ffffff;
+      padding: 110px 2rem 100px;
+      position: relative;
+      border-top: 4px solid var(--bidwells-crimson);
+    }
+
+    .hospital-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hospital-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .hospital-kpi-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      border-top: 4px solid var(--bidwells-crimson);
+      transition: all 0.25s ease;
+    }
+
+    .hospital-kpi-card:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      transform: translateY(-3px);
+    }
+
+    .hospital-kpi-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+      line-height: 1.1;
+    }
+
+    .hospital-kpi-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      margin-top: 6px;
+    }
+
+    .hospital-kpi-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .hospital-centers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .hospital-center-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 26px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: all 0.25s ease;
+    }
+
+    .hospital-center-item:hover {
+      border-color: #cbd5e1;
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .hospital-center-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(197, 25, 68, 0.1);
+      color: var(--bidwells-crimson);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.45rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       TOPIC 10: วิสัยทัศน์ TU 2034 & INNOVATION CIRCUIT
+       ========================================================================== */
+    .bidwells-circuit-section {
+      background-color: var(--bidwells-offwhite);
+      padding: 120px 2rem 100px;
+      position: relative;
+      border-top: 4px solid var(--bidwells-teal);
+    }
+
+    .circuit-layout-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .silverstone-svg-container {
+      position: relative;
+      width: 100%;
+      height: 480px;
+    }
+
+    .circuit-milestone-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3.5px solid #00857c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+      color: #00857c;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s ease;
+    }
+
+    .circuit-milestone-node.active {
+      background: var(--bidwells-crimson);
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: translate(-50%, -50%) scale(1.3);
+      box-shadow: 0 0 16px rgba(197, 25, 68, 0.6);
+    }
+
+    .circuit-insight-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 40px;
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .circuit-card-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .circuit-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    .circuit-card-img {
+      width: 100%;
+      height: 180px;
+      border-radius: 14px;
+      object-fit: cover;
+      margin-bottom: 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .circuit-card-desc {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .cockpit-strategy-card {
+      max-width: 1200px;
+      margin: 50px auto 0;
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 44px;
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .cockpit-sliders-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .cockpit-slider-item {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .cockpit-slider-item label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .cockpit-range-input {
+      width: 100%;
+      accent-color: var(--bidwells-crimson);
+      cursor: pointer;
+    }
+
+    .cockpit-val-disp {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       FINISH MILESTONE CELEBRATION (STRICTLY NO DOWNLOAD FORM)
+       ========================================================================== */
+    .bidwells-finish-section {
+      background-color: var(--bidwells-offwhite);
+      padding: 100px 2rem 140px;
+      position: relative;
+      overflow: hidden;
+      border-top: 4px solid var(--bidwells-crimson);
+    }
+
+    .checkered-finish-banner {
+      width: 100%;
+      height: 70px;
+      background-image: url('assets/finish.svg');
+      background-repeat: repeat-x;
+      background-size: contain;
+      background-position: center;
+      margin-bottom: 60px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .finish-cars-crossing-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .finish-car-item {
+      position: relative;
+      width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .finish-milestone-card {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 50px 60px;
+      box-shadow: var(--bidwells-shadow-lg);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      position: relative;
+      text-align: center;
+    }
+
+    .finish-milestone-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      background: rgba(255, 199, 44, 0.18);
+      color: #92400e;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .finish-milestone-title {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .finish-milestone-sub {
+      font-size: 1.05rem;
+      color: #64748b;
+      max-width: 720px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .milestone-summary-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 24px 16px;
+      margin-bottom: 36px;
+    }
+
+    .milestone-summary-item .num {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+      line-height: 1.1;
+    }
+
+    .milestone-summary-item .lbl {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .milestone-quote-box {
+      background: linear-gradient(135deg, rgba(11,22,59,0.03) 0%, rgba(197,25,68,0.04) 100%);
+      border-left: 4px solid var(--tu-gold);
+      border-radius: 0 16px 16px 0;
+      padding: 20px 24px;
+      text-align: left;
+      margin-bottom: 36px;
+    }
+
+    .milestone-quote-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--bidwells-navy);
+      line-height: 1.6;
+    }
+
+    .milestone-quote-author {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #64748b;
+      margin-top: 8px;
+    }
+
+    .milestone-actions-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Modal for TCAS & Drilldowns */
+    .drilldown-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 22, 59, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 12000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .drilldown-modal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 36px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: #f1f5f9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: #e2e8f0;
+      color: var(--bidwells-crimson);
+    }
+
+    /* Flourish Hub Modal */
+    .flourish-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 22, 59, 0.82);
+      backdrop-filter: blur(10px);
+      z-index: 13000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .flourish-modal-card {
+      background: #ffffff;
+      border-radius: 22px;
+      max-width: 1050px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .flourish-modal-header {
+      padding: 20px 28px;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .flourish-modal-body {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .flourish-sidebar-tabs {
+      background: #f1f5f9;
+      border-right: 1px solid #e2e8f0;
+      padding: 14px 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .flourish-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .flourish-tab-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .flourish-tab-btn.active {
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid #0284c7;
+    }
+
+    .flourish-tab-num {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #0284c7;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .flourish-tab-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    .flourish-tab-template {
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .flourish-scene-detail-pane {
+      padding: 28px 32px;
+      overflow-y: auto;
+    }
+
+    .flourish-detail-badge {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #0284c7;
+      background: #e0f2fe;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      margin-bottom: 10px;
+    }
+
+    .flourish-detail-title {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      margin-bottom: 8px;
+    }
+
+    .flourish-detail-desc {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .flourish-preview-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .flourish-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .flourish-direct-link {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0284c7;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .flourish-data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+
+    .flourish-data-table th {
+      background: #e2e8f0;
+      padding: 8px 10px;
+      text-align: left;
+      color: #334155;
+    }
+
+    .flourish-data-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #475569;
+    }
+
+    /* ==========================================================================
+       TOPIC 08 & 09 INTERACTIVE VISUAL CARD STYLES
+       ========================================================================== */
+    .green-visual-card {
+      background: rgba(6, 21, 23, 0.9);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 36px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+    }
+
+    .green-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .green-visual-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .green-visual-title i {
+      color: #10b981;
+    }
+
+    .green-toggle-group, .hospital-toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px;
+      border-radius: 9999px;
+    }
+
+    .green-toggle-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .green-toggle-btn:hover {
+      color: #ffffff;
+    }
+
+    .green-toggle-btn.active {
+      background: #10b981;
+      color: #061517;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+
+    .visual-metric-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .visual-metric-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .visual-metric-pill .val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #10b981;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .visual-metric-pill .lbl {
+      font-size: 0.74rem;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    /* Topic 09 Visual Card */
+    .hospital-visual-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 36px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+      border-top: 4px solid var(--bidwells-crimson);
+    }
+
+    .hospital-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .hospital-visual-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--bidwells-navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .hospital-visual-title i {
+      color: var(--bidwells-crimson);
+    }
+
+    .hospital-toggle-group {
+      background: #e2e8f0;
+    }
+
+    .hospital-toggle-btn {
+      background: transparent;
+      border: none;
+      color: #475569;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .hospital-toggle-btn:hover {
+      color: #0f172a;
+    }
+
+    .hospital-toggle-btn.active {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(197, 25, 68, 0.25);
+    }
+
+    .hospital-metric-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .hospital-metric-pill {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .hospital-metric-pill .val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--bidwells-crimson);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .hospital-metric-pill .lbl {
+      font-size: 0.74rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       MOBILE NAVIGATION DRAWER & TOGGLE BUTTON
+       ========================================================================== */
+    .mobile-menu-toggle-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: var(--bidwells-navy);
+      font-size: 1.15rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-toggle-btn:hover {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+      border-color: var(--bidwells-crimson);
+    }
+
+    .mobile-nav-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(11, 22, 59, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 99998;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 320px;
+      max-width: 86vw;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
+      z-index: 99999;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-drawer.open {
+      transform: translateX(-320px);
+    }
+
+    .mobile-nav-backdrop.open {
+      display: block !important;
+      opacity: 1;
+    }
+
+    .mobile-nav-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+    }
+
+    .mobile-nav-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--bidwells-navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mobile-nav-close-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      border: none;
+      color: #475569;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-nav-close-btn:hover {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+    }
+
+    .mobile-nav-links {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .mobile-nav-item:hover,
+    .mobile-nav-item.active {
+      background: rgba(197, 25, 68, 0.08);
+      color: var(--bidwells-crimson);
+      font-weight: 700;
+    }
+
+    .nav-item-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: var(--bidwells-navy);
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .mobile-nav-item.active .nav-item-num {
+      background: var(--bidwells-crimson);
+      color: #ffffff;
+    }
+
+    .mobile-nav-actions {
+      padding: 16px;
+      border-top: 1px solid #e2e8f0;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-drawer-btn {
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-drawer-btn.btn-colab {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+    }
+
+    .mobile-drawer-btn.btn-flourish {
+      background: linear-gradient(135deg, var(--bidwells-navy) 0%, #1c2b5e 100%);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       RESPONSIVENESS & MOBILE PHONE OPTIMIZATIONS (PC Version Kept Untouched)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .header-nav { display: none !important; }
+      .mobile-menu-toggle-btn { display: flex !important; }
+      .mobile-nav-drawer { display: flex !important; }
+      .header-brand-sub { display: none; }
+      
+      .cluster-map-layout, .cost-cap-grid, .circuit-layout-grid, .statement-quote-grid, 
+      .cockpit-sliders-grid, .green-cards-grid, .hospital-centers-grid, .hospital-kpi-row, 
+      .milestone-summary-row {
+        grid-template-columns: 1fr;
+      }
+      .green-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .milestone-summary-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .central-track-stage {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .bidwells-header {
+        height: 60px;
+        padding: 0 14px;
+      }
+      .header-brand-title {
+        font-size: 0.92rem;
+      }
+      .header-actions {
+        gap: 8px;
+      }
+      .header-colab-btn, .header-flourish-btn {
+        padding: 7px 12px;
+        font-size: 0.78rem;
+      }
+      
+      /* Hero Mobile Scaling */
+      .hero-track-section {
+        min-height: 175vh;
+        padding-top: 60px;
+      }
+      .central-track-stage {
+        width: 92vw;
+        max-width: 360px;
+      }
+      .central-track-curb-left {
+        width: 26px;
+      }
+      .central-track-curb-right {
+        width: 10px;
+      }
+      .grid-box-pole {
+        top: 660px;
+        left: 10%;
+        width: 100px;
+      }
+      .grid-box-slot2 {
+        top: 860px;
+        right: 10%;
+        width: 100px;
+      }
+      .tu-student-leader {
+        top: 510px;
+        left: 10%;
+        width: 95px;
+      }
+      .tu-student-scholar {
+        top: 710px;
+        right: 10%;
+        width: 95px;
+      }
+      .hero-content-overlay {
+        padding: 55px 1rem 30px;
+      }
+      .hero-category-tag {
+        font-size: 0.72rem;
+        padding: 4px 14px;
+        margin-bottom: 1.25rem;
+      }
+      .hero-main-title {
+        font-size: clamp(2.3rem, 7.5vw, 3.2rem);
+        margin-bottom: 1rem;
+      }
+      .hero-title-thai {
+        font-size: 1.15rem;
+        margin-bottom: 0.8rem;
+      }
+      .hero-lead-desc {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 1.8rem;
+      }
+
+      /* Sections Mobile Spacing */
+      .bidwells-statement-section,
+      .bidwells-map-section,
+      .bidwells-faculties-section,
+      .bidwells-teal-section,
+      .bidwells-budget-section,
+      .bidwells-curved-track-section,
+      .bidwells-green-section,
+      .bidwells-hospital-section,
+      .bidwells-circuit-section,
+      .bidwells-finish-section {
+        padding: 68px 1.25rem 60px !important;
+      }
+
+      h2 {
+        font-size: clamp(1.75rem, 6vw, 2.3rem) !important;
+        line-height: 1.28 !important;
+      }
+
+      /* Leaflet Mobile Map */
+      #campusLeafletMap {
+        height: 300px;
+      }
+      .map-toolbar-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      .map-style-toggle-group {
+        display: flex;
+        width: 100%;
+      }
+      .map-style-btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 0.78rem;
+        padding: 6px 8px;
+      }
+
+      /* Grids and Strips */
+      .campus-metrics-strip, .faculties-kpi-row, .demographic-chips-row, .shift-metrics-grid,
+      .visual-metric-strip, .hospital-metric-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .hospital-kpi-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .hospital-kpi-card {
+        padding: 16px;
+      }
+      .hospital-kpi-num {
+        font-size: 1.7rem;
+      }
+      .green-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .green-highlight-box {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .green-sdg-num {
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+      }
+      .green-visual-card, .hospital-visual-card {
+        padding: 20px 16px;
+      }
+      .green-visual-header, .hospital-visual-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      /* Floating Scrubber Mobile Adaptation */
+      .bidwells-floating-scrubber {
+        bottom: 10px;
+        max-width: 95vw;
+        padding: 5px 10px;
+        gap: 6px;
+      }
+      .scrubber-track-container {
+        width: 100px;
+      }
+      .scrubber-topic-indicator {
+        max-width: 130px;
+        font-size: 0.72rem;
+        padding: 4px 8px;
+      }
+
+      /* Modals Mobile */
+      .flourish-modal-content, .faculties-modal-content {
+        width: 95vw;
+        max-height: 92vh;
+        padding: 16px;
+        border-radius: 16px;
+      }
+      .flourish-modal-body {
+        grid-template-columns: 1fr;
+      }
+      .flourish-sidebar-tabs {
+        max-height: 160px;
+      }
+      .finish-milestone-card {
+        padding: 30px 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-brand-title {
+        font-size: 0.85rem;
+      }
+      .header-colab-btn span, .header-flourish-btn span {
+        display: none;
+      }
+      .header-colab-btn, .header-flourish-btn {
+        padding: 7px 9px;
+      }
+      .central-track-stage {
+        width: 96vw;
+      }
+      .scrubber-track-container {
+        width: 80px;
+      }
+      .scrubber-topic-indicator {
+        max-width: 110px;
+        font-size: 0.68rem;
+      }
+    }
+
+    /* Scroll-Triggered Animated Counter Styles */
+    .stat-counter {
+      font-variant-numeric: tabular-nums;
+      will-change: contents;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .stat-counter.counter-completed {
+      animation: counter-pop 0.35s ease-out;
+    }
+    @keyframes counter-pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+

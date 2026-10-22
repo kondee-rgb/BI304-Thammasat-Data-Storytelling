@@ -1,0 +1,208 @@
+{
+  "contradictions": [
+    {
+      "topic": "Total Student Population vs Gender Sum",
+      "web_total": [
+        [
+          3308,
+          "วันที่ 27 มิถุนายน พ.ศ. 2477 ท่ามกลางการสร้างประชาธิปไตยในสยาม <strong>ศาสตราจารย์ ดร.ปรีดี พนมยงค์</strong> สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง (มธก.) เพื่อเปิดกว้างโอกาสทางการศึกษาให้ราษฎรทุกคนอย่างเท่าเทียม โดยมีผู้สมัครรุ่นแรกถึง <strong>7,094 คน</strong> จนเติบโตสู่วาระ 90 ปีที่มีนักศึกษาปัจจุบันกว่า <strong>42,850 คน</strong>"
+        ],
+        [
+          4241,
+          "<div class=\"num stat-counter\">42,850+ <span class=\"unit\">คน</span></div>"
+        ],
+        [
+          4553,
+          "[\"2567\", \"90 ปี สู่สากล\", \"มหาวิทยาลัยแห่งความยั่งยืน TU 2034\", \"42,850\", \"15,350\"]"
+        ],
+        [
+          4941,
+          "document.getElementById('cStudents').textContent = \"42,850 คน\";"
+        ]
+      ],
+      "gender_parts": "Female 26,620 + Male 16,030 = 42,650 (Discrepancy of 200 students from 42,850)"
+    },
+    {
+      "topic": "Green Campus: Carbon Reduction & Solar MWp",
+      "carbon_conflicts": [
+        [
+          "24k tons",
+          [
+            [
+              3940,
+              "<div class=\"green-card-stat stat-counter\">-24,000 <span class=\"unit\">ตัน/ปี</span></div>"
+            ]
+          ]
+        ],
+        [
+          "25.5k tons",
+          [
+            [
+              3969,
+              "<div class=\"val stat-counter\">25,500 <span class=\"unit\">ตัน/ปี</span></div>"
+            ]
+          ]
+        ]
+      ],
+      "solar_conflicts": [
+        [
+          "35 MW",
+          []
+        ],
+        [
+          "35.8 MWp",
+          []
+        ]
+      ]
+    },
+    {
+      "topic": "Thammasat Hospital: OPD volume & Field Hospital Beds",
+      "opd_conflicts": [
+        [
+          "1.46M+",
+          [
+            [
+              4009,
+              "<div class=\"hospital-kpi-num stat-counter\">1.46M+ <span class=\"unit\">คน/ปี</span></div>"
+            ]
+          ]
+        ],
+        [
+          "1,480,000+",
+          [
+            [
+              4077,
+              "<div class=\"val stat-counter\">1,480,000+</div>"
+            ]
+          ]
+        ]
+      ],
+      "beds": [
+        [
+          4014,
+          "<div class=\"hospital-kpi-num stat-counter\">3,083 <span class=\"unit\">เตียง</span></div>"
+        ],
+        [
+          4089,
+          "<div class=\"val stat-counter\">3,083 เตียง</div>"
+        ]
+      ]
+    },
+    {
+      "topic": "README.md vs Actual Code Discrepancies",
+      "libraries": "README claims Plotly.js & CartoDB Dark Matter, but codebase uses Chart.js 4.4.1 & Leaflet 1.9.4 with Esri tiles",
+      "field_beds": "README claims 308 beds, while website code has 3,083 beds",
+      "rangsit_share": "README claims Rangsit has 78.5% of students, while website has 73.5%",
+      "budget_trend": "README claims 11,280 -> 13,745 million baht, while website has 13,420 -> 15,350 million baht",
+      "ipd_admissions": "README claims 35,200 IPD, while website has 58,400",
+      "chart_types": "README calls Topic 03 a Treemap (actually horizontal bar chart) and Topic 06 a Bar chart (actually line chart)"
+    }
+  ],
+  "unreferenced_assets": [
+    {
+      "file": "car-beige-2.png",
+      "size_bytes": 212240,
+      "size_kb": 207.27
+    },
+    {
+      "file": "car-beige-2.png__copy1_.png",
+      "size_bytes": 89188,
+      "size_kb": 87.1
+    },
+    {
+      "file": "car-blue.png",
+      "size_bytes": 239593,
+      "size_kb": 233.98
+    },
+    {
+      "file": "car-blue.png__copy1_.png",
+      "size_bytes": 93730,
+      "size_kb": 91.53
+    },
+    {
+      "file": "car-blue.png__copy2_.png",
+      "size_bytes": 224407,
+      "size_kb": 219.15
+    },
+    {
+      "file": "car-green.png",
+      "size_bytes": 300336,
+      "size_kb": 293.3
+    },
+    {
+      "file": "car-pink.png",
+      "size_bytes": 311420,
+      "size_kb": 304.12
+    },
+    {
+      "file": "car-pink.png__copy1_.png",
+      "size_bytes": 117450,
+      "size_kb": 114.7
+    },
+    {
+      "file": "car-pink.png__copy3_.png",
+      "size_bytes": 295670,
+      "size_kb": 288.74
+    },
+    {
+      "file": "car-trials.svg",
+      "size_bytes": 403,
+      "size_kb": 0.39
+    },
+    {
+      "file": "car-trials.svg__copy1_.svg",
+      "size_bytes": 403,
+      "size_kb": 0.39
+    },
+    {
+      "file": "car-trials.svg__copy_.svg",
+      "size_bytes": 403,
+      "size_kb": 0.39
+    },
+    {
+      "file": "car-white.png",
+      "size_bytes": 262614,
+      "size_kb": 256.46
+    },
+    {
+      "file": "start-map-2.jpg",
+      "size_bytes": 783070,
+      "size_kb": 764.72
+    },
+    {
+      "file": "track.svg",
+      "size_bytes": 330,
+      "size_kb": 0.32
+    },
+    {
+      "file": "tu_student_walking.jpg",
+      "size_bytes": 287953,
+      "size_kb": 281.2
+    },
+    {
+      "file": "uk-cluster-map-v6.svg",
+      "size_bytes": 212150,
+      "size_kb": 207.18
+    },
+    {
+      "file": "uk-dots-map.svg",
+      "size_bytes": 171964,
+      "size_kb": 167.93
+    }
+  ],
+  "unverified_claims": [],
+  "a11y_and_interaction_issues": [],
+  "flourish_csv_count": 10,
+  "flourish_files": [
+    "01_flourish_scene1_student_growth.csv",
+    "02_flourish_scene2_campus_locations.csv",
+    "03_flourish_scene3_faculty_hierarchy.csv",
+    "04_flourish_scene4_gender_diversity.csv",
+    "05_flourish_scene5_migration_flow_sankey.csv",
+    "06_flourish_scene6_budget_waterfall.csv",
+    "07_flourish_scene7_rankings_trend.csv",
+    "08_flourish_scene8_sdg_radar.csv",
+    "09_flourish_scene9_hospital_growth.csv",
+    "10_flourish_scene10_strategic_gauges.csv"
+  ]
+}
