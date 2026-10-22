@@ -3200,3 +3200,205 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ==========================================================================
+       PHASE 6: 3 KEY FINDINGS EXECUTIVE SUMMARY & ACCESSIBLE DATA TABLES
+       ========================================================================== */
+    .executive-summary-section {
+      background: linear-gradient(180deg, #050c20 0%, var(--tu-navy) 100%);
+      color: #f8fafc;
+      padding: 70px 24px 80px;
+      border-bottom: 1px solid rgba(255, 199, 44, 0.2);
+      position: relative;
+      z-index: 20;
+    }
+    .summary-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .summary-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .summary-main-title {
+      font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin: 12px 0 16px;
+      text-wrap: balance;
+    }
+    .summary-main-title em {
+      color: var(--tu-gold);
+      font-style: italic;
+    }
+    .summary-lead {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      max-width: 68ch;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    .summary-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .summary-card {
+      background: rgba(15, 26, 58, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .summary-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 199, 44, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+    .summary-card-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--tu-gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .summary-card-metric {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .summary-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .summary-card-text {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .summary-card-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--tu-gold);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }
+    .summary-card-link:hover {
+      gap: 10px;
+      color: #ffffff;
+    }
+
+    /* Narrative Bridge Banner */
+    .narrative-connector-bridge {
+      max-width: 1200px;
+      margin: 36px auto 0;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 3px solid var(--tu-gold);
+      border-radius: 0 10px 10px 0;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .narrative-connector-bridge i {
+      color: var(--tu-gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Light Theme Narrative Bridge */
+    .bidwells-faculties-section .narrative-connector-bridge,
+    .bidwells-demographic-section .narrative-connector-bridge,
+    .bidwells-hospital-section .narrative-connector-bridge {
+      background: #f8fafc;
+      border-left-color: var(--tu-crimson);
+      color: #475569;
+      border: 1px solid #e2e8f0;
+      border-left-width: 3px;
+    }
+    .bidwells-faculties-section .narrative-connector-bridge i,
+    .bidwells-demographic-section .narrative-connector-bridge i,
+    .bidwells-hospital-section .narrative-connector-bridge i {
+      color: var(--tu-crimson);
+    }
+
+    /* Accessible Data Table Toggle */
+    .table-toggle-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--tu-navy);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      transition: all 0.2s ease;
+    }
+    .table-toggle-btn:hover {
+      background: #f1f5f9;
+      border-color: var(--tu-navy);
+    }
+    .bidwells-teal-section .table-toggle-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+    }
+    .bidwells-teal-section .table-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--tu-gold);
+    }
+    .accessible-data-table-wrap {
+      margin-top: 16px;
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+    }
+    .accessible-data-table-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .accessible-data-table-wrap th {
+      background: #f8fafc;
+      padding: 10px 14px;
+      border-bottom: 2px solid #e2e8f0;
+      color: var(--tu-navy);
+      font-weight: 700;
+    }
+    .accessible-data-table-wrap td {
+      padding: 8px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+    .accessible-data-table-wrap tr:hover td {
+      background: #f8fafc;
+    }
+    @media (max-width: 900px) {
+      .summary-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }

@@ -791,8 +791,8 @@
           },
           scales: {
             x: {
-              min: 60,
-              max: 86,
+              min: 0,
+              max: 100,
               ticks: {
                 stepSize: 5,
                 callback: (v) => v + ' คะแนน',
@@ -1588,3 +1588,19 @@
       initHospitalCapacityChart();
       initAnimatedCounters();
     });
+
+
+    // Accessible Data Table Toggle
+    function toggleDataTable(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const isHidden = (el.style.display === 'none' || el.style.display === '');
+      el.style.display = isHidden ? 'block' : 'none';
+      const btn = event ? event.currentTarget : null;
+      if (btn) {
+        btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        const icon = isHidden ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-table"></i>';
+        const label = isHidden ? ' ซ่อนตารางข้อมูล' : ' แสดงตารางข้อมูล';
+        btn.innerHTML = icon + label;
+      }
+    }
