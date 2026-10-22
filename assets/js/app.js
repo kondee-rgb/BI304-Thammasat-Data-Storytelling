@@ -1605,42 +1605,8 @@
     });
 
     // ==========================================================================
-    // HEADER NAVIGATION SCROLLBAR & CONTROLS (Smooth Scrollable to 10 Topics)
+    // HEADER NAVIGATION HORIZONTAL SCROLLBAR & INTERACTIONS
     // ==========================================================================
-    function scrollHeaderNav(direction) {
-      const nav = document.getElementById('headerNav');
-      if (!nav) return;
-      const amount = 220 * direction;
-      nav.scrollBy({ left: amount, behavior: 'smooth' });
-      setTimeout(updateNavScrollButtons, 350);
-    }
-
-    function updateNavScrollButtons() {
-      const nav = document.getElementById('headerNav');
-      const btnPrev = document.getElementById('navScrollPrev');
-      const btnNext = document.getElementById('navScrollNext');
-      if (!nav || !btnPrev || !btnNext) return;
-
-      const maxScroll = nav.scrollWidth - nav.clientWidth;
-      if (maxScroll <= 8) {
-        btnPrev.classList.remove('visible');
-        btnNext.classList.remove('visible');
-        return;
-      }
-
-      if (nav.scrollLeft > 10) {
-        btnPrev.classList.add('visible');
-      } else {
-        btnPrev.classList.remove('visible');
-      }
-
-      if (nav.scrollLeft < maxScroll - 10) {
-        btnNext.classList.add('visible');
-      } else {
-        btnNext.classList.remove('visible');
-      }
-    }
-
     function autoScrollHeaderNavToActive(activeLink) {
       const nav = document.getElementById('headerNav');
       if (!nav || !activeLink) return;
@@ -1649,19 +1615,17 @@
       const navWidth = nav.clientWidth;
       const targetScroll = linkLeft - (navWidth / 2) + (linkWidth / 2);
       nav.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
-      updateNavScrollButtons();
     }
 
     function initHeaderNavInteractions() {
       const nav = document.getElementById('headerNav');
       if (!nav) return;
 
-      // 1. Mouse wheel horizontal scrolling
+      // 1. Mouse wheel horizontal scrolling over navigation bar
       nav.addEventListener('wheel', (e) => {
         if (e.deltaY !== 0) {
           e.preventDefault();
           nav.scrollLeft += e.deltaY * 0.95;
-          updateNavScrollButtons();
         }
       }, { passive: false });
 
@@ -1679,10 +1643,7 @@
       });
 
       window.addEventListener('mouseup', () => {
-        if (isDown) {
-          isDown = false;
-          setTimeout(updateNavScrollButtons, 50);
-        }
+        if (isDown) isDown = false;
       });
 
       nav.addEventListener('mousemove', (e) => {
@@ -1692,10 +1653,9 @@
         const x = e.pageX - nav.offsetLeft;
         const walk = (x - startX) * 1.4;
         nav.scrollLeft = initialScroll - walk;
-        updateNavScrollButtons();
       });
 
-      // Prevent link click if the user was dragging
+      // Prevent link navigation if the user was dragging
       nav.querySelectorAll('.header-nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
           if (hasDragged) {
@@ -1704,12 +1664,6 @@
           }
         });
       });
-
-      nav.addEventListener('scroll', updateNavScrollButtons, { passive: true });
-      window.addEventListener('resize', updateNavScrollButtons, { passive: true });
-
-      // Initial button state check
-      setTimeout(updateNavScrollButtons, 100);
     }
 
     // ==========================================================================
