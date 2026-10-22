@@ -14,6 +14,10 @@
         family: "'Sarabun', sans-serif",
         size: 12
       };
+      Chart.defaults.animation = {
+        duration: 1100,
+        easing: 'easeOutQuart'
+      };
     }
 
     // Thai word segmentation safe wrapper for tooltip text
@@ -1593,7 +1597,67 @@
       initGreenSustainabilityChart();
       initHospitalCapacityChart();
       initAnimatedCounters();
+      initBidwellsScrollMotions();
     });
+
+    // ==========================================================================
+    // BIDWELLS SCROLL-TRIGGERED MOTION DESIGN (Luxury Editorial Entrance)
+    // ==========================================================================
+    function initBidwellsScrollMotions() {
+      const revealElements = document.querySelectorAll(
+        '.tu-reveal, .tu-reveal-slide-up, .tu-reveal-slide-right, .tu-reveal-slide-left, .tu-reveal-scale'
+      );
+      if (!revealElements.length) return;
+
+      // Check prefers-reduced-motion
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        revealElements.forEach(el => el.classList.add('is-revealed'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            el.classList.add('is-revealed');
+            obs.unobserve(el); // Reveal only once!
+
+            // Trigger smooth chart animation on scroll entrance if a canvas is inside
+            const canvases = el.tagName === 'CANVAS' ? [el] : Array.from(el.querySelectorAll('canvas'));
+            canvases.forEach(canvas => {
+              if (typeof Chart !== 'undefined' && Chart.getChart) {
+                const chart = Chart.getChart(canvas);
+                if (chart && !canvas.dataset.entranceAnimated) {
+                  canvas.dataset.entranceAnimated = 'true';
+                  chart.reset();
+                  requestAnimationFrame(() => {
+                    chart.update({
+                      duration: 1100,
+                      easing: 'easeOutQuart'
+                    });
+                  });
+                }
+              }
+            });
+
+            // If this element contains Leaflet map, invalidateSize after slide transition
+            if (el.querySelector('#campusLeafletMap') || el.id === 'campusLeafletMap') {
+              setTimeout(() => {
+                if (tuMap && typeof tuMap.invalidateSize === 'function') {
+                  tuMap.invalidateSize();
+                }
+              }, 950);
+            }
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
 
 
     // Accessible Data Table Toggle

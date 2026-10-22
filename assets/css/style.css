@@ -2679,7 +2679,7 @@
       display: none;
       position: fixed;
       top: 0;
-      right: -320px;
+      right: 0;
       width: 320px;
       max-width: 86vw;
       height: 100vh;
@@ -2687,11 +2687,14 @@
       box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
       z-index: 99999;
       flex-direction: column;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
     }
 
     .mobile-nav-drawer.open {
-      transform: translateX(-320px);
+      transform: translateX(0);
+      visibility: visible;
     }
 
     .mobile-nav-backdrop.open {
@@ -3427,4 +3430,96 @@
     .scrubber-track-container:focus-visible {
       outline: 2px solid var(--tu-gold);
       outline-offset: 4px;
+    }
+
+    /* ==========================================================================
+       BIDWELLS-STYLE SCROLL-TRIGGERED MOTION DESIGN (Luxury Editorial Entrance)
+       ========================================================================== */
+    /* Progressive Enhancement: Reveal classes only hide when js-enabled is present */
+    html.js-enabled .tu-reveal,
+    html.js-enabled .tu-reveal-slide-up,
+    html.js-enabled .tu-reveal-slide-right,
+    html.js-enabled .tu-reveal-slide-left,
+    html.js-enabled .tu-reveal-scale {
+      opacity: 0;
+      transition: 
+        opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    html.js-enabled .tu-reveal-slide-up {
+      transform: translateY(42px);
+    }
+
+    html.js-enabled .tu-reveal-slide-right {
+      transform: translateX(-42px);
+    }
+
+    html.js-enabled .tu-reveal-slide-left {
+      transform: translateX(42px);
+    }
+
+    html.js-enabled .tu-reveal-scale {
+      transform: translateY(32px) scale(0.97);
+    }
+
+    /* Target state when scrolled into view */
+    html.js-enabled .tu-reveal.is-revealed,
+    html.js-enabled .tu-reveal-slide-up.is-revealed,
+    html.js-enabled .tu-reveal-slide-right.is-revealed,
+    html.js-enabled .tu-reveal-slide-left.is-revealed,
+    html.js-enabled .tu-reveal-scale.is-revealed {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+
+    /* Staggered sequential entrance delays for cards and metrics */
+    html.js-enabled .tu-stagger-1 { transition-delay: 0.12s; }
+    html.js-enabled .tu-stagger-2 { transition-delay: 0.24s; }
+    html.js-enabled .tu-stagger-3 { transition-delay: 0.36s; }
+    html.js-enabled .tu-stagger-4 { transition-delay: 0.48s; }
+
+    /* Mobile Viewport Adaptation: switch sideways slide to vertical to avoid horizontal scroll */
+    @media (max-width: 768px) {
+      html.js-enabled .tu-reveal-slide-right,
+      html.js-enabled .tu-reveal-slide-left {
+        transform: translateY(28px);
+      }
+      html.js-enabled .tu-reveal-slide-up {
+        transform: translateY(28px);
+      }
+      html.js-enabled .tu-reveal-scale {
+        transform: translateY(22px) scale(0.98);
+      }
+    }
+
+    /* Reduced Motion Preference Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      html.js-enabled .tu-reveal,
+      html.js-enabled .tu-reveal-slide-up,
+      html.js-enabled .tu-reveal-slide-right,
+      html.js-enabled .tu-reveal-slide-left,
+      html.js-enabled .tu-reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* Mobile Responsive Viewport Containment */
+    .hero-track-section,
+    .central-track-stage,
+    .bidwells-statement-section,
+    .silverstone-svg-container,
+    .tbs-benchmark-card,
+    .cluster-map-canvas-card,
+    #campusLeafletMap,
+    .bidwells-curved-track-section,
+    .bidwells-circuit-section {
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .tbs-benchmark-card {
+      overflow-x: auto;
     }

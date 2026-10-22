@@ -1,5 +1,29 @@
 # บันทึกการเปลี่ยนแปลงของระบบ (Project Changelog)
 
+## [Motion Polish] - 2026-10-22 (Bidwells-Style Editorial Scroll Reveal Motions)
+
+### สรุปการปรับปรุงระบบการเคลื่อนไหวตามสไตล์ Bidwells Research Report:
+1. **วิเคราะห์โมชั่นจากคลิปวิดีโอ Bidwells (`Driving innovation at speed _ UK Motorsport Cluster`)**:
+   - การเลื่อนของกราฟและองค์ประกอบเนื้อหาใช้การสไลด์นุ่มนวลตามทิศทางเลย์เอาต์ (Slide Up, Slide Left จากขวา, Slide Right จากซ้าย และ Scale Zoom เล็กน้อย)
+   - ใช้เส้นโค้งความเร่งแบบพรีเมียม (Decelerated Luxury Easing): `cubic-bezier(0.16, 1, 0.3, 1)` ระยะเวลา 0.85s - 0.95s พร้อม `will-change: transform, opacity`
+   - กำหนดจังหวะการเลื่อนแบบต่อเนื่อง (Staggered Entrance): `.tu-stagger-1` ถึง `.tu-stagger-4` (หน่วงเวลาทีละ 0.12s) เพื่อให้การ์ดสถิติไม่กระแทกเข้ามาพร้อมกันหมดในคราวเดียว
+2. **การทำงานประสานกันระหว่าง Chart Drawing Animation และ Scroll Intersection**:
+   - เชื่อมต่อ `IntersectionObserver` ในฟังก์ชัน `initBidwellsScrollMotions()`: เมื่อเลื่อนหน้าจอมาถึงการ์ดกราฟ (Threshold 0.15) ตัวกราฟิกการ์ดจะค่อยๆ สไลด์เข้ามา
+   - สั่ง `chart.reset()` และ `chart.update()` แบบไดนามิกผ่าน `Chart.getChart(canvas)` ทำให้แท่งกราฟ เส้นโค้ง และเรดาร์ค่อยๆ ยืด/วาดขึ้นพร้อมกับที่การ์ดสไลด์เข้ามาในมุมมอง (ครอบคลุมทั้ง 6 ชาร์ตสำคัญ: TCAS, Demographics, Campus Shift, 5-Year Budget, Green Energy และ Hospital Capacity)
+   - เชื่อมต่อกับตัวเลขนับขึ้น (`stat-counter`) ให้นับขึ้นพร้อมกันอย่างสมบูรณ์แบบ
+3. **การเพิ่มประสิทธิภาพการแสดงผลบนโทรศัพท์มือถือ (Mobile Responsive Containment)**:
+   - สลับแอนิเมชันจากการสไลด์ซ้าย-ขวาเป็นการสไลด์ขึ้นแนวดิ่งบนจอเล็ก (`max-width: 768px`) เพื่อป้องกันอาการหน้าจอกว้างเกินหรือเกิด Horizontal Scrollbar
+   - แก้ไขโครงสร้าง Offscreen Navigation Drawer และองค์ประกอบล้นจอ ทำให้บนหน้าจอ iPhone (375px, 390px, 414px) มี `overflow: false` 100%
+   - รองรับ `prefers-reduced-motion` เพื่อการเข้าถึงที่เป็นมิตรต่อผู้ใช้งานทุกคน
+4. **ผลการทดสอบ Lighthouse & Automation**:
+   - Desktop Performance: **89 คะแนน**
+   - Desktop Accessibility: **86 คะแนน**
+   - Best Practices: **100 คะแนนเต็ม**
+   - SEO: **100 คะแนนเต็ม**
+   - ไม่พบข้อผิดพลาดใน JavaScript Console (`0 errors`)
+
+---
+
 ## [Quick Fix] - 2026-10-22 (User Feedback: Remove Methodology & Fix Dome Image Path)
 
 ### สรุปการแก้ไขตามคำขอของผู้ใช้:
