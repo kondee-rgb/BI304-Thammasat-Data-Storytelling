@@ -1,5 +1,17 @@
 # บันทึกการเปลี่ยนแปลงของระบบ (Project Changelog)
 
+## [Quick Fix] - 2026-10-22 (User Feedback: Remove Methodology & Fix Dome Image Path)
+
+### สรุปการแก้ไขตามคำขอของผู้ใช้:
+1. **เอาส่วน "ระเบียบวิธีและข้อจำกัดของข้อมูล" (`#methodology`) ออกตามที่ผู้ใช้ระบุในภาพที่ 1**:
+   - ลบส่วน `#methodology` ออกจาก `index.html` เพื่อให้ดีไซน์หน้าเว็บสะอาด สบายตา และเชื่อมต่อไปยังการ์ดบทสรุป 9 ทศวรรษได้อย่างลงตัว
+   - อัปเดตรายการ sections ใน `assets/js/app.js` ให้ข้ามไปยัง `#finish` ทันที
+2. **แก้ไขรูปภาพตึกโดม ท่าพระจันทร์ ไม่แสดงผล (`.editorial-photo-frame`) ในหัวข้อ 01 ตามภาพที่ 2**:
+   - แก้ไข Relative Path ใน `assets/css/style.css` จาก `url('assets/...')` เป็น `url('../...')` ให้สอดคล้องกับตำแหน่งไฟล์ CSS
+   - เพิ่มแท็ก `<img src="assets/tha_prachan_dome_editorial.webp" ...>` ภายใน `.editorial-photo-frame` พร้อม `onerror` fallback ทำให้ภาพแสดงผลคมชัด 100%
+
+---
+
 ## [Phase 9] - 2026-10-22 (QA, Performance & Release Gate Verification)
 
 ### สรุปการเปลี่ยนแปลง:

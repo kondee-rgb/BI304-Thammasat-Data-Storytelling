@@ -762,11 +762,12 @@
       width: 100%;
       height: 380px;
       border-radius: 20px;
-      background-image: url('assets/tha_prachan_dome_editorial.webp');
+      background-image: url('../tha_prachan_dome_editorial.webp');
       background-size: cover;
       background-position: center;
       box-shadow: var(--tu-shadow-lg);
       border: 3px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
     }
 
     .overlapping-quote-card {
@@ -1657,7 +1658,7 @@
       position: relative;
       width: 100%;
       height: 280px;
-      background: url('assets/Track2.webp') center/cover no-repeat;
+      background: url('../Track2.webp') center/cover no-repeat;
       border-radius: 20px;
       margin-bottom: 50px;
       box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -2083,7 +2084,7 @@
     .checkered-finish-banner {
       width: 100%;
       height: 70px;
-      background-image: url('assets/finish.svg');
+      background-image: url('../finish.svg');
       background-repeat: repeat-x;
       background-size: contain;
       background-position: center;
