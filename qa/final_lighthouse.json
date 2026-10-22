@@ -1,0 +1,42 @@
+{
+  "mobile": {
+    "baseline": {
+      "performance": 44,
+      "accessibility": 79,
+      "best_practices": 96,
+      "seo": 91
+    },
+    "final": {
+      "performance": 41,
+      "accessibility": 81,
+      "best_practices": 96,
+      "seo": 100
+    },
+    "delta": {
+      "performance": -3,
+      "accessibility": "+2",
+      "best_practices": "0",
+      "seo": "+9 (Perfect 100)"
+    }
+  },
+  "desktop": {
+    "baseline": {
+      "performance": 78,
+      "accessibility": 81,
+      "best_practices": 96,
+      "seo": 91
+    },
+    "final": {
+      "performance": 90,
+      "accessibility": 86,
+      "best_practices": 96,
+      "seo": 100
+    },
+    "delta": {
+      "performance": "+12 (Excellent 90)",
+      "accessibility": "+5",
+      "best_practices": "0",
+      "seo": "+9 (Perfect 100)"
+    }
+  }
+}
