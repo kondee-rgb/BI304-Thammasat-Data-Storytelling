@@ -579,6 +579,31 @@ def generate_bidwells_html():
       margin-top: -10px;
     }
 
+    /* Soft Elliptical Grounding Shadow under student character feet */
+    .tu-student-ground-shadow {
+      width: 82px;
+      height: 12px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.42) 48%, transparent 75%);
+      border-radius: 50%;
+      margin: -6px auto 6px auto;
+      filter: blur(1.5px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
+      pointer-events: none;
+      transform: scaleY(0.42);
+    }
+
+    /* Refined Metric Unit Typography: 45-50% scale, lighter opacity, pushes number forward */
+    .unit {
+      font-size: 0.46em;
+      font-weight: 500;
+      opacity: 0.75;
+      letter-spacing: 0.02em;
+      margin-left: 3px;
+      display: inline-block;
+      vertical-align: baseline;
+      color: inherit;
+    }
+
     .tu-student-badge {
       margin-top: 10px;
       background: rgba(11, 22, 59, 0.88);
@@ -628,28 +653,36 @@ def generate_bidwells_html():
     }
 
     .hero-main-title {
-      font-family: var(--font-serif);
-      font-size: 4.6rem;
-      line-height: 1.12;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      font-family: 'Plus Jakarta Sans', var(--font-sans);
+      font-size: 5.2rem;
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
     }
 
     .hero-main-title em {
       font-style: italic;
-      font-weight: 400;
-      color: var(--bidwells-sky-blue);
+      font-weight: 900;
+      color: #ffc72c;
+      background: linear-gradient(135deg, #ffc72c 10%, #ff9cb1 70%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       display: inline-block;
+      letter-spacing: 0.01em;
+      filter: drop-shadow(0 2px 14px rgba(255, 199, 44, 0.45));
     }
 
     .hero-title-thai {
-      font-size: 1.65rem;
-      font-weight: 600;
+      font-family: 'Prompt', var(--font-sans);
+      font-size: 1.85rem;
+      font-weight: 700;
       color: #ffffff;
       margin-bottom: 1.25rem;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
     }
 
     .hero-lead-desc {
@@ -3224,7 +3257,7 @@ def generate_bidwells_html():
       <!-- Student 1: Lead Thammasat Student (tu_student_walking.png) -->
       <div class="tu-student-walker-container tu-student-leader" id="studentLeader">
         <img src="assets/tu_student_walking.png" alt="นักศึกษาธรรมศาสตร์ ผู้นำแห่งอนาคต" class="tu-student-walker-img" />
-        <div class="tu-student-pedestal"></div>
+        <div class="tu-student-ground-shadow"></div>
         <div class="tu-student-badge">
           <i class="fa-solid fa-graduation-cap"></i>
           <span>นักศึกษาธรรมศาสตร์ • ก้าวสู่ศตวรรษใหม่</span>
@@ -3234,7 +3267,7 @@ def generate_bidwells_html():
       <!-- Student 2: Second Thammasat Student Scholar -->
       <div class="tu-student-walker-container tu-student-scholar" id="studentScholar">
         <img src="assets/tu_student_walking.png" alt="นักศึกษาธรรมศาสตร์ นักวิจัยเพื่อสังคม" class="tu-student-walker-img" style="filter: drop-shadow(0 14px 24px rgba(0,0,0,0.75)) brightness(1.08);" />
-        <div class="tu-student-pedestal"></div>
+        <div class="tu-student-ground-shadow"></div>
         <div class="tu-student-badge">
           <i class="fa-solid fa-lightbulb"></i>
           <span>TU Scholar • พลังขับเคลื่อนสังคม</span>
@@ -3311,7 +3344,7 @@ def generate_bidwells_html():
           <div class="winning-card-top">
             <div class="winning-number-row">
               <span class="winning-number stat-counter">90</span>
-              <span class="winning-unit">ปี</span>
+              <span class="winning-unit unit">ปี</span>
             </div>
             <div class="winning-top-title">ประวัติศาสตร์แห่งเสรีภาพและความเสมอภาค</div>
           </div>
@@ -3325,7 +3358,7 @@ def generate_bidwells_html():
           <div class="winning-card-top">
             <div class="winning-number-row">
               <span class="winning-number stat-counter">26</span>
-              <span class="winning-unit">คณะ</span>
+              <span class="winning-unit unit">คณะ</span>
             </div>
             <div class="winning-top-title">4 เสาหลักทางวิชาการและสหวิทยาการ</div>
           </div>
@@ -3339,7 +3372,7 @@ def generate_bidwells_html():
           <div class="winning-card-top">
             <div class="winning-number-row">
               <span class="winning-number stat-counter">Top 10</span>
-              <span class="winning-unit">โลก</span>
+              <span class="winning-unit unit">โลก</span>
             </div>
             <div class="winning-top-title">อันดับโลกด้าน SDG 11 เมืองและชุมชนยั่งยืน</div>
           </div>
@@ -3489,11 +3522,11 @@ def generate_bidwells_html():
 
         <div class="campus-metrics-strip" id="campusMetricsBox">
           <div class="campus-metric-item">
-            <div class="val stat-counter" id="cArea">104 ไร่</div>
+            <div class="val stat-counter" id="cArea">104 <span class="unit">ไร่</span></div>
             <div class="lbl">พื้นที่วิทยาเขต</div>
           </div>
           <div class="campus-metric-item">
-            <div class="val stat-counter" id="cStudents">6,310 คน</div>
+            <div class="val stat-counter" id="cStudents">6,310 <span class="unit">คน</span></div>
             <div class="lbl">ประชากรนักศึกษา</div>
           </div>
           <div class="campus-metric-item">
@@ -3554,19 +3587,19 @@ def generate_bidwells_html():
         <!-- 4 KPI Summary Cards -->
         <div class="faculties-kpi-row">
           <div class="fac-kpi-item">
-            <div class="kpi-num stat-counter" style="color: var(--bidwells-crimson);">83.1</div>
+            <div class="kpi-num stat-counter" style="color: var(--bidwells-crimson);">83.1 <span class="unit">คะแนน</span></div>
             <div class="kpi-lbl">คะแนนตัดต่ำสุดสูงสุด (CICM)</div>
           </div>
           <div class="fac-kpi-item">
-            <div class="kpi-num stat-counter" style="color: var(--bidwells-navy);">72.8</div>
+            <div class="kpi-num stat-counter" style="color: var(--bidwells-navy);">72.8 <span class="unit">คะแนน</span></div>
             <div class="kpi-lbl">คะแนนเฉลี่ย TCAS รวมทุกคณะ</div>
           </div>
           <div class="fac-kpi-item">
-            <div class="kpi-num" style="color: #0284c7;">1 : 14.0</div>
+            <div class="kpi-num stat-counter" style="color: #0284c7;" data-counter-prefix="1 : ">14.0 <span class="unit">อัตราแข่งขัน</span></div>
             <div class="kpi-lbl">อัตราการแข่งขันสูงสุด</div>
           </div>
           <div class="fac-kpi-item">
-            <div class="kpi-num stat-counter" style="color: var(--tu-gold-dark);">26 คณะ</div>
+            <div class="kpi-num stat-counter" style="color: var(--tu-gold-dark);">26 <span class="unit">คณะ</span></div>
             <div class="kpi-lbl">4 เสาหลักทางวิชาการ</div>
           </div>
         </div>
@@ -3613,7 +3646,7 @@ def generate_bidwells_html():
           โครงสร้างประชากรนักศึกษาและความหลากหลายทางเพศภาวะ
         </h2>
         <p style="font-size: 1.05rem; color: #64748b; max-width: 860px; line-height: 1.7;">
-          ธรรมศาสตร์มุ่งเน้นความเสมอภาคและดุลยภาพประชากรในทุกมิติวิชาการ โดยมีสัดส่วนนักศึกษาหญิงรวม 62.4% (26,620 คน) และนักศึกษาชาย <span class="stat-counter">37.6%</span> (<span class="stat-counter">16,030</span> คน) พร้อมความหลากหลายที่เปิดกว้างในทุกเพศภาวะ
+          ธรรมศาสตร์มุ่งเน้นความเสมอภาคและดุลยภาพประชากรในทุกมิติวิชาการ โดยมีสัดส่วนนักศึกษาหญิงรวม 62.4% (26,620 คน) และนักศึกษาชาย <span class="stat-counter">37.6<span class="unit">%</span></span> (<span class="stat-counter">16,030 <span class="unit">คน</span></span>) พร้อมความหลากหลายที่เปิดกว้างในทุกเพศภาวะ
         </p>
       </div>
 
@@ -3776,18 +3809,21 @@ def generate_bidwells_html():
       <div class="turning-cars-stage">
         <div class="turning-car-wrap" style="width: 105px;">
           <img src="assets/tu_student_walking.png" alt="AACSB" class="tu-student-walker-img" />
+          <div class="tu-student-ground-shadow"></div>
           <div class="tu-student-badge" style="font-size: 0.65rem; padding: 2px 8px; margin-top: 4px;">
             <i class="fa-solid fa-award"></i> AACSB Leader
           </div>
         </div>
         <div class="turning-car-wrap" style="width: 105px;">
           <img src="assets/tu_student_walking.png" alt="EQUIS" class="tu-student-walker-img" style="filter: drop-shadow(0 10px 18px rgba(0,0,0,0.7)) brightness(1.08);" />
+          <div class="tu-student-ground-shadow"></div>
           <div class="tu-student-badge" style="font-size: 0.65rem; padding: 2px 8px; margin-top: 4px;">
             <i class="fa-solid fa-globe"></i> EQUIS Standard
           </div>
         </div>
         <div class="turning-car-wrap" style="width: 105px;">
           <img src="assets/tu_student_walking.png" alt="AMBA" class="tu-student-walker-img" style="filter: drop-shadow(0 10px 18px rgba(0,0,0,0.7)) hue-rotate(-20deg);" />
+          <div class="tu-student-ground-shadow"></div>
           <div class="tu-student-badge" style="font-size: 0.65rem; padding: 2px 8px; margin-top: 4px;">
             <i class="fa-solid fa-crown"></i> AMBA Excellence
           </div>
@@ -3908,28 +3944,28 @@ def generate_bidwells_html():
           <div class="green-card-icon"><i class="fa-solid fa-seedling"></i></div>
           <div class="green-card-title">อุทยานเรียนรู้ป๋วย 100 ปี</div>
           <div class="green-card-desc">สวนผักดาดฟ้าที่ใหญ่ที่สุดในเอเชีย กักเก็บน้ำฝนได้กว่า 3.2 ล้านลิตร และผลิตอาหารเกษตรอินทรีย์ปลอดภัย</div>
-          <div class="green-card-stat stat-counter">22,000 ตร.ม.</div>
+          <div class="green-card-stat stat-counter">22,000 <span class="unit">ตร.ม.</span></div>
         </div>
 
         <div class="green-card-item">
           <div class="green-card-icon"><i class="fa-solid fa-solar-panel"></i></div>
           <div class="green-card-title">พลังงานสะอาดโซลาร์รูฟ</div>
           <div class="green-card-desc">ติดตั้งแผงโซลาร์เซลล์บนหลังคาอาคารทั่วศูนย์รังสิต ผลิตพลังงานสะอาดทดแทนการใช้ไฟฟ้าจากฟอสซิล</div>
-          <div class="green-card-stat stat-counter">35 MW</div>
+          <div class="green-card-stat stat-counter">35 <span class="unit">MWp</span></div>
         </div>
 
         <div class="green-card-item">
           <div class="green-card-icon"><i class="fa-solid fa-bus"></i></div>
           <div class="green-card-title">EV Smart Mobility</div>
           <div class="green-card-desc">ระบบรถโดยสารพลังงานไฟฟ้า 100% เชื่อมต่อการเดินทางภายในวิทยาเขต ปราศจากควันพิษและลดฝุ่น PM 2.5</div>
-          <div class="green-card-stat">100% EV</div>
+          <div class="green-card-stat stat-counter">100<span class="unit">% EV</span></div>
         </div>
 
         <div class="green-card-item">
           <div class="green-card-icon"><i class="fa-solid fa-smog"></i></div>
           <div class="green-card-title">ลดคาร์บอนสู่ Net-Zero</div>
           <div class="green-card-desc">ลดการปล่อยก๊าซเรือนกระจกอย่างต่อเนื่อง เดินหน้าสู่เป้าหมายความเป็นกลางทางคาร์บอนของมหาวิทยาลัย</div>
-          <div class="green-card-stat stat-counter">-24,000 ตัน/ปี</div>
+          <div class="green-card-stat stat-counter">-24,000 <span class="unit">ตัน/ปี</span></div>
         </div>
       <!-- Dedicated Interactive Visual: Clean Energy & Sustainability Metrics -->
       <div class="green-visual-card">
@@ -3954,19 +3990,19 @@ def generate_bidwells_html():
 
         <div class="visual-metric-strip">
           <div class="visual-metric-pill">
-            <div class="val stat-counter">35.8 MWp</div>
+            <div class="val stat-counter">35.8 <span class="unit">MWp</span></div>
             <div class="lbl">กำลังการผลิตโซลาร์เซลล์รวม</div>
           </div>
           <div class="visual-metric-pill">
-            <div class="val stat-counter">25,500 ตัน</div>
+            <div class="val stat-counter">25,500 <span class="unit">ตัน/ปี</span></div>
             <div class="lbl">ลดการปล่อยก๊าซเรือนกระจก/ปี</div>
           </div>
           <div class="visual-metric-pill">
-            <div class="val stat-counter">22,000 ตร.ม.</div>
+            <div class="val stat-counter">22,000 <span class="unit">ตร.ม.</span></div>
             <div class="lbl">พื้นที่สวนหลังคาป๋วย 100 ปี</div>
           </div>
           <div class="visual-metric-pill">
-            <div class="val stat-counter">98.4 / 100</div>
+            <div class="val stat-counter" data-counter-suffix=" / 100">98.4 <span class="unit">/ 100</span></div>
             <div class="lbl">คะแนนโลก SDG 11 (Top 10)</div>
           </div>
         </div>
@@ -3993,22 +4029,22 @@ def generate_bidwells_html():
 
       <div class="hospital-kpi-row">
         <div class="hospital-kpi-card">
-          <div class="hospital-kpi-num stat-counter">1,400</div>
+          <div class="hospital-kpi-num stat-counter">1,400 <span class="unit">เตียง</span></div>
           <div class="hospital-kpi-title">เตียงผู้ป่วยตติยภูมิ</div>
           <div class="hospital-kpi-desc">รองรับการรักษาโรคซับซ้อนและหออภิบาลผู้ป่วยวิกฤต (ICU) ทันสมัย</div>
         </div>
         <div class="hospital-kpi-card">
-          <div class="hospital-kpi-num stat-counter">1.46M+</div>
+          <div class="hospital-kpi-num stat-counter">1.46M+ <span class="unit">คน/ปี</span></div>
           <div class="hospital-kpi-title">ผู้ป่วยนอกต่อปี</div>
           <div class="hospital-kpi-desc">ให้บริการตรวจรักษาครอบคลุมประชาชนในพื้นที่ภาคกลางและปริมณฑล</div>
         </div>
         <div class="hospital-kpi-card">
-          <div class="hospital-kpi-num stat-counter">3,083</div>
+          <div class="hospital-kpi-num stat-counter">3,083 <span class="unit">เตียง</span></div>
           <div class="hospital-kpi-title">เตียง รพ.สนามโควิด</div>
           <div class="hospital-kpi-desc">จัดตั้ง รพ.สนามแห่งแรกของไทย รองรับผู้ป่วยในวิกฤตโรคระบาดระดับชาติ</div>
         </div>
         <div class="hospital-kpi-card">
-          <div class="hospital-kpi-num stat-counter">500k+</div>
+          <div class="hospital-kpi-num stat-counter">500k+ <span class="unit">โดส</span></div>
           <div class="hospital-kpi-title">โดสวัคซีนบริการประชาชน</div>
           <div class="hospital-kpi-desc">ศูนย์ฉีดวัคซีนขนาดใหญ่เพื่อความปลอดภัยและสุขภาพของประชาชน</div>
         </div>
@@ -4122,7 +4158,7 @@ def generate_bidwells_html():
       <div class="circuit-insight-card">
         <div class="circuit-card-tag" id="cInsightTag">CENTENNIAL PILLAR 1</div>
         <h3 class="circuit-card-title" id="cInsightTitle">การวิจัยและนวัตกรรมระดับสากล</h3>
-        <img src="assets/tha_prachan_dome_editorial.jpg" alt="Circuit Insight" class="circuit-card-img" id="cInsightImg" />
+        <img src="assets/pillar_1_innovation_hub.jpg" alt="Innovation Hub & Global Research" class="circuit-card-img pillar-card-1" id="cInsightImg" onerror="this.onerror=null; this.src='assets/tha_prachan_dome_editorial.jpg';" />
         <p class="circuit-card-desc" id="cInsightDesc">
           ยุทธศาสตร์มุ่งสู่ Top 100 QS World University Ranking สร้างองค์ความรู้และนวัตกรรมเปลี่ยนโลกเพื่อประโยชน์ของมนุษยชาติ เชื่อมโยงเครือข่ายวิจัยระดับสากลกว่า 350 สถาบัน
         </p>
@@ -4204,12 +4240,14 @@ def generate_bidwells_html():
     <div class="finish-cars-crossing-row">
       <div class="finish-car-item">
         <img src="assets/tu_student_walking.png" alt="บัณฑิตธรรมศาสตร์เพื่อสังคม" class="tu-student-walker-img" />
+        <div class="tu-student-ground-shadow"></div>
         <div class="tu-student-badge" style="margin-top: 10px;">
           <i class="fa-solid fa-user-graduate"></i> บัณฑิตธรรมศาสตร์เพื่อประชาชน
         </div>
       </div>
       <div class="finish-car-item">
         <img src="assets/tu_student_walking.png" alt="ผู้นำแห่งอนาคต TU 2034" class="tu-student-walker-img" style="filter: drop-shadow(0 14px 24px rgba(0,0,0,0.75)) brightness(1.08);" />
+        <div class="tu-student-ground-shadow"></div>
         <div class="tu-student-badge" style="margin-top: 10px;">
           <i class="fa-solid fa-compass"></i> TU 2034 Future Leader
         </div>
@@ -4228,23 +4266,23 @@ def generate_bidwells_html():
 
       <div class="milestone-summary-row">
         <div class="milestone-summary-item">
-          <div class="num">42,850+</div>
+          <div class="num stat-counter">42,850+ <span class="unit">คน</span></div>
           <div class="lbl">นักศึกษาปัจจุบัน</div>
         </div>
         <div class="milestone-summary-item">
-          <div class="num">26 คณะ</div>
+          <div class="num stat-counter">26 <span class="unit">คณะ</span></div>
           <div class="lbl">4 เสาหลักวิชาการ</div>
         </div>
         <div class="milestone-summary-item">
-          <div class="num">4 ศูนย์</div>
+          <div class="num stat-counter">4 <span class="unit">ศูนย์</span></div>
           <div class="lbl">เครือข่ายทั่วประเทศ</div>
         </div>
         <div class="milestone-summary-item">
-          <div class="num">15,350 ลบ.</div>
+          <div class="num stat-counter">15,350 <span class="unit">ลบ.</span></div>
           <div class="lbl">งบประมาณรวมประจำปี</div>
         </div>
         <div class="milestone-summary-item">
-          <div class="num">Top 70</div>
+          <div class="num stat-counter">Top 70 <span class="unit">เอเชีย</span></div>
           <div class="lbl">QS Asia Rankings</div>
         </div>
       </div>
@@ -4345,8 +4383,8 @@ def generate_bidwells_html():
       {
         id: "thaprachan",
         name: "ท่าพระจันทร์ (ศูนย์กลางประวัติศาสตร์)",
-        area: "104 ไร่",
-        students: "6,310 คน",
+        area: '104 <span class="unit">ไร่</span>',
+        students: '6,310 <span class="unit">คน</span>',
         role: "มรดกประชาธิปไตย",
         focus: "นานาชาติ / บัณฑิตศึกษา",
         locationDesc: "ริมแม่น้ำเจ้าพระยา เขตพระนคร กรุงเทพมหานคร",
@@ -4357,8 +4395,8 @@ def generate_bidwells_html():
       {
         id: "rangsit",
         name: "ศูนย์รังสิต (Hub วิทยาศาสตร์-การแพทย์)",
-        area: "1,757 ไร่",
-        students: "31,500 คน",
+        area: '1,757 <span class="unit">ไร่</span>',
+        students: '31,500 <span class="unit">คน</span>',
         role: "วิจัยและนวัตกรรม",
         focus: "วิทยาศาสตร์-เทคโน-การแพทย์",
         locationDesc: "อำเภอคลองหลวง จังหวัดปทุมธานี",
@@ -4369,8 +4407,8 @@ def generate_bidwells_html():
       {
         id: "pattaya",
         name: "ศูนย์พัทยา (นวัตกรรม EEC & ดิจิทัล)",
-        area: "566 ไร่",
-        students: "1,920 คน",
+        area: '566 <span class="unit">ไร่</span>',
+        students: '1,920 <span class="unit">คน</span>',
         role: "Smart City & EEC",
         focus: "ยานยนต์ไฟฟ้า & AI Hub",
         locationDesc: "ตำบลหนองปรือ อำเภอบางละมุง จังหวัดชลบุรี",
@@ -4381,8 +4419,8 @@ def generate_bidwells_html():
       {
         id: "lampang",
         name: "ศูนย์ลำปาง (ภูมิปัญญาและการพัฒนาล้านนา)",
-        area: "364 ไร่",
-        students: "3,120 คน",
+        area: '364 <span class="unit">ไร่</span>',
+        students: '3,120 <span class="unit">คน</span>',
         role: "พัฒนาท้องถิ่นล้านนา",
         focus: "สหวิทยาการเพื่อสังคม",
         locationDesc: "ตำบลห้างฉัตร อำเภอห้างฉัตร จังหวัดลำปาง",
@@ -4432,31 +4470,35 @@ def generate_bidwells_html():
 
     const CIRCUIT_DATA = [
       {
-        tag: "CENTENNIAL PILLAR 1",
-        title: "การวิจัยและนวัตกรรมระดับสากล (Global Research)",
-        desc: "ยุทธศาสตร์มุ่งสู่ Top 100 QS World University Ranking สร้างองค์ความรู้และนวัตกรรมเปลี่ยนโลกเพื่อประโยชน์ของมนุษยชาติ เชื่อมโยงเครือข่ายวิจัยระดับสากลกว่า 350 สถาบัน",
-        img: "assets/tha_prachan_dome_editorial.jpg",
-        stat1: "92.0", lbl1: "คะแนนเป้าหมาย 2577", stat2: "30%", lbl2: "น้ำหนักยุทธศาสตร์"
+        tag: "CENTENNIAL PILLAR 1: GLOBAL RESEARCH & INNOVATION HUB",
+        title: "การวิจัยและนวัตกรรมระดับสากล (Global Research & Innovation Hub)",
+        desc: "ยุทธศาสตร์มุ่งสู่ Top 100 QS World University Ranking สร้างองค์ความรู้และนวัตกรรมเปลี่ยนโลกเพื่อประโยชน์ของมนุษยชาติ เชื่อมโยงเครือข่ายวิจัยระดับสากลกว่า 350 สถาบัน และยื่นจดสิทธิบัตร Deep Tech",
+        img: "assets/pillar_1_innovation_hub.jpg",
+        pillarClass: "pillar-card-1",
+        stat1: "92.0", lbl1: "คะแนนเป้าหมาย 2577", stat2: "350+", lbl2: "สิทธิบัตรเชิงพาณิชย์"
       },
       {
-        tag: "CENTENNIAL PILLAR 2",
+        tag: "CENTENNIAL PILLAR 2: FUTURE-READY SKILLS & 21ST CENTURY LEARNING",
         title: "ทักษะแห่งอนาคตและการศึกษาดิจิทัล (Future-Ready Skills)",
-        desc: "ปฏิรูปการเรียนการสอนบูรณาการ AI, Digital Literacy และการคิดเชิงวิพากษ์ สร้างบัณฑิตที่มีสมรรถนะพร้อมทำงานในตลาดแรงงานสากลระดับสูง",
-        img: "assets/tha_prachan_dome_editorial.jpg",
-        stat1: "95.0", lbl1: "คะแนนเป้าหมาย 2577", stat2: "25%", lbl2: "น้ำหนักยุทธศาสตร์"
+        desc: "ปฏิรูปการเรียนการสอนบูรณาการ AI, Digital Literacy, และ Active Problem Solving สร้างบัณฑิตที่มีสมรรถนะพร้อมทำงานในตลาดแรงงานสากลระดับสูง และมีจิตวิญญาณประชาธิปไตย",
+        img: "assets/pillar_2_future_skills.jpg",
+        pillarClass: "pillar-card-2",
+        stat1: "95.0", lbl1: "คะแนนเป้าหมาย 2577", stat2: "100%", lbl2: "หลักสูตรบูรณาการ AI"
       },
       {
-        tag: "CENTENNIAL PILLAR 3",
-        title: "88 SANDBOX ศูนย์บ่มเพาะสตาร์ทอัพเพื่อสังคม",
-        desc: "ระบบนิเวศนวัตกรรมและบ่มเพาะผู้ประกอบการสตาร์ทอัพเพื่อสังคมที่ใหญ่ที่สุดในระดับอุดมศึกษา ตั้งเป้าบ่มเพาะและสนับสนุน 10,000 ทีมสตาร์ทอัพยุคใหม่",
-        img: "assets/tha_prachan_dome_editorial.jpg",
-        stat1: "10,000", lbl1: "เป้าหมายทีมสตาร์ทอัพ", stat2: "อันดับ 1", lbl2: "Social Sandbox ไทย"
+        tag: "CENTENNIAL PILLAR 3: 88 SANDBOX & STARTUP ECOSYSTEM",
+        title: "88 SANDBOX ศูนย์บ่มเพาะสตาร์ทอัพเพื่อสังคมและเศรษฐกิจใหม่",
+        desc: "ระบบนิเวศนวัตกรรมและบ่มเพาะผู้ประกอบการสตาร์ทอัพเพื่อสังคมที่ใหญ่ที่สุดในระดับอุดมศึกษา เชื่อมโยง Venture Capital ระดับสากล ตั้งเป้าสร้างมูลค่าระดมทุนกว่า 10,000 ล้านบาท",
+        img: "assets/pillar_3_88sandbox.jpg",
+        pillarClass: "pillar-card-3",
+        stat1: "10,000", lbl1: "มูลค่าระดมทุน (ลบ.)", stat2: "อันดับ 1", lbl2: "Social Sandbox ไทย"
       },
       {
-        tag: "CENTENNIAL PILLAR 4",
-        title: "ความยั่งยืนสู่ Net-Zero Campus 2030",
-        desc: "มหาวิทยาลัยแห่งความยั่งยืน ขับเคลื่อนพลังงานสะอาด 100% การจัดการขยะและน้ำหมุนเวียน เพื่อบรรลุเป้าหมายการปล่อยคาร์บอนสุทธิเป็นศูนย์ก่อนปี 2573",
-        img: "assets/tha_prachan_dome_editorial.jpg",
+        tag: "CENTENNIAL PILLAR 4: NET-ZERO CAMPUS 2030 & PUEY PARK",
+        title: "ความยั่งยืนสู่ Net-Zero Campus 2030 & อุทยานป๋วย 100 ปี",
+        desc: "ผู้นำด้านความยั่งยืนระดับโลก ขับเคลื่อนพลังงานสะอาดจากฟาร์มโซลาร์รูฟท็อป 100% อาคารประหยัดพลังงาน และพื้นที่สีเขียวสวนป๋วย 100 ปี บรรลุเป้าหมายคาร์บอนสุทธิเป็นศูนย์ก่อนปี 2573",
+        img: "assets/pillar_4_netzero_campus.jpg",
+        pillarClass: "pillar-card-4",
         stat1: "2573", lbl1: "เป้าหมาย Net Zero", stat2: "100%", lbl2: "Green Campus Model"
       }
     ];
@@ -4903,8 +4945,8 @@ def generate_bidwells_html():
       const data = CAMPUSES_DATA[idx];
       if (data) {
         document.getElementById('cLocation').textContent = data.locationDesc;
-        document.getElementById('cArea').textContent = data.area;
-        document.getElementById('cStudents').textContent = data.students;
+        document.getElementById('cArea').innerHTML = data.area;
+        document.getElementById('cStudents').innerHTML = data.students;
         document.getElementById('cRole').textContent = data.role;
         document.getElementById('cFocus').textContent = data.focus;
         document.getElementById('currentGpsDisplay').innerHTML = `<i class="fa-solid fa-satellite"></i> ${data.lat.toFixed(4)}° N, ${data.lng.toFixed(4)}° E`;
@@ -4951,6 +4993,11 @@ def generate_bidwells_html():
       document.getElementById('cInsightTag').textContent = c.tag;
       document.getElementById('cInsightTitle').textContent = c.title;
       document.getElementById('cInsightDesc').textContent = c.desc;
+      const imgEl = document.getElementById('cInsightImg');
+      if (imgEl && c.img) {
+        imgEl.src = c.img;
+        imgEl.className = 'circuit-card-img ' + (c.pillarClass || '');
+      }
       document.getElementById('cStat1').textContent = c.stat1;
       document.getElementById('cStatLbl1').textContent = c.lbl1;
       document.getElementById('cStat2').textContent = c.stat2;
@@ -5781,10 +5828,22 @@ def generate_bidwells_html():
     }
 
     function runCounterAnimation(el) {
-      const originalText = el.getAttribute('data-counter-target') || el.textContent.trim();
+      const unitSpan = el.querySelector('.unit');
+      let unitHtml = '';
+      let targetText = '';
       
+      if (unitSpan) {
+        unitHtml = unitSpan.outerHTML;
+        const clone = el.cloneNode(true);
+        const cloneUnit = clone.querySelector('.unit');
+        if (cloneUnit) cloneUnit.remove();
+        targetText = el.getAttribute('data-counter-target') || clone.textContent.trim();
+      } else {
+        targetText = el.getAttribute('data-counter-target') || el.textContent.trim();
+      }
+
       // Match optional prefix, the number (with comma/decimal), and optional suffix
-      const match = originalText.match(/^([^\d]*?)([\d,]+(?:\.\d+)?)(.*)$/);
+      const match = targetText.match(/^([^\d]*?)([\d,]+(?:\.\d+)?)(.*)$/);
       if (!match) return;
 
       const prefix = el.getAttribute('data-counter-prefix') !== null 
@@ -5804,7 +5863,11 @@ def generate_bidwells_html():
 
       // Start at 0 immediately
       const zeroFormatted = decimals > 0 ? (0).toFixed(decimals) : '0';
-      el.textContent = `${prefix}${zeroFormatted}${suffix}`;
+      if (unitHtml) {
+        el.innerHTML = `${prefix}${zeroFormatted}${suffix} ${unitHtml}`;
+      } else {
+        el.textContent = `${prefix}${zeroFormatted}${suffix}`;
+      }
 
       function update(now) {
         const elapsed = now - startTime;
@@ -5822,7 +5885,11 @@ def generate_bidwells_html():
           numStr = parts.join('.');
         }
 
-        el.textContent = `${prefix}${numStr}${suffix}`;
+        if (unitHtml) {
+          el.innerHTML = `${prefix}${numStr}${suffix} ${unitHtml}`;
+        } else {
+          el.textContent = `${prefix}${numStr}${suffix}`;
+        }
 
         if (progress < 1) {
           stepFrame(update);
@@ -5834,7 +5901,11 @@ def generate_bidwells_html():
             parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             finalNum = parts.join('.');
           }
-          el.textContent = `${prefix}${finalNum}${suffix}`;
+          if (unitHtml) {
+            el.innerHTML = `${prefix}${finalNum}${suffix} ${unitHtml}`;
+          } else {
+            el.textContent = `${prefix}${finalNum}${suffix}`;
+          }
           el.classList.add('counter-completed');
         }
       }
