@@ -232,206 +232,262 @@
       {
         id: 1,
         title: "1. ภาพรวมพัฒนาการ 90 ปี ธรรมศาสตร์",
-        template: "Line Chart Race / Story Timeline",
+        template: "Line Chart / Story Timeline",
+        templateUrl: "https://app.flourish.studio/@flourish/line-chart",
         category: "Historical Overview",
-        csv: "01_thammasat_historical_timeline.csv",
-        badge: "พ.ศ. 2477 - 2567",
-        desc: "ลำดับเส้นเวลาการก่อตั้งและวิวัฒนาการ 90 ปีแห่งประวัติศาสตร์ มหาวิทยาลัยวิชาธรรมศาสตร์และการเมืองสู่มหาวิทยาลัยวิจัยระดับสากล",
+        badge: "พ.ศ. 2477 — 2567",
+        csv: "01_flourish_scene1_student_growth.csv",
+        secondaryCsv: "01_flourish_bar_chart_race_faculties.csv",
+        secondaryLabel: "Bar Chart Race CSV",
+        desc: "ลำดับเส้นเวลาการก่อตั้งและวิวัฒนาการ 90 ปีแห่งประวัติศาสตร์ จากมหาวิทยาลัยวิชาธรรมศาสตร์และการเมืองสู่มหาวิทยาลัยวิจัยระดับสากล",
         highlights: [
           "พ.ศ. 2477: สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง (มธก.) โดย ศ.ดร.ปรีดี พนมยงค์ มีนักศึกษารุ่นแรก 7,094 คน",
           "พ.ศ. 2529: ขยายวิทยาเขตแรกสู่ปริมณฑล ณ ศูนย์รังสิต เพื่อรองรับสายวิทยาศาสตร์และเทคโนโลยี",
-          "พ.ศ. 2567: ก้าวสู่ 90 ปี มหาวิทยาลัยระดับโลกเพื่อประชาชนและเป้าหมาย TU 2034"
+          "พ.ศ. 2567: ก้าวสู่ 90 ปี มหาวิทยาลัยระดับโลกเพื่อประชาชน มีนักศึกษารวม 42,650 คน และเป้าหมาย TU 2034"
         ],
-        tableHeaders: ["Year_BE", "Era", "Milestone_TH", "Students", "Budget_MB"],
+        tableHeaders: ["Year_BE", "Year_AD", "Students", "Event_Milestone"],
         tableSample: [
-          ["2477", "สถาปนามหาวิทยาลัย", "ศาสตราจารย์ ดร.ปรีดี พนมยงค์ ก่อตั้ง มธก.", "7,094", "0.5"],
-          ["2529", "เปิดศูนย์รังสิต", "ขยายวิทยาเขตแรกสู่ปริมณฑลด้านวิทยาศาสตร์", "18,450", "840"],
-          ["2567", "90 ปี สู่สากล", "มหาวิทยาลัยแห่งความยั่งยืน TU 2034", "42,850", "15,350"]
+          ["2477", "1934", "7,094", "ตลาดวิชารุ่นแรก (ก่อตั้ง มธก.)"],
+          ["2488", "1945", "9,800", "สงครามโลกครั้งที่ 2"],
+          ["2495", "1952", "4,200", "ปรับสู่มหาวิทยาลัยระบบปิด"],
+          ["2508", "1965", "11,500", "ขยายสายสังคมศาสตร์"],
+          ["2519", "1976", "15,800", "ยุคประชาธิปไตย"],
+          ["2529", "1986", "21,000", "สถาปนาศูนย์รังสิต"],
+          ["2539", "1996", "27,500", "ขยายศูนย์พัทยาและลำปาง"],
+          ["2549", "2006", "33,200", "ขยายหลักสูตรนานาชาติ"],
+          ["2559", "2016", "39,400", "ศูนย์กลางนวัตกรรม"],
+          ["2567", "2024", "42,650", "ปัจจุบัน 4 ศูนย์ 19 คณะ"]
         ]
       },
       {
         id: 2,
-        title: "2. การย้ายศูนย์กลางประชากร 4 วิทยาเขต",
-        template: "Flourish Bump / Area Chart",
-        category: "Campus Transition",
-        csv: "02_campus_population_shift.csv",
-        badge: "100% ท่าพระจันทร์ ➔ 73.5% รังสิต",
-        desc: "การเปลี่ยนแปลงสัดส่วนนักศึกษาใน 4 ศูนย์การศึกษาหลัก (ท่าพระจันทร์, รังสิต, พัทยา, ลำปาง) ตั้งแต่ พ.ศ. 2500 ถึงปัจจุบัน",
+        title: "2. พิกัดภูมิศาสตร์ 4 ศูนย์การศึกษา",
+        template: "Marker Map / Geographic Explorer",
+        templateUrl: "https://app.flourish.studio/@flourish/marker-map",
+        category: "Campus GIS",
+        badge: "4 ศูนย์การศึกษา • 2,836 ไร่",
+        csv: "02_flourish_scene2_campus_locations.csv",
+        secondaryCsv: "02_flourish_campuses_map.csv",
+        secondaryLabel: "Campuses GIS Coordinates CSV",
+        desc: "ข้อมูลเชิงพื้นที่และบทบาทเชิงยุทธศาสตร์ ขนาดพื้นที่ จำนวนประชากรนักศึกษา และความเชี่ยวชาญเฉพาะทางของ 4 ศูนย์",
         highlights: [
-          "ท่าพระจันทร์จากเดิมรองรับ 100% ปัจจุบันปรับบทบาทเป็น Hub บัณฑิตศึกษาและนานาชาติ (14.8%)",
-          "ศูนย์รังสิตกลายเป็น Main Campus รองรับนักศึกษาถึง 73.5% พร้อมศูนย์การแพทย์และวิจัยครบวงจร",
-          "ศูนย์ลำปาง (7.2%) และศูนย์พัทยา (4.5%) ขยายพลังวิชาการสู่ภาคเหนือและเขตเศรษฐกิจพิเศษ EEC"
+          "ศูนย์รังสิต (1,757 ไร่): ศูนย์กลางการศึกษาหลัก ศูนย์การแพทย์ สวนป๋วย 100 ปี และอุทยานนวัตกรรม รองรับนักศึกษา 32,000 คน (75%)",
+          "ศูนย์ท่าพระจันทร์ (49 ไร่): หัวใจประวัติศาสตร์ มรดกประชาธิปไตย และศูนย์กลางหลักสูตรนานาชาติ/บัณฑิตศึกษา (6,500 คน)",
+          "ศูนย์ลำปาง (464 ไร่) & ศูนย์พัทยา (566 ไร่): ประตูการศึกษาล้านนาและศูนย์กลางนวัตกรรม EEC ยานยนต์ไฟฟ้า AI"
         ],
-        tableHeaders: ["Era_BE", "ThaPrachan_Pct", "Rangsit_Pct", "Lampang_Pct", "Pattaya_Pct"],
+        tableHeaders: ["Campus_Name", "Latitude", "Longitude", "Area_Rai", "Students", "Share_Pct", "Established_BE", "Key_Role"],
         tableSample: [
-          ["2500", "100.0%", "0.0%", "0.0%", "0.0%"],
-          ["2530", "68.0%", "32.0%", "0.0%", "0.0%"],
-          ["2567", "14.8%", "73.5%", "7.2%", "4.5%"]
+          ["ศูนย์ท่าพระจันทร์", "13.7557", "100.4930", "49", "6,500", "15%", "2477", "ศูนย์กลางประวัติศาสตร์ นานาชาติ และบัณฑิตศึกษา"],
+          ["ศูนย์รังสิต", "14.0736", "100.6067", "1,757", "32,000", "75%", "2529", "ศูนย์การศึกษาหลัก ศูนย์การแพทย์ สวนป๋วย 100 ปี นวัตกรรม"],
+          ["ศูนย์ลำปาง", "18.2982", "99.4897", "464", "2,200", "5%", "2539", "ประตูการศึกษาภาคเหนือ ศิลปวัฒนธรรมล้านนา สหวิทยาการ"],
+          ["ศูนย์พัทยา", "12.9236", "100.9925", "566", "1,500", "4%", "2538", "เขตเศรษฐกิจพิเศษ EEC ยานยนต์ไฟฟ้า นวัตกรรมดิจิทัล"]
         ]
       },
       {
         id: 3,
-        title: "3. การแข่งขัน TCAS 26 คณะ & คะแนนตัดต่ำสุด",
-        template: "Flourish Interactive Scatter / Bar Chart",
-        category: "Academic Admissions",
-        csv: "03_faculties_tcas_competition.csv",
-        badge: "26 คณะ / แพทย์ 83.1",
-        desc: "คะแนนเฉลี่ยตัดต่ำสุดในการรับสมัคร TCAS รอบ 3 และอัตราการแข่งขันในทุก 26 คณะ/สถาบัน ครอบคลุม 4 เสาหลักวิชาการ",
+        title: "3. ลำดับชั้นคณะวิชา & จำนวนนักศึกษา (21 คณะ)",
+        template: "Hierarchy Treemap / Sunburst",
+        templateUrl: "https://app.flourish.studio/@flourish/hierarchy",
+        category: "Academic Hierarchy",
+        badge: "21 คณะ • 4 เสาหลักวิชาการ",
+        csv: "03_flourish_scene3_faculty_hierarchy.csv",
+        secondaryCsv: "03_flourish_faculties_tcas.csv",
+        secondaryLabel: "26 คณะ & TCAS Scores CSV",
+        desc: "การกระจายตัวของประชากรนักศึกษาในแต่ละกลุ่มสาขาวิชาและคณะ สะท้อนโครงสร้างความเชี่ยวชาญแบบพหุวิทยาการ",
         highlights: [
-          "กลุ่มวิทยาศาสตร์สุขภาพและการแพทย์แข่งขันสูงสุด อัตราส่วน 1:14.0 (แพทย์ 83.1, ทันตแพทย์ 82.4)",
-          "พาณิชย์ฯ & นิติศาสตร์ ครองคะแนนสูงสุดในกลุ่มสังคมศาสตร์ (81.2 และ 78.5 ตามลำดับ)",
-          "วิศวกรรมศาสตร์ & วิทยาลัยนานาชาติปรีดี พนมยงค์ โดดเด่นด้านคะแนนและเครือข่ายสากล"
+          "คณะพาณิชยศาสตร์และการบัญชี (TBS): ครองอันดับ 1 กลุ่มสังคมศาสตร์ นักศึกษา 4,950 คน และเป็น Triple Crown",
+          "คณะนิติศาสตร์: เสาหลักรากฐานธรรมศาสตร์ นักศึกษา 3,800 คน ผลิตนักกฎหมายชั้นนำระดับประเทศ",
+          "คณะวิศวกรรมศาสตร์ & วิทยาศาสตร์ฯ: นำทัพสายเทคโนโลยีรวมกว่า 5,900 คน ขับเคลื่อน AI และ Deep Tech"
         ],
-        tableHeaders: ["Faculty", "Pillar", "Min_Score_100", "Accept_Ratio", "Capacity"],
+        tableHeaders: ["Cluster", "Faculty", "Students", "Cluster_Total", "Share_In_Cluster"],
         tableSample: [
-          ["แพทยศาสตร์", "วิทยาศาสตร์สุขภาพ", "83.1", "1:14.0", "220"],
-          ["ทันตแพทยศาสตร์", "วิทยาศาสตร์สุขภาพ", "82.4", "1:12.5", "100"],
-          ["พาณิชยศาสตร์และการบัญชี", "สังคมศาสตร์และมนุษยศาสตร์", "81.2", "1:9.4", "950"]
+          ["สังคมศาสตร์-มนุษยศาสตร์", "คณะพาณิชยศาสตร์และการบัญชี (TBS)", "4,950", "17,900", "27.7%"],
+          ["สังคมศาสตร์-มนุษยศาสตร์", "คณะนิติศาสตร์", "3,800", "17,900", "21.2%"],
+          ["สังคมศาสตร์-มนุษยศาสตร์", "คณะศิลปศาสตร์", "2,600", "17,900", "14.5%"],
+          ["สังคมศาสตร์-มนุษยศาสตร์", "คณะเศรษฐศาสตร์", "2,200", "17,900", "12.3%"],
+          ["วิทยาศาสตร์และเทคโนโลยี", "คณะวิศวกรรมศาสตร์", "3,100", "11,100", "27.9%"],
+          ["วิทยาศาสตร์และเทคโนโลยี", "คณะวิทยาศาสตร์และเทคโนโลยี", "2,800", "11,100", "25.2%"],
+          ["วิทยาศาสตร์สุขภาพ", "คณะแพทยศาสตร์", "1,250", "7,650", "16.3%"]
         ]
       },
       {
         id: 4,
-        title: "4. ความหลากหลายทางเพศภาวะใน 4 เสาหลักวิชาการ",
-        template: "Flourish Sliced / Stacked Percentage Bar",
+        title: "4. ความหลากหลายทางเพศภาวะใน 4 เสาหลัก",
+        template: "Grouped & Stacked Bar Chart",
+        templateUrl: "https://app.flourish.studio/@flourish/bar-chart",
         category: "Diversity & Demographics",
-        csv: "04_gender_diversity_distribution.csv",
-        badge: "สัดส่วนหญิง-ชาย & ความหลากหลาย",
-        desc: "โครงสร้างความหลากหลายทางเพศของนักศึกษาในแต่ละกลุ่มสาขาวิชา สะท้อนสังคมแห่งความเท่าเทียมและการเปิดกว้าง",
+        badge: "หญิง 62.4% • ชาย 37.6%",
+        csv: "04_flourish_scene4_gender_diversity.csv",
+        secondaryCsv: "04_flourish_gender_demographics.csv",
+        secondaryLabel: "Gender Summary Donut CSV",
+        desc: "โครงสร้างความหลากหลายทางเพศของนักศึกษาใน 4 กลุ่มสาขาวิชา สะท้อนสังคมแห่งความเท่าเทียมและการเปิดกว้าง",
         highlights: [
-          "วิทยาศาสตร์สุขภาพและการแพทย์: สัดส่วนนักศึกษาหญิง 71.5% และนักศึกษาชาย 28.5%",
-          "สังคมศาสตร์และมนุษยศาสตร์: สัดส่วนนักศึกษาหญิง 64.2% และนักศึกษาชาย 35.8%",
-          "วิทยาศาสตร์และเทคโนโลยี: สัดส่วนสมดุล มีนักศึกษาหญิง 53.8% สะท้อนการเติบโตของผู้หญิงในสาย STEM"
+          "วิทยาศาสตร์สุขภาพและการแพทย์: สัดส่วนนักศึกษาหญิงสูงสุด 68.0% (5,200 คน) ชาย 32.0% (2,450 คน)",
+          "สังคมศาสตร์และมนุษยศาสตร์: สัดส่วนนักศึกษาหญิง 64.0% (11,450 คน) ชาย 36.0% (6,450 คน)",
+          "วิทยาศาสตร์และเทคโนโลยี: นักศึกษาชาย 56.0% (6,220 คน) นักศึกษาหญิง 44.0% (4,880 คน) สะท้อนการเติบโตของผู้หญิงในสาย STEM"
         ],
-        tableHeaders: ["Academic_Pillar", "Female_Pct", "Male_Pct", "Total_Students"],
+        tableHeaders: ["Cluster", "Female_Students", "Male_Students", "Female_Pct", "Male_Pct", "Total_Students"],
         tableSample: [
-          ["สังคมศาสตร์และมนุษยศาสตร์", "64.2%", "35.8%", "19,200"],
-          ["วิทยาศาสตร์และเทคโนโลยี", "53.8%", "46.2%", "11,450"],
-          ["วิทยาศาสตร์สุขภาพและการแพทย์", "71.5%", "28.5%", "7,800"],
-          ["สถาบันและวิทยาลัยนานาชาติ", "59.8%", "40.2%", "4,400"]
+          ["สังคมศาสตร์-มนุษยศาสตร์", "11,450", "6,450", "64.0%", "36.0%", "17,900"],
+          ["วิทยาศาสตร์สุขภาพ", "5,200", "2,450", "68.0%", "32.0%", "7,650"],
+          ["นานาชาติและสถาบันบูรณาการ", "3,600", "2,400", "60.0%", "40.0%", "6,000"],
+          ["วิทยาศาสตร์และเทคโนโลยี", "4,880", "6,220", "44.0%", "56.0%", "11,100"],
+          ["ภาพรวมทั้งมหาวิทยาลัย", "25,130", "17,520", "58.9%", "41.1%", "42,650"]
         ]
       },
       {
         id: 5,
-        title: "5. โครงสร้างงบประมาณ 15,350 ล้านบาท",
-        template: "Flourish Sankey Diagram / Sunburst",
-        category: "Financial Architecture",
-        csv: "05_budget_revenue_streams.csv",
-        badge: "15,350 ล้านบาท",
-        desc: "แผนผังการไหลของกระแสน้ำรายได้ 5 ช่องทางหลักของมหาวิทยาลัย สู่การจัดสรรงบประมาณพัฒนาด้านต่างๆ",
+        title: "5. การโยกย้ายศูนย์กลางการศึกษาข้ามยุคสมัย",
+        template: "Sankey Diagram",
+        templateUrl: "https://app.flourish.studio/@flourish/sankey",
+        category: "Campus Migration",
+        badge: "ท่าพระจันทร์ ➔ รังสิต 75%",
+        csv: "05_flourish_scene5_migration_flow_sankey.csv",
+        secondaryCsv: "05_flourish_campus_migration_eras.csv",
+        secondaryLabel: "Campus Migration Eras CSV",
+        desc: "แผนภาพกระแสการโยกย้ายนักศึกษาและหลักสูตรปริญญาตรีจากท่าพระจันทร์สู่ศูนย์รังสิตเต็มรูปแบบ",
         highlights: [
-          "งบประมาณแผ่นดิน: 5,495 ล้านบาท (35.8%) รองรับภารกิจหลักและการวิจัยระดับชาติ",
-          "ค่าธรรมเนียมการศึกษา: 4,973 ล้านบาท (32.4%) หมุนเวียนเพื่อการสอนและพัฒนาหลักสูตร",
-          "รายได้บริหารทรัพย์สินและการลงทุน: 2,793 ล้านบาท (18.2%) สร้างความยั่งยืนทางการคลัง"
+          "พ.ศ. 2500: ศูนย์ท่าพระจันทร์รองรับนักศึกษา 100% ก่อนเริ่มมีข้อจำกัดด้านพื้นที่ขยาย",
+          "พ.ศ. 2529 - 2545: การย้ายนักศึกษาสายวิทยาศาสตร์และตามด้วยทุกหลักสูตรปริญญาตรีสู่รังสิต",
+          "ปัจจุบัน: รังสิตเป็น Main Campus (73.5% - 75%) ขณะที่ท่าพระจันทร์ปรับสู่ Global & Postgrad Hub (15%)"
         ],
-        tableHeaders: ["Stream_Name", "Amount_MB", "Percentage", "Strategic_Purpose"],
+        tableHeaders: ["Source_Node", "Target_Node", "Student_Flow_Value", "Era_Description"],
         tableSample: [
-          ["งบประมาณแผ่นดิน", "5,495", "35.8%", "เงินอุดหนุนและโครงการวิจัยชาติ"],
-          ["ค่าธรรมเนียมการศึกษา", "4,973", "32.4%", "การจัดการเรียนการสอน"],
-          ["ทรัพย์สินและการลงทุน", "2,793", "18.2%", "สำนักงานบริหารทรัพย์สิน TU"]
+          ["มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)", "รังสิต ปัจจุบัน (32,000 คน / ป.ตรี)", "18,000", "การย้ายหลักสูตร ป.ตรี สู่รังสิตเต็มรูปแบบ"],
+          ["มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)", "ท่าพระจันทร์ ปัจจุบัน (6,500 คน / นานาชาติ)", "6,500", "คงไว้เฉพาะหลักสูตรนานาชาติและ ป.โท-เอก"],
+          ["มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)", "ขยายสู่ศูนย์รังสิต (2529)", "14,000", "การก่อตั้งศูนย์รังสิตรองรับเอเชียนเกมส์"],
+          ["ขยายสู่ศูนย์รังสิต (2529)", "รังสิต ปัจจุบัน (32,000 คน / ป.ตรี)", "14,000", "การเติบโตของศูนย์รังสิต"],
+          ["ขยายสู่ศูนย์ลำปาง (2539)", "ลำปาง ปัจจุบัน (2,200 คน / ล้านนา)", "2,200", "พัฒนาการศึกษาภาคเหนือ"],
+          ["ขยายสู่ศูนย์พัทยา (2538)", "พัทยา ปัจจุบัน (1,500 คน / EEC)", "1,500", "รองรับเขตเศรษฐกิจพิเศษ EEC"]
         ]
       },
       {
         id: 6,
-        title: "6. แนวโน้มงบประมาณย้อนหลัง 5 ปี (2563-2567)",
-        template: "Flourish Projection Area / Trend Chart",
-        category: "Budget Growth",
-        csv: "06_budget_trend_5years.csv",
-        badge: "เติบโตเฉลี่ย +3.4% ต่อปี",
-        desc: "เส้นทางงบประมาณรวม 5 ปี สะท้อนการขยายตัวทางการเงินและความมั่นคงของมหาวิทยาลัยท่ามกลางความท้าทาย",
+        title: "6. โครงสร้างและแนวโน้มงบประมาณ 5 ปี",
+        template: "Bar & Waterfall Projection Chart",
+        templateUrl: "https://app.flourish.studio/@flourish/bar-chart",
+        category: "Financial Architecture",
+        badge: "15,350 ล้านบาท • เติบโต +3.4%/ปี",
+        csv: "06_flourish_budget_5year_streams.csv",
+        secondaryCsv: "06_flourish_scene6_budget_waterfall.csv",
+        secondaryLabel: "Budget Waterfall CSV",
+        desc: "โครงสร้างงบประมาณ 5 ช่องทางหลักของมหาวิทยาลัยและแนวโน้มการเติบโตต่อเนื่องตลอด 5 ปีงบประมาณ (2563-2567)",
         highlights: [
-          "ปี 2563: 13,420 ล้านบาท บริหารจัดการในภาวะวิกฤตสุขภาพระดับโลก",
-          "ปี 2565: ปรับฐานสู่ 14,210 ล้านบาท เร่งการลงทุนเทคโนโลยีดิจิทัล",
-          "ปี 2567: ทำสถิติสูงสุด 15,350 ล้านบาท มุ่งเน้น TU 2034 และ Net Zero"
+          "งบประมาณรวมเติบโตจาก 13,420 ล้านบาท (ปี 2563) สู่สถิติสูงสุด 15,350 ล้านบาท (ปี 2567)",
+          "งบประมาณแผ่นดิน (35.8% / 5,495 ลบ.) และค่าธรรมเนียมการศึกษา (32.4% / 4,973 ลบ.) เป็นฐานรายรับหลัก",
+          "รายได้บริหารทรัพย์สินและการลงทุนเติบโตสู่ 2,794 ล้านบาท (18.2%) สร้างอิสรภาพทางการคลัง"
         ],
-        tableHeaders: ["Year_BE", "Total_Budget_MB", "Gov_Subsidy_MB", "Autonomous_Revenue_MB"],
+        tableHeaders: ["Stream_ID", "Revenue_Stream", "Share_Pct", "Latest_Amount", "FY2563", "FY2564", "FY2565", "FY2566", "FY2567"],
         tableSample: [
-          ["2563", "13,420", "4,950", "8,470"],
-          ["2565", "14,210", "5,180", "9,030"],
-          ["2567", "15,350", "5,495", "9,855"]
+          ["total", "งบประมาณรวมทุกด้าน (Total Budget)", "100%", "15,350 ล้านบาท", "13,420", "13,850", "14,210", "14,780", "15,350"],
+          ["gov", "งบประมาณแผ่นดิน (Government Grants)", "35.8%", "5,495 ล้านบาท", "4,920", "5,060", "5,170", "5,320", "5,495"],
+          ["tuition", "รายได้ค่าธรรมเนียมการศึกษา (Tuition Fees)", "32.4%", "4,973 ล้านบาท", "4,280", "4,450", "4,610", "4,790", "4,973"],
+          ["assets", "ทรัพย์สินและผลประโยชน์ (Assets & Investments)", "18.2%", "2,794 ล้านบาท", "2,340", "2,420", "2,540", "2,680", "2,794"],
+          ["research", "รายได้วิจัยและบริการวิชาการ (Research & Services)", "8.6%", "1,320 ล้านบาท", "1,180", "1,210", "1,250", "1,270", "1,320"],
+          ["medical", "บริการทางการแพทย์ (Healthcare Services)", "5.0%", "768 ล้านบาท", "700", "710", "640", "720", "768"]
         ]
       },
       {
         id: 7,
-        title: "7. พิกัดภูมิศาสตร์และโครงสร้างพื้นฐาน 4 ศูนย์การศึกษา",
-        template: "Flourish Marker Map / Geographic Explorer",
-        category: "Campus GIS",
-        csv: "07_campuses_geography_metrics.csv",
-        badge: "ท่าพระจันทร์ • รังสิต • ลำปาง • พัทยา",
-        desc: "ข้อมูลเชิงพื้นที่และบทบาทเชิงยุทธศาสตร์ ขนาดพื้นที่ จำนวนประชากร และความเชี่ยวชาญเฉพาะทาง",
+        title: "7. อันดับมหาวิทยาลัยโลก & มาตรฐาน Triple Crown",
+        template: "Rankings / Slope Chart",
+        templateUrl: "https://app.flourish.studio/@flourish/slope-chart",
+        category: "Global Rankings",
+        badge: "QS Asia อันดับ 92 • Triple Crown",
+        csv: "07_flourish_scene7_rankings_trend.csv",
+        secondaryCsv: "07_flourish_business_schools.csv",
+        secondaryLabel: "Business Schools Triple Crown CSV",
+        desc: "เส้นทางพัฒนาการอันดับมหาวิทยาลัยระดับโลกและภูมิภาคเอเชีย พร้อมการรับรองมาตรฐาน Triple Crown (AACSB, EQUIS, AMBA)",
         highlights: [
-          "ศูนย์รังสิต (ปทุมธานี): 1,757 ไร่ ศูนย์นวัตกรรม โรงพยาบาลธรรมศาสตร์ และอุทยานวิทยาศาสตร์",
-          "ท่าพระจันทร์ (กทม.): 104 ไร่ หัวใจประวัติศาสตร์และอัตลักษณ์ประชาธิปไตยริมฝั่งเจ้าพระยา",
-          "ศูนย์ลำปาง (364 ไร่) & ศูนย์พัทยา (566 ไร่): เชื่อมโยงล้านนาสร้างสรรค์และเขตเศรษฐกิจตะวันออก EEC"
+          "QS Asia University Rankings: ไต่ระดับจากอันดับ 137 (2018) สู่ท็อป 100 เอเชีย อันดับ 92 (2024)",
+          "TBS Business & Management: อันดับโลกขยับขึ้นต่อเนื่องจาก 250 สู่ 140 ของโลก",
+          "Triple Crown: ได้รับการรับรองครบ 3 สถาบันมาตรฐานสากล (AACSB, EQUIS, AMBA) เป็นแห่งแรกในไทย อยู่ในกลุ่มท็อป 1% ของโลก"
         ],
-        tableHeaders: ["Campus_Name", "Province", "Area_Rai", "Latitude", "Longitude", "Role"],
+        tableHeaders: ["Year", "QS_Asia_University_Rank", "QS_Business_Management_TBS_Rank", "Benchmark_Top100"],
         tableSample: [
-          ["ท่าพระจันทร์", "กรุงเทพมหานคร", "104", "13.7557", "100.4907", "ประวัติศาสตร์และหลักสูตรนานาชาติ"],
-          ["ศูนย์รังสิต", "ปทุมธานี", "1,757", "14.0722", "100.6015", "ศูนย์วิจัย วิทยาศาสตร์ และสาธารณสุข"],
-          ["ศูนย์ลำปาง", "ลำปาง", "364", "18.3171", "99.3986", "พัฒนาท้องถิ่นและล้านนาสร้างสรรค์"],
-          ["ศูนย์พัทยา", "ชลบุรี", "566", "12.9275", "100.9925", "EEC ดิจิทัลและยานยนต์แห่งอนาคต"]
+          ["2018", "137", "250", "100"],
+          ["2019", "134", "225", "100"],
+          ["2020", "119", "210", "100"],
+          ["2021", "111", "195", "100"],
+          ["2022", "107", "180", "100"],
+          ["2023", "98", "160", "100"],
+          ["2024", "92", "140", "100"]
         ]
       },
       {
         id: 8,
-        title: "8. ตัวชี้วัดเป้าหมายยุทธศาสตร์ TU 2034",
-        template: "Flourish Radar / Spider Chart",
-        category: "Strategic Vision",
-        csv: "08_tu2034_strategic_kpis.csv",
-        badge: "Vision 2034: 4 แกนขับเคลื่อน",
-        desc: "ดัชนีชี้วัดผลสัมฤทธิ์ตามแผนยุทธศาสตร์ 10 ปี มุ่งสู่ Top 100 QS World University Ranking",
+        title: "8. ตัวชี้วัดความยั่งยืน SDG & Green Campus",
+        template: "Radar / Spider Chart",
+        templateUrl: "https://app.flourish.studio/@flourish/radar",
+        category: "Sustainability SDGs",
+        badge: "SDG 11 ท็อป 10 โลก • 15 MWp Solar",
+        csv: "08_flourish_scene8_sdg_radar.csv",
+        secondaryCsv: "08_flourish_sustainability_metrics.csv",
+        secondaryLabel: "Sustainability & Solar Metrics CSV",
+        desc: "ผลการประเมินคะแนนเป้าหมายการพัฒนาที่ยั่งยืนแห่งสหประชาชาติ (UN SDGs) และความสำเร็จด้านพลังงานสะอาด",
         highlights: [
-          "ความเป็นเลิศทางวิจัย (Research Excellence): เป้าหมาย 92.0 คะแนน เน้นผลงานเชิงประจักษ์",
-          "ทักษะศตวรรษที่ 21 (Future-Ready Skills): ปฏิรูปหลักสูตรและทักษะดิจิทัลเป้าหมาย 95.0 คะแนน",
-          "ความยั่งยืนและสุขภาพ (Green & Health): Net Zero ภายในปี 2034 และเครือข่ายสุขภาวะ 98.0 คะแนน"
+          "SDG 11 (Sustainable Cities & Communities): คะแนน 98.4 ติดอันดับ Top 10 ของโลก โดย THE Impact Rankings",
+          "SDG 4 (Quality Education): คะแนน 92.8 ยืนยันการเข้าถึงการศึกษาที่มีคุณภาพและเท่าเทียม",
+          "แคมปัสสีเขียว: โซลาร์รูฟท็อป 44 อาคาร กำลังผลิต 15 MWp และสวนป๋วย 100 ปี พื้นที่ 22,000 ตร.ม. ใหญ่ที่สุดในเอเชีย"
         ],
-        tableHeaders: ["Strategic_Dimension", "Current_2567", "Target_2577", "Weight_Pct"],
+        tableHeaders: ["SDG_Goal", "Goal_Title", "Thammasat_Score", "World_Class_Benchmark"],
         tableSample: [
-          ["Research & Innovation", "72.4", "92.0", "30%"],
-          ["Future Skills & Pedagogy", "78.5", "95.0", "25%"],
-          ["Green Campus & Net Zero", "81.0", "96.0", "25%"],
-          ["Health & Well-being", "84.2", "98.0", "20%"]
+          ["SDG 11", "Sustainable Cities & Communities (Top 10 โลก)", "98.4", "90.0"],
+          ["SDG 4", "Quality Education (การศึกษาเท่าเทียม)", "92.8", "90.0"],
+          ["SDG 7", "Affordable & Clean Energy (พลังงานสะอาด 35 MW)", "91.5", "90.0"],
+          ["SDG 17", "Partnerships for the Goals (พันธมิตรความร่วมมือ)", "90.4", "90.0"],
+          ["SDG 3", "Good Health & Well-being (สุขภาวะชุมชน)", "88.6", "90.0"],
+          ["SDG 13", "Climate Action (การรับมือโลกร้อน)", "87.2", "90.0"]
         ]
       },
       {
         id: 9,
-        title: "9. อัตราความสำเร็จและการมีงานทำของบัณฑิต",
-        template: "Flourish Hierarchy / Treemap",
-        category: "Graduate Employability",
-        csv: "09_graduate_employment_outcomes.csv",
-        badge: "92.4% มีงานทำใน 6 เดือน",
-        desc: "การกระจายตัวของบัณฑิตธรรมศาสตร์ในตลาดแรงงาน รายได้เฉลี่ยเริ่มต้น และการเป็นผู้ประกอบการสตาร์ทอัพ",
+        title: "9. การเติบโตของ รพ.ธรรมศาสตร์เฉลิมพระเกียรติ",
+        template: "Dual Axis Bar & Line Chart",
+        templateUrl: "https://app.flourish.studio/@flourish/bar-chart",
+        category: "Healthcare Infrastructure",
+        badge: "1.48 ล้านคน/ปี • 817 เตียง",
+        csv: "09_flourish_scene9_hospital_growth.csv",
+        secondaryCsv: "09_flourish_hospital_capacity.csv",
+        secondaryLabel: "Hospital Capacity Services CSV",
+        desc: "วิวัฒนาการ 37 ปีของโรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ สู่ศูนย์การแพทย์ระดับตติยภูมิชั้นสูงและเสาหลักสู้ภัยสุขภาพ",
         highlights: [
-          "บัณฑิตมีงานทำหรือศึกษาต่อภายใน 6 เดือน สูงถึง 92.4%",
-          "ภาคเอกชนและบรรษัทข้ามชาติเป็นปลายทางอันดับ 1 (58.4%) เงินเดือนเริ่มต้นเฉลี่ย 29,500 บาท",
-          "กลุ่มสตาร์ทอัพและธุรกิจส่วนตัวเติบโตสูงสุด +11.4% ต่อปี ด้วยรายได้เฉลี่ย 34,000 บาท"
+          "ผู้ป่วยนอก (OPD): เติบโตจาก 50,000 คน/ปี (ปี 2530) สู่ 1,480,000 คน/ปีในปัจจุบัน",
+          "เตียงผู้ป่วยตติยภูมิ: ขยายจาก 120 เตียง สู่ 817 เตียง พร้อมห้องผ่าตัดอัจฉริยะและศูนย์เฉพาะทางครบวงจร",
+          "บทบาทประวัติศาสตร์: โรงพยาบาลสนามแห่งแรกของไทยในวิกฤตโควิด-19 และศูนย์ฉีดวัคซีนระดับชาติ"
         ],
-        tableHeaders: ["Sector", "Employment_Pct", "Avg_Starting_Salary_THB", "Growth_Rate"],
+        tableHeaders: ["Year_BE", "Year_AD", "Outpatient_Visits", "Hospital_Beds", "Notable_Events"],
         tableSample: [
-          ["ธุรกิจเอกชนและบรรษัทข้ามชาติ", "58.4%", "29,500", "+5.2%"],
-          ["หน่วยงานภาครัฐและรัฐวิสาหกิจ", "18.2%", "22,000", "+3.0%"],
-          ["สตาร์ทอัพและธุรกิจส่วนตัว", "14.6%", "34,000", "+11.4%"],
-          ["องค์กรระหว่างประเทศ / NGO", "8.8%", "38,500", "+7.8%"]
+          ["2530", "1987", "50,000", "120", "เริ่มเปิดให้บริการ รพ.ธรรมศาสตร์"],
+          ["2540", "1997", "210,000", "350", "ขยายอาคารบริการทางการแพทย์"],
+          ["2550", "2007", "520,000", "650", "ยกระดับสู่ศูนย์การแพทย์ระดับตติยภูมิ"],
+          ["2560", "2017", "980,000", "950", "รองรับผู้ป่วยตติยภูมิขั้นสูง"],
+          ["2564", "2021", "1,250,000", "780", "โรงพยาบาลสนามแห่งแรกสู้ภัยโควิด-19"],
+          ["2567", "2024", "1,480,000", "817", "ศูนย์การแพทย์เพื่อประชาชนและ Smart Hospital"]
         ]
       },
       {
         id: 10,
-        title: "10. ผลงานวิจัยระดับนานาชาติและเครือข่ายความร่วมมือสากล",
-        template: "Flourish Network / Chord Diagram",
-        category: "Global Research",
-        csv: "10_research_global_citations.csv",
-        badge: "Scopus 2,400+ papers/year",
-        desc: "เครือข่ายความร่วมมือทางวิชาการและดัชนีการอ้างอิงงานวิจัย (Citations) ร่วมกับมหาวิทยาลัยชั้นนำทั่วโลก",
+        title: "10. ยุทธศาสตร์ TU 2034 และ 4 เสาหลักสู่ 100 ปี",
+        template: "Cards & Progress Gauges",
+        templateUrl: "https://app.flourish.studio/@flourish/cards",
+        category: "Strategic Centennial",
+        badge: "Vision 2034 • 4 เสาหลัก",
+        csv: "10_flourish_scene10_strategic_gauges.csv",
+        secondaryCsv: "10_flourish_centennial_pillars.csv",
+        secondaryLabel: "4 Centennial Pillars Vision CSV",
+        desc: "เป้าหมายเชิงยุทธศาสตร์สู่ทศวรรษที่ 10 (พ.ศ. 2577) ภายใต้วิสัยทัศน์มหาวิทยาลัยระดับโลกเพื่อประชาชน",
         highlights: [
-          "ผลงานวิจัยได้รับการตีพิมพ์ในฐานข้อมูล Scopus/WoS กว่า 2,400 บทความต่อปี",
-          "เครือข่ายความร่วมมือวิจัยครอบคลุมกว่า 350 มหาวิทยาลัยชั้นนำทั่วโลกในเอเชีย ยุโรป และอเมริกาเหนือ",
-          "ดัชนี Citation Impact เฉลี่ย 1.82 สะท้อนคุณภาพและคุณค่าเชิงวิชาการในเวทีสากล"
+          "Pillar 1 (Global Research): มุ่งสู่ Top 100 QS World University Ranking และเครือข่ายวิจัย 350+ มหาวิทยาลัย",
+          "Pillar 2 (Future Skills): ปฏิรูปหลักสูตรบูรณาการ AI 100% และ Lifelong Learning",
+          "Pillar 3 & 4: 88 SANDBOX ระดมทุน 10,000 ล้านบาท และ Net-Zero Campus ก่อนปี 2030"
         ],
-        tableHeaders: ["Region_Partner", "Collaborative_Papers", "Citation_Impact", "Top_Fields"],
+        tableHeaders: ["KPI_Name", "Current_Value", "Target_Value", "Unit", "Progress_Pct", "Target_Year"],
         tableSample: [
-          ["East Asia & ASEAN", "840", "1.65", "Medicine, AI, Logistics"],
-          ["Europe & UK", "620", "1.82", "Public Policy, Law, Renewable Energy"],
-          ["North America", "490", "2.10", "Biotech, Materials, Data Science"],
-          ["Australasia", "310", "1.74", "Health Sciences, Environmental Tech"]
+          ["Pillar 1: วิจัยสากล (Global Research)", "72.4", "92.0", "คะแนนดัชนีวิจัย", "78.7%", "พ.ศ. 2577 (ค.ศ. 2034)"],
+          ["Pillar 2: ทักษะดิจิทัล & AI (Future Skills)", "78.5", "95.0", "คะแนนหลักสูตร AI", "82.6%", "พ.ศ. 2577 (ค.ศ. 2034)"],
+          ["Pillar 3: 88 SANDBOX Startups", "6,200", "10,000", "ทีมสตาร์ทอัพบ่มเพาะ", "62.0%", "พ.ศ. 2577 (ค.ศ. 2034)"],
+          ["Pillar 4: TU Net-Zero Campus 2030", "78.0", "100.0", "เปอร์เซ็นต์พลังงานสะอาด", "78.0%", "พ.ศ. 2573 (ค.ศ. 2030)"]
         ]
       }
     ];
@@ -901,7 +957,9 @@
       document.getElementById('cockpitCompositeScore').textContent = composite;
     }
 
-    // 10. Flourish Hub Modal
+    // 10. Flourish Hub Modal & Live Visual Preview Engine
+    let flourishModalChartInstance = null;
+
     function openFlourishHubModal() {
       const modal = document.getElementById('flourishHubModal');
       if (modal) {
@@ -915,6 +973,10 @@
       const modal = document.getElementById('flourishHubModal');
       if (modal) {
         modal.style.display = 'none';
+        if (flourishModalChartInstance) {
+          flourishModalChartInstance.destroy();
+          flourishModalChartInstance = null;
+        }
       }
     }
 
@@ -929,10 +991,548 @@
         btn.innerHTML = `
           <div class="flourish-tab-num">ฉากที่ ${scene.id}</div>
           <div class="flourish-tab-title">${scene.title.split('. ')[1] || scene.title}</div>
-          <div class="flourish-tab-template">${scene.template}</div>
+          <div class="flourish-tab-template"><i class="fa-solid fa-chart-simple" style="font-size: 0.65rem;"></i> ${scene.template}</div>
         `;
         tabList.appendChild(btn);
       });
+    }
+
+    function renderFlourishModalLiveChart(idx) {
+      const canvas = document.getElementById('flourishModalChartCanvas');
+      if (!canvas) return;
+
+      if (flourishModalChartInstance) {
+        flourishModalChartInstance.destroy();
+        flourishModalChartInstance = null;
+      }
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let config = null;
+
+      if (idx === 0) {
+        // Scene 1: Line Chart (Student Growth 90 Years)
+        const years = ['2477', '2488', '2495', '2508', '2519', '2529', '2539', '2549', '2559', '2567'];
+        const students = [7094, 9800, 4200, 11500, 15800, 21000, 27500, 33200, 39400, 42650];
+        const notes = [
+          'ตลาดวิชารุ่นแรก (7,094 คน)',
+          'สงครามโลกครั้งที่ 2',
+          'ปรับสู่ระบบปิด',
+          'ขยายสายสังคมศาสตร์',
+          'ยุคประชาธิปไตย',
+          'สถาปนาศูนย์รังสิต',
+          'ขยายพัทยา-ลำปาง',
+          'ขยายหลักสูตรนานาชาติ',
+          'ศูนย์กลางนวัตกรรม',
+          'ปัจจุบัน 4 ศูนย์ 42,650 คน'
+        ];
+        config = {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [{
+              label: 'จำนวนนักศึกษาทั้งหมด (คน)',
+              data: students,
+              borderColor: '#c51944',
+              backgroundColor: 'rgba(197, 25, 68, 0.12)',
+              fill: true,
+              tension: 0.35,
+              borderWidth: 3,
+              pointRadius: 5,
+              pointBackgroundColor: '#ffffff',
+              pointBorderColor: '#c51944',
+              pointBorderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `นักศึกษา: ${ctx.parsed.y.toLocaleString()} คน`,
+                  afterLabel: ctx => `เหตุการณ์: ${notes[ctx.dataIndex] || ''}`
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { callback: v => (v / 1000).toFixed(0) + 'k' }
+              }
+            }
+          }
+        };
+      } else if (idx === 1) {
+        // Scene 2: 4 Campuses Infrastructure & Population
+        config = {
+          type: 'bar',
+          data: {
+            labels: ['ศูนย์รังสิต (Hub)', 'ศูนย์ท่าพระจันทร์', 'ศูนย์ลำปาง', 'ศูนย์พัทยา (EEC)'],
+            datasets: [
+              {
+                label: 'จำนวนนักศึกษา (คน)',
+                data: [32000, 6500, 2200, 1500],
+                backgroundColor: '#c51944',
+                borderRadius: 6,
+                yAxisID: 'y'
+              },
+              {
+                label: 'ขนาดพื้นที่ (ไร่)',
+                data: [1757, 49, 464, 566],
+                backgroundColor: '#f59e0b',
+                borderRadius: 6,
+                yAxisID: 'y1'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                position: 'left',
+                title: { display: true, text: 'นักศึกษา (คน)' }
+              },
+              y1: {
+                beginAtZero: true,
+                position: 'right',
+                grid: { drawOnChartArea: false },
+                title: { display: true, text: 'พื้นที่ (ไร่)' }
+              }
+            }
+          }
+        };
+      } else if (idx === 2) {
+        // Scene 3: Faculty Hierarchy & Student Count
+        config = {
+          type: 'bar',
+          data: {
+            labels: [
+              'พาณิชย์ฯ (TBS)',
+              'นิติศาสตร์',
+              'วิศวกรรมศาสตร์',
+              'วิทยาศาสตร์ฯ',
+              'ศิลปศาสตร์',
+              'เศรษฐศาสตร์',
+              'รัฐศาสตร์',
+              'วารสารศาสตร์',
+              'สหเวชศาสตร์',
+              'แพทยศาสตร์'
+            ],
+            datasets: [{
+              label: 'จำนวนนักศึกษา (คน)',
+              data: [4950, 3800, 3100, 2800, 2600, 2200, 2100, 1950, 1600, 1250],
+              backgroundColor: [
+                '#c51944', '#c51944', '#0284c7', '#0284c7', '#c51944',
+                '#c51944', '#c51944', '#c51944', '#10b981', '#10b981'
+              ],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `นักศึกษา: ${ctx.parsed.x.toLocaleString()} คน`
+                }
+              }
+            },
+            scales: {
+              x: {
+                beginAtZero: true,
+                ticks: { callback: v => v.toLocaleString() }
+              }
+            }
+          }
+        };
+      } else if (idx === 3) {
+        // Scene 4: Gender Diversity
+        config = {
+          type: 'bar',
+          data: {
+            labels: ['สังคมศาสตร์-มนุษยศาสตร์', 'วิทยาศาสตร์สุขภาพ', 'นานาชาติ & บูรณาการ', 'วิทยาศาสตร์และเทคโนโลยี'],
+            datasets: [
+              {
+                label: 'หญิง (Female %)',
+                data: [64.0, 68.0, 60.0, 44.0],
+                backgroundColor: '#c51944',
+                borderRadius: { topLeft: 4, bottomLeft: 4 }
+              },
+              {
+                label: 'ชาย (Male %)',
+                data: [36.0, 32.0, 40.0, 56.0],
+                backgroundColor: '#0b163b',
+                borderRadius: { topRight: 4, bottomRight: 4 }
+              }
+            ]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.x}%`
+                }
+              }
+            },
+            scales: {
+              x: {
+                stacked: true,
+                max: 100,
+                ticks: { callback: v => v + '%' }
+              },
+              y: { stacked: true }
+            }
+          }
+        };
+      } else if (idx === 4) {
+        // Scene 5: Campus Migration Eras
+        config = {
+          type: 'line',
+          data: {
+            labels: ['พ.ศ. 2500', 'พ.ศ. 2530', 'พ.ศ. 2545', 'พ.ศ. 2567 (ปัจจุบัน)'],
+            datasets: [
+              {
+                label: 'ศูนย์ท่าพระจันทร์ (%)',
+                data: [100.0, 68.0, 22.0, 14.8],
+                borderColor: '#c51944',
+                backgroundColor: 'rgba(197, 25, 68, 0.08)',
+                tension: 0.3,
+                borderWidth: 3,
+                pointRadius: 5
+              },
+              {
+                label: 'ศูนย์รังสิต (%)',
+                data: [0.0, 32.0, 70.0, 73.5],
+                borderColor: '#0284c7',
+                backgroundColor: 'rgba(2, 132, 199, 0.08)',
+                tension: 0.3,
+                borderWidth: 3,
+                pointRadius: 5
+              },
+              {
+                label: 'ศูนย์ลำปาง (%)',
+                data: [0.0, 0.0, 5.0, 7.3],
+                borderColor: '#f59e0b',
+                tension: 0.3,
+                borderWidth: 2,
+                pointRadius: 4
+              },
+              {
+                label: 'ศูนย์พัทยา (%)',
+                data: [0.0, 0.0, 3.0, 4.4],
+                borderColor: '#10b981',
+                tension: 0.3,
+                borderWidth: 2,
+                pointRadius: 4
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}%`
+                }
+              }
+            },
+            scales: {
+              y: {
+                max: 100,
+                beginAtZero: true,
+                ticks: { callback: v => v + '%' }
+              }
+            }
+          }
+        };
+      } else if (idx === 5) {
+        // Scene 6: 5-Year Budget Streams
+        config = {
+          type: 'bar',
+          data: {
+            labels: ['2563', '2564', '2565', '2566', '2567'],
+            datasets: [
+              {
+                type: 'bar',
+                label: 'งบประมาณแผ่นดิน (ลบ.)',
+                data: [4920, 5060, 5170, 5320, 5495],
+                backgroundColor: '#0284c7',
+                borderRadius: 4
+              },
+              {
+                type: 'bar',
+                label: 'ค่าธรรมเนียมการศึกษา (ลบ.)',
+                data: [4280, 4450, 4610, 4790, 4973],
+                backgroundColor: '#c51944',
+                borderRadius: 4
+              },
+              {
+                type: 'bar',
+                label: 'ทรัพย์สินและการลงทุน (ลบ.)',
+                data: [2340, 2420, 2540, 2680, 2794],
+                backgroundColor: '#f59e0b',
+                borderRadius: 4
+              },
+              {
+                type: 'line',
+                label: 'งบรวมทุกด้าน (ลบ.)',
+                data: [13420, 13850, 14210, 14780, 15350],
+                borderColor: '#0b163b',
+                borderWidth: 3,
+                tension: 0.2,
+                pointRadius: 5,
+                fill: false
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()} ล้านบาท`
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { callback: v => (v / 1000).toFixed(0) + 'k' }
+              }
+            }
+          }
+        };
+      } else if (idx === 6) {
+        // Scene 7: Rankings Progression
+        config = {
+          type: 'line',
+          data: {
+            labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+            datasets: [
+              {
+                label: 'QS Asia University Rank (อันดับเอเชีย)',
+                data: [137, 134, 119, 111, 107, 98, 92],
+                borderColor: '#c51944',
+                backgroundColor: 'rgba(197, 25, 68, 0.1)',
+                borderWidth: 3.5,
+                pointRadius: 6,
+                pointBackgroundColor: '#ffffff',
+                pointBorderColor: '#c51944',
+                pointBorderWidth: 2.5,
+                tension: 0.3
+              },
+              {
+                label: 'TBS Business & Management (อันดับโลก)',
+                data: [250, 225, 210, 195, 180, 160, 140],
+                borderColor: '#0284c7',
+                borderWidth: 2.5,
+                borderDash: [5, 5],
+                pointRadius: 5,
+                tension: 0.3
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `${ctx.dataset.label}: อันดับที่ ${ctx.parsed.y}`
+                }
+              }
+            },
+            scales: {
+              y: {
+                reverse: true,
+                min: 60,
+                max: 270,
+                title: { display: true, text: 'อันดับ Rank (ยิ่งน้อยยิ่งสูง)' }
+              }
+            }
+          }
+        };
+      } else if (idx === 7) {
+        // Scene 8: SDG Radar
+        config = {
+          type: 'radar',
+          data: {
+            labels: [
+              'SDG 11: เมืองยั่งยืน (Top 10)',
+              'SDG 4: การศึกษาเท่าเทียม',
+              'SDG 7: พลังงานสะอาด (35MW)',
+              'SDG 17: หุ้นส่วนความร่วมมือ',
+              'SDG 3: สุขภาพและสุขภาวะ',
+              'SDG 13: รับมือภูมิอากาศ'
+            ],
+            datasets: [
+              {
+                label: 'คะแนน ม.ธรรมศาสตร์',
+                data: [98.4, 92.8, 91.5, 90.4, 88.6, 87.2],
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.25)',
+                pointBackgroundColor: '#10b981',
+                borderWidth: 2.5,
+                pointRadius: 4
+              },
+              {
+                label: 'เกณฑ์ระดับโลก (Benchmark = 90)',
+                data: [90.0, 90.0, 90.0, 90.0, 90.0, 90.0],
+                borderColor: '#94a3b8',
+                borderDash: [4, 4],
+                backgroundColor: 'rgba(148, 163, 184, 0.08)',
+                borderWidth: 1.5,
+                pointRadius: 0
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                min: 75,
+                max: 100,
+                ticks: { stepSize: 5 }
+              }
+            },
+            plugins: {
+              legend: { position: 'top' }
+            }
+          }
+        };
+      } else if (idx === 8) {
+        // Scene 9: Thammasat Hospital Healthcare Growth
+        config = {
+          type: 'bar',
+          data: {
+            labels: ['2530', '2540', '2550', '2560', '2564', '2567'],
+            datasets: [
+              {
+                type: 'bar',
+                label: 'ผู้ป่วยนอก OPD (คน/ปี)',
+                data: [50000, 210000, 520000, 980000, 1250000, 1480000],
+                backgroundColor: '#0284c7',
+                borderRadius: 4,
+                yAxisID: 'y'
+              },
+              {
+                type: 'line',
+                label: 'เตียงผู้ป่วยตติยภูมิ (เตียง)',
+                data: [120, 350, 650, 950, 780, 817],
+                borderColor: '#c51944',
+                backgroundColor: '#c51944',
+                borderWidth: 3,
+                pointRadius: 5,
+                yAxisID: 'y1',
+                tension: 0.3
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`
+                }
+              }
+            },
+            scales: {
+              y: {
+                position: 'left',
+                beginAtZero: true,
+                title: { display: true, text: 'ผู้ป่วยนอก (คน)' },
+                ticks: { callback: v => (v / 1000).toFixed(0) + 'k' }
+              },
+              y1: {
+                position: 'right',
+                beginAtZero: true,
+                grid: { drawOnChartArea: false },
+                title: { display: true, text: 'เตียงผู้ป่วย' }
+              }
+            }
+          }
+        };
+      } else if (idx === 9) {
+        // Scene 10: Centennial Strategic Pillars Progress
+        config = {
+          type: 'bar',
+          data: {
+            labels: [
+              'Pillar 1: วิจัยสากล (Top 100 QS)',
+              'Pillar 2: ทักษะ AI (AI Pedagogy 100%)',
+              'Pillar 3: 88 SANDBOX (10,000 ลบ.)',
+              'Pillar 4: Net-Zero Campus 2030'
+            ],
+            datasets: [
+              {
+                label: 'ระดับความสำเร็จปัจจุบัน (Current %)',
+                data: [72.4, 78.5, 62.0, 78.0],
+                backgroundColor: '#0284c7',
+                borderRadius: 4
+              },
+              {
+                label: 'เป้าหมาย 100 ปี TU 2034 (Target %)',
+                data: [92.0, 95.0, 100.0, 100.0],
+                backgroundColor: '#c51944',
+                borderRadius: 4
+              }
+            ]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.x}%`
+                }
+              }
+            },
+            scales: {
+              x: {
+                max: 100,
+                beginAtZero: true,
+                ticks: { callback: v => v + '%' }
+              }
+            }
+          }
+        };
+      }
+
+      if (config) {
+        flourishModalChartInstance = new Chart(ctx, config);
+      }
     }
 
     function selectFlourishScene(idx) {
@@ -947,43 +1547,102 @@
 
       const tableHeaderHtml = s.tableHeaders.map(h => `<th>${h}</th>`).join('');
       const tableRowsHtml = s.tableSample.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('');
-      const highlightsHtml = s.highlights.map(h => `<li><i class="fa-solid fa-check-circle" style="color: var(--tu-crimson); margin-right: 6px;"></i>${h}</li>`).join('');
+      const highlightsHtml = s.highlights.map(h => `<li><i class="fa-solid fa-check-circle" style="color: var(--tu-crimson); margin-top: 3px;"></i><span>${h}</span></li>`).join('');
 
       content.innerHTML = `
         <div class="flourish-detail-badge">${s.category} • ${s.badge}</div>
         <h3 class="flourish-detail-title">${s.title}</h3>
         <p class="flourish-detail-desc">${s.desc}</p>
-        
+
+        <!-- ACTION TOOLBAR: DOWNLOAD BUTTONS & FLOURISH TEMPLATE -->
+        <div class="flourish-actions-toolbar">
+          <a href="flourish_data/${s.csv}" download="${s.csv}" class="flourish-action-btn flourish-btn-primary" title="ดาวน์โหลดไฟล์ CSV นี้">
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>ดาวน์โหลด CSV: <strong>${s.csv}</strong></span>
+          </a>
+          ${s.secondaryCsv ? `
+          <a href="flourish_data/${s.secondaryCsv}" download="${s.secondaryCsv}" class="flourish-action-btn flourish-btn-secondary" title="ดาวน์โหลดชุดข้อมูลเสริม">
+            <i class="fa-solid fa-download"></i>
+            <span>${s.secondaryLabel}</span>
+          </a>` : ''}
+          <a href="${s.templateUrl}" target="_blank" rel="noopener noreferrer" class="flourish-action-btn flourish-btn-outline" title="เปิดเทมเพลตบน Flourish Studio">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>เปิดเทมเพลต <strong>${s.template}</strong> บน Flourish Studio</span>
+          </a>
+        </div>
+
+        <!-- LIVE INTERACTIVE VISUAL PREVIEW -->
         <div class="flourish-preview-box">
           <div class="flourish-preview-header">
-            <div style="font-weight: 700; color: #1e293b; font-size: 0.95rem;">
-              <i class="fa-solid fa-chart-line" style="color: var(--tu-crimson); margin-right: 8px;"></i>
-              Flourish Visualization Preview (${s.template})
+            <div class="flourish-preview-title">
+              <i class="fa-solid fa-chart-line" style="color: var(--tu-crimson);"></i>
+              <span>พรีวิวการแสดงผลชาร์ตสด (Live Interactive Visual Preview)</span>
             </div>
-            <a href="https://flourish.studio" target="_blank" class="flourish-direct-link">
-              เปิดใน Flourish Studio <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+            <span class="flourish-template-pill">
+              <i class="fa-solid fa-shapes"></i> Flourish Template: ${s.template}
+            </span>
           </div>
-          <div class="flourish-preview-body">
-            <div class="flourish-preview-info">
-              <div><strong>ชุดข้อมูล CSV อ้างอิง:</strong> <code>flourish_data/${s.csv}</code> (พร้อมเชื่อมต่อใน Colab และ Flourish ทันที)</div>
-              <div style="margin-top: 6px;"><strong>ไฮไลท์และข้อค้นพบสำคัญ:</strong></div>
-              <ul style="margin: 6px 0 0 16px; padding: 0; line-height: 1.8;">
-                ${highlightsHtml}
-              </ul>
+          <div class="flourish-chart-stage">
+            <canvas id="flourishModalChartCanvas"></canvas>
+          </div>
+        </div>
+
+        <!-- 3-STEP GUIDE ON HOW TO UPLOAD TO FLOURISH -->
+        <div class="flourish-guide-card">
+          <div class="flourish-guide-title">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>วิธีนำเข้าไฟล์ CSV ใน Flourish Studio (เพียง 3 ขั้นตอนง่ายๆ)</span>
+          </div>
+          <div class="flourish-guide-steps">
+            <div class="flourish-step-item">
+              <div class="flourish-step-num">1</div>
+              <div class="flourish-step-text"><strong>ดาวน์โหลด CSV:</strong> กดปุ่มสีแดงด้านบนเพื่อบันทึกไฟล์ <code>${s.csv}</code> ลงในคอมพิวเตอร์ของคุณ</div>
             </div>
-            <div style="overflow-x: auto; margin-top: 14px;">
-              <table class="flourish-data-table">
-                <thead><tr>${tableHeaderHtml}</tr></thead>
-                <tbody>${tableRowsHtml}</tbody>
-              </table>
+            <div class="flourish-step-item">
+              <div class="flourish-step-num">2</div>
+              <div class="flourish-step-text"><strong>เปิดเทมเพลต:</strong> ไปที่ Flourish Studio หรือกดปุ่ม <em>เปิดเทมเพลต</em> ด้านบน แล้วคลิก <em>+ New visualisation</em></div>
+            </div>
+            <div class="flourish-step-item">
+              <div class="flourish-step-num">3</div>
+              <div class="flourish-step-text"><strong>อัปโหลดข้อมูล:</strong> กดแท็บ <em>Data</em> ด้านบน > คลิก <em>Upload data file</em> แล้วเลือกไฟล์ CSV — กราฟสร้างเสร็จ 100%!</div>
             </div>
           </div>
         </div>
+
+        <!-- INSIGHTS & FINDINGS -->
+        <div class="flourish-insights-box">
+          <div class="flourish-insights-title">
+            <i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i>
+            <span>ข้อค้นพบและสาระสำคัญจากข้อมูลชุดนี้ (Key Findings &amp; Story Arc)</span>
+          </div>
+          <ul class="flourish-highlights-list">
+            ${highlightsHtml}
+          </ul>
+        </div>
+
+        <!-- DATA TABLE PREVIEW -->
+        <div class="flourish-table-container">
+          <div class="flourish-table-header">
+            <div style="font-weight: 700; color: #1e293b; font-size: 0.85rem;">
+              <i class="fa-solid fa-table" style="color: #0284c7; margin-right: 6px;"></i>
+              ตัวอย่างข้อมูลในไฟล์ CSV (Preview — <code>${s.csv}</code>)
+            </div>
+            <span style="font-size: 0.74rem; color: #64748b;">แสดง ${s.tableSample.length} แถวตัวอย่าง</span>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="flourish-data-table">
+              <thead><tr>${tableHeaderHtml}</tr></thead>
+              <tbody>${tableRowsHtml}</tbody>
+            </table>
+          </div>
+        </div>
       `;
+
+      // Render the live chart preview on the new canvas!
+      renderFlourishModalLiveChart(idx);
     }
 
-    // 11. Chart.js Initializations
+        // 11. Chart.js Initializations
     let campusDistChart = null;
 
     // Mobile Nav Drawer Handlers

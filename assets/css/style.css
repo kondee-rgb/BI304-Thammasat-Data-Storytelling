@@ -2310,15 +2310,16 @@
       color: var(--tu-crimson);
     }
 
-    /* Flourish Hub Modal */
+    /* Flourish Hub Modal & CSV Repository */
     .flourish-modal-backdrop {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(11, 22, 59, 0.82);
-      backdrop-filter: blur(10px);
+      background: rgba(11, 22, 59, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       z-index: 13000;
       display: none;
       align-items: center;
@@ -2328,29 +2329,61 @@
 
     .flourish-modal-card {
       background: #ffffff;
-      border-radius: 22px;
-      max-width: 1050px;
-      width: 100%;
-      max-height: 90vh;
+      border-radius: 20px;
+      max-width: 1140px;
+      width: 95vw;
+      max-height: 92vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.4);
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .flourish-modal-header {
-      padding: 20px 28px;
+      padding: 18px 26px;
       background: #f8fafc;
       border-bottom: 1px solid #e2e8f0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .flourish-modal-header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .flourish-zip-all-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .flourish-zip-all-btn:hover {
+      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+      color: #ffffff;
     }
 
     .flourish-modal-body {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 290px 1fr;
       flex: 1;
       overflow: hidden;
     }
@@ -2367,8 +2400,8 @@
 
     .flourish-tab-btn {
       background: transparent;
-      border: none;
-      padding: 12px 14px;
+      border: 1px solid transparent;
+      padding: 10px 12px;
       border-radius: 10px;
       text-align: left;
       cursor: pointer;
@@ -2381,20 +2414,25 @@
 
     .flourish-tab-btn.active {
       background: #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      border-left: 4px solid #0284c7;
+      border-color: #e2e8f0;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+      border-left: 4px solid #c51944;
     }
 
     .flourish-tab-num {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       color: #0284c7;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
+    .flourish-tab-btn.active .flourish-tab-num {
+      color: #c51944;
+    }
+
     .flourish-tab-title {
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 700;
       color: #1e293b;
       margin-top: 2px;
@@ -2402,13 +2440,16 @@
     }
 
     .flourish-tab-template {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: #64748b;
-      margin-top: 4px;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .flourish-scene-detail-pane {
-      padding: 28px 32px;
+      padding: 24px 28px;
       overflow-y: auto;
     }
 
@@ -2420,69 +2461,273 @@
       background: #e0f2fe;
       padding: 4px 12px;
       border-radius: 9999px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .flourish-detail-title {
       font-family: var(--font-serif);
-      font-size: 1.55rem;
+      font-size: 1.45rem;
       font-weight: 700;
       color: var(--tu-navy);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .flourish-detail-desc {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: #475569;
-      line-height: 1.6;
-      margin-bottom: 20px;
+      line-height: 1.55;
+      margin-bottom: 16px;
     }
 
+    /* Action Toolbar (Download CSV & Flourish Link) */
+    .flourish-actions-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .flourish-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .flourish-btn-primary {
+      background: linear-gradient(135deg, #c51944 0%, #991b1b 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(197, 25, 68, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .flourish-btn-primary:hover {
+      background: linear-gradient(135deg, #a51437 0%, #7f1d1d 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(197, 25, 68, 0.35);
+      color: #ffffff;
+    }
+
+    .flourish-btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .flourish-btn-secondary:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+      transform: translateY(-1px);
+    }
+
+    .flourish-btn-outline {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    .flourish-btn-outline:hover {
+      background: #bae6fd;
+      color: #075985;
+      transform: translateY(-1px);
+    }
+
+    /* Live Interactive Visual Preview Box */
     .flourish-preview-box {
-      background: #f8fafc;
+      background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 20px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .flourish-preview-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       padding-bottom: 10px;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid #f1f5f9;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .flourish-direct-link {
-      font-size: 0.78rem;
+    .flourish-preview-title {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flourish-template-pill {
+      font-size: 0.74rem;
       font-weight: 700;
       color: #0284c7;
-      text-decoration: none;
+      background: #e0f2fe;
+      padding: 3px 10px;
+      border-radius: 9999px;
       display: inline-flex;
       align-items: center;
       gap: 5px;
     }
 
+    .flourish-chart-stage {
+      position: relative;
+      height: 270px;
+      width: 100%;
+    }
+
+    /* 3-Step Guide Card */
+    .flourish-guide-card {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+    }
+
+    .flourish-guide-title {
+      font-weight: 700;
+      color: #92400e;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .flourish-guide-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .flourish-step-item {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(253, 230, 138, 0.6);
+    }
+
+    .flourish-step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #f59e0b;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .flourish-step-text {
+      font-size: 0.77rem;
+      color: #78350f;
+      line-height: 1.45;
+    }
+
+    .flourish-step-text code {
+      background: rgba(245, 158, 11, 0.15);
+      padding: 1px 4px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      color: #92400e;
+    }
+
+    /* Key Insights & Findings Box */
+    .flourish-insights-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+    }
+
+    .flourish-insights-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #1e293b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flourish-highlights-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .flourish-highlights-list li {
+      font-size: 0.82rem;
+      color: #475569;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    /* Data Table Preview */
+    .flourish-table-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      overflow: hidden;
+    }
+
+    .flourish-table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
     .flourish-data-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.8rem;
-      margin-top: 10px;
+      font-size: 0.78rem;
     }
 
     .flourish-data-table th {
-      background: #e2e8f0;
+      background: #f1f5f9;
       padding: 8px 10px;
       text-align: left;
       color: #334155;
+      font-weight: 700;
+      border-bottom: 1px solid #e2e8f0;
+      white-space: nowrap;
     }
 
     .flourish-data-table td {
       padding: 8px 10px;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid #f1f5f9;
       color: #475569;
+      white-space: nowrap;
+    }
+
+    .flourish-data-table tbody tr:hover {
+      background: #f8fafc;
     }
 
     /* ==========================================================================

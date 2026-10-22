@@ -1,5 +1,29 @@
 # บันทึกการเปลี่ยนแปลงของระบบ (Project Changelog)
 
+## [Flourish Hub & CSV Repository Upgrade] - 2026-10-22 (Live Interactive Chart Preview & 1-Click CSV Downloads for 10 Scenes)
+
+### สรุปการแก้ไขและพัฒนาฟีเจอร์ Flourish Hub ตามคำขอของผู้ใช้:
+1. **แก้ปัญหา "กด Flourish แล้วไม่ขึ้นอะไร" (Live Interactive Visual Chart Preview)**:
+   - ฝังตัวเอนจินแสดงผลกราฟสด (Live Interactive Canvas Chart Preview) ผ่าน Chart.js ในกล่องพรีวิวของ Flourish Hub Modal สำหรับครบทั้ง 10 ฉาก (Scenes 1 ถึง 10)
+   - แต่ละฉากแสดงชาร์ตจริงที่ตรงกับเทมเพลตของ Flourish อย่างสวยงาม มีปฏิสัมพันธ์ (Hover Tooltips, Milestones, Dual Y-Axis, Stacked Bar, Inverted Ranks, Radar Benchmark)
+   - เมื่อคลิกเปลี่ยนแท็บฉากใด ชาร์ตจะถูกเรนเดอร์ใหม่ทันทีอย่างราบรื่น ไม่ว่างเปล่าอีกต่อไป
+2. **ระบบดาวน์โหลดไฟล์ CSV สำหรับอัปโหลดขึ้น Flourish Studio ด้วยตัวเอง (1-Click CSV Downloads)**:
+   - เพิ่มปุ่มดาวน์โหลดไฟล์ CSV หลักของแต่ละฉากแบบเด่นชัด (สีแดงเลือดหมู Thammasat Crimson): `📥 ดาวน์โหลด CSV: [ชื่อไฟล์]`
+   - มีปุ่มดาวน์โหลดไฟล์เสริม (Secondary Dataset) สำหรับฉากที่มีข้อมูลหลายมุมมอง (เช่น Bar Chart Race, GIS Coordinates, Triple Crown Business Schools, 4 Centennial Pillars)
+   - เพิ่มปุ่มเปิดตรงสู่แม่แบบที่แนะนำบน Flourish Studio (เช่น Line Chart, Marker Map, Hierarchy Treemap, Sankey, Radar, Cards)
+   - เพิ่มปุ่มดาวน์โหลดชุดข้อมูล CSV ครบทั้ง 10 ฉากในไฟล์ ZIP เดียว (`thammasat_flourish_all_scenes.zip`) บนแถบ Header ของโมดอล
+3. **การ์ดแนะนำวิธีใช้งาน 3 ขั้นตอนง่ายๆ (3-Step Quick Guide)**:
+   - แสดงวิธีนำเข้าไฟล์ CSV ใน Flourish Studio แบบเป็นขั้นตอน:
+     1. ดาวน์โหลดไฟล์ CSV
+     2. เปิดเทมเพลตบน Flourish Studio
+     3. กดแท็บ Data > Upload data file
+4. **ตารางพรีวิวข้อมูลจริง (Raw Data Table Preview)**:
+   - อัปเดตคอลัมน์และข้อมูลตัวอย่างให้ตรงกับไฟล์ `.csv` จริงทุกประการ
+5. **การทดสอบความถูกต้อง**:
+   - ตรวจสอบผ่าน Puppeteer: เปิดโมดอลได้สมบูรณ์, เรนเดอร์ครบ 10 ฉาก, ลิงก์ดาวน์โหลดถูกต้องทุกไฟล์, JavaScript Console 0 Errors
+
+---
+
 ## [Header Navigation Scrollbar Polish] - 2026-10-22 (Native Horizontal Scrollbar at Bottom of Tab Bar)
 
 ### สรุปการปรับปรุงแถบนำทางส่วนหัวตามคำขอของผู้ใช้:

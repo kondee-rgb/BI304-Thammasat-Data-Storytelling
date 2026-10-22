@@ -1485,26 +1485,30 @@
   <!-- ==========================================================================
        FLOURISH 10-SCENE DATA STORYTELLING HUB MODAL
        ========================================================================== -->
-  <div class="flourish-modal-backdrop" id="flourishHubModal">
+  <div class="flourish-modal-backdrop" id="flourishHubModal" onclick="if(event.target===this) closeFlourishHubModal()">
     <div class="flourish-modal-card">
       <div class="flourish-modal-header">
         <div>
-          <div style="font-size: 0.75rem; font-weight: 800; color: #0284c7; letter-spacing: 0.08em; text-transform: uppercase;">
-            <i class="fa-solid fa-chart-pie"></i> FLOURISH DATA STORYTELLING HUB
+          <div style="font-size: 0.75rem; font-weight: 800; color: #0284c7; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-chart-pie"></i> FLOURISH DATA STORYTELLING HUB &amp; CSV REPOSITORY
           </div>
           <h3 style="font-family: var(--font-serif); font-size: 1.55rem; font-weight: 700; color: var(--tu-navy); margin: 4px 0;">
-            คลังภาพข้อมูล Flourish ครบ 10 ฉาก (Scenes 1 — 10)
+            คลังภาพข้อมูล Flourish &amp; ดาวน์โหลด CSV ครบ 10 ฉาก
           </h3>
           <p style="font-size: 0.82rem; color: #64748b; margin: 0;">
-            ชุดข้อมูล CSV และเทมเพลตมาตรฐานสากล ออกแบบตามหลัก Edward Tufte & LATCH Framework
+            พรีวิวชาร์ตสด (Live Interactive Visual) และดาวน์โหลดไฟล์ CSV สำหรับนำไปสร้างผลงานบน Flourish Studio ได้ทันที
           </p>
         </div>
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <a href="https://colab.research.google.com/github/kondee-rgb/BI304-Thammasat-Data-Storytelling/blob/main/BI304_Thammasat_Data_Storytelling.ipynb" target="_blank" rel="noopener noreferrer" class="header-colab-btn" style="padding: 6px 12px; font-size: 0.78rem;">
+        <div class="flourish-modal-header-actions">
+          <a href="flourish_data/thammasat_flourish_all_scenes.zip" download="thammasat_flourish_all_scenes.zip" class="flourish-zip-all-btn" title="ดาวน์โหลดชุดข้อมูล CSV ครบทั้ง 10 ฉาก ในไฟล์ ZIP เดียว">
+            <i class="fa-solid fa-file-zipper"></i>
+            <span>ดาวน์โหลด CSV ทั้ง 10 ฉาก (.ZIP)</span>
+          </a>
+          <a href="https://colab.research.google.com/github/kondee-rgb/BI304-Thammasat-Data-Storytelling/blob/main/BI304_Thammasat_Data_Storytelling.ipynb" target="_blank" rel="noopener noreferrer" class="header-colab-btn" style="padding: 7px 14px; font-size: 0.8rem;">
             <img src="assets/colab_icon.svg" alt="Google Colab" style="width: 15px; height: 15px;">
             <span>Google Colab</span>
           </a>
-          <button class="modal-close-btn" onclick="closeFlourishHubModal()"><i class="fa-solid fa-xmark"></i></button>
+          <button class="modal-close-btn" onclick="closeFlourishHubModal()" title="ปิดหน้าต่าง"><i class="fa-solid fa-xmark"></i></button>
         </div>
       </div>
 
