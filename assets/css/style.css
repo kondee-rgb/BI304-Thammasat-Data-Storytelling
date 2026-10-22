@@ -3402,3 +3402,30 @@
         gap: 16px;
       }
     }
+
+    /* ==========================================================================
+       PHASE 7: PREFERS-REDUCED-MOTION & INTERACTIVE POLISH
+       ========================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .tu-student-walker-img {
+        animation: none !important;
+      }
+    }
+
+    .cockpit-reset-btn {
+      transition: all 0.2s ease;
+    }
+    .cockpit-reset-btn:hover {
+      background: rgba(11, 22, 59, 0.16) !important;
+      border-color: var(--tu-crimson) !important;
+    }
+    .scrubber-track-container:focus-visible {
+      outline: 2px solid var(--tu-gold);
+      outline-offset: 4px;
+    }

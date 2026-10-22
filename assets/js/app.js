@@ -530,7 +530,9 @@
         center: [14.8, 100.5],
         zoom: 6,
         scrollWheelZoom: false,
-        attributionControl: false
+        attributionControl: true,
+        touchZoom: true,
+        dragging: true
       });
 
       // High-detail Street Basemap with visible streets, corners, avenues & landmarks (Free, No API Key)
@@ -1493,6 +1495,10 @@
 
     function runCounterAnimation(el) {
       const unitSpan = el.querySelector('.unit');
+      // Respect prefers-reduced-motion
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return; // Retain already rendered target text
+      }
       let unitHtml = '';
       let targetText = '';
       
@@ -1604,3 +1610,67 @@
         btn.innerHTML = icon + label;
       }
     }
+
+
+    // Cockpit Reset to Strategic Baseline
+    function resetCockpit() {
+      const r = document.getElementById('sliderResearch');
+      const s = document.getElementById('sliderSkills');
+      const g = document.getElementById('sliderGreen');
+      const h = document.getElementById('sliderHealth');
+      if (r) r.value = 90;
+      if (s) s.value = 95;
+      if (g) g.value = 92;
+      if (h) h.value = 96;
+      updateCockpit();
+    }
+
+
+    // Accessibility: Global Escape key modal dismisser
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const facModal = document.getElementById('facultyModal');
+        if (facModal && facModal.style.display !== 'none') {
+          closeFacultyModal();
+        }
+        const fHubModal = document.getElementById('flourishHubModal');
+        if (fHubModal && fHubModal.style.display === 'flex') {
+          closeFlourishHubModal();
+        }
+      }
+    });
+
+    // Accessibility: Scrubber keyboard navigation (Left/Right/Home/End)
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrubberTrack = document.getElementById('scrubberTrack');
+      if (scrubberTrack) {
+        const sections = ['hero', 'key-findings', 'topic-01', 'topic-02', 'topic-03', 'topic-04', 'topic-05', 'topic-06', 'topic-07', 'topic-08', 'topic-09', 'topic-10', 'methodology', 'finish'];
+        scrubberTrack.addEventListener('keydown', (e) => {
+          let currentVal = parseInt(scrubberTrack.getAttribute('aria-valuenow') || '0', 10);
+          let nextIdx = currentVal;
+
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') {
+            e.preventDefault();
+            nextIdx = Math.min(currentVal + 1, sections.length - 1);
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+            e.preventDefault();
+            nextIdx = Math.max(currentVal - 1, 0);
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            nextIdx = 0;
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            nextIdx = sections.length - 1;
+          } else {
+            return;
+          }
+
+          scrubberTrack.setAttribute('aria-valuenow', nextIdx);
+          const targetId = sections[nextIdx];
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+    });

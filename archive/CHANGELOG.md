@@ -1,5 +1,28 @@
 # บันทึกการเปลี่ยนแปลงของระบบ (Project Changelog)
 
+## [Phase 7] - 2026-10-22 (Scroll & Interactive Polish)
+
+### สรุปการเปลี่ยนแปลง:
+- **แถบนำทาง Scrubber และ Stepper เข้าถึงได้สมบูรณ์ (Accessible Slider)**:
+  - เพิ่ม `role="slider"`, `tabindex="0"`, `aria-valuemin="0"`, `aria-valuemax="10"`, `aria-valuenow`, `aria-valuetext`
+  - รองรับการควบคุมด้วยคีย์บอร์ดเต็มรูปแบบ: ลูกศรซ้าย/ขวา/ขึ้น/ลง, PageUp, PageDown, Home (กลับจุดเริ่มต้น), End (ไปยังบทสรุป)
+- **ปรับปรุง Modal เข้าถึงได้ตามมาตรฐาน WAI-ARIA**:
+  - เพิ่ม `role="dialog"`, `aria-modal="true"`, `aria-labelledby="mFacTitle"`
+  - ปิด Modal ได้ทันทีด้วยปุ่ม `Escape` บนคีย์บอร์ด
+- **ปรับปรุง Leaflet GIS Map**:
+  - เปิดการแสดงผล Attribution อย่างถูกต้อง (`attributionControl: true`)
+  - รองรับการใช้งานสัมผัส 2 นิ้วบนสมาร์ทโฟน (`touchZoom: true`, `dragging: true`)
+- **ปรับปรุง TU 2034 Strategy Cockpit**:
+  - กำกับป้ายน้ำหนักยุทธศาสตร์ [30%, 25%, 25%, 20%] ชัดเจน
+  - ปรับค่าคะแนนดัชนีเริ่มต้นให้ตรงกับสูตรการคำนวณ (93.0)
+  - เพิ่มปุ่ม "รีเซ็ตค่ามาตรฐาน" (`resetCockpit()`)
+- **รองรับ `prefers-reduced-motion` เต็มรูปแบบ**:
+  - ผู้ใช้งานที่ตั้งค่าลดความเคลื่อนไหวในระบบปฏิบัติการ จะเห็นตัวเลขและองค์ประกอบคงที่ทันที โดยไม่ถูกบังคับให้รับชมแอนิเมชัน
+- **บันทึกภาพถ่ายหน้าจอ Phase 7**:
+  - แคปภาพ 5 Breakpoints (360px, 390px, 768px, 1024px, 1440px) ครบ 70 รูปใน `qa/phase7_screens/`
+
+---
+
 ## [Phase 6] - 2026-10-22 (Data Visualization & Storytelling Polish)
 
 ### สรุปการเปลี่ยนแปลง:

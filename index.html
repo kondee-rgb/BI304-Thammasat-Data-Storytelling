@@ -156,7 +156,7 @@
        2. FIXED BOTTOM SCRUBBER PILL (10 Topics Progress Indicator)
        ========================================================================== -->
   <div class="bidwells-floating-scrubber" id="floatingScrubber">
-    <div class="scrubber-track-container" id="scrubberTrack" onclick="handleScrubberClick(event)">
+    <div class="scrubber-track-container" id="scrubberTrack" role="slider" tabindex="0" aria-label="ตัวเลื่อนนำทาง 10 หัวข้อ 90 ปี ธรรมศาสตร์ (ใช้ปุ่มลูกศรซ้าย/ขวา หรือ Home/End)" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" aria-valuetext="หน้าแรก" onclick="handleScrubberClick(event)">
       <div class="scrubber-track-bg"></div>
       <div class="scrubber-track-fill" id="scrubberFill"></div>
       <div class="scrubber-thumb" id="scrubberThumb"></div>
@@ -1295,20 +1295,23 @@
             ปรับคันเร่งยุทธศาสตร์ 4 ด้านเพื่อจำลองดัชนีความพร้อมสู่ 100 ปี ธรรมศาสตร์ (Centennial Readiness Index)
           </p>
         </div>
-        <div style="text-align: right;">
-          <div style="font-size: 2.2rem; font-weight: 900; color: var(--tu-crimson);" id="cockpitCompositeScore">92.4</div>
+        <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+          <div style="font-size: 2.2rem; font-weight: 900; color: var(--tu-crimson);" id="cockpitCompositeScore">93.0</div>
           <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Centennial Readiness Index</div>
+          <button class="cockpit-reset-btn" onclick="resetCockpit()" aria-label="รีเซ็ตค่าจำลองยุทธศาสตร์เป็นค่ามาตรฐาน" style="background: rgba(11, 22, 59, 0.08); border: 1px solid rgba(11, 22, 59, 0.2); border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; color: var(--tu-navy); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; margin-top: 4px;">
+            <i class="fa-solid fa-rotate-left"></i> รีเซ็ตค่ามาตรฐาน
+          </button>
         </div>
       </div>
 
       <div class="cockpit-sliders-grid">
         <div class="cockpit-slider-item">
-          <label>1. ทุนวิจัยระดับโลก (Global Research)</label>
+          <label>1. ทุนวิจัยระดับโลก (Global Research) <span style="font-weight: 400; color: var(--tu-crimson); font-size: 0.78rem;">[น้ำหนัก 30%]</span></label>
           <input type="range" class="cockpit-range-input" min="50" max="100" value="90" id="sliderResearch" oninput="updateCockpit()" />
           <div class="cockpit-val-disp" id="dispResearch">90%</div>
         </div>
         <div class="cockpit-slider-item">
-          <label>2. บัณฑิตทักษะ AI & นวัตกรรม</label>
+          <label>2. บัณฑิตทักษะ AI & นวัตกรรม <span style="font-weight: 400; color: var(--tu-crimson); font-size: 0.78rem;">[น้ำหนัก 25%]</span></label>
           <input type="range" class="cockpit-range-input" min="50" max="100" value="95" id="sliderSkills" oninput="updateCockpit()" />
           <div class="cockpit-val-disp" id="dispSkills">95%</div>
         </div>
@@ -1454,9 +1457,9 @@
   <!-- ==========================================================================
        TCAS DRILLDOWN MODAL
        ========================================================================== -->
-  <div class="drilldown-modal-backdrop" id="facultyModal">
+  <div class="drilldown-modal-backdrop" id="facultyModal" role="dialog" aria-modal="true" aria-labelledby="mFacTitle">
     <div class="drilldown-modal-card">
-      <button class="modal-close-btn" onclick="closeFacultyModal()"><i class="fa-solid fa-xmark"></i></button>
+      <button class="modal-close-btn" onclick="closeFacultyModal()" aria-label="ปิดหน้าต่างรายละเอียดคณะ"><i class="fa-solid fa-xmark"></i></button>
       <div style="font-size: 0.75rem; font-weight: 800; color: var(--tu-crimson); text-transform: uppercase;" id="mFacPillar">เสาหลักทางวิชาการ</div>
       <h3 style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: var(--tu-navy); margin: 6px 0 16px;" id="mFacTitle">ชื่อคณะวิชา</h3>
       <p style="font-size: 0.92rem; color: #475569; line-height: 1.7; margin-bottom: 24px;" id="mFacDesc">รายละเอียดของหลักสูตรและพันธกิจ</p>
