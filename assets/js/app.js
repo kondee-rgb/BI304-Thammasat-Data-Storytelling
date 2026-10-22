@@ -137,7 +137,7 @@
         tag: "CENTENNIAL PILLAR 1: GLOBAL RESEARCH & INNOVATION HUB",
         title: "การวิจัยและนวัตกรรมระดับสากล (Global Research & Innovation Hub)",
         desc: "ยุทธศาสตร์มุ่งสู่ Top 100 QS World University Ranking สร้างองค์ความรู้และนวัตกรรมเปลี่ยนโลกเพื่อประโยชน์ของมนุษยชาติ เชื่อมโยงเครือข่ายวิจัยระดับสากลกว่า 350 สถาบัน และยื่นจดสิทธิบัตร Deep Tech",
-        img: "assets/pillar_1_innovation_hub.jpg",
+        img: "assets/pillar_1_innovation_hub.webp",
         pillarClass: "pillar-card-1",
         stat1: "92.0", lbl1: "คะแนนเป้าหมาย 2577", stat2: "350+", lbl2: "สิทธิบัตรเชิงพาณิชย์"
       },
@@ -145,7 +145,7 @@
         tag: "CENTENNIAL PILLAR 2: FUTURE-READY SKILLS & 21ST CENTURY LEARNING",
         title: "ทักษะแห่งอนาคตและการศึกษาดิจิทัล (Future-Ready Skills)",
         desc: "ปฏิรูปการเรียนการสอนบูรณาการ AI, Digital Literacy, และ Active Problem Solving สร้างบัณฑิตที่มีสมรรถนะพร้อมทำงานในตลาดแรงงานสากลระดับสูง และมีจิตวิญญาณประชาธิปไตย",
-        img: "assets/pillar_2_future_skills.jpg",
+        img: "assets/pillar_2_future_skills.webp",
         pillarClass: "pillar-card-2",
         stat1: "95.0", lbl1: "คะแนนเป้าหมาย 2577", stat2: "100%", lbl2: "หลักสูตรบูรณาการ AI"
       },
@@ -153,7 +153,7 @@
         tag: "CENTENNIAL PILLAR 3: 88 SANDBOX & STARTUP ECOSYSTEM",
         title: "88 SANDBOX ศูนย์บ่มเพาะสตาร์ทอัพเพื่อสังคมและเศรษฐกิจใหม่",
         desc: "ระบบนิเวศนวัตกรรมและบ่มเพาะผู้ประกอบการสตาร์ทอัพเพื่อสังคมที่ใหญ่ที่สุดในระดับอุดมศึกษา เชื่อมโยง Venture Capital ระดับสากล ตั้งเป้าสร้างมูลค่าระดมทุนกว่า 10,000 ล้านบาท",
-        img: "assets/pillar_3_88sandbox.jpg",
+        img: "assets/pillar_3_88sandbox.webp",
         pillarClass: "pillar-card-3",
         stat1: "10,000", lbl1: "มูลค่าระดมทุน (ลบ.)", stat2: "อันดับ 1", lbl2: "Social Sandbox ไทย"
       },
@@ -161,7 +161,7 @@
         tag: "CENTENNIAL PILLAR 4: NET-ZERO CAMPUS 2030 & PUEY PARK",
         title: "ความยั่งยืนสู่ Net-Zero Campus 2030 & อุทยานป๋วย 100 ปี",
         desc: "ผู้นำด้านความยั่งยืนระดับโลก ขับเคลื่อนพลังงานสะอาดจากฟาร์มโซลาร์รูฟท็อป 100% อาคารประหยัดพลังงาน และพื้นที่สีเขียวสวนป๋วย 100 ปี บรรลุเป้าหมายคาร์บอนสุทธิเป็นศูนย์ก่อนปี 2573",
-        img: "assets/pillar_4_netzero_campus.jpg",
+        img: "assets/pillar_4_netzero_campus.webp",
         pillarClass: "pillar-card-4",
         stat1: "2573", lbl1: "เป้าหมาย Net Zero", stat2: "100%", lbl2: "Green Campus Model"
       }

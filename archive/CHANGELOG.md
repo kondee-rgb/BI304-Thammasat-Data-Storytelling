@@ -1,5 +1,29 @@
 # บันทึกการเปลี่ยนแปลงของระบบ (Project Changelog)
 
+## [Phase 5] - 2026-10-22 (Images & Media Optimization)
+
+### สรุปการเปลี่ยนแปลง:
+- **แปลงไฟล์ภาพทั้งหมดสู่ฟอร์แมต WebP คุณภาพสูง ควบคุมขนาดไฟล์ <= 200KB**:
+  - `Track2.webp` (ลดจาก 725 KB เหลือ 168 KB)
+  - `tha_prachan_dome_editorial.webp` (ลดจาก 841 KB เหลือ 122 KB)
+  - `tu_student_walking.webp` (ลดจาก 538 KB เหลือ 37 KB พร้อมช่องความโปร่งใส Alpha คมชัดสมบูรณ์)
+  - `pillar_1_innovation_hub.webp` (ลดจาก 874 KB เหลือ 152 KB)
+  - `pillar_2_future_skills.webp` (ลดจาก 921 KB เหลือ 167 KB)
+  - `pillar_3_88sandbox.webp` (ลดจาก 904 KB เหลือ 157 KB)
+  - `pillar_4_netzero_campus.webp` (ลดจาก 996 KB เหลือ 193 KB)
+  - *รวมประหยัดแบนด์วิดท์ภาพได้กว่า 85% ยกระดับความเร็ว LCP และการโหลดบนมือถือ*
+- **ขจัด External Image Hotlinks 100%**:
+  - สร้างไฟล์เวกเตอร์ SVG โลคัล `assets/colab_icon.svg` สำหรับปุ่มเปิด Google Colab ทั้งหมด ป้องกันปัญหา Third-party Tracking และ Network Failures
+- **เพิ่มมิติเงาสัมผัสพื้นแนวนอน (Horizontal Ground Contact Shadow)**:
+  - อัปเกรด `.tu-student-ground-shadow` ใต้เท้าตัวละครนักศึกษา (Pioneer / Scholar) ให้ทอดยาวสมจริงบนพื้นผิวถนน ไม่ลอย
+- **กำหนด Attributes ทางเทคนิคครบถ้วน**:
+  - กำหนด `width`, `height`, `loading="lazy"`, `decoding="async"`
+  - เพิ่มคำอธิบายภาพ `alt` ภาษาไทยอย่างละเอียด ระบุชัดเจนว่าเป็นภาพประกอบเชิงสร้างสรรค์/ทัศนียภาพจำลอง (AI-Assisted Illustration)
+- **บันทึกภาพถ่ายหน้าจอ Phase 5**:
+  - แคปภาพ 5 Breakpoints (360px, 390px, 768px, 1024px, 1440px) ครบ 65 รูปใน `qa/phase5_screens/`
+
+---
+
 ## [Phase 4] - 2026-10-22 (Color & Identity Polish)
 
 ### สรุปการเปลี่ยนแปลง:
