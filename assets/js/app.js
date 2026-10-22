@@ -845,7 +845,7 @@
           <div class="fac-name">${fac.name}</div>
           <div class="fac-meta">
             <span>${fac.pillarName}</span>
-            <span style="color: var(--bidwells-crimson); font-weight: 700;">TCAS: ${fac.cutoff}</span>
+            <span style="color: var(--tu-crimson); font-weight: 700;">TCAS: ${fac.cutoff}</span>
           </div>
         `;
         container.appendChild(card);
@@ -938,7 +938,7 @@
 
       const tableHeaderHtml = s.tableHeaders.map(h => `<th>${h}</th>`).join('');
       const tableRowsHtml = s.tableSample.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('');
-      const highlightsHtml = s.highlights.map(h => `<li><i class="fa-solid fa-check-circle" style="color: var(--bidwells-crimson); margin-right: 6px;"></i>${h}</li>`).join('');
+      const highlightsHtml = s.highlights.map(h => `<li><i class="fa-solid fa-check-circle" style="color: var(--tu-crimson); margin-right: 6px;"></i>${h}</li>`).join('');
 
       content.innerHTML = `
         <div class="flourish-detail-badge">${s.category} • ${s.badge}</div>
@@ -948,7 +948,7 @@
         <div class="flourish-preview-box">
           <div class="flourish-preview-header">
             <div style="font-weight: 700; color: #1e293b; font-size: 0.95rem;">
-              <i class="fa-solid fa-chart-line" style="color: var(--bidwells-crimson); margin-right: 8px;"></i>
+              <i class="fa-solid fa-chart-line" style="color: var(--tu-crimson); margin-right: 8px;"></i>
               Flourish Visualization Preview (${s.template})
             </div>
             <a href="https://flourish.studio" target="_blank" class="flourish-direct-link">

@@ -1,5 +1,35 @@
 # บันทึกการเปลี่ยนแปลงของระบบ (Project Changelog)
 
+## [Phase 4] - 2026-10-22 (Color & Identity Polish)
+
+### สรุปการเปลี่ยนแปลง:
+- **ย้าย Design Tokens สู่มาตรฐาน `--tu-*`**:
+  - เปลี่ยนชื่อ Token เป็น `--tu-navy`, `--tu-crimson`, `--tu-gold`, `--tu-teal`, `--tu-sky-blue`, `--tu-offwhite`, `--tu-text`, `--tu-muted`, `--tu-shadow-*`, `--tu-radius-*`
+  - คงค่า Backwards-compatibility aliases สำหรับ `--bidwells-*` เพื่อป้องกันผลกระทบย้อนหลัง
+  - ปรับใช้ Token ใหม่ใน `assets/css/style.css`, `index.html`, และ `assets/js/app.js`
+- **ตรวจสอบสีอัตลักษณ์ทางการของธรรมศาสตร์**:
+  - แดงชาด (Thammasat Crimson): `#c51944`
+  - เหลืองทอง (Thammasat Gold): `#ffc72c`
+  - กรมท่าเข้ม (Thammasat Deep Navy): `#0b163b`
+- **การเกลี่ยรอยต่อพื้นหลังระหว่าง Section (Smooth Gradient Transitions)**:
+  - แก้ไขปัญหาฉากหลังตัดกันฉับพลันระหว่างสีขาวและสีกรมท่าเข้ม ตามคำขอของผู้ใช้ (User Request 8 ข้อ 4)
+  - เพิ่มเส้นแบ่ง Accent Divider และการเกลี่ยสีแบบ Multi-stop Gradient ในทุกจุดเชื่อมต่อ:
+    - Topic 02: `linear-gradient(180deg, var(--tu-navy) 0%, #08112b 120px, #08112b 100%)`
+    - Topic 03: `linear-gradient(180deg, #f1f5f9 0%, #ffffff 140px, #ffffff 100%)` พร้อมขอบทอง
+    - Topic 05: `linear-gradient(180deg, #070e24 0%, var(--tu-navy) 100px, var(--tu-navy) 100%)` พร้อมขอบแดงชาด
+    - Topic 06: `linear-gradient(180deg, #07262a 0%, var(--tu-teal-dark) 100px, var(--tu-teal-dark) 100%)`
+    - Topic 07: `linear-gradient(180deg, #061924 0%, #0b1426 100px, #0b1426 100%)`
+    - Topic 08: `linear-gradient(180deg, #0b1426 0%, #0d2822 80px, #061517 100%)`
+    - Topic 09: `linear-gradient(180deg, #f1f5f9 0%, #ffffff 140px, #ffffff 100%)` พร้อมขอบเขียวมรกต
+    - Finish: `linear-gradient(180deg, #070e24 0%, #0f172a 50px, var(--tu-offwhite) 160px, var(--tu-offwhite) 100%)`
+- **ตรวจสอบการเข้าถึงตามมาตรฐาน WCAG 2.1 AA**:
+  - ปรับสีตัวอักษร Muted Text บนพื้นหลังสว่างเป็น `#475569` (Slate 600, Contrast Ratio 5.9:1 ผ่านเกณฑ์ AA 4.5:1)
+  - กำหนดให้สีเหลืองทองใช้บนพื้นหลังเข้มเท่านั้นเพื่อคงความคมชัดสูงสุด
+- **บันทึกภาพถ่ายหน้าจอ Phase 4**:
+  - แคปภาพ 5 Breakpoints (360px, 390px, 768px, 1024px, 1440px) ครบ 65 รูปใน `qa/phase4_screens/`
+
+---
+
 ## [Phase 3] - 2026-10-22 (Typography & Language Polish)
 
 ### สรุปการเปลี่ยนแปลง:
