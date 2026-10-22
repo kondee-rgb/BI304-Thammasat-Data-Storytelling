@@ -3021,3 +3021,131 @@
       100% { transform: scale(1); }
     }
 
+
+    /* ==========================================================================
+       PHASE 2: VERIFIED SOURCE CITATIONS & METHODOLOGY
+       ========================================================================== */
+    .section-source-citation {
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      font-size: 0.82rem;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .section-source-citation a {
+      color: var(--bidwells-crimson);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .section-source-citation strong {
+      color: var(--bidwells-navy);
+      font-weight: 700;
+    }
+
+    /* On Dark Sections */
+    .bidwells-statement-section .section-source-citation,
+    .bidwells-map-section .section-source-citation,
+    .bidwells-mobility-section .section-source-citation,
+    .bidwells-world-section .section-source-citation,
+    .bidwells-future-section .section-source-citation,
+    .bidwells-shift-section .section-source-citation,
+    .bidwells-curved-track-section .section-source-citation,
+    .bidwells-green-section .section-source-citation,
+    .bidwells-hospital-section .section-source-citation,
+    .bidwells-circuit-section .section-source-citation {
+      border-top-color: rgba(255, 255, 255, 0.16);
+      color: #94a3b8;
+    }
+    .bidwells-statement-section .section-source-citation strong,
+    .bidwells-map-section .section-source-citation strong,
+    .bidwells-mobility-section .section-source-citation strong,
+    .bidwells-world-section .section-source-citation strong,
+    .bidwells-future-section .section-source-citation strong,
+    .bidwells-shift-section .section-source-citation strong,
+    .bidwells-curved-track-section .section-source-citation strong,
+    .bidwells-green-section .section-source-citation strong,
+    .bidwells-hospital-section .section-source-citation strong,
+    .bidwells-circuit-section .section-source-citation strong {
+      color: #f1f5f9;
+    }
+    .bidwells-statement-section .section-source-citation a,
+    .bidwells-map-section .section-source-citation a,
+    .bidwells-mobility-section .section-source-citation a,
+    .bidwells-world-section .section-source-citation a,
+    .bidwells-future-section .section-source-citation a,
+    .bidwells-shift-section .section-source-citation a,
+    .bidwells-curved-track-section .section-source-citation a,
+    .bidwells-green-section .section-source-citation a,
+    .bidwells-hospital-section .section-source-citation a,
+    .bidwells-circuit-section .section-source-citation a {
+      color: var(--tu-gold);
+    }
+
+    /* Methodology & Limitations Section */
+    .methodology-limitations-section {
+      background: #070e24;
+      color: #f8fafc;
+      padding: 70px 24px;
+      border-top: 1px solid rgba(255, 199, 44, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 20;
+    }
+    .methodology-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .methodology-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .methodology-header i {
+      color: var(--tu-gold);
+      font-size: 1.5rem;
+    }
+    .methodology-header h3 {
+      font-family: var(--font-sans);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+    .methodology-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .methodology-card {
+      background: rgba(15, 26, 58, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+    }
+    .methodology-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--tu-gold);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .methodology-card p {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.65;
+      margin: 0;
+    }
+    @media (max-width: 900px) {
+      .methodology-grid {
+        grid-template-columns: 1fr;
+      }
+    }
