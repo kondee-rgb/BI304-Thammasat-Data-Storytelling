@@ -1,3 +1,47 @@
+
+    // Global Chart.js Thai Typography Configuration
+    if (typeof Chart !== 'undefined') {
+      Chart.defaults.font.family = "'Prompt', 'Sarabun', 'Plus Jakarta Sans', sans-serif";
+      Chart.defaults.color = '#64748b';
+      Chart.defaults.plugins.tooltip.padding = 12;
+      Chart.defaults.plugins.tooltip.cornerRadius = 8;
+      Chart.defaults.plugins.tooltip.titleFont = {
+        family: "'Prompt', sans-serif",
+        weight: '600',
+        size: 13
+      };
+      Chart.defaults.plugins.tooltip.bodyFont = {
+        family: "'Sarabun', sans-serif",
+        size: 12
+      };
+    }
+
+    // Thai word segmentation safe wrapper for tooltip text
+    function formatThaiTooltipText(text, maxChars = 28) {
+      if (!text || text.length <= maxChars) return text;
+      if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+        try {
+          const segmenter = new Intl.Segmenter('th', { granularity: 'word' });
+          const words = Array.from(segmenter.segment(text)).map(s => s.segment);
+          const lines = [];
+          let cur = '';
+          for (const w of words) {
+            if ((cur + w).length > maxChars && cur.length > 0) {
+              lines.push(cur);
+              cur = w;
+            } else {
+              cur += w;
+            }
+          }
+          if (cur) lines.push(cur);
+          return lines;
+        } catch (e) {
+          return text;
+        }
+      }
+      return text;
+    }
+
     // 1. Data Store
     const CAMPUSES_DATA = [
       {
