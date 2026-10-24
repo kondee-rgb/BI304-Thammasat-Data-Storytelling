@@ -1,0 +1,243 @@
+/*!
+ * TU Interactive — 2 กิจกรรมโต้ตอบสำหรับเว็บ "90 ปีธรรมศาสตร์"
+ *   1) [data-tu-guess] "เดาตัวเลขก่อนดูเฉลย"  (slider → ล็อกคำตอบ → แท่งเทียบ + ตัวเลขนับขึ้น)
+ *   2) [data-tu-quiz]  "Quiz ท้ายหน้า"        (ตัวเลือก 4 ข้อ → เฉลยพร้อมแหล่งอ้างอิง → สรุปคะแนน)
+ * ข้อมูลอยู่ใน <script type="application/json"> ภายใน element → แก้ข้อความ/ตัวเลขได้โดยไม่ต้องแตะโค้ด
+ * ไม่พึ่งไลบรารี (ถ้ามี window.confetti จะใช้ตอนตอบถูกครบ)
+ */
+(function () {
+  'use strict';
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function h(tag, attrs, kids) {
+    var el = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === 'class') el.className = attrs[k];
+      else if (k === 'text') el.textContent = attrs[k];
+      else if (k.slice(0, 2) === 'on') el.addEventListener(k.slice(2), attrs[k]);
+      else if (attrs[k] !== null && attrs[k] !== undefined) el.setAttribute(k, attrs[k]);
+    }
+    (kids || []).forEach(function (c) { if (c) el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return el;
+  }
+  function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
+  function readData(root) {
+    var s = root.querySelector('script[type="application/json"]');
+    try { return JSON.parse(s.textContent); } catch (e) { return null; }
+  }
+  function sourceLink(src) {
+    if (!src || !src.url) return null;
+    return h('a', { class: 'tui-src', href: src.url, target: '_blank', rel: 'noopener noreferrer', text: 'แหล่งที่มา: ' + (src.label || src.url) });
+  }
+  function ease(t) { return 1 - Math.pow(1 - t, 3); }
+  function animate(ms, step, done) {
+    if (reduce) { step(1); if (done) done(); return; }
+    var t0 = performance.now();
+    (function f(now) {
+      var p = Math.min(1, (now - t0) / ms); step(ease(p));
+      if (p < 1) requestAnimationFrame(f); else if (done) done();
+    })(t0);
+  }
+  function live(root, msg) {
+    var l = root.querySelector('.tui-live'); if (!l) return;
+    l.textContent = ''; setTimeout(function () { l.textContent = msg; }, 30);
+  }
+
+  /* ====================== 1) เดาตัวเลข ====================== */
+  function Guess(root) {
+    var d = readData(root); if (!d || !d.items || !d.items.length) return;
+    this.root = root; this.d = d; this.i = 0; this.results = [];
+    root.classList.add('tui', 'tui-guess');
+    root.setAttribute('role', 'group');
+    root.setAttribute('aria-label', d.title || 'เดาตัวเลขก่อนดูเฉลย');
+    this.render();
+  }
+  Guess.prototype.render = function () {
+    var g = this, d = this.d, it = d.items[this.i], root = this.root;
+    var locked = false, val = it.start !== undefined ? it.start : Math.round((it.min + it.max) / 2);
+    root.innerHTML = ''; root.appendChild(h('script', { type: 'application/json', text: JSON.stringify(d) }));
+
+    var head = h('div', { class: 'tui-head' }, [
+      h('span', { class: 'tui-kicker', text: d.kicker || 'เดาก่อนดู' }),
+      h('span', { class: 'tui-step', text: 'ข้อ ' + (this.i + 1) + ' / ' + d.items.length })
+    ]);
+    var q = h('h3', { class: 'tui-q', text: it.q });
+    var out = h('output', { class: 'tui-bignum', 'aria-live': 'off' });
+    var unit = h('span', { class: 'tui-unit', text: ' ' + (it.unit || '') });
+    var bigWrap = h('div', { class: 'tui-bigwrap' }, [out, unit]);
+    var id = 'g' + Math.random().toString(36).slice(2, 7);
+    var range = h('input', { type: 'range', id: id, class: 'tui-range', min: it.min, max: it.max, step: it.step || 1, value: val, 'aria-label': it.q });
+    var ends = h('div', { class: 'tui-ends' }, [h('span', { text: fmt(it.min) }), h('span', { text: fmt(it.max) + ' ' + (it.unit || '') })]);
+    function paint() {
+      val = +range.value; out.textContent = fmt(val);
+      range.setAttribute('aria-valuetext', fmt(val) + ' ' + (it.unit || ''));
+      range.style.setProperty('--p', ((val - it.min) / (it.max - it.min) * 100) + '%');
+    }
+    range.addEventListener('input', function () { if (!locked) paint(); });
+    paint();
+    var btn = h('button', { type: 'button', class: 'tui-btn', text: 'ล็อกคำตอบ' });
+    var reveal = h('div', { class: 'tui-reveal', hidden: '' });
+    var body = h('div', { class: 'tui-body' }, [q, bigWrap, range, ends, btn]);
+    root.appendChild(head); root.appendChild(body); root.appendChild(reveal);
+    root.appendChild(h('div', { class: 'tui-live', 'aria-live': 'polite' }));
+
+    btn.addEventListener('click', function () {
+      if (locked) return; locked = true; range.disabled = true; btn.hidden = true;
+      var ans = it.answer, guess = val, err = Math.abs(guess - ans) / ans;
+      g.results.push({ q: it.q, guess: guess, ans: ans, err: err, unit: it.unit });
+      var verdict = err <= 0.05 ? ['🎯 แม่นมาก!', 'ok'] : err <= 0.25 ? ['👍 ใกล้เคียง', 'near'] : ['🤔 ห่างจากความจริงพอสมควร', 'far'];
+      var max = Math.max(guess, ans), barG = h('i'), barA = h('i'), numA = h('b', { text: '0' });
+      reveal.hidden = false;
+      reveal.appendChild(h('div', { class: 'tui-verdict tui-' + verdict[1], text: verdict[0] + ' (คลาดเคลื่อน ' + Math.round(err * 100) + '%)' }));
+      reveal.appendChild(h('div', { class: 'tui-bars' }, [
+        h('div', { class: 'tui-row' }, [h('span', { class: 'tui-lab', text: 'คุณเดา' }), h('div', { class: 'tui-track' }, [barG]), h('span', { class: 'tui-val', text: fmt(guess) })]),
+        h('div', { class: 'tui-row tui-row--ans' }, [h('span', { class: 'tui-lab', text: 'ความจริง' }), h('div', { class: 'tui-track' }, [barA]), h('span', { class: 'tui-val' }, [numA])])
+      ]));
+      if (it.note) reveal.appendChild(h('p', { class: 'tui-note', text: it.note }));
+      var s = sourceLink(it.source); if (s) reveal.appendChild(s);
+      var last = g.i === d.items.length - 1;
+      var next = h('button', { type: 'button', class: 'tui-btn', text: last ? 'ดูสรุปผล' : 'ข้อถัดไป →', onclick: function () { if (last) g.summary(); else { g.i++; g.render(); root.querySelector('.tui-range').focus({ preventScroll: true }); } } });
+      reveal.appendChild(next);
+      animate(1100, function (p) {
+        barG.style.width = (guess / max * 100 * p) + '%';
+        barA.style.width = (ans / max * 100 * p) + '%';
+        numA.textContent = fmt(ans * p);
+      }, function () { numA.textContent = fmt(ans); next.focus(); });
+      live(root, 'คุณเดา ' + fmt(guess) + ' ความจริงคือ ' + fmt(ans) + ' ' + (it.unit || '') + ' ' + verdict[0]);
+    });
+  };
+  Guess.prototype.summary = function () {
+    var g = this, root = this.root, rs = this.results;
+    var best = rs.reduce(function (a, b) { return a.err <= b.err ? a : b; });
+    var avg = rs.reduce(function (s, r) { return s + r.err; }, 0) / rs.length;
+    root.innerHTML = ''; root.appendChild(h('script', { type: 'application/json', text: JSON.stringify(this.d) }));
+    root.appendChild(h('div', { class: 'tui-head' }, [h('span', { class: 'tui-kicker', text: 'สรุปการเดาของคุณ' })]));
+    root.appendChild(h('h3', { class: 'tui-q', text: 'คลาดเคลื่อนเฉลี่ย ' + Math.round(avg * 100) + '%' }));
+    root.appendChild(h('p', { class: 'tui-note', text: 'เดาแม่นที่สุด: ' + best.q }));
+    root.appendChild(h('ul', { class: 'tui-list' }, rs.map(function (r) {
+      return h('li', null, [h('span', { text: r.q }), h('b', { text: ' เดา ' + fmt(r.guess) + ' · จริง ' + fmt(r.ans) + ' ' + (r.unit || '') })]);
+    })));
+    root.appendChild(h('button', { type: 'button', class: 'tui-btn tui-btn--ghost', text: 'เดาใหม่', onclick: function () { g.i = 0; g.results = []; g.render(); } }));
+    root.appendChild(h('div', { class: 'tui-live', 'aria-live': 'polite' }));
+    live(root, 'จบการเดา คลาดเคลื่อนเฉลี่ย ' + Math.round(avg * 100) + ' เปอร์เซ็นต์');
+  };
+
+  /* ====================== 2) Quiz ====================== */
+  function Quiz(root) {
+    var d = readData(root); if (!d || !d.questions || !d.questions.length) return;
+    this.root = root; this.d = d; this.i = 0; this.score = 0; this.wrong = [];
+    this.count = Math.min(d.count || 5, d.questions.length); this.lastIds = [];
+    root.classList.add('tui', 'tui-quiz');
+    root.setAttribute('role', 'group');
+    root.setAttribute('aria-label', d.title || 'Quiz');
+    this.intro();
+  }
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  Quiz.prototype.draw = function () {
+    var pool = this.d.questions.map(function (q, k) { return { q: q, id: k }; }), last = this.lastIds;
+    var fresh = shuffle(pool.filter(function (x) { return last.indexOf(x.id) < 0; }));
+    var old = shuffle(pool.filter(function (x) { return last.indexOf(x.id) >= 0; }));
+    var picked = fresh.concat(old).slice(0, this.count);
+    this.lastIds = picked.map(function (x) { return x.id; });
+    return shuffle(picked).map(function (x) {
+      var idx = shuffle(x.q.options.map(function (_, k) { return k; }));
+      var c = {}; for (var k in x.q) c[k] = x.q[k];
+      c.options = idx.map(function (k) { return x.q.options[k]; });
+      c.correct = idx.indexOf(x.q.correct);
+      return c;
+    });
+  };
+  Quiz.prototype.intro = function () {
+    var z = this, d = this.d, root = this.root;
+    root.classList.add('tui-quiz--intro');
+    root.innerHTML = ''; root.appendChild(h('script', { type: 'application/json', text: JSON.stringify(d) }));
+    root.appendChild(h('div', { class: 'tui-intro' }, [
+      h('div', { class: 'tui-intro__txt' }, [
+        h('span', { class: 'tui-kicker', text: d.kicker || 'Quiz' }),
+        h('h3', { class: 'tui-q', text: d.introTitle || ('ลองทำ Quiz ' + this.count + ' ข้อ') }),
+        h('p', { class: 'tui-note', text: d.introText || ('สุ่มใหม่ทุกครั้งจากคลังคำถาม ' + d.questions.length + ' ข้อ') })
+      ]),
+      h('button', { type: 'button', class: 'tui-btn', text: d.startLabel || 'เริ่ม Quiz', onclick: function () { z.start(); } })
+    ]));
+    root.appendChild(h('div', { class: 'tui-live', 'aria-live': 'polite' }));
+  };
+  Quiz.prototype.start = function () {
+    this.qs = this.draw(); this.i = 0; this.score = 0; this.wrong = [];
+    this.root.classList.remove('tui-quiz--intro');
+    this.render();
+    var f = this.root.querySelector('.tui-opt'); if (f) f.focus({ preventScroll: true });
+    this.root.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
+  };
+  Quiz.prototype.render = function () {
+    var z = this, d = this.d, qd = this.qs[this.i], root = this.root, answered = false;
+    root.innerHTML = ''; root.appendChild(h('script', { type: 'application/json', text: JSON.stringify(d) }));
+    var dots = h('div', { class: 'tui-dots', 'aria-hidden': 'true' }, this.qs.map(function (_, k) {
+      return h('i', { class: k < z.i ? 'is-done' : k === z.i ? 'is-now' : '' });
+    }));
+    root.appendChild(h('div', { class: 'tui-head' }, [
+      h('span', { class: 'tui-kicker', text: d.kicker || 'Quiz' }),
+      h('span', { class: 'tui-step', text: 'ข้อ ' + (this.i + 1) + ' / ' + this.qs.length }), dots
+    ]));
+    root.appendChild(h('h3', { class: 'tui-q', text: qd.q }));
+    var opts = h('div', { class: 'tui-opts', role: 'group', 'aria-label': 'ตัวเลือกคำตอบ' });
+    var fb = h('div', { class: 'tui-fb', hidden: '' });
+    var btns = qd.options.map(function (o, k) {
+      var b = h('button', { type: 'button', class: 'tui-opt' }, [h('span', { class: 'tui-key', 'aria-hidden': 'true', text: String(k + 1) }), h('span', { class: 'tui-txt', text: o }), h('span', { class: 'tui-mark', 'aria-hidden': 'true' })]);
+      b.addEventListener('click', function () { choose(k); });
+      opts.appendChild(b); return b;
+    });
+    function choose(k) {
+      if (answered) return; answered = true;
+      var ok = k === qd.correct;
+      if (ok) z.score++; else z.wrong.push({ q: qd.q, correct: qd.options[qd.correct], ref: qd.ref });
+      btns.forEach(function (b, j) {
+        b.disabled = true;
+        if (j === qd.correct) { b.classList.add('is-correct'); b.querySelector('.tui-mark').textContent = '✓ ถูก'; }
+        else if (j === k) { b.classList.add('is-wrong'); b.querySelector('.tui-mark').textContent = '✗ ผิด'; }
+      });
+      fb.hidden = false;
+      fb.appendChild(h('div', { class: 'tui-verdict ' + (ok ? 'tui-ok' : 'tui-far'), text: ok ? 'ถูกต้อง!' : 'ยังไม่ใช่ — คำตอบคือ “' + qd.options[qd.correct] + '”' }));
+      fb.appendChild(h('p', { class: 'tui-note', text: qd.explain }));
+      var s = sourceLink(qd.source); if (s) fb.appendChild(s);
+      var last = z.i === z.qs.length - 1;
+      var next = h('button', { type: 'button', class: 'tui-btn', text: last ? 'ดูคะแนน' : 'ข้อถัดไป →', onclick: function () { if (last) z.finish(); else { z.i++; z.render(); var f = root.querySelector('.tui-opt'); if (f) f.focus({ preventScroll: true }); } } });
+      fb.appendChild(next); next.focus();
+      live(root, ok ? 'ถูกต้อง' : 'ผิด คำตอบคือ ' + qd.options[qd.correct]);
+    }
+    root.addEventListener('keydown', root.__qk = function (e) {
+      var n = parseInt(e.key, 10); if (n >= 1 && n <= btns.length && !answered && e.target.closest && e.target.closest('.tui-quiz')) choose(n - 1);
+    });
+    root.appendChild(opts); root.appendChild(fb);
+    root.appendChild(h('div', { class: 'tui-live', 'aria-live': 'polite' }));
+  };
+  Quiz.prototype.finish = function () {
+    var z = this, root = this.root, n = this.qs.length, sc = this.score;
+    root.removeEventListener('keydown', root.__qk);
+    root.innerHTML = ''; root.appendChild(h('script', { type: 'application/json', text: JSON.stringify(this.d) }));
+    var msg = sc === n ? 'เยี่ยมมาก! คุณรู้จักธรรมศาสตร์ดีทีเดียว' : sc >= n - 1 ? 'เกือบเต็ม!' : sc >= Math.ceil(n / 2) ? 'ทำได้ดี — ลองดูข้อที่พลาดอีกครั้ง' : 'ไม่เป็นไร — กลับไปอ่านแล้วลองใหม่ได้';
+    root.appendChild(h('div', { class: 'tui-head' }, [h('span', { class: 'tui-kicker', text: 'ผลคะแนน' })]));
+    root.appendChild(h('div', { class: 'tui-score' }, [h('b', { text: String(sc) }), h('span', { text: ' / ' + n })]));
+    root.appendChild(h('p', { class: 'tui-q', text: msg }));
+    if (this.wrong.length) {
+      root.appendChild(h('p', { class: 'tui-note', text: 'ข้อที่พลาด:' }));
+      root.appendChild(h('ul', { class: 'tui-list' }, this.wrong.map(function (w) {
+        var kids = [h('span', { text: w.q }), h('b', { text: ' → ' + w.correct })];
+        if (w.ref) kids.push(h('a', { class: 'tui-src', href: w.ref.href, text: ' อ่านที่: ' + w.ref.label }));
+        return h('li', null, kids);
+      })));
+    }
+    root.appendChild(h('button', { type: 'button', class: 'tui-btn tui-btn--ghost', text: 'เล่นอีกครั้ง (สุ่มชุดใหม่)', onclick: function () { z.start(); } }));
+    root.appendChild(h('div', { class: 'tui-live', 'aria-live': 'polite' }));
+    live(root, 'ได้ ' + sc + ' จาก ' + n + ' คะแนน');
+    if (sc === n && !reduce && typeof window.confetti === 'function') {
+      try { window.confetti({ particleCount: 120, spread: 70, origin: { y: 0.7 }, colors: ['#c51944', '#ffc72c', '#0b163b'] }); } catch (e) {}
+    }
+  };
+
+  function init() {
+    [].forEach.call(document.querySelectorAll('[data-tu-guess]'), function (el) { if (!el.__tui) el.__tui = new Guess(el); });
+    [].forEach.call(document.querySelectorAll('[data-tu-quiz]'), function (el) { if (!el.__tui) el.__tui = new Quiz(el); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  window.TUInteractive = { init: init };
+})();

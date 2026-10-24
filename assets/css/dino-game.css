@@ -77,3 +77,11 @@
   flex-wrap: wrap;
   margin-top: 16px;
 }
+
+/* มือถือ: ให้เวทีสูงพอสำหรับข้อความ/ปุ่มบนหน้าจอเริ่ม (canvas เกาะด้านล่าง ด้านบนเป็นท้องฟ้า) */
+@media (max-width: 600px) {
+  .tu-runner { padding: 0 12px; }
+  .tu-runner__stage { display: flex; align-items: flex-end; min-height: 210px; }
+  .tu-runner__canvas { width: 100%; }
+  .tu-runner__overlay { padding: 14px 12px; }
+}
