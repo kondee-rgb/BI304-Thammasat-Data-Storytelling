@@ -155,6 +155,7 @@
     this.state = 'idle';           // idle | running | paused | over
     this.hi = parseInt(store('tu-runner-hi') || '0', 10) || 0;
     this.reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.inView = true;
     this.build();
     this.reset();
     this.bind();
@@ -233,31 +234,98 @@
 
     this.el.play.addEventListener('click', function () {
       if (g.state === 'paused') g.resume(); else g.start();
+      g.root.focus({ preventScroll: true });
     });
     this.el.mute.addEventListener('click', function () {
       g.sound.muted = !g.sound.muted; store('tu-runner-muted', g.sound.muted ? '1' : '0'); g.updateMuteUI();
-      if (g.state !== 'running') g.root.focus();
+      if (g.state !== 'running') g.root.focus({ preventScroll: true });
     });
 
-    r.addEventListener('keydown', function (e) {
-      var k = e.key;
-      var isJump = (k === ' ' || k === 'Spacebar' || k === 'ArrowUp' || k === 'Up' || k === 'w' || k === 'W');
-      var isDown = (k === 'ArrowDown' || k === 'Down' || k === 's' || k === 'S');
-      if (e.target && e.target.tagName === 'BUTTON' && (k === ' ' || k === 'Enter')) return; // ให้ปุ่มทำงานปกติ
-      if (isJump || isDown) {
-        if (g.state === 'running') e.preventDefault();
-        else if (g.state === 'idle' || g.state === 'over') { e.preventDefault(); if (isJump) g.start(); return; }
-        else if (g.state === 'paused') { e.preventDefault(); if (isJump) g.resume(); return; }
+    function isJumpKey(e) {
+      var c = e.code || '', k = e.key || '';
+      return (
+        c === 'KeyW' || c === 'Space' || c === 'ArrowUp' ||
+        k === ' ' || k === 'Spacebar' || k === 'ArrowUp' || k === 'Up' ||
+        k === 'w' || k === 'W' || k === 'ไ' || k === 'ำ'
+      );
+    }
+
+    function isDownKey(e) {
+      var c = e.code || '', k = e.key || '';
+      return (
+        c === 'KeyS' || c === 'ArrowDown' ||
+        k === 'ArrowDown' || k === 'Down' ||
+        k === 's' || k === 'S' || k === 'ห' || k === 'ฆ'
+      );
+    }
+
+    function isTypingInput(target) {
+      if (!target) return false;
+      var tag = target.tagName;
+      return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target.isContentEditable;
+    }
+
+    var onKeyDown = function (e) {
+      if (isTypingInput(e.target)) return;
+      var isJump = isJumpKey(e);
+      var isDown = isDownKey(e);
+      if (!isJump && !isDown) return;
+
+      var hasRunnerFocus = document.activeElement === r || (document.activeElement && r.contains(document.activeElement));
+
+      // ให้ปุ่ม BUTTON บนหน้าจอทำงานตามปกติ (เช่น กด Space บนปุ่ม) ถ้าเกมไม่ได้กำลังวิ่ง
+      if (e.target && e.target.tagName === 'BUTTON' && (e.key === ' ' || e.key === 'Enter') && g.state !== 'running') {
+        return;
       }
-      if (g.state !== 'running') return;
-      if (isJump && !e.repeat) { g.holdJump = true; g.jump(); }
-      if (isDown) { g.ducking = true; if (g.jumping) g.fastFall = true; }
-    });
-    r.addEventListener('keyup', function (e) {
-      var k = e.key;
-      if (k === ' ' || k === 'Spacebar' || k === 'ArrowUp' || k === 'Up' || k === 'w' || k === 'W') { g.holdJump = false; g.endJump(); }
-      if (k === 'ArrowDown' || k === 'Down' || k === 's' || k === 'S') { g.ducking = false; g.fastFall = false; }
-    });
+
+      if (g.state === 'running') {
+        e.preventDefault();
+        if (isJump && !e.repeat) {
+          g.holdJump = true;
+          g.jump();
+        }
+        if (isDown) {
+          g.ducking = true;
+          if (g.jumping) g.fastFall = true;
+        }
+        return;
+      }
+
+      if (g.state === 'paused') {
+        if (isJump) {
+          e.preventDefault();
+          g.resume();
+          if (!e.repeat) {
+            g.holdJump = true;
+            g.jump();
+          }
+          return;
+        }
+      }
+
+      if (g.state === 'idle' || g.state === 'over') {
+        if (isJump && (hasRunnerFocus || (g.inView && (e.target === r || r.contains(e.target))))) {
+          e.preventDefault();
+          g.start();
+          return;
+        }
+      }
+    };
+
+    var onKeyUp = function (e) {
+      if (isTypingInput(e.target)) return;
+      if (isJumpKey(e)) {
+        g.holdJump = false;
+        g.endJump();
+      }
+      if (isDownKey(e)) {
+        g.ducking = false;
+        g.fastFall = false;
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown, { passive: false });
+    window.addEventListener('keyup', onKeyUp, { passive: false });
 
     // แตะ/คลิกบนเวที = กระโดด
     this.canvas.addEventListener('pointerdown', function (e) {
@@ -297,13 +365,16 @@
       });
     }
 
-    // หยุดอัตโนมัติ: เสียโฟกัส / ออกนอกจอ / ซ่อนแท็บ
-    r.addEventListener('focusout', function (e) {
-      if (g.state === 'running' && !(e.relatedTarget && r.contains(e.relatedTarget))) g.pause('หยุดชั่วคราว');
+    // หยุดอัตโนมัติ: ซ่อนแท็บ / สลับหน้าต่าง / เลื่อนพ้นจอ
+    window.addEventListener('blur', function () {
+      if (g.state === 'running') g.pause('หยุดชั่วคราว');
     });
-    document.addEventListener('visibilitychange', function () { if (document.hidden && g.state === 'running') g.pause('หยุดชั่วคราว'); });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden && g.state === 'running') g.pause('หยุดชั่วคราว');
+    });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
+        g.inView = es[0].isIntersecting;
         if (!es[0].isIntersecting && g.state === 'running') g.pause('หยุดชั่วคราว');
       }, { threshold: 0.25 }).observe(r);
     }
@@ -333,7 +404,7 @@
     if (this.state !== 'running') return;
     this.state = 'paused'; cancelAnimationFrame(this.raf);
     this.ducking = false; this.holdJump = false; this.fastFall = false;
-    this.showOverlay(msg || 'หยุดชั่วคราว', 'คะแนนปัจจุบัน ' + Math.floor(this.score), 'เล่นต่อ');
+    this.showOverlay(msg || 'หยุดชั่วคราว', 'คะแนนปัจจุบัน ' + Math.floor(this.score) + ' · กด Space หรือ W เพื่อเล่นต่อ', 'เล่นต่อ');
     this.draw();
   };
   Game.prototype.resume = function () {
