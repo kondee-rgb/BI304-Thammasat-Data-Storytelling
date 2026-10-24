@@ -177,12 +177,16 @@
           '<div class="tu-runner__sub" data-sub>กระโดดข้ามกรวยและกองหนังสือ ก้มหลบนกพิราบ ยิ่งไกลยิ่งเร็วขึ้น</div>' +
           '<button type="button" class="tu-runner__btn" data-play><span aria-hidden="true">▶</span> <span data-playlabel>เริ่มเล่น</span></button>' +
         '</div>' +
-        '<button type="button" class="tu-runner__mute" data-mute aria-pressed="false" aria-label="ปิดเสียงเกม"></button>' +
+        '<div class="tu-runner__top-actions">' +
+          '<button type="button" class="tu-runner__icon-btn tu-runner__pause" data-pause aria-label="หยุดชั่วคราว (P)" title="หยุดชั่วคราว (P)"><span aria-hidden="true">⏸</span></button>' +
+          '<button type="button" class="tu-runner__icon-btn tu-runner__mute" data-mute aria-pressed="false" aria-label="ปิดเสียงเกม" title="ปิด/เปิดเสียง"></button>' +
+        '</div>' +
       '</div>' +
       '<div class="tu-runner__controls">' +
-        '<p class="tu-runner__help"><kbd>Space</kbd>/<kbd>W</kbd>/<kbd>↑</kbd> กระโดด · <kbd>S</kbd>/<kbd>↓</kbd> ก้ม</p>' +
+        '<p class="tu-runner__help"><kbd>Space</kbd>/<kbd>W</kbd>/<kbd>↑</kbd> กระโดด · <kbd>S</kbd>/<kbd>↓</kbd> ก้ม · <kbd>P</kbd>/<kbd>Esc</kbd> พักเกม</p>' +
         '<div class="tu-runner__touch-bar">' +
           '<button type="button" class="tu-runner__touch-btn tu-runner__touch-btn--jump" data-jump aria-label="กระโดด (กดค้างเพื่อกระโดดสูง)"><span aria-hidden="true">▲</span> กระโดด</button>' +
+          '<button type="button" class="tu-runner__touch-btn tu-runner__touch-btn--pause" data-touch-pause aria-label="หยุดชั่วคราว (P)"><span aria-hidden="true">⏸</span> พัก</button>' +
           '<button type="button" class="tu-runner__touch-btn tu-runner__touch-btn--duck" data-duck aria-label="ก้ม (กดค้างเพื่อหมอบ)"><span aria-hidden="true">▼</span> ก้ม</button>' +
         '</div>' +
       '</div>' +
@@ -192,12 +196,14 @@
     this.el = {
       overlay: r.querySelector('[data-overlay]'), title: r.querySelector('[data-title]'),
       sub: r.querySelector('[data-sub]'), play: r.querySelector('[data-play]'),
-      playLabel: r.querySelector('[data-playlabel]'), mute: r.querySelector('[data-mute]'),
+      playLabel: r.querySelector('[data-playlabel]'), pause: r.querySelector('[data-pause]'),
+      touchPause: r.querySelector('[data-touch-pause]'), mute: r.querySelector('[data-mute]'),
       duck: r.querySelector('[data-duck]'), jump: r.querySelector('[data-jump]'), live: r.querySelector('[data-live]'),
       hi: r.querySelector('.tu-runner__hi'), cur: r.querySelector('.tu-runner__cur'),
       stage: r.querySelector('.tu-runner__stage')
     };
     this.updateMuteUI();
+    this.updatePauseUI();
     this.resize();
   };
 
@@ -211,6 +217,7 @@
     this.flashT = 0; this.night = false; this.nextAchieve = CFG.achieveEvery; this.nextNight = CFG.nightEvery;
     this.root.classList.remove('is-night');
     this.setScoreUI();
+    this.updatePauseUI();
   };
 
   Game.prototype.resize = function () {
@@ -229,13 +236,53 @@
     this.el.mute.setAttribute('aria-label', m ? 'เปิดเสียงเกม' : 'ปิดเสียงเกม');
   };
 
+  Game.prototype.updatePauseUI = function () {
+    var isRunning = this.state === 'running';
+    var isPaused = this.state === 'paused';
+    if (this.el.pause) {
+      this.el.pause.innerHTML = '<span aria-hidden="true">' + (isRunning ? '⏸' : '▶') + '</span>';
+      this.el.pause.setAttribute('aria-label', isRunning ? 'หยุดชั่วคราว (P)' : (isPaused ? 'เล่นต่อ (P / W / Space)' : 'เริ่มเล่น'));
+      this.el.pause.setAttribute('title', isRunning ? 'หยุดชั่วคราว (P)' : (isPaused ? 'เล่นต่อ (P)' : 'เริ่มเล่น'));
+      this.el.pause.classList.toggle('is-paused', isPaused);
+    }
+    if (this.el.touchPause) {
+      if (isRunning) {
+        this.el.touchPause.innerHTML = '<span aria-hidden="true">⏸</span> พัก';
+        this.el.touchPause.setAttribute('aria-label', 'หยุดชั่วคราว (P)');
+        this.el.touchPause.classList.remove('is-paused');
+      } else if (isPaused) {
+        this.el.touchPause.innerHTML = '<span aria-hidden="true">▶</span> ต่อ';
+        this.el.touchPause.setAttribute('aria-label', 'เล่นต่อ (P / W / Space)');
+        this.el.touchPause.classList.add('is-paused');
+      } else {
+        this.el.touchPause.innerHTML = '<span aria-hidden="true">▶</span> เริ่ม';
+        this.el.touchPause.setAttribute('aria-label', 'เริ่มเล่น');
+        this.el.touchPause.classList.remove('is-paused');
+      }
+    }
+  };
+
   Game.prototype.bind = function () {
     var g = this, r = this.root;
+
+    var togglePause = function (e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      if (g.state === 'running') {
+        g.pause('หยุดชั่วคราว');
+      } else if (g.state === 'paused') {
+        g.resume();
+      } else if (g.state === 'idle' || g.state === 'over') {
+        g.start();
+      }
+      g.root.focus({ preventScroll: true });
+    };
 
     this.el.play.addEventListener('click', function () {
       if (g.state === 'paused') g.resume(); else g.start();
       g.root.focus({ preventScroll: true });
     });
+    if (this.el.pause) this.el.pause.addEventListener('click', togglePause);
+    if (this.el.touchPause) this.el.touchPause.addEventListener('click', togglePause);
     this.el.mute.addEventListener('click', function () {
       g.sound.muted = !g.sound.muted; store('tu-runner-muted', g.sound.muted ? '1' : '0'); g.updateMuteUI();
       if (g.state !== 'running') g.root.focus({ preventScroll: true });
@@ -265,8 +312,22 @@
       return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target.isContentEditable;
     }
 
+    function isPauseKey(e) {
+      var c = e.code || '', k = e.key || '';
+      return (
+        c === 'KeyP' || c === 'Escape' ||
+        k === 'p' || k === 'P' || k === 'Escape' ||
+        k === 'ย' || k === 'ๆ'
+      );
+    }
+
     var onKeyDown = function (e) {
       if (isTypingInput(e.target)) return;
+      if (isPauseKey(e)) {
+        e.preventDefault();
+        togglePause();
+        return;
+      }
       var isJump = isJumpKey(e);
       var isDown = isDownKey(e);
       if (!isJump && !isDown) return;
@@ -394,6 +455,7 @@
     this.reset();
     this.state = 'running';
     this.hideOverlay();
+    this.updatePauseUI();
     this.root.focus({ preventScroll: true });
     this.say('เริ่มเกม');
     this.last = performance.now();
@@ -404,12 +466,14 @@
     if (this.state !== 'running') return;
     this.state = 'paused'; cancelAnimationFrame(this.raf);
     this.ducking = false; this.holdJump = false; this.fastFall = false;
-    this.showOverlay(msg || 'หยุดชั่วคราว', 'คะแนนปัจจุบัน ' + Math.floor(this.score) + ' · กด Space หรือ W เพื่อเล่นต่อ', 'เล่นต่อ');
+    this.showOverlay(msg || 'หยุดชั่วคราว', 'คะแนนปัจจุบัน ' + Math.floor(this.score) + ' · กด Space, W, P หรือปุ่มเล่นต่อ', 'เล่นต่อ');
+    this.updatePauseUI();
     this.draw();
   };
   Game.prototype.resume = function () {
     if (this.state !== 'paused') return;
     this.state = 'running'; this.hideOverlay(); this.root.focus({ preventScroll: true });
+    this.updatePauseUI();
     this.last = performance.now();
     this.raf = requestAnimationFrame(this.loop.bind(this));
   };
@@ -535,6 +599,7 @@
     this.flashT = 0; this.setScoreUI(); this.draw();
     var msg = 'จบเกม — คะแนน ' + s + (newHi && s > 0 ? ' (สถิติใหม่!)' : '');
     this.showOverlay('GAME OVER', 'คะแนน ' + s + (newHi && s > 0 ? ' · สถิติใหม่ 🎉' : ' · สถิติสูงสุด ' + this.hi), 'เล่นอีกครั้ง');
+    this.updatePauseUI();
     this.say(msg);
     var b = this.el.play; setTimeout(function () { try { b.focus({ preventScroll: true }); } catch (e) {} }, 420);
   };
