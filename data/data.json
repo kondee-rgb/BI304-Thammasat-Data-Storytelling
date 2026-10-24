@@ -5,52 +5,65 @@
     "institution": "Thammasat Business School (TBS)",
     "base_academic_year": "2566",
     "base_fiscal_year": "2567",
-    "verified_date": "2026-10-22",
+    "verified_date": "2026-10-24",
     "sources": {
       "SRC-01": {
-        "name": "สถาบันปรีดี พนมยงค์",
-        "url": "https://pridi.or.th",
+        "name": "ไทยโพสต์ (สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง 27 มิ.ย. 2477)",
+        "url": "https://www.thaipost.net/general-news/404583/",
         "as_of": "2477-06-27"
       },
       "SRC-02": {
-        "name": "สำนักทะเบียนนักศึกษา มหาวิทยาลัยธรรมศาสตร์",
-        "url": "https://reg.tu.ac.th",
-        "as_of": "2566"
+        "name": "ศิลปวัฒนธรรม (สถาปนา มธก. 2477 ผู้สมัครเรียนกว่า 7,000 คน)",
+        "url": "https://www.silpa-mag.com/?p=135675",
+        "as_of": "2477-2567"
       },
       "SRC-03": {
-        "name": "กองแผนงาน มหาวิทยาลัยธรรมศาสตร์",
+        "name": "กองแผนงาน มหาวิทยาลัยธรรมศาสตร์ (ข้อมูลสถิตินักศึกษา 26 คณะ และ 4 ศูนย์การศึกษา)",
         "url": "https://tu.ac.th",
-        "as_of": "2567"
+        "as_of": "2566/2567"
       },
       "SRC-04": {
-        "name": "สำนักงบประมาณ",
+        "name": "สำนักงบประมาณ (พระราชบัญญัติงบประมาณรายจ่ายประจำปี 2567)",
         "url": "https://bb.go.th",
         "as_of": "2567"
       },
       "SRC-05": {
-        "name": "AACSB, EFMD EQUIS, AMBA",
-        "url": "https://aacsb.edu",
+        "name": "AMBA & BGA และ Find-MBA (TBS Triple Accreditation 2018)",
+        "url": "https://www.amba-bga.com/schools/thammasat-business-school-thammasat-university",
+        "secondary_url": "https://find-mba.com/news/2018/12/thailands-thammasat-business-school-receives-amba-accreditation",
         "as_of": "2018-2023"
       },
       "SRC-06": {
-        "name": "Times Higher Education Impact Rankings",
-        "url": "https://timeshighereducation.com",
-        "as_of": "2025/2026"
+        "name": "Khaosod English (มธ. อันดับ 1 ของโลกด้าน SDG 16 THE Impact Rankings 2026)",
+        "url": "https://www.khaosodenglish.com/life/arts/2026/06/25/thammasat-ranks-no-1-globally-in-sdg16-for-peace-justice-and-strong-institutions/amp/",
+        "as_of": "2026-06-25"
       },
       "SRC-07": {
-        "name": "QS Asia University Rankings",
-        "url": "https://topuniversities.com",
-        "as_of": "2025"
+        "name": "เดลินิวส์ & QS TopUniversities (QS World 2025 กลุ่ม =596 มธ. ที่ 4 ของไทย)",
+        "url": "https://www.dailynews.co.th/news/5292521/",
+        "secondary_url": "https://www.topuniversities.com/universities/thammasat-university",
+        "as_of": "2024/2025"
       },
       "SRC-08": {
-        "name": "โรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ",
-        "url": "https://hospital.tu.ac.th",
-        "as_of": "2566/2567"
+        "name": "InfoQuest มติ ครม. (รพ.ธรรมศาสตร์ 750 เตียง ศักยภาพ OPD 1,098,041 ครั้ง/ปี)",
+        "url": "https://www.infoquest.co.th/?p=207907",
+        "as_of": "2565-06-14"
       },
       "SRC-09": {
-        "name": "สมาคมที่ประชุมอธิการบดีแห่งประเทศไทย (ทปอ. myTCAS)",
-        "url": "https://mytcas.com",
-        "as_of": "2566"
+        "name": "Thai PBS & ฐานเศรษฐกิจ & Bangkok Post (รพ.สนามธรรมศาสตร์ 308-470 เตียง ผู้ป่วยสะสม > 3,200 ราย)",
+        "url": "https://www.thaipbs.or.th/news/content/290116",
+        "secondary_url": "https://www.thansettakij.com/general-news/488300",
+        "as_of": "2563-2564"
+      },
+      "SRC-10": {
+        "name": "Greenroofs.com & Pop-up City (สวนผักดาดฟ้า TURF ป๋วย 100 ปี ชะลอน้ำฝน 3.1 ล้านแกลลอน)",
+        "url": "https://www.greenroofs.com/2021/02/16/featured-project-thammasat-university-urban-rooftop-farm-turf/",
+        "as_of": "2021-02-16"
+      },
+      "SRC-11": {
+        "name": "Bangkok Post (โซลาร์เซลล์ มธ. แผนติดตั้ง 15 MW เสร็จแล้ว 5 MW)",
+        "url": "https://www.bangkokpost.com/news/general/1395042/all-abuzz-about-going-solar",
+        "as_of": "2018"
       }
     }
   },
@@ -89,7 +102,8 @@
       "value": 26,
       "unit": "คณะวิชา",
       "source_id": "SRC-03",
-      "as_of": "2567"
+      "as_of": "2567",
+      "footnote": "แสดง 25 จาก 26 คณะที่มีข้อมูล"
     },
     "academic_clusters": {
       "value": 4,
@@ -104,48 +118,59 @@
       "as_of": "2023"
     },
     "qs_asia_rank": {
-      "actual_rank": 128,
       "target_rank": 70,
       "thailand_rank": 4,
+      "qs_world_group": "=596",
+      "sea_rank": 27,
       "source_id": "SRC-07",
-      "as_of": "2025"
+      "as_of": "2024/2025"
     },
     "the_impact_rankings": {
       "sdg16_world_rank": 1,
-      "sdg11_points": 84.1,
-      "sdg11_world_rank": 38,
+      "sdg16_score": 92.9,
+      "sdg16_overall_rank": 46,
+      "sdg11_points": 98.4,
+      "sdg11_status": "Top 10 ของโลก",
       "source_id": "SRC-06",
       "as_of": "2025/2026"
     },
     "puey_park_green_roof_sqm": {
       "value": 22000,
       "unit": "ตร.ม.",
-      "source_id": "SRC-03",
-      "as_of": "2567"
+      "water_retention": "3.1 ล้านแกลลอน",
+      "source_id": "SRC-10",
+      "as_of": "2021"
     },
     "solar_rooftop_mwp": {
-      "value": 15,
-      "unit": "MWp",
-      "source_id": "SRC-03",
-      "as_of": "2567"
+      "planned_mw": 15.0,
+      "installed_mw": 5.0,
+      "unit": "MW",
+      "desc": "แผนติดตั้ง 15 เมกะวัตต์ (ติดตั้งแล้วเสร็จ 5 MW)",
+      "source_id": "SRC-11",
+      "as_of": "2018"
     },
     "hospital_beds": {
-      "tertiary_capacity": 1400,
-      "active_beds": 817,
+      "tertiary_capacity": 750,
+      "target_capacity": 1000,
+      "unit": "เตียง",
       "source_id": "SRC-08",
-      "as_of": "2567"
+      "as_of": "2565"
     },
     "hospital_annual_opd": {
-      "value": 1480000,
+      "capacity_opd": 1098041,
+      "capacity_ipd": 33959,
+      "actual_annual_visits": "1,480,000+",
       "unit": "คน/ปี",
       "source_id": "SRC-08",
-      "as_of": "2566"
+      "as_of": "2565/2566"
     },
     "covid_field_hospital": {
-      "bed_capacity": 308,
-      "cumulative_patients": 3083,
-      "source_id": "SRC-08",
-      "as_of": "2564"
+      "initial_beds": 308,
+      "expanded_beds": 470,
+      "cumulative_patients": "> 3,200 ราย",
+      "wave2_patients": 311,
+      "source_id": "SRC-09",
+      "as_of": "2563-2564"
     }
   },
   "campuses": [
