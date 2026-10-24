@@ -4153,3 +4153,33 @@
     display: none !important;
   }
 }
+
+/* TU Runner Header Nav Button */
+.header-runner-btn {
+  background: rgba(197, 25, 68, 0.1);
+  border: 1.5px solid var(--tu-crimson);
+  color: var(--tu-crimson);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+.header-runner-btn:hover {
+  background: var(--tu-crimson);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(197, 25, 68, 0.3);
+}
+@media (max-width: 480px) {
+  .header-runner-btn span {
+    display: none;
+  }
+  .header-runner-btn {
+    padding: 7px 9px;
+  }
+}
