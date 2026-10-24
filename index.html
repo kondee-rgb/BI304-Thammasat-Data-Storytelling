@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="no-js">
 <head>
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <noscript><style>.tu-reveal-slide-up, .tu-reveal-scale, .tu-reveal-slide-left, .tu-reveal-slide-right { opacity: 1 !important; transform: none !important; }</style></noscript>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>90 ปี มหาวิทยาลัยธรรมศาสตร์: 2477 — 2567 | รายงานวิจัยและยุทธศาสตร์ข้อมูล (BI304 Data Storytelling)</title>
@@ -43,9 +46,30 @@
   <!-- Deferred Scripts -->
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main" class="skip-link sr-only focus:not-sr-only">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <!-- Slim Top Reading Progress Bar (Bidwells Scrollytelling) -->
+  <div class="top-reading-progress" id="topReadingProgress" role="progressbar" aria-label="ความคืบหน้าการอ่าน" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+  <!-- Desktop Vertical Dot Navigation -->
+  <nav class="desktop-dot-nav" id="desktopDotNav" aria-label="สารบัญแบบจุดนำทาง">
+    <a href="#hero" class="desktop-dot active" aria-label="หน้าแรก" data-tooltip="หน้าแรก"><span></span></a>
+    <a href="#topic-01" class="desktop-dot" aria-label="1. ปฐมบท 2477" data-tooltip="1. ปฐมบท 2477"><span></span></a>
+    <a href="#topic-02" class="desktop-dot" aria-label="2. ศูนย์การศึกษา" data-tooltip="2. ศูนย์การศึกษา"><span></span></a>
+    <a href="#topic-03" class="desktop-dot" aria-label="3. คณะและเกณฑ์ TCAS" data-tooltip="3. คณะและเกณฑ์ TCAS"><span></span></a>
+    <a href="#topic-04" class="desktop-dot" aria-label="4. มิติประชากร" data-tooltip="4. มิติประชากร"><span></span></a>
+    <a href="#topic-05" class="desktop-dot" aria-label="5. การโยกย้ายศูนย์กลาง" data-tooltip="5. การโยกย้ายศูนย์กลาง"><span></span></a>
+    <a href="#topic-06" class="desktop-dot" aria-label="6. วินัยการคลัง" data-tooltip="6. วินัยการคลัง"><span></span></a>
+    <a href="#topic-07" class="desktop-dot" aria-label="7. มาตรฐานสากล" data-tooltip="7. มาตรฐานสากล"><span></span></a>
+    <a href="#topic-08" class="desktop-dot" aria-label="8. แคมปัสสีเขียว" data-tooltip="8. แคมปัสสีเขียว"><span></span></a>
+    <a href="#topic-09" class="desktop-dot" aria-label="9. รพ.ธรรมศาสตร์" data-tooltip="9. รพ.ธรรมศาสตร์"><span></span></a>
+    <a href="#topic-10" class="desktop-dot" aria-label="10. ยุทธศาสตร์ TU 2034" data-tooltip="10. ยุทธศาสตร์ TU 2034"><span></span></a>
+    <a href="#finish" class="desktop-dot" aria-label="บทสรุป 90 ปี" data-tooltip="บทสรุป 90 ปี"><span></span></a>
+  </nav>
+
 
   <!-- ==========================================================================
        1. FIXED TOP HEADER (Exact Bidwells Luxury Style)
@@ -205,6 +229,7 @@
   <!-- ==========================================================================
        HERO SECTION & CENTRAL STARTING RACETRACK (Authentic Bidwells Runway)
        ========================================================================== -->
+  <main id="main">
   <section class="hero-track-section" id="hero">
     <!-- The Central Vertical Asphalt Racetrack -->
     <div class="central-track-stage">
@@ -460,9 +485,7 @@
 
         <div class="milestone-event-card" id="milestoneEventCard">
           <div>
-            <h4 id="mEventTitle" style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">
-              พ.ศ. 2477 — สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง
-            </h4>
+            <h3 id="mEventTitle" style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">พ.ศ. 2477 — สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง</h3>
             <p id="mEventDesc" style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6;">
               ศ.ดร.ปรีดี พนมยงค์ สถาปนา มธก. ในฐานะ "ตลาดวิชา" มีผู้สมัครเข้าเรียนรุ่นแรกสูงถึง 7,094 คน เพื่อเป็นบ่อน้ำบำบัดความกระหายของราษฎร
             </p>
@@ -489,7 +512,7 @@
        ========================================================================== -->
   <section class="bidwells-map-section" id="topic-02">
     <div style="max-width: 1200px; margin: 0 auto 40px;">
-      <div class="section-eyebrow" style="color: var(--tu-gold);"><i class="fa-solid fa-location-dot"></i> หัวข้อที่ 02 / 10 | 4 STRATEGIC CAMPUSES GIS</div>
+      <div class="section-eyebrow" style="color: var(--tu-gold);"><i class="fa-solid fa-location-dot"></i> หัวข้อที่ 02 / 10 | 4 ศูนย์การศึกษาทางยุทธศาสตร์ (4 STRATEGIC CAMPUSES)</div>
       <h2 class="section-headline">
         การกระจายโอกาสสู่ภูมิภาค: <em>4 ศูนย์การศึกษา 2,791 ไร่ ทั่วประเทศ</em>
       </h2>
@@ -528,19 +551,19 @@
         <div class="map-toolbar-row">
           <div class="map-live-indicator">
             <span class="live-dot-pulse"></span>
-            <span>Real-time Interactive Campus GIS (Thailand)</span>
+            <span>แผนที่วิทยาเขตแบบโต้ตอบ (Interactive Campus Map)</span>
           </div>
 
           <div style="display: flex; align-items: center; gap: 10px;">
             <div class="map-style-toggle-group">
-              <button class="map-style-btn active" id="btnMapStyleStreet" onclick="setMapTileStyle('street')">
+              <button class="map-style-btn active" id="btnMapStyleStreet" onclick="setMapTileStyle('street')" aria-label="สลับเป็นแผนที่ถนน">
                 <i class="fa-solid fa-map-location-dot"></i> แผนที่ถนน & มุมเมือง
               </button>
-              <button class="map-style-btn" id="btnMapStyleSat" onclick="setMapTileStyle('sat')">
+              <button class="map-style-btn" id="btnMapStyleSat" onclick="setMapTileStyle('sat')" aria-label="สลับเป็นภาพถ่ายดาวเทียม">
                 <i class="fa-solid fa-satellite"></i> ภาพถ่ายดาวเทียม
               </button>
             </div>
-            <button class="map-tool-btn" onclick="resetMapView()">
+            <button class="map-tool-btn" onclick="resetMapView()" aria-label="รีเซ็ตมุมมองแผนที่">
               <i class="fa-solid fa-rotate-right"></i> รีเซ็ตมุมมอง
             </button>
             <div class="map-coord-readout" id="currentGpsDisplay">
@@ -633,14 +656,14 @@
         <div class="faculties-kpi-row">
           <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-1">
             <div class="kpi-num stat-counter" style="color: var(--tu-crimson);">83.1 <span class="unit">คะแนน</span></div>
-            <div class="kpi-lbl">คะแนนตัดต่ำสุดสูงสุด (CICM)</div>
+            <div class="kpi-lbl">คะแนนต่ำสุดที่เปิดรับสูงสุด</div>
           </div>
           <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-2">
             <div class="kpi-num stat-counter" style="color: var(--tu-navy);">72.8 <span class="unit">คะแนน</span></div>
             <div class="kpi-lbl">คะแนนเฉลี่ย TCAS รวมทุกคณะ</div>
           </div>
           <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-3">
-            <div class="kpi-num stat-counter" style="color: #0284c7;" data-counter-prefix="1 : ">14.0 <span class="unit">อัตราแข่งขัน</span></div>
+            <div class="kpi-num stat-counter" style="color: #0369a1;" data-counter-prefix="1 : ">14.0 <span class="unit">อัตราแข่งขัน</span></div>
             <div class="kpi-lbl">อัตราการแข่งขันสูงสุด</div>
           </div>
           <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-4">
@@ -670,6 +693,9 @@
         <!-- Horizontal Ranking Chart Container -->
         <div id="facultiesChartWrapper" class="tu-reveal-scale" style="height: 540px; position: relative;">
           <canvas id="facultiesTcasChartCanvas"></canvas>
+        </div>
+        <div class="faculties-footnote" style="font-size: 0.82rem; color: #64748b; margin-top: 12px; font-style: italic;">
+          * หมายเหตุ: แสดง 25 จาก 26 คณะ/สถาบันที่มีข้อมูลสถิติคัดเลือก TCAS 2566 รอบที่ 3 Admission (เกณฑ์รับรวม 60 — 85 คะแนน)
         </div>
 
         <!-- Cards Grid Container -->
@@ -718,13 +744,13 @@
   <section class="bidwells-demographic-section" id="topic-04">
     <div style="max-width: 1200px; margin: 0 auto;">
       <div style="margin-bottom: 35px;">
-        <div style="font-size: 0.8rem; font-weight: 800; color: #0284c7; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px;">
+        <div style="font-size: 0.8rem; font-weight: 800; color: #0369a1; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px;">
           <i class="fa-solid fa-venus-mars"></i> หัวข้อที่ 04 / 10 | DEMOGRAPHIC INCLUSIVITY & DIVERSITY
         </div>
         <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 700; color: var(--tu-navy); line-height: 1.25; margin-bottom: 14px;">
           โครงสร้างประชากรนักศึกษาและความหลากหลายทางเพศภาวะ
         </h2>
-        <p style="font-size: 1.05rem; color: #64748b; max-width: 860px; line-height: 1.7;">
+        <p style="font-size: 1.05rem; color: #334155; max-width: 860px; line-height: 1.7;">
           ธรรมศาสตร์มุ่งเน้นความเสมอภาคและดุลยภาพประชากรในทุกมิติวิชาการ โดยมีสัดส่วนนักศึกษาหญิงรวม 62.4% (26,738 คน) และนักศึกษาชาย <span class="stat-counter">37.6<span class="unit">%</span></span> (<span class="stat-counter">16,112 <span class="unit">คน</span></span>) พร้อมความหลากหลายที่เปิดกว้างในทุกเพศภาวะ
         </p>
       </div>
@@ -740,6 +766,31 @@
         <div class="tu-reveal-scale" style="height: 260px;">
           <canvas id="genderGroupChartCanvas"></canvas>
         </div>
+
+                <!-- Accessible Fallback Data Table for Gender Demographics -->
+        <details class="chart-data-table-fallback">
+          <summary><i class="fa-solid fa-table"></i> แสดงตารางข้อมูลสัดส่วนนักศึกษาจำแนกตามกลุ่มสาขาและเพศภาวะ</summary>
+          <div class="fallback-table-inner">
+            <table class="accessible-data-table">
+              <caption class="sr-only">สัดส่วนนักศึกษาจำแนกตามกลุ่มสาขาและเพศภาวะ ปี 2566</caption>
+              <thead>
+                <tr>
+                  <th scope="col">กลุ่มสาขาวิชา</th>
+                  <th scope="col">สัดส่วนเพศหญิง</th>
+                  <th scope="col">สัดส่วนเพศชาย</th>
+                  <th scope="col">จำนวนนักศึกษารวม (คน)</th>
+                  <th scope="col">สัดส่วนต่อมหาวิทยาลัย</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>สังคมศาสตร์และมนุษยศาสตร์</td><td>64.2%</td><td>35.8%</td><td>19,200</td><td>44.8%</td></tr>
+                <tr><td>วิทยาศาสตร์และเทคโนโลยี</td><td>53.8%</td><td>46.2%</td><td>11,450</td><td>26.7%</td></tr>
+                <tr><td>วิทยาศาสตร์สุขภาพและการแพทย์</td><td>71.5%</td><td>28.5%</td><td>7,800</td><td>18.2%</td></tr>
+                <tr><td>สถาบันและวิทยาลัยนานาชาติ</td><td>60.8%</td><td>39.2%</td><td>4,400</td><td>10.3%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
 
         <div class="demographic-chips-row">
           <div class="demo-chip-box tu-reveal-slide-up tu-stagger-1">
@@ -791,7 +842,7 @@
       <div class="campus-distribution-card tu-reveal-slide-up">
         <div class="distribution-controls-row">
           <div>
-            <h4 style="font-size: 1.15rem; font-weight: 700; color: #ffffff;">การกระจายสัดส่วนนักศึกษาตามยุคสมัย (Campus Distribution Shift)</h4>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff;">การกระจายสัดส่วนนักศึกษาตามยุคสมัย (Campus Distribution Shift)</h3>
             <p style="font-size: 0.85rem; color: #94a3b8;">เปรียบเทียบสัดส่วน 4 ศูนย์การศึกษาตั้งแต่ พ.ศ. 2500 ถึง พ.ศ. 2567</p>
           </div>
           <div style="display: flex; gap: 8px;">
@@ -803,6 +854,31 @@
         <div class="tu-reveal-scale" style="height: 240px;">
           <canvas id="campusDistributionCanvas"></canvas>
         </div>
+
+                <!-- Accessible Fallback Data Table for Campus Shift -->
+        <details class="chart-data-table-fallback">
+          <summary><i class="fa-solid fa-table"></i> แสดงตารางข้อมูลการโยกย้ายศูนย์กลางนักศึกษา (พ.ศ. 2500 — 2567)</summary>
+          <div class="fallback-table-inner">
+            <table class="accessible-data-table">
+              <caption class="sr-only">การกระจายสัดส่วนนักศึกษาตามศูนย์การศึกษาใน 4 ยุคสำคัญ</caption>
+              <thead>
+                <tr>
+                  <th scope="col">ปี พ.ศ.</th>
+                  <th scope="col">ศูนย์ท่าพระจันทร์</th>
+                  <th scope="col">ศูนย์รังสิต</th>
+                  <th scope="col">ศูนย์ลำปาง</th>
+                  <th scope="col">ศูนย์พัทยา</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>2500</td><td>100.0%</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
+                <tr><td>2530</td><td>68.0%</td><td>32.0%</td><td>0.0%</td><td>0.0%</td></tr>
+                <tr><td>2545</td><td>26.0%</td><td>70.0%</td><td>2.5%</td><td>1.5%</td></tr>
+                <tr><td>2567</td><td>14.8%</td><td>73.5%</td><td>7.2%</td><td>4.5%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
 
         <div class="shift-metrics-grid">
           <div class="shift-metric-item tu-reveal-slide-up tu-stagger-1">
@@ -850,7 +926,7 @@
       <div class="cost-cap-white-card tu-reveal-slide-up">
         <div class="cost-cap-grid">
           <div class="cost-cap-narrative tu-reveal-slide-right">
-            <h3 class="cost-cap-title">Financial Performance & Budget Growth</h3>
+            <h3 class="cost-cap-title">ผลการดำเนินงานทางการเงินและการเติบโตของงบประมาณ (Financial Performance & Budget Growth)</h3>
             <p class="cost-cap-lead">
               เปรียบเทียบงบประมาณรายรับ 5 ปีต่อเนื่อง (2563–2567) เติบโตจาก 13,420 ล้านบาท สู่ 15,350 ล้านบาท ด้วยการบริหารจัดการที่เป็นอิสระ เสริมสร้างความเข้มแข็งของ 5 แหล่งรายได้หลัก
             </p>
@@ -925,26 +1001,101 @@
         </p>
       </div>
 
-      <div class="turning-cars-stage tu-reveal-slide-up">
-        <div class="turning-car-wrap" style="width: 105px;">
-          <img src="assets/tu_student_walking.webp" alt="ตัวแทนนักศึกษา มธ. ด้านมาตรฐานสากล AACSB" width="125" height="167" loading="lazy" decoding="async" class="tu-student-walker-img" />
-          <div class="tu-student-ground-shadow"></div>
-          <div class="tu-student-badge" style="font-size: 0.65rem; padding: 2px 8px; margin-top: 4px;">
-            <i class="fa-solid fa-award"></i> AACSB Leader
+      <!-- 3 Bespoke Triple Crown Accreditation SVG Badges (Replacing Repeated Student Image) -->
+      <div class="triple-crown-badges-stage tu-reveal-slide-up">
+        <!-- Badge 1: AACSB 2012 -->
+        <div class="accreditation-badge-card tu-reveal-slide-up tu-stagger-1">
+          <div class="badge-svg-wrap">
+            <svg viewBox="0 0 100 120" class="crown-svg-graphic" aria-hidden="true">
+              <defs>
+                <linearGradient id="gradAacsb" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffc72c" />
+                  <stop offset="100%" stop-color="#b45309" />
+                </linearGradient>
+                <linearGradient id="gradAacsbBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#0f2952" />
+                  <stop offset="100%" stop-color="#071224" />
+                </linearGradient>
+              </defs>
+              <path d="M50 5 L90 22 V65 C90 92 50 115 50 115 C50 115 10 92 10 65 V22 Z" fill="url(#gradAacsbBg)" stroke="url(#gradAacsb)" stroke-width="3" />
+              <path d="M50 12 L83 26 V63 C83 85 50 105 50 105 C50 105 17 85 17 63 V26 Z" fill="none" stroke="rgba(255,199,44,0.3)" stroke-width="1.5" />
+              <circle cx="50" cy="46" r="22" fill="rgba(255,199,44,0.12)" stroke="#ffc72c" stroke-width="1.5" />
+              <path d="M50 29 L54 39 L65 39 L56 46 L59 57 L50 51 L41 57 L44 46 L35 39 L46 39 Z" fill="#ffc72c" />
+              <text x="50" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">AACSB</text>
+              <text x="50" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="8.5" fill="#ffc72c" text-anchor="middle" letter-spacing="0.5">ACCREDITED</text>
+              <text x="50" y="101" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="7.5" fill="#94a3b8" text-anchor="middle">USA • 2012</text>
+            </svg>
+          </div>
+          <div class="accreditation-badge-info">
+            <div class="accreditation-badge-name">AACSB Accredited</div>
+            <div class="accreditation-badge-desc">มาตรฐานการศึกษาระดับโลกจากสหรัฐฯ (ได้รับ พ.ศ. 2555)</div>
           </div>
         </div>
-        <div class="turning-car-wrap" style="width: 105px;">
-          <img src="assets/tu_student_walking.webp" alt="ตัวแทนนักศึกษา มธ. ด้านมาตรฐานสากล EQUIS" width="125" height="167" loading="lazy" decoding="async" class="tu-student-walker-img" style="filter: drop-shadow(0 10px 18px rgba(0,0,0,0.7)) brightness(1.08);" />
-          <div class="tu-student-ground-shadow"></div>
-          <div class="tu-student-badge" style="font-size: 0.65rem; padding: 2px 8px; margin-top: 4px;">
-            <i class="fa-solid fa-globe"></i> EQUIS Standard
+
+        <!-- Badge 2: EQUIS 2012 -->
+        <div class="accreditation-badge-card tu-reveal-slide-up tu-stagger-2">
+          <div class="badge-svg-wrap">
+            <svg viewBox="0 0 100 120" class="crown-svg-graphic" aria-hidden="true">
+              <defs>
+                <linearGradient id="gradEquis" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#0369a1" />
+                </linearGradient>
+                <linearGradient id="gradEquisBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#0a2a4a" />
+                  <stop offset="100%" stop-color="#06162a" />
+                </linearGradient>
+              </defs>
+              <path d="M50 5 L90 22 V65 C90 92 50 115 50 115 C50 115 10 92 10 65 V22 Z" fill="url(#gradEquisBg)" stroke="url(#gradEquis)" stroke-width="3" />
+              <path d="M50 12 L83 26 V63 C83 85 50 105 50 105 C50 105 17 85 17 63 V26 Z" fill="none" stroke="rgba(56,189,248,0.3)" stroke-width="1.5" />
+              <circle cx="50" cy="46" r="22" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="1.5" />
+              <!-- European Star Ring -->
+              <circle cx="50" cy="32" r="2" fill="#38bdf8" />
+              <circle cx="62" cy="37" r="2" fill="#38bdf8" />
+              <circle cx="64" cy="51" r="2" fill="#38bdf8" />
+              <circle cx="56" cy="61" r="2" fill="#38bdf8" />
+              <circle cx="44" cy="61" r="2" fill="#38bdf8" />
+              <circle cx="36" cy="51" r="2" fill="#38bdf8" />
+              <circle cx="38" cy="37" r="2" fill="#38bdf8" />
+              <circle cx="50" cy="46" r="4.5" fill="#ffc72c" />
+              <text x="50" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">EQUIS</text>
+              <text x="50" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="8.5" fill="#38bdf8" text-anchor="middle" letter-spacing="0.5">ACCREDITED</text>
+              <text x="50" y="101" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="7.5" fill="#94a3b8" text-anchor="middle">EU • 2012</text>
+            </svg>
+          </div>
+          <div class="accreditation-badge-info">
+            <div class="accreditation-badge-name">EQUIS Standard</div>
+            <div class="accreditation-badge-desc">มาตรฐานความเป็นเลิศระดับยุโรป EFMD (ได้รับ พ.ศ. 2555)</div>
           </div>
         </div>
-        <div class="turning-car-wrap" style="width: 105px;">
-          <img src="assets/tu_student_walking.webp" alt="ตัวแทนนักศึกษา มธ. ด้านมาตรฐานสากล AMBA" width="125" height="167" loading="lazy" decoding="async" class="tu-student-walker-img" style="filter: drop-shadow(0 10px 18px rgba(0,0,0,0.7)) hue-rotate(-20deg);" />
-          <div class="tu-student-ground-shadow"></div>
-          <div class="tu-student-badge" style="font-size: 0.65rem; padding: 2px 8px; margin-top: 4px;">
-            <i class="fa-solid fa-crown"></i> AMBA Excellence
+
+        <!-- Badge 3: AMBA 2018 -->
+        <div class="accreditation-badge-card tu-reveal-slide-up tu-stagger-3">
+          <div class="badge-svg-wrap">
+            <svg viewBox="0 0 100 120" class="crown-svg-graphic" aria-hidden="true">
+              <defs>
+                <linearGradient id="gradAmba" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff4d79" />
+                  <stop offset="100%" stop-color="#c51944" />
+                </linearGradient>
+                <linearGradient id="gradAmbaBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#3b0d1e" />
+                  <stop offset="100%" stop-color="#1a040b" />
+                </linearGradient>
+              </defs>
+              <path d="M50 5 L90 22 V65 C90 92 50 115 50 115 C50 115 10 92 10 65 V22 Z" fill="url(#gradAmbaBg)" stroke="url(#gradAmba)" stroke-width="3" />
+              <path d="M50 12 L83 26 V63 C83 85 50 105 50 105 C50 105 17 85 17 63 V26 Z" fill="none" stroke="rgba(255,77,121,0.3)" stroke-width="1.5" />
+              <circle cx="50" cy="46" r="22" fill="rgba(197,25,68,0.2)" stroke="#ff4d79" stroke-width="1.5" />
+              <!-- Crown Icon -->
+              <path d="M37 54 L37 42 L44 48 L50 36 L56 48 L63 42 L63 54 Z" fill="#ffc72c" stroke="#b45309" stroke-width="0.8" />
+              <text x="50" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">AMBA</text>
+              <text x="50" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="8.5" fill="#ff4d79" text-anchor="middle" letter-spacing="0.5">ACCREDITED</text>
+              <text x="50" y="101" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="7.5" fill="#94a3b8" text-anchor="middle">UK • 2018</text>
+            </svg>
+          </div>
+          <div class="accreditation-badge-info">
+            <div class="accreditation-badge-name">AMBA Excellence</div>
+            <div class="accreditation-badge-desc">การรับรองหลักสูตร MBA ระดับโลก สหราชอาณาจักร (ได้รับ พ.ศ. 2561)</div>
           </div>
         </div>
       </div>
@@ -953,7 +1104,7 @@
         <div class="tbs-header-row">
           <div>
             <h3 style="font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: #ffffff;">
-              Thailand Business School Excellence Race
+              ความเป็นเลิศระดับโลก คณะพาณิชยศาสตร์ฯ (TBS Excellence Race)
             </h3>
             <p style="font-size: 0.85rem; color: #cbd5e1;">TBS มหาวิทยาลัยธรรมศาสตร์ ครองการรับรองครบ 3 สถาบันหลักระดับโลก (Triple Crown) แห่งแรกในประเทศไทย (2018) ร่วมกับสถาบันชั้นนำระดับโลก</p>
           </div>
@@ -964,6 +1115,7 @@
           </div>
         </div>
 
+        <div class="tbs-table-scroll-wrapper">
         <table class="benchmark-table">
           <thead>
             <tr>
@@ -1111,6 +1263,31 @@
           <canvas id="greenSustainabilityCanvas"></canvas>
         </div>
 
+                <!-- Accessible Fallback Data Table for Green Sustainability -->
+        <details class="chart-data-table-fallback">
+          <summary><i class="fa-solid fa-table"></i> แสดงตารางข้อมูลดัชนีแคมปัสยั่งยืนและพลังงานหมุนเวียน</summary>
+          <div class="fallback-table-inner">
+            <table class="accessible-data-table">
+              <caption class="sr-only">ตัวชี้วัดความยั่งยืนและสิ่งแวดล้อม มหาวิทยาลัยธรรมศาสตร์</caption>
+              <thead>
+                <tr>
+                  <th scope="col">ตัวชี้วัดความยั่งยืน</th>
+                  <th scope="col">ผลการดำเนินงานจริง</th>
+                  <th scope="col">เป้าหมายปี 2030 (Net Zero)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>กำลังการผลิตพลังงานโซลาร์เซลล์รวม</td><td>15 MW (ตามแผนยุทธศาสตร์)</td><td>25 MW</td></tr>
+                <tr><td>การลดการปล่อยก๊าซเรือนกระจก</td><td>25,500 ตันคาร์บอน/ปี</td><td>Net Zero 100%</td></tr>
+                <tr><td>พื้นที่สวนหลังคาป๋วย 100 ปี (Puey Park)</td><td>22,000 ตร.ม. (ใหญ่สุดในเอเชีย)</td><td>รักษาพื้นที่สีเขียว</td></tr>
+                <tr><td>ความจุกักเก็บน้ำฝน (TURF Urban Farm)</td><td>3.1 ล้านแกลลอน</td><td>ขยายระบบน้ำรีไซเคิล</td></tr>
+                <tr><td>คะแนน SDG 11 โลก (THE Impact 2024)</td><td>98.4 / 100</td><td>100 / 100</td></tr>
+                <tr><td>อันดับโลก SDG 16 (สันติภาพและความยุติธรรม)</td><td>อันดับ 1 ของโลก (90.2 คะแนน)</td><td>รักษาอันดับ 1 โลก</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
         <div class="visual-metric-strip">
           <div class="visual-metric-pill tu-reveal-slide-up tu-stagger-1">
             <div class="val stat-counter">15 <span class="unit">MW</span></div>
@@ -1183,28 +1360,28 @@
         <div class="hospital-center-item tu-reveal-slide-up tu-stagger-1">
           <div class="hospital-center-icon"><i class="fa-solid fa-heart-pulse"></i></div>
           <div>
-            <h4 style="font-size: 1.2rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">ศูนย์หัวใจธรรมศาสตร์ (Heart Center)</h4>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">ศูนย์หัวใจธรรมศาสตร์ (Heart Center)</h3>
             <p style="font-size: 0.88rem; color: #64748b; line-height: 1.6; margin: 0;">บริการสวนหัวใจ ผ่าตัดบายพาส และดูแลรักษาโรคหลอดเลือดหัวใจตลอด 24 ชั่วโมง โดยทีมแพทย์ผู้เชี่ยวชาญเฉพาะทาง</p>
           </div>
         </div>
         <div class="hospital-center-item tu-reveal-slide-up tu-stagger-2">
           <div class="hospital-center-icon"><i class="fa-solid fa-dna"></i></div>
           <div>
-            <h4 style="font-size: 1.2rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">ศูนย์มะเร็งและรังสีรักษา (Cancer Center)</h4>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">ศูนย์มะเร็งและรังสีรักษา (Cancer Center)</h3>
             <p style="font-size: 0.88rem; color: #64748b; line-height: 1.6; margin: 0;">เทคโนโลยีฉายรังสีความแม่นยำสูง เคมีบำบัด และการรักษามะเร็งแบบแม่นยำจำเพาะบุคคล (Precision Oncology)</p>
           </div>
         </div>
         <div class="hospital-center-item tu-reveal-slide-up tu-stagger-3">
           <div class="hospital-center-icon"><i class="fa-solid fa-hospital-user"></i></div>
           <div>
-            <h4 style="font-size: 1.2rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">ศูนย์อุบัติเหตุและฉุกเฉินระดับ 1 (Level 1 Trauma)</h4>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">ศูนย์อุบัติเหตุและฉุกเฉินระดับ 1 (Level 1 Trauma)</h3>
             <p style="font-size: 0.88rem; color: #64748b; line-height: 1.6; margin: 0;">ระบบการแพทย์ฉุกเฉินรับส่งผู้ป่วยวิกฤตทางบกและทางอากาศ เชื่อมต่อเครือข่ายบริการสุขภาพทั่วประเทศ</p>
           </div>
         </div>
         <div class="hospital-center-item tu-reveal-slide-up tu-stagger-4">
           <div class="hospital-center-icon"><i class="fa-solid fa-user-doctor"></i></div>
           <div>
-            <h4 style="font-size: 1.2rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">ศูนย์บริการสุขภาพปฐมภูมิและผู้สูงวัย</h4>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">ศูนย์บริการสุขภาพปฐมภูมิและผู้สูงวัย</h3>
             <p style="font-size: 0.88rem; color: #64748b; line-height: 1.6; margin: 0;">การดูแลสุขภาพองค์รวม การส่งเสริมสุขภาพ และการดูแลผู้สูงอายุอย่างอบอุ่นตามวิถีชุมชน</p>
           </div>
         </div>
@@ -1226,6 +1403,29 @@
         <div class="tu-reveal-scale" style="position: relative; height: 320px; width: 100%;">
           <canvas id="hospitalCapacityCanvas"></canvas>
         </div>
+
+                <!-- Accessible Fallback Data Table for Hospital Capacity -->
+        <details class="chart-data-table-fallback">
+          <summary><i class="fa-solid fa-table"></i> แสดงตารางข้อมูลสถิติบริการทางการแพทย์ โรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ</summary>
+          <div class="fallback-table-inner">
+            <table class="accessible-data-table">
+              <caption class="sr-only">สถิติการให้บริการผู้ป่วยและศักยภาพเตียง รพ.ธรรมศาสตร์เฉลิมพระเกียรติ</caption>
+              <thead>
+                <tr>
+                  <th scope="col">รายการบริการทางการแพทย์</th>
+                  <th scope="col">สถิติประจำปี 2566</th>
+                  <th scope="col">หมายเหตุประกอบ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>ผู้ป่วยนอกรับบริการ (OPD Visits)</td><td>1,480,000+ ราย/ปี</td><td>บริการประชาชนปทุมธานีและภาคกลางตอนบน</td></tr>
+                <tr><td>ผู้ป่วยในรับไว้รักษา (IPD Admissions)</td><td>58,400 ราย/ปี</td><td>การรักษาเฉพาะทางตติยภูมิขั้นสูง</td></tr>
+                <tr><td>เตียงผู้ป่วยตติยภูมิเปิดบริการจริง</td><td>750 เตียง</td><td>มติ ครม. 2568 ขยายสู่ 1,000 เตียง</td></tr>
+                <tr><td>เตียงโรงพยาบาลสนาม (ภารกิจโควิด-19)</td><td>308 — 470 เตียง</td><td>รองรับผู้ป่วยวิกฤตสะสมกว่า 3,200 ราย</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
 
         <div class="hospital-metric-strip">
           <div class="hospital-metric-pill tu-reveal-slide-up tu-stagger-1">
@@ -1311,15 +1511,16 @@
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
         <div>
           <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--tu-navy);">
-            TU 2034 Centennial Strategy Cockpit
+            ห้องควบคุมจำลองยุทธศาสตร์ TU 2034 (Centennial Strategy Cockpit)
           </h3>
           <p style="font-size: 0.88rem; color: #64748b;">
             ปรับคันเร่งยุทธศาสตร์ 4 ด้านเพื่อจำลองดัชนีความพร้อมสู่ 100 ปี ธรรมศาสตร์ (Centennial Readiness Index)
           </p>
         </div>
         <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-          <div style="font-size: 2.2rem; font-weight: 900; color: var(--tu-crimson);" id="cockpitCompositeScore">93.0</div>
+          <div style="font-size: 2.2rem; font-weight: 900; color: var(--tu-crimson);" id="cockpitCompositeScore">92.0</div>
           <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Centennial Readiness Index</div>
+          <div style="font-size: 0.72rem; color: #64748b; font-style: italic; margin-top: 2px;">* ตัวจำลองสมมุติ ไม่ใช่คะแนนทางการ</div>
           <button class="cockpit-reset-btn" onclick="resetCockpit()" aria-label="รีเซ็ตค่าจำลองยุทธศาสตร์เป็นค่ามาตรฐาน" style="background: rgba(11, 22, 59, 0.08); border: 1px solid rgba(11, 22, 59, 0.2); border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; color: var(--tu-navy); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; margin-top: 4px;">
             <i class="fa-solid fa-rotate-left"></i> รีเซ็ตค่ามาตรฐาน
           </button>
@@ -1328,23 +1529,23 @@
 
       <div class="cockpit-sliders-grid">
         <div class="cockpit-slider-item">
-          <label>1. ทุนวิจัยระดับโลก (Global Research) <span style="font-weight: 400; color: var(--tu-crimson); font-size: 0.78rem;">[น้ำหนัก 30%]</span></label>
-          <input type="range" class="cockpit-range-input" min="50" max="100" value="90" id="sliderResearch" oninput="updateCockpit()" />
+          <label for="sliderResearch">1. ทุนวิจัยระดับโลก (Global Research) <span style="font-weight: 400; color: var(--tu-crimson); font-size: 0.78rem;">[น้ำหนัก 30%]</span></label>
+          <input type="range" class="cockpit-range-input" min="50" max="100" value="90" id="sliderResearch" aria-label="ระดับทุนวิจัยระดับโลก Global Research (น้ำหนัก 30%)" aria-valuemin="50" aria-valuemax="100" aria-valuenow="90" aria-valuetext="90%" oninput="updateCockpit()" />
           <div class="cockpit-val-disp" id="dispResearch">90%</div>
         </div>
         <div class="cockpit-slider-item">
-          <label>2. บัณฑิตทักษะ AI & นวัตกรรม <span style="font-weight: 400; color: var(--tu-crimson); font-size: 0.78rem;">[น้ำหนัก 25%]</span></label>
-          <input type="range" class="cockpit-range-input" min="50" max="100" value="95" id="sliderSkills" oninput="updateCockpit()" />
+          <label for="sliderSkills">2. บัณฑิตทักษะ AI & นวัตกรรม <span style="font-weight: 400; color: var(--tu-crimson); font-size: 0.78rem;">[น้ำหนัก 25%]</span></label>
+          <input type="range" class="cockpit-range-input" min="50" max="100" value="95" id="sliderSkills" aria-label="ระดับบัณฑิตทักษะ AI และนวัตกรรม (น้ำหนัก 25%)" aria-valuemin="50" aria-valuemax="100" aria-valuenow="95" aria-valuetext="95%" oninput="updateCockpit()" />
           <div class="cockpit-val-disp" id="dispSkills">95%</div>
         </div>
         <div class="cockpit-slider-item">
-          <label>3. วิทยาเขตคาร์บอนต่ำ (SDG Green)</label>
-          <input type="range" class="cockpit-range-input" min="50" max="100" value="88" id="sliderGreen" oninput="updateCockpit()" />
+          <label for="sliderGreen">3. วิทยาเขตคาร์บอนต่ำ (SDG Green) <span style="font-weight: 400; color: var(--tu-crimson); font-size: 0.78rem;">[น้ำหนัก 25%]</span></label>
+          <input type="range" class="cockpit-range-input" min="50" max="100" value="88" id="sliderGreen" aria-label="ระดับวิทยาเขตคาร์บอนต่ำ SDG Green (น้ำหนัก 25%)" aria-valuemin="50" aria-valuemax="100" aria-valuenow="88" aria-valuetext="88%" oninput="updateCockpit()" />
           <div class="cockpit-val-disp" id="dispGreen">88%</div>
         </div>
         <div class="cockpit-slider-item">
-          <label>4. สุขภาพและการแพทย์เพื่อชุมชน</label>
-          <input type="range" class="cockpit-range-input" min="50" max="100" value="96" id="sliderHealth" oninput="updateCockpit()" />
+          <label for="sliderHealth">4. สุขภาพและการแพทย์เพื่อชุมชน <span style="font-weight: 400; color: var(--tu-crimson); font-size: 0.78rem;">[น้ำหนัก 20%]</span></label>
+          <input type="range" class="cockpit-range-input" min="50" max="100" value="96" id="sliderHealth" aria-label="ระดับสุขภาพและการแพทย์เพื่อชุมชน (น้ำหนัก 20%)" aria-valuemin="50" aria-valuemax="100" aria-valuenow="96" aria-valuetext="96%" oninput="updateCockpit()" />
           <div class="cockpit-val-disp" id="dispHealth">96%</div>
         </div>
       </div>
@@ -1367,7 +1568,7 @@
         เส้นชัยเกียรติภูมิ 90 ปี • MILESTONE COMPLETED
       </div>
       <h2 style="font-family: var(--font-serif); font-size: 3rem; font-weight: 700; color: var(--tu-navy); line-height: 1.25; margin: 12px 0 16px;">
-        Thammasat Leaders Crossing into the <em>Future</em>
+        ผู้นำธรรมศาสตร์ก้าวข้ามสู่ศตวรรษแห่ง <em>อนาคต</em> (Thammasat Leaders Crossing into the Future)
       </h2>
       <p style="font-size: 1.1rem; color: #475569; line-height: 1.7;">
         ธรรมศาสตร์ 90 ปี สู่ศตวรรษแห่งการสร้างผู้นำ ขับเคลื่อนนวัตกรรม และยืนหยัดเคียงข้างประชาชน
@@ -1451,6 +1652,33 @@
       </div>
     </div>
   </section>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER (Semantic & Accessible Attribution)
+       ========================================================================== -->
+  <footer class="tu-site-footer">
+    <div class="tu-footer-inner">
+      <div class="tu-footer-brand">
+        <i class="fa-solid fa-dharmachakra" style="color: var(--tu-crimson);"></i>
+        <span>90 ปี มหาวิทยาลัยธรรมศาสตร์: 2477 — 2567 (BI304 Data Storytelling)</span>
+      </div>
+      <p class="tu-footer-sub">
+        โครงการศึกษาและพัฒนาระบบการสื่อสารข้อมูลเชิงลึก (BI304 Data Storytelling) มหาวิทยาลัยธรรมศาสตร์ • บูรณาการชุดข้อมูลทุติยภูมิทางการ รายงานงบประมาณ และฐานข้อมูลการจัดอันดับระดับนานาชาติ
+      </p>
+      <div class="tu-footer-links">
+        <a href="https://tu.ac.th" target="_blank" rel="noopener noreferrer">เว็บไซต์หลัก มหาวิทยาลัยธรรมศาสตร์ (tu.ac.th)</a>
+        <span>•</span>
+        <a href="https://colab.research.google.com/github/kondee-rgb/BI304-Thammasat-Data-Storytelling/blob/main/BI304_Thammasat_Data_Storytelling.ipynb" target="_blank" rel="noopener noreferrer">Google Colab Notebook</a>
+        <span>•</span>
+        <a href="flourish_data/thammasat_flourish_all_scenes.zip" download="thammasat_flourish_all_scenes.zip">ดาวน์โหลดชุดข้อมูล Flourish CSV (.ZIP)</a>
+      </div>
+      <div class="tu-footer-copyright">
+        © 2567 โครงการรายงานข้อมูลเชิงยุทธศาสตร์ 90 ปี มหาวิทยาลัยธรรมศาสตร์ • สงวนลิขสิทธิ์เพื่อการศึกษาและการวิเคราะห์ข้อมูล
+      </div>
+    </div>
+  </footer>
+
 
   <!-- ==========================================================================
        TCAS DRILLDOWN MODAL
@@ -1485,14 +1713,14 @@
   <!-- ==========================================================================
        FLOURISH 10-SCENE DATA STORYTELLING HUB MODAL
        ========================================================================== -->
-  <div class="flourish-modal-backdrop" id="flourishHubModal" onclick="if(event.target===this) closeFlourishHubModal()">
+  <div class="flourish-modal-backdrop" id="flourishHubModal" role="dialog" aria-modal="true" aria-labelledby="flourishHubModalTitle" onclick="if(event.target===this) closeFlourishHubModal()">
     <div class="flourish-modal-card">
       <div class="flourish-modal-header">
         <div>
-          <div style="font-size: 0.75rem; font-weight: 800; color: #0284c7; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
+          <div style="font-size: 0.75rem; font-weight: 800; color: #0369a1; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
             <i class="fa-solid fa-chart-pie"></i> FLOURISH DATA STORYTELLING HUB &amp; CSV REPOSITORY
           </div>
-          <h3 style="font-family: var(--font-serif); font-size: 1.55rem; font-weight: 700; color: var(--tu-navy); margin: 4px 0;">
+          <h3 id="flourishHubModalTitle" style="font-family: var(--font-serif); font-size: 1.55rem; font-weight: 700; color: var(--tu-navy); margin: 4px 0;">
             คลังภาพข้อมูล Flourish &amp; ดาวน์โหลด CSV ครบ 10 ฉาก
           </h3>
           <p style="font-size: 0.82rem; color: #64748b; margin: 0;">

@@ -529,11 +529,37 @@
           else header.classList.remove('scrolled');
         }
 
-        // Update Scrubber Fill and Thumb
+        // Update Scrubber Fill, Thumb, and Top Reading Progress Bar (Part E)
         if (scrubberFill && scrubberThumb) {
           scrubberFill.style.width = (progress * 100) + '%';
           scrubberThumb.style.left = (progress * 100) + '%';
         }
+        const topBar = document.getElementById('topReadingProgress');
+        if (topBar) {
+          topBar.style.width = (progress * 100) + '%';
+          topBar.setAttribute('aria-valuenow', Math.round(progress * 100));
+        }
+
+        // Update Desktop Dot Navigation Active Dot
+        const dotNavItems = document.querySelectorAll('.desktop-dot-nav .desktop-dot');
+        const trackSecs = ['hero', 'topic-01', 'topic-02', 'topic-03', 'topic-04', 'topic-05', 'topic-06', 'topic-07', 'topic-08', 'topic-09', 'topic-10', 'finish'];
+        let activeSec = 'hero';
+        trackSecs.forEach(secId => {
+          const secEl = document.getElementById(secId);
+          if (secEl) {
+            const rect = secEl.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= window.innerHeight * 0.15) {
+              activeSec = secId;
+            }
+          }
+        });
+        dotNavItems.forEach(dot => {
+          if (dot.getAttribute('href') === '#' + activeSec) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
 
         // Hero Student Walkers Scroll Acceleration
         const walkerStartScroll = 400;
@@ -605,6 +631,14 @@
       }).addTo(tuMap);
 
       // High-resolution Satellite Imagery Basemap (Free, No API Key)
+            // Add accessible aria labels to Leaflet zoom controls
+      setTimeout(() => {
+        const zoomIn = document.querySelector('.leaflet-control-zoom-in');
+        if (zoomIn) zoomIn.setAttribute('aria-label', 'ซูมเข้าแผนที่');
+        const zoomOut = document.querySelector('.leaflet-control-zoom-out');
+        if (zoomOut) zoomOut.setAttribute('aria-label', 'ซูมออกแผนที่');
+      }, 500);
+
       window.tuTileSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         maxZoom: 18,
         attribution: 'Esri, Maxar, Earthstar Geographics'
@@ -621,7 +655,18 @@
           iconAnchor: [11, 11]
         });
 
-        const marker = L.marker([camp.lat, camp.lng], { icon: customIcon }).addTo(tuMap);
+        const marker = L.marker([camp.lat, camp.lng], { 
+          icon: customIcon,
+          title: `หมุดที่ตั้ง ${camp.name}`,
+          alt: `หมุดที่ตั้ง ${camp.name}`
+        }).addTo(tuMap);
+        marker.on('add', () => {
+          if (marker._icon) {
+            marker._icon.setAttribute('aria-label', `หมุดแผนที่ ${camp.name}`);
+            marker._icon.setAttribute('role', 'button');
+            marker._icon.setAttribute('tabindex', '0');
+          }
+        });
         marker.bindPopup(`
           <div style="font-family: sans-serif; padding: 6px;">
             <strong style="color: #c51944; font-size: 14px;">${camp.name}</strong><br/>
@@ -781,6 +826,10 @@
     let facultiesTcasChart = null;
     window.currentFacultyFilter = 'all';
 
+    // 8. Faculties TCAS Chart (Horizontal Dot/Lollipop Plot - Master Prompt v4 A5)
+    let facultiesTcasChart = null;
+    window.currentFacultyFilter = 'all';
+
     function initFacultiesTcasChart() {
       const ctx = document.getElementById('facultiesTcasChartCanvas');
       if (!ctx) return;
@@ -799,10 +848,33 @@
         return '#1e3a8a';
       });
 
+      // Plugin for drawing crisp cluster-colored circular dots at the lollipop tip
+      const lollipopDotPlugin = {
+        id: 'lollipopDotMarkers',
+        afterDatasetsDraw(chart) {
+          const { ctx: c } = chart;
+          const meta = chart.getDatasetMeta(0);
+          if (!meta || !meta.data) return;
+          meta.data.forEach((element, index) => {
+            const { x, y } = element.tooltipPosition();
+            const color = colors[index] || '#c51944';
+            c.save();
+            c.beginPath();
+            c.arc(x, y, 6.5, 0, 2 * Math.PI);
+            c.fillStyle = color;
+            c.fill();
+            c.lineWidth = 2.5;
+            c.strokeStyle = '#ffffff';
+            c.stroke();
+            c.restore();
+          });
+        }
+      };
+
       if (facultiesTcasChart) {
         facultiesTcasChart.data.labels = labels;
         facultiesTcasChart.data.datasets[0].data = data;
-        facultiesTcasChart.data.datasets[0].backgroundColor = colors;
+        facultiesTcasChart.data.datasets[0].backgroundColor = colors.map(c => c + 'aa');
         facultiesTcasChart.update();
         return;
       }
@@ -814,12 +886,13 @@
           datasets: [{
             label: 'คะแนนตัดต่ำสุด TCAS (รอบ 3 Admission)',
             data: data,
-            backgroundColor: colors,
-            borderRadius: 4,
-            barThickness: 13,
-            maxBarThickness: 15
+            backgroundColor: colors.map(c => c + 'aa'),
+            borderRadius: 2,
+            barThickness: 3,
+            maxBarThickness: 3
           }]
         },
+        plugins: [lollipopDotPlugin],
         options: {
           indexAxis: 'y',
           responsive: true,
@@ -844,7 +917,7 @@
                     `สายอาชีพ: ${fac.careers.substring(0, 42)}...`
                   ];
                 },
-                afterLabel: () => '👉 คลิกแท่งกราฟเพื่อดูรายละเอียดฉบับเต็ม'
+                afterLabel: () => '👉 คลิกแท่ง/จุดเพื่อดูรายละเอียดฉบับเต็ม'
               }
             }
           },
@@ -856,8 +929,8 @@
           },
           scales: {
             x: {
-              min: 0,
-              max: 100,
+              min: 60,
+              max: 85,
               ticks: {
                 stepSize: 5,
                 callback: (v) => v + ' คะแนน',
@@ -927,45 +1000,111 @@
       initFacultiesTcasChart();
     }
 
+    let lastActiveFocusElement = null;
+    let flourishTrapKeyHandler = null;
+    let facultyTrapKeyHandler = null;
+
+    function handleModalFocusTrap(modalEl, e, closeFn) {
+      if (e.key === 'Escape') {
+        closeFn();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const focusables = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          last.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === last) {
+          first.focus();
+          e.preventDefault();
+        }
+      }
+    }
+
     function openFacultyModal(fac) {
+      lastActiveFocusElement = document.activeElement;
       document.getElementById('mFacPillar').textContent = fac.pillarName;
       document.getElementById('mFacTitle').textContent = fac.name;
       document.getElementById('mFacDesc').textContent = fac.desc;
       document.getElementById('mFacCutoff').textContent = fac.cutoff + ' / 100';
       document.getElementById('mFacAccept').textContent = fac.accept;
       document.getElementById('mFacCareers').textContent = fac.careers;
-      document.getElementById('facultyModal').style.display = 'flex';
+      const modal = document.getElementById('facultyModal');
+      if (modal) {
+        modal.style.display = 'flex';
+        const closeBtn = modal.querySelector('.modal-close-btn');
+        if (closeBtn) closeBtn.focus();
+        facultyTrapKeyHandler = (e) => handleModalFocusTrap(modal, e, closeFacultyModal);
+        document.addEventListener('keydown', facultyTrapKeyHandler);
+      }
     }
 
     function closeFacultyModal() {
-      document.getElementById('facultyModal').style.display = 'none';
+      const modal = document.getElementById('facultyModal');
+      if (modal) {
+        modal.style.display = 'none';
+        if (facultyTrapKeyHandler) {
+          document.removeEventListener('keydown', facultyTrapKeyHandler);
+          facultyTrapKeyHandler = null;
+        }
+        if (lastActiveFocusElement && typeof lastActiveFocusElement.focus === 'function') {
+          lastActiveFocusElement.focus();
+        }
+      }
     }
 
-    // 9. TU 2034 Strategy Cockpit Calculator
+    // 9. TU 2034 Strategy Cockpit Calculator (A7 default sync & aria attributes)
     function updateCockpit() {
-      const r = parseFloat(document.getElementById('sliderResearch').value);
-      const s = parseFloat(document.getElementById('sliderSkills').value);
-      const g = parseFloat(document.getElementById('sliderGreen').value);
-      const h = parseFloat(document.getElementById('sliderHealth').value);
+      const sliderR = document.getElementById('sliderResearch');
+      const sliderS = document.getElementById('sliderSkills');
+      const sliderG = document.getElementById('sliderGreen');
+      const sliderH = document.getElementById('sliderHealth');
+      if (!sliderR || !sliderS || !sliderG || !sliderH) return;
+
+      const r = parseFloat(sliderR.value);
+      const s = parseFloat(sliderS.value);
+      const g = parseFloat(sliderG.value);
+      const h = parseFloat(sliderH.value);
 
       document.getElementById('dispResearch').textContent = r + '%';
       document.getElementById('dispSkills').textContent = s + '%';
       document.getElementById('dispGreen').textContent = g + '%';
       document.getElementById('dispHealth').textContent = h + '%';
 
+      sliderR.setAttribute('aria-valuenow', r);
+      sliderR.setAttribute('aria-valuetext', r + '%');
+      sliderS.setAttribute('aria-valuenow', s);
+      sliderS.setAttribute('aria-valuetext', s + '%');
+      sliderG.setAttribute('aria-valuenow', g);
+      sliderG.setAttribute('aria-valuetext', g + '%');
+      sliderH.setAttribute('aria-valuenow', h);
+      sliderH.setAttribute('aria-valuetext', h + '%');
+
       const composite = (r * 0.3 + s * 0.25 + g * 0.25 + h * 0.2).toFixed(1);
-      document.getElementById('cockpitCompositeScore').textContent = composite;
+      const scoreEl = document.getElementById('cockpitCompositeScore');
+      if (scoreEl) scoreEl.textContent = composite;
     }
 
     // 10. Flourish Hub Modal & Live Visual Preview Engine
     let flourishModalChartInstance = null;
 
     function openFlourishHubModal() {
+      lastActiveFocusElement = document.activeElement;
       const modal = document.getElementById('flourishHubModal');
       if (modal) {
         modal.style.display = 'flex';
         renderFlourishTabs();
         selectFlourishScene(0);
+        const closeBtn = modal.querySelector('.modal-close-btn');
+        if (closeBtn) closeBtn.focus();
+        flourishTrapKeyHandler = (e) => handleModalFocusTrap(modal, e, closeFlourishHubModal);
+        document.addEventListener('keydown', flourishTrapKeyHandler);
       }
     }
 
@@ -973,9 +1112,16 @@
       const modal = document.getElementById('flourishHubModal');
       if (modal) {
         modal.style.display = 'none';
+        if (flourishTrapKeyHandler) {
+          document.removeEventListener('keydown', flourishTrapKeyHandler);
+          flourishTrapKeyHandler = null;
+        }
         if (flourishModalChartInstance) {
           flourishModalChartInstance.destroy();
           flourishModalChartInstance = null;
+        }
+        if (lastActiveFocusElement && typeof lastActiveFocusElement.focus === 'function') {
+          lastActiveFocusElement.focus();
         }
       }
     }
@@ -2261,6 +2407,7 @@
       initHospitalCapacityChart();
       initAnimatedCounters();
       initBidwellsScrollMotions();
+      updateCockpit();
     });
 
     // ==========================================================================
@@ -2409,7 +2556,7 @@
       const h = document.getElementById('sliderHealth');
       if (r) r.value = 90;
       if (s) s.value = 95;
-      if (g) g.value = 92;
+      if (g) g.value = 88;
       if (h) h.value = 96;
       updateCockpit();
     }
