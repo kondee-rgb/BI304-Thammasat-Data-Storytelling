@@ -2141,22 +2141,7 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
 
-    .finish-cars-crossing-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 60px;
-      margin-bottom: 60px;
-      position: relative;
-    }
 
-    .finish-car-item {
-      position: relative;
-      width: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
 
     .finish-milestone-card {
       max-width: 960px;

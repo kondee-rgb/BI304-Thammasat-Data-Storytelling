@@ -39,6 +39,7 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/dino-game.css" />
 
   <!-- Leaflet 1.9.4 CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -1575,21 +1576,12 @@
       </p>
     </div>
 
-    <!-- Two Thammasat Students Crossing the Milestone into the Future -->
-    <div class="finish-cars-crossing-row tu-reveal-slide-up">
-      <div class="finish-car-item">
-        <img src="assets/tu_student_walking.webp" alt="บัณฑิตธรรมศาสตร์เพื่อสังคม" width="125" height="167" loading="lazy" decoding="async" class="tu-student-walker-img" />
-        <div class="tu-student-ground-shadow"></div>
-        <div class="tu-student-badge" style="margin-top: 10px;">
-          <i class="fa-solid fa-user-graduate"></i> บัณฑิตธรรมศาสตร์เพื่อประชาชน
-        </div>
-      </div>
-      <div class="finish-car-item">
-        <img src="assets/tu_student_walking.webp" alt="ผู้นำแห่งอนาคต TU 2034" width="125" height="167" loading="lazy" decoding="async" class="tu-student-walker-img" style="filter: drop-shadow(0 14px 24px rgba(0,0,0,0.75)) brightness(1.08);" />
-        <div class="tu-student-ground-shadow"></div>
-        <div class="tu-student-badge" style="margin-top: 10px;">
-          <i class="fa-solid fa-compass"></i> TU 2034 Future Leader
-        </div>
+    <!-- TU Runner Mini-Game (Chrome Dino Style) -->
+    <div class="tu-reveal-slide-up">
+      <div data-tu-runner></div>
+      <div class="tu-runner-badges"> <!-- คง badge 2 อันเดิมไว้ใต้เกม -->
+        <div class="tu-student-badge"><i class="fa-solid fa-user-graduate"></i> บัณฑิตธรรมศาสตร์เพื่อประชาชน</div>
+        <div class="tu-student-badge"><i class="fa-solid fa-compass"></i> TU 2034 Future Leader</div>
       </div>
     </div>
 
@@ -1641,7 +1633,7 @@
           <img src="assets/colab_icon.svg" alt="Colab" style="width: 17px; height: 17px; margin-right: 6px;" />
           <span>เปิดประมวลผลใน Google Colab</span>
         </a>
-        <button class="header-flourish-btn" onclick="openFlourishHubModal()" style="padding: 10px 22px; font-size: 0.92rem;">
+        <button class="header-flourish-btn" onclick="openFlourishHubModal()" aria-label="ดูคลังภาพข้อมูล Flourish 10 ฉาก" style="padding: 10px 22px; font-size: 0.92rem;">
           <i class="fa-solid fa-chart-pie"></i>
           <span>ดูคลังภาพข้อมูล Flourish 10 ฉาก</span>
         </button>
@@ -1752,5 +1744,6 @@
        ========================================================================== -->
   <!-- Main Application Logic -->
   <script src="assets/js/app.js"></script>
+  <script src="assets/js/dino-game.js" defer></script>
 </body>
 </html>

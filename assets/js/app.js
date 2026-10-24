@@ -822,10 +822,6 @@
       }
     }
 
-    // 8. Faculties TCAS Chart & Cards Grid
-    let facultiesTcasChart = null;
-    window.currentFacultyFilter = 'all';
-
     // 8. Faculties TCAS Chart (Horizontal Dot/Lollipop Plot - Master Prompt v4 A5)
     let facultiesTcasChart = null;
     window.currentFacultyFilter = 'all';
@@ -2564,6 +2560,7 @@
 
     // Accessibility: Global Escape key modal dismisser
     window.addEventListener('keydown', (e) => {
+      if (e.target && e.target.closest && e.target.closest('.tu-runner')) return;
       if (e.key === 'Escape') {
         const facModal = document.getElementById('facultyModal');
         if (facModal && facModal.style.display !== 'none') {
@@ -2582,6 +2579,7 @@
       if (scrubberTrack) {
         const sections = ['hero', 'key-findings', 'topic-01', 'topic-02', 'topic-03', 'topic-04', 'topic-05', 'topic-06', 'topic-07', 'topic-08', 'topic-09', 'topic-10', 'finish'];
         scrubberTrack.addEventListener('keydown', (e) => {
+          if (e.target && e.target.closest && e.target.closest('.tu-runner')) return;
           let currentVal = parseInt(scrubberTrack.getAttribute('aria-valuenow') || '0', 10);
           let nextIdx = currentVal;
 
