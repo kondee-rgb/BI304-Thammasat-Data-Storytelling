@@ -32,11 +32,17 @@
 .tu-runner__title { font-weight: 800; font-size: clamp(1rem, 3.4vw, 1.35rem); color: var(--r-navy); }
 .tu-runner__sub { font-size: clamp(.78rem, 2.6vw, .95rem); color: #334155; max-width: 46ch; line-height: 1.5; }
 .tu-runner__btn {
-  margin-top: 4px; min-height: 44px; padding: 10px 26px; border: 0; border-radius: 999px; cursor: pointer;
-  font: 700 1rem/1 inherit; color: #fff; background: var(--r-crimson); box-shadow: 0 6px 16px rgba(197,25,68,.35);
-  transition: transform .15s, background .15s;
+  margin-top: 6px; min-height: 48px; padding: 12px 32px; border: 0; border-radius: 999px; cursor: pointer;
+  font: 700 1.05rem/1 inherit; color: #fff; background: var(--r-crimson); box-shadow: 0 6px 20px rgba(197,25,68,.4);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  animation: tuBtnPulse 2.4s infinite ease-in-out;
 }
-.tu-runner__btn:hover { background: #9e1236; transform: translateY(-1px); }
+.tu-runner__btn:hover { background: #9e1236; transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px rgba(197,25,68,.5); }
+@keyframes tuBtnPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(197,25,68,.4); }
+  50% { transform: scale(1.04); box-shadow: 0 8px 26px rgba(197,25,68,.6); }
+}
 .tu-runner__btn:focus-visible, .tu-runner__mute:focus-visible, .tu-runner__duck:focus-visible { outline: 3px solid var(--r-gold); outline-offset: 3px; }
 
 .tu-runner__mute {

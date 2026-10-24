@@ -104,8 +104,7 @@
         <a href="#topic-08" class="header-nav-link">8. แคมปัสสีเขียว</a>
         <a href="#topic-09" class="header-nav-link">9. รพ.ธรรมศาสตร์</a>
         <a href="#topic-10" class="header-nav-link">10. ยุทธศาสตร์ TU 2034</a>
-        <a href="#finish" class="header-nav-link"><i class="fa-solid fa-gamepad" style="color: var(--tu-crimson);"></i> มินิเกม</a>
-      </nav>
+              </nav>
     </div>
 
     <div class="header-actions">
@@ -115,12 +114,7 @@
         <span>Google Colab</span>
       </a>
       <!-- Flourish 10 Visualizations Hub Button -->
-            <!-- TU Runner Mini Game Direct Link -->
-      <a href="#finish" class="header-runner-btn" title="เล่นมินิเกม TU Runner ท้ายเว็บ">
-        <i class="fa-solid fa-gamepad"></i>
-        <span>มินิเกม</span>
-      </a>
-      <button class="header-flourish-btn" onclick="openFlourishHubModal()" title="เปิดดู Flourish Data Storytelling ครบทั้ง 10 ฉาก">
+            <button class="header-flourish-btn" onclick="openFlourishHubModal()" title="เปิดดู Flourish Data Storytelling ครบทั้ง 10 ฉาก">
         <i class="fa-solid fa-chart-pie"></i>
         <span>Flourish (10 ฉาก)</span>
       </button>
@@ -194,10 +188,6 @@
       <a href="#finish" class="mobile-nav-item" onclick="closeMobileNav()">
         <span class="nav-item-num"><i class="fa-solid fa-trophy"></i></span>
         <span class="nav-item-label">ศตวรรษ 90 ปี (Milestone)</span>
-      </a>
-      <a href="#finish" class="mobile-nav-item" onclick="closeMobileNav()" style="background: rgba(197, 25, 68, 0.08); border-left: 3px solid var(--tu-crimson);">
-        <span class="nav-item-num"><i class="fa-solid fa-gamepad" style="color: var(--tu-crimson);"></i></span>
-        <span class="nav-item-label" style="font-weight: 700; color: var(--tu-crimson);">มินิเกม: วิ่งสู่เส้นชัย 90 ปี (TU Runner) 🎮</span>
       </a>
     </div>
 
@@ -1592,9 +1582,12 @@
     </div>
 
     <!-- TU Runner Mini-Game (Chrome Dino Style) -->
-    <div class="tu-reveal-slide-up">
+    <div style="max-width: 800px; margin: 0 auto 36px; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(197, 25, 68, 0.08); border: 1.5px solid var(--tu-crimson); color: var(--tu-crimson); padding: 7px 22px; border-radius: 9999px; font-weight: 700; font-size: 0.92rem; margin-bottom: 14px;">
+        <i class="fa-solid fa-gamepad"></i> มินิเกมฉลอง 90 ปี: วิ่งสู่อนาคต (TU Runner)
+      </div>
       <div data-tu-runner></div>
-      <div class="tu-runner-badges"> <!-- คง badge 2 อันเดิมไว้ใต้เกม -->
+      <div class="tu-runner-badges">
         <div class="tu-student-badge"><i class="fa-solid fa-user-graduate"></i> บัณฑิตธรรมศาสตร์เพื่อประชาชน</div>
         <div class="tu-student-badge"><i class="fa-solid fa-compass"></i> TU 2034 Future Leader</div>
       </div>
