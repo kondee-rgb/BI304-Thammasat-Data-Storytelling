@@ -41,11 +41,11 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024g" />
-  <link rel="stylesheet" href="assets/css/dino-game.css?v=20261024g" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="assets/css/dino-game.css?v=20261024g" /></noscript>
-  <link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261024g" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261024g" /></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024h" />
+  <link rel="stylesheet" href="assets/css/dino-game.css?v=20261024h" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/dino-game.css?v=20261024h" /></noscript>
+  <link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261024h" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261024h" /></noscript>
 
   <!-- Leaflet 1.9.4 CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'" />
@@ -1496,45 +1496,89 @@
         TU 2034 สู่ศตวรรษที่ 2: <em>4 เสาหลักยุทธศาสตร์และการจำลองดัชนีความพร้อม</em>
       </h2>
       <p style="font-size: 1.05rem; color: #64748b; max-width: 860px; line-height: 1.7;">
-        นับถอยหลังสู่ศตวรรษที่ 1 ในปี พ.ศ. 2577 ธรรมศาสตร์ขับเคลื่อนยุทธศาสตร์ <strong>TU 2034</strong> มุ่งสู่ <strong>Net-Zero Campus 2030</strong> และโครงการ <strong>88 SANDBOX</strong> ปั้นผู้ประกอบการสตาร์ทอัพเพื่อสังคมสู่เป้าหมาย 10,000 ทีม
+        นับถอยหลังสู่ศตวรรษที่ 1 ในปี พ.ศ. 2577 ธรรมศาสตร์ขับเคลื่อนยุทธศาสตร์ <strong>TU 2034</strong> มุ่งสู่ <strong>Net-Zero Campus 2030</strong> และโครงการ <strong>88 SANDBOX</strong> ปั้นผู้ประกอบการสตาร์ทอัพเพื่อสังคมสู่เป้าหมาย 10,000 ทีม — เลื่อนลงเพื่อเดินตามเส้นทางทั้ง 4 เสาหลัก
       </p>
     </div>
 
-    <div class="circuit-layout-grid">
-      <!-- Silverstone SVG Vector Track Outline -->
-      <div class="silverstone-svg-container tu-reveal-slide-right">
-        <svg width="100%" height="100%" viewBox="0 0 680 460" fill="none" style="position:absolute; inset:0;" aria-hidden="true">
-          <path id="circuitBasePath" d="M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160 C 620 200, 600 290, 540 340 C 470 390, 360 410, 300 370 C 240 330, 180 340, 150 290 C 110 240, 110 210, 120 180 Z" stroke="#00857c" stroke-width="6" opacity="0.45" stroke-linecap="round" stroke-linejoin="round" />
-          <path id="circuitActivePath" d="M 120 180 C 130 90, 220 80, 280 140" stroke="#c51944" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M 280 140 C 310 190, 240 240, 220 280" stroke="#00857c" stroke-width="4" stroke-dasharray="6 6" opacity="0.35" />
+    <div class="tu-route-layout">
+      <!-- LEFT: เส้นทางเดินบนแผนที่ศูนย์รังสิต (ค้างอยู่กับที่ขณะเลื่อนการ์ดฝั่งขวา) -->
+      <div class="tu-route-map-col">
+        <div class="tu-route-map" id="tuRouteMap">
+        <svg class="tu-campus-svg" viewBox="0 0 680 470" role="img" aria-labelledby="tuMapTitle tuMapDesc">
+          <title id="tuMapTitle">แผนที่เส้นทาง TU 2034 ภายในมหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต</title>
+          <desc id="tuMapDesc">เส้นทางเดินเริ่มจากประตูเชียงราก 1 ผ่านหอสมุดป๋วย คณะวิทยาศาสตร์และเทคโนโลยี ศูนย์ประชุมธรรมศาสตร์รังสิต และสิ้นสุดที่อุทยานการเรียนรู้ป๋วย 100 ปี</desc>
+          <defs>
+            <linearGradient id="tuMapBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f9fb3"/><stop offset="1" stop-color="#2dc3a0"/></linearGradient>
+          </defs>
+          <rect x="0" y="0" width="680" height="470" rx="20" fill="url(#tuMapBg)"/>
+          <!-- ถนนหลักภายนอก: ถนนเชียงราก (ล่าง) และถนนพหลโยธิน (ขวา) -->
+          <path d="M70 452 H672 V128" stroke="#2a2f3a" stroke-width="14" fill="none" stroke-linejoin="round"/>
+          <!-- ขอบเขตพื้นที่มหาวิทยาลัย -->
+          <path class="tu-campus-boundary" d="M12 92 L60 64 L120 52 L175 76 L215 104 L250 128 L662 128 L662 438 L112 438 L96 392 L70 330 L44 262 L22 180 Z" fill="#f4f7f8" stroke="#ffffff" stroke-width="4"/>
+          <!-- คลองและบ่อน้ำ -->
+          <rect x="240" y="138" width="230" height="7" rx="3" fill="#9fd9dc"/>
+          <rect x="500" y="424" width="150" height="8" rx="3" fill="#9fd9dc"/>
+          <!-- ถนนภายใน -->
+          <g stroke="#d5dbe1" stroke-width="11" stroke-linecap="round" fill="none">
+            <path d="M221 150 V438"/><path d="M483 138 V438"/><path d="M342 300 V438"/>
+            <path d="M221 210 H483"/><path d="M483 245 H662"/><path d="M106 300 H483"/>
+            <path d="M140 369 H662"/><path d="M620 245 V369"/><path d="M101 128 C112 200 112 260 140 369"/>
+          </g>
+          <g stroke="#ffffff" stroke-width="7" stroke-linecap="round" fill="none">
+            <path d="M221 150 V438"/><path d="M483 138 V438"/><path d="M342 300 V438"/>
+            <path d="M221 210 H483"/><path d="M483 245 H662"/><path d="M106 300 H483"/>
+            <path d="M140 369 H662"/><path d="M620 245 V369"/><path d="M101 128 C112 200 112 260 140 369"/>
+          </g>
+          <!-- อาคารและจุดสังเกต -->
+          <rect x="40" y="92" width="26" height="16" rx="2" fill="#c9cfd8"/><rect x="40" y="92" width="26" height="5" rx="2" fill="#b54a35"/><rect x="78" y="78" width="26" height="16" rx="2" fill="#c9cfd8"/><rect x="78" y="78" width="26" height="5" rx="2" fill="#b54a35"/><rect x="116" y="70" width="26" height="16" rx="2" fill="#c9cfd8"/><rect x="116" y="70" width="26" height="5" rx="2" fill="#b54a35"/><rect x="60" y="124" width="26" height="16" rx="2" fill="#c9cfd8"/><rect x="60" y="124" width="26" height="5" rx="2" fill="#b54a35"/><rect x="104" y="112" width="26" height="16" rx="2" fill="#c9cfd8"/><rect x="104" y="112" width="26" height="5" rx="2" fill="#b54a35"/><rect x="142" y="100" width="26" height="16" rx="2" fill="#c9cfd8"/><rect x="142" y="100" width="26" height="5" rx="2" fill="#b54a35"/><rect x="178" y="118" width="26" height="16" rx="2" fill="#c9cfd8"/><rect x="178" y="118" width="26" height="5" rx="2" fill="#b54a35"/>
+          <ellipse cx="160" cy="238" rx="30" ry="22" fill="#b5523b"/><ellipse cx="160" cy="238" rx="19" ry="12" fill="#6aa84f"/>
+          <rect x="232" y="252" width="44" height="34" rx="4" fill="#c9cfd8"/><rect x="232" y="252" width="44" height="8" rx="3" fill="#b54a35"/>
+          <path d="M262 160 L272 188 L252 188 Z" fill="#8b4a3c"/><rect x="246" y="186" width="32" height="12" rx="2" fill="#a0533f"/>
+          <rect x="250" y="314" width="70" height="38" rx="4" fill="#d9dee5"/><rect x="250" y="314" width="70" height="7" rx="3" fill="#8a94a3"/>
+          <rect x="410" y="160" width="58" height="36" rx="4" fill="#c9cfd8"/><rect x="410" y="160" width="58" height="8" rx="3" fill="#b54a35"/>
+          <rect x="560" y="146" width="80" height="44" rx="4" fill="#c9cfd8"/><rect x="560" y="146" width="80" height="9" rx="3" fill="#b54a35"/>
+          <rect x="500" y="208" width="58" height="26" rx="4" fill="#cfd5dc"/>
+          <g class="tu-map-puey"><rect x="506" y="258" width="82" height="40" rx="8" fill="#3f8f4f"/><path d="M512 264 L582 292 M512 292 L582 264" stroke="#9ad18b" stroke-width="5"/></g>
+          <rect x="560" y="380" width="80" height="34" rx="6" fill="#aab3bf"/><rect x="560" y="380" width="80" height="8" rx="4" fill="#6b7685"/>
+          <circle cx="70" cy="150" r="5" fill="#5fae6e"/><circle cx="79" cy="152" r="4" fill="#4c9a5c"/><circle cx="150" cy="120" r="5" fill="#5fae6e"/><circle cx="159" cy="122" r="4" fill="#4c9a5c"/><circle cx="160" cy="300" r="5" fill="#5fae6e"/><circle cx="169" cy="302" r="4" fill="#4c9a5c"/><circle cx="255" cy="370" r="5" fill="#5fae6e"/><circle cx="264" cy="372" r="4" fill="#4c9a5c"/><circle cx="300" cy="170" r="5" fill="#5fae6e"/><circle cx="309" cy="172" r="4" fill="#4c9a5c"/><circle cx="395" cy="165" r="5" fill="#5fae6e"/><circle cx="404" cy="167" r="4" fill="#4c9a5c"/><circle cx="410" cy="330" r="5" fill="#5fae6e"/><circle cx="419" cy="332" r="4" fill="#4c9a5c"/><circle cx="455" cy="380" r="5" fill="#5fae6e"/><circle cx="464" cy="382" r="4" fill="#4c9a5c"/><circle cx="500" cy="330" r="5" fill="#5fae6e"/><circle cx="509" cy="332" r="4" fill="#4c9a5c"/><circle cx="640" cy="215" r="5" fill="#5fae6e"/><circle cx="649" cy="217" r="4" fill="#4c9a5c"/><circle cx="645" cy="330" r="5" fill="#5fae6e"/><circle cx="654" cy="332" r="4" fill="#4c9a5c"/><circle cx="380" cy="240" r="5" fill="#5fae6e"/><circle cx="389" cy="242" r="4" fill="#4c9a5c"/><circle cx="200" cy="410" r="5" fill="#5fae6e"/><circle cx="209" cy="412" r="4" fill="#4c9a5c"/><circle cx="130" cy="180" r="5" fill="#5fae6e"/><circle cx="139" cy="182" r="4" fill="#4c9a5c"/>
+          <!-- ป้ายชื่อ -->
+          <g class="tu-map-label" font-size="10.5" font-weight="700" fill="#334155">
+            <text x="54" y="170">หอพัก</text>
+            <text x="133" y="276">สนามกีฬาหลัก</text>
+            <text x="236" y="245">หอสมุดป๋วย</text>
+            <text x="244" y="152">โดมบริหาร</text>
+            <text x="404" y="155">คณะวิทยาศาสตร์ฯ</text>
+            <text x="562" y="141">รพ.ธรรมศาสตร์</text>
+            <text x="252" y="365">อาคารเรียนรวม SC</text>
+            <text x="508" y="314">สวนป๋วย 100 ปี</text>
+            <text x="562" y="428">ศูนย์ประชุมฯ</text>
+          </g>
+          <g font-size="10" font-weight="700" fill="#ffffff">
+            <text x="306" y="466">ประตูเชียงราก 1</text>
+            <text x="452" y="466">ประตูเชียงราก 2</text>
+            <text x="668" y="150" transform="rotate(90 668 150)">ถ.พหลโยธิน</text>
+          </g>
+          <!-- เส้นทางเดิน: ฐานเส้นประ + เส้นที่เดินแล้ว (วาดตามการเลื่อนหน้า) -->
+          <path id="tuRouteBase" d="M342 452 V300 H221 V268 V210 H443 H483 V369 H595 H620 V245 H540" stroke="#0b163b" stroke-opacity="0.35" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round" fill="none"/>
+          <path id="tuRouteActive" d="M342 452 V300 H221 V268 V210 H443 H483 V369 H595 H620 V245 H540" stroke="#c51944" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="342" cy="452" r="7" fill="#ffc72c" stroke="#0b163b" stroke-width="2.5"/>
+          <!-- ตัวเดิน -->
+          <g id="tuRouteWalker" transform="translate(342 452)">
+            <circle r="13" fill="#c51944" opacity="0.25" class="tu-walker-pulse"/>
+            <circle r="8" fill="#c51944" stroke="#ffffff" stroke-width="3"/>
+          </g>
         </svg>
-
-        <!-- 4 Milestone Nodes along the Track -->
-        <div class="circuit-milestone-node active" style="top: 39.13%; left: 17.647%;" role="button" tabindex="0" aria-label="เสาหลักที่ 1" onclick="selectCircuitNode(0)">1</div>
-        <div class="circuit-milestone-node" style="top: 30.435%; left: 41.176%;" role="button" tabindex="0" aria-label="เสาหลักที่ 2" onclick="selectCircuitNode(1)">2</div>
-        <div class="circuit-milestone-node" style="top: 34.783%; left: 82.353%;" role="button" tabindex="0" aria-label="เสาหลักที่ 3" onclick="selectCircuitNode(2)">3</div>
-        <div class="circuit-milestone-node" style="top: 80.435%; left: 44.118%;" role="button" tabindex="0" aria-label="เสาหลักที่ 4" onclick="selectCircuitNode(3)">4</div>
-      </div>
-
-      <!-- Synchronized Insight Card -->
-      <div class="circuit-insight-card tu-reveal-slide-left">
-        <div class="circuit-card-tag" id="cInsightTag">CENTENNIAL PILLAR 1</div>
-        <h3 class="circuit-card-title" id="cInsightTitle">การวิจัยและนวัตกรรมระดับสากล</h3>
-        <img src="assets/pillar_1_innovation_hub.webp" alt="ภาพประกอบเชิงยุทธศาสตร์: ศูนย์นวัตกรรมและงานวิจัยระดับโลก มธ. (AI-Assisted Illustration)" width="540" height="304" loading="lazy" decoding="async" class="circuit-card-img pillar-card-1" id="cInsightImg" onerror="this.onerror=null; this.src='assets/tha_prachan_dome_editorial.webp';" />
-        <p class="circuit-card-desc" id="cInsightDesc">
-          ยุทธศาสตร์มุ่งสู่ Top 100 QS World University Ranking สร้างองค์ความรู้และนวัตกรรมเปลี่ยนโลกเพื่อประโยชน์ของมนุษยชาติ เชื่อมโยงเครือข่ายวิจัยระดับสากลกว่า 350 สถาบัน
-        </p>
-        <div style="display: flex; gap: 20px; border-top: 1px solid #f1f5f9; padding-top: 16px;">
-          <div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--tu-crimson);" id="cStat1">92.0</div>
-            <div style="font-size: 0.72rem; color: #64748b; text-transform: uppercase;" id="cStatLbl1">คะแนนเป้าหมาย</div>
-          </div>
-          <div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--tu-navy);" id="cStat2">30%</div>
-            <div style="font-size: 0.72rem; color: #64748b; text-transform: uppercase;" id="cStatLbl2">น้ำหนักยุทธศาสตร์</div>
-          </div>
+        <button type="button" class="tu-route-node active" style="left:32.500%; top:57.021%;" onclick="selectCircuitNode(0)" aria-label="เสาหลักที่ 1: หอสมุดป๋วย อึ๊งภากรณ์">1</button>
+        <button type="button" class="tu-route-node" style="left:65.147%; top:44.681%;" onclick="selectCircuitNode(1)" aria-label="เสาหลักที่ 2: คณะวิทยาศาสตร์และเทคโนโลยี">2</button>
+        <button type="button" class="tu-route-node" style="left:87.500%; top:78.511%;" onclick="selectCircuitNode(2)" aria-label="เสาหลักที่ 3: ศูนย์ประชุมธรรมศาสตร์รังสิต">3</button>
+        <button type="button" class="tu-route-node" style="left:79.412%; top:52.128%;" onclick="selectCircuitNode(3)" aria-label="เสาหลักที่ 4: อุทยานการเรียนรู้ป๋วย 100 ปี">4</button>
         </div>
+        <ol class="tu-route-legend"><li><span class="tu-route-legend-num">1</span><span>หอสมุดป๋วย อึ๊งภากรณ์</span></li><li><span class="tu-route-legend-num">2</span><span>คณะวิทยาศาสตร์และเทคโนโลยี</span></li><li><span class="tu-route-legend-num">3</span><span>ศูนย์ประชุมธรรมศาสตร์รังสิต</span></li><li><span class="tu-route-legend-num">4</span><span>อุทยานการเรียนรู้ป๋วย 100 ปี</span></li></ol>
+        <p class="tu-route-note">แผนที่จำลองจากแผนผังศูนย์รังสิต (Thammasat Sustainability) • จุดบนเส้นทางเป็นสัญลักษณ์เชื่อมเสาหลักกับพื้นที่ในมหาวิทยาลัย</p>
       </div>
+
+      <!-- RIGHT: การ์ด 4 เสาหลักซ้อนทับกันเมื่อเลื่อน (stacking cards) — สร้างจาก PILLAR_PROGRESS ใน app.js -->
+      <div class="tu-pillar-stack" id="tuPillarStack" aria-label="4 เสาหลักยุทธศาสตร์ TU 2034"></div>
     </div>
 
     <!-- Interactive TU 2034 Strategy Cockpit -->
@@ -1847,11 +1891,11 @@
        JAVASCRIPT LOGIC & VISUALIZATION ENGINES
        ========================================================================== -->
   <!-- Main Application Logic -->
-  <script src="assets/js/app.js?v=20261024g" defer></script>
-  <script src="assets/js/dino-game.js?v=20261024g" defer></script>
+  <script src="assets/js/app.js?v=20261024h" defer></script>
+  <script src="assets/js/dino-game.js?v=20261024h" defer></script>
   <!-- Confetti Celebration FX -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
   <!-- TU Interactive Activities Engine -->
-  <script src="assets/js/tu-interactive.js?v=20261024g" defer></script>
+  <script src="assets/js/tu-interactive.js?v=20261024h" defer></script>
 </body>
 </html>

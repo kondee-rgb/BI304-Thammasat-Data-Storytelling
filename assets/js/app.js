@@ -155,10 +155,10 @@
       {
         tag: "CENTENNIAL PILLAR 3: 88 SANDBOX & STARTUP ECOSYSTEM",
         title: "88 SANDBOX ศูนย์บ่มเพาะสตาร์ทอัพเพื่อสังคมและเศรษฐกิจใหม่",
-        desc: "ระบบนิเวศนวัตกรรมและบ่มเพาะผู้ประกอบการสตาร์ทอัพเพื่อสังคมที่ใหญ่ที่สุดในระดับอุดมศึกษา เชื่อมโยง Venture Capital ระดับสากล ตั้งเป้าสร้างมูลค่าระดมทุนกว่า 10,000 ล้านบาท",
+        desc: "ระบบนิเวศนวัตกรรมและบ่มเพาะผู้ประกอบการสตาร์ทอัพเพื่อสังคม เชื่อมโยง Venture Capital ระดับสากล ตั้งเป้าบ่มเพาะทีมสตาร์ทอัพ 10,000 ทีม",
         img: "assets/pillar_3_88sandbox.webp",
         pillarClass: "pillar-card-3",
-        stat1: "10,000", lbl1: "มูลค่าระดมทุน (ลบ.)", stat2: "อันดับ 1", lbl2: "Social Sandbox ไทย"
+        stat1: "10,000", lbl1: "ทีมสตาร์ทอัพเป้าหมาย", stat2: "อันดับ 1", lbl2: "Social Sandbox ไทย"
       },
       {
         tag: "CENTENNIAL PILLAR 4: NET-ZERO CAMPUS 2030 & PUEY PARK",
@@ -479,7 +479,7 @@
         highlights: [
           "Pillar 1 (Global Research): มุ่งสู่ Top 100 QS World University Ranking และเครือข่ายวิจัย 350+ มหาวิทยาลัย",
           "Pillar 2 (Future Skills): ปฏิรูปหลักสูตรบูรณาการ AI 100% และ Lifelong Learning",
-          "Pillar 3 & 4: 88 SANDBOX ระดมทุน 10,000 ล้านบาท และ Net-Zero Campus ก่อนปี 2030"
+          "Pillar 3 & 4: 88 SANDBOX บ่มเพาะสตาร์ทอัพ 10,000 ทีม และ Net-Zero Campus ก่อนปี 2030"
         ],
         tableHeaders: ["KPI_Name", "Current_Value", "Target_Value", "Unit", "Progress_Pct", "Target_Year"],
         tableSample: [
@@ -507,7 +507,13 @@
       { id: 'finish', name: 'ศตวรรษ 90 ปี' }
     ];
 
-    function scrollToElement(id) {
+    // ==========================================================================
+    // HERO WALKERS: นักศึกษาเดินลงตามเลนแบบทแยงไปทางที่หันหน้า (ขวา)
+    //  - ระยะทางผูกกับตำแหน่งสกรอลล์ (ไม่กระโดด ไม่หลุดออกนอกฉาก)
+    //  - ก้าวเท้า (ยก-ลง + เอียงตัว) ตามระยะที่เดินจริง จึงหยุดเมื่อผู้ใช้หยุดเลื่อน
+    //  - เลื่อนขึ้น = เดินกลับ ตัวละครหันหลังกลับ (กลับด้านภาพ) ไม่เดินถอยหลัง
+    // ==========================================================================
+        function scrollToElement(id) {
       const el = document.getElementById(id);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
@@ -515,13 +521,7 @@
     }
     window.scrollToElement = scrollToElement;
 
-    // ==========================================================================
-    // HERO WALKERS: นักศึกษาเดินลงตามเลนแบบทแยงไปทางที่หันหน้า (ขวา)
-    //  - ระยะทางผูกกับตำแหน่งสกรอลล์ (ไม่กระโดด ไม่หลุดออกนอกฉาก)
-    //  - ก้าวเท้า (ยก-ลง + เอียงตัว) ตามระยะที่เดินจริง จึงหยุดเมื่อผู้ใช้หยุดเลื่อน
-    //  - เลื่อนขึ้น = เดินกลับ ตัวละครหันหลังกลับ (กลับด้านภาพ) ไม่เดินถอยหลัง
-    // ==========================================================================
-    const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
+const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
 
     function requestHeroWalkerFrame() {
       if (heroWalkerState.ticking) return;
@@ -529,19 +529,45 @@
       requestAnimationFrame(() => { heroWalkerState.ticking = false; updateHeroWalkers(); });
     }
 
+    // จัดตำแหน่งเริ่มของนักศึกษาและป้ายปีให้อยู่ "ใต้ปุ่มเริ่มต้นสำรวจ" เสมอ
+    // (กันไม่ให้ทับข้อความเมื่อจอเตี้ย ซูมเบราว์เซอร์ หรือฟอนต์ใหญ่)
+    let heroLayoutKey = '';
+    function layoutHeroWalkers(force) {
+      const hero = document.getElementById('hero');
+      const cta = hero && hero.querySelector('.hero-scroll-pill-btn');
+      const leader = document.getElementById('studentLeader');
+      const scholar = document.getElementById('studentScholar');
+      if (!hero || !cta || !leader || !scholar) return;
+      const key = window.innerWidth + 'x' + window.innerHeight + ':' + cta.offsetHeight;
+      if (!force && key === heroLayoutKey) return;
+      heroLayoutKey = key;
+      const heroTop = hero.getBoundingClientRect().top + window.pageYOffset;
+      const ctaBottom = cta.getBoundingClientRect().bottom + window.pageYOffset - heroTop;
+      const mobile = window.innerWidth <= 768;
+      const labelGap = 16, labelH = 28;
+      const poleTop = ctaBottom + (mobile ? 22 : 34);
+      const leaderTop = poleTop + labelH + labelGap;
+      const scholarTop = leaderTop + (mobile ? 70 : 95);
+      leader.style.top = leaderTop + 'px';
+      scholar.style.top = scholarTop + 'px';
+      const pole = hero.querySelector('.grid-box-pole');
+      if (pole) pole.style.top = poleTop + 'px';
+      // ให้ฉากยาวพอสำหรับเส้นทางเดิน (อย่างน้อย 520px หลังจุดเริ่ม)
+      const needed = scholarTop + scholar.offsetHeight + (mobile ? 480 : 620);
+      hero.style.minHeight = Math.max(needed, window.innerHeight * (mobile ? 1.95 : 2.05)) + 'px';
+    }
+
     function updateHeroWalkers() {
       const hero = document.getElementById('hero');
       const stage = hero && hero.querySelector('.central-track-stage');
       if (!hero || !stage) return;
+      layoutHeroWalkers(false);
       const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const y = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
       const heroH = hero.offsetHeight;
       const vh = window.innerHeight;
-
-      // Scroll trigger: เริ่มต้นเมื่อเลื่อนพ้น Hero overlay (vh * 0.25) และเสร็จสมบูรณ์เมื่อถึงปลายรันเวย์
-      const scrollStart = vh * 0.25;
-      const scrollEnd = Math.max(scrollStart + 100, heroH - vh * 0.92);
-      const p = Math.min(Math.max((y - scrollStart) / (scrollEnd - scrollStart), 0), 1);
+      const span = Math.max(1, heroH - vh * 0.55);
+      const p = Math.min(Math.max(y / span, 0), 1);
 
       const dy = y - heroWalkerState.lastY;
       if (Math.abs(dy) > 0.5) heroWalkerState.facing = dy >= 0 ? 1 : -1;
@@ -550,7 +576,7 @@
       const laneW = stage.clientWidth;
       const stageH = stage.offsetHeight || heroH;
       const slot2 = stage.querySelector('.grid-box-slot2');
-      const slot2Top = slot2 ? slot2.offsetTop : (stageH - 120 - 28);
+      const slot2Top = slot2 ? slot2.offsetTop : (stageH - 110 - 28);
       const slot2H = slot2 ? slot2.offsetHeight : 28;
       const slot2Bottom = slot2Top + slot2H;
 
@@ -558,7 +584,7 @@
         const el = document.getElementById(id);
         if (!el) return;
         const img = el.querySelector('.tu-student-walker-img');
-        const startTop = el.offsetTop;                 // ตำแหน่งเริ่มต้นก่อน transform
+        const startTop = el.offsetTop;                 // ตำแหน่งก่อน transform
         const h = el.offsetHeight;
 
         // ล็อกระยะสิ้นสุดสูงสุด (Clamp): หยุดสนิทพอดีที่ระดับหมุด "2567 — ครบ 90 ปี" ห้ามเคลื่อนที่เกินระดับหมุดเด็ดขาด
@@ -566,17 +592,15 @@
         const maxTravelY = Math.max(0, targetStopBottom - h - startTop);
         const travelX = laneW * dxRatio;
         const maxX = Math.max(0, laneW - el.offsetLeft - el.offsetWidth - 8);
-
         const tx = Math.min(travelX * p, maxX);
         const ty = Math.min(maxTravelY * p, maxTravelY);
         el.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0)`;
 
         if (img) {
-          const isMoving = p > 0 && p < 1 && Math.abs(dy) > 0.1;
           const dist = Math.hypot(tx, ty);
           const stepPhase = dist / 22 + phase;         // 1 ก้าว ≈ 70px ของระยะทาง
-          const bob = (reduce || !isMoving) ? 0 : -Math.abs(Math.sin(stepPhase)) * 6;
-          const tilt = (reduce || !isMoving) ? 0 : Math.sin(stepPhase) * 1.8;
+          const bob = reduce ? 0 : -Math.abs(Math.sin(stepPhase)) * 6;
+          const tilt = reduce ? 0 : Math.sin(stepPhase) * 1.8;
           const flip = heroWalkerState.facing;
           img.style.transform = `translateY(${bob.toFixed(2)}px) rotate(${(tilt * flip).toFixed(2)}deg) scaleX(${flip})`;
         }
@@ -585,6 +609,8 @@
 
     function initScrollInteractions() {
       window.addEventListener('resize', requestHeroWalkerFrame, { passive: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layoutHeroWalkers(true); requestHeroWalkerFrame(); });
+      window.addEventListener('load', () => { layoutHeroWalkers(true); requestHeroWalkerFrame(); });
       requestHeroWalkerFrame();
       const studentLeader = document.getElementById('studentLeader');
       const studentScholar = document.getElementById('studentScholar');
@@ -827,35 +853,161 @@
       document.getElementById('mEventLabel').textContent = item.lbl;
     }
 
-    // 6. Silverstone Circuit Milestone Selector
+    // 6. TU 2034 — เส้นทางบนแผนที่ศูนย์รังสิต + การ์ด 4 เสาหลักแบบซ้อนทับ (stacking cards)
+    const PILLAR_PROGRESS = [
+      { current: 72.4, target: 92.0, unit: 'คะแนน', metric: 'ดัชนีวิจัยระดับสากล', year: 'พ.ศ. 2577' },
+      { current: 78.5, target: 95.0, unit: 'คะแนน', metric: 'หลักสูตรบูรณาการ AI', year: 'พ.ศ. 2577' },
+      { current: 6200, target: 10000, unit: 'ทีม', metric: 'ทีมสตาร์ทอัพบ่มเพาะ', year: 'พ.ศ. 2577' },
+      { current: 78.0, target: 100, unit: '%', metric: 'สัดส่วนพลังงานสะอาด', year: 'พ.ศ. 2573' }
+    ];
+    const PILLAR_PLACES = ['หอสมุดป๋วย อึ๊งภากรณ์', 'คณะวิทยาศาสตร์และเทคโนโลยี', 'ศูนย์ประชุมธรรมศาสตร์รังสิต', 'อุทยานการเรียนรู้ป๋วย 100 ปี'];
+    const PILLAR_SHORT = ['วิจัยและนวัตกรรมระดับสากล', 'ทักษะแห่งอนาคตและ AI', '88 SANDBOX สตาร์ทอัพเพื่อสังคม', 'Net-Zero Campus 2030'];
+
+    function fmtPillar(v, unit) {
+      if (unit === 'ทีม') return Math.round(v).toLocaleString('th-TH');
+      return Number(v).toFixed(1).replace(/\.0$/, '');
+    }
+
+    function renderPillarStack() {
+      const stack = document.getElementById('tuPillarStack');
+      if (!stack) return;
+      stack.innerHTML = CIRCUIT_DATA.map((c, i) => {
+        const d = PILLAR_PROGRESS[i];
+        const pct = d.current / d.target * 100;
+        return `
+        <article class="tu-pillar-card" data-idx="${i}" style="--i:${i}" aria-labelledby="tuPillarTitle${i}">
+          <header class="tu-pillar-head">
+            <span class="tu-pillar-num">${i + 1}</span>
+            <div class="tu-pillar-head-text">
+              <div class="tu-pillar-tag">เสาหลักที่ ${i + 1} • ${PILLAR_PLACES[i]}</div>
+              <h3 class="tu-pillar-title" id="tuPillarTitle${i}">${PILLAR_SHORT[i]}</h3>
+            </div>
+          </header>
+          <div class="tu-pillar-body">
+            <img class="tu-pillar-img" src="${c.img}" alt="" width="540" height="200" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <p class="tu-pillar-desc">${c.desc}</p>
+            <figure class="tu-pillar-chart" aria-label="${d.metric}: ปัจจุบัน ${fmtPillar(d.current, d.unit)} จากเป้าหมาย ${fmtPillar(d.target, d.unit)} ${d.unit} (${pct.toFixed(1)}%)">
+              <figcaption>${d.metric} <span>(${d.unit})</span></figcaption>
+              <div class="tu-bar-row">
+                <span class="tu-bar-label">ปัจจุบัน</span>
+                <div class="tu-bar-track"><div class="tu-bar-fill" style="--w:${pct.toFixed(2)}%"></div></div>
+                <span class="tu-bar-val">${fmtPillar(d.current, d.unit)}</span>
+              </div>
+              <div class="tu-bar-row tu-bar-row--target">
+                <span class="tu-bar-label">เป้าหมาย ${d.year}</span>
+                <div class="tu-bar-track"><div class="tu-bar-fill" style="--w:100%"></div></div>
+                <span class="tu-bar-val">${fmtPillar(d.target, d.unit)}</span>
+              </div>
+              <div class="tu-pillar-pct"><b>${pct.toFixed(1)}%</b> ของเป้าหมาย • เหลืออีก ${fmtPillar(d.target - d.current, d.unit)} ${d.unit === '%' ? 'จุด%' : d.unit}</div>
+            </figure>
+          </div>
+        </article>`;
+      }).join('') + '<div class="tu-pillar-stack-end" aria-hidden="true"></div>';
+    }
+
+    // ความยาวเส้นทางสะสมถึงแต่ละจุด (คำนวณจาก path จริงใน SVG)
+    let routeLens = null;
+    function measureRoute() {
+      const base = document.getElementById('tuRouteBase');
+      if (!base || typeof base.getTotalLength !== 'function') return null;
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const segs = ['M342 452 V300 H221 V268', 'V210 H443', 'H483 V369 H595', 'H620 V245 H540'];
+      let d = '';
+      const out = [];
+      segs.forEach(seg => {
+        d += (d ? ' ' : '') + seg;
+        const tmp = document.createElementNS(svgNS, 'path');
+        tmp.setAttribute('d', d);
+        base.parentNode.appendChild(tmp);
+        out.push(tmp.getTotalLength());
+        tmp.remove();
+      });
+      return { nodes: out, total: base.getTotalLength() };
+    }
+
+    let routeActiveIdx = -1;
+    let routeTicking = false;
+    function requestRouteFrame() {
+      if (routeTicking) return;
+      routeTicking = true;
+      requestAnimationFrame(() => { routeTicking = false; updateRouteProgress(); });
+    }
+
+    function updateRouteProgress() {
+      const stack = document.getElementById('tuPillarStack');
+      const active = document.getElementById('tuRouteActive');
+      const walker = document.getElementById('tuRouteWalker');
+      if (!stack || !active || !walker) return;
+      if (!routeLens) routeLens = measureRoute();
+      if (!routeLens) return;
+      const cards = stack.querySelectorAll('.tu-pillar-card');
+      if (!cards.length) return;
+
+      // ระยะเลื่อนที่การ์ดแต่ละใบ "ติด" (stick) — คำนวณจากตำแหน่งในโฟลว์ปกติ
+      const stackTop = stack.getBoundingClientRect().top;
+      const scrolled = -stackTop;
+      const marks = [];
+      let y = 0;
+      cards.forEach((card, i) => {
+        const cs = getComputedStyle(card);
+        const stickTop = parseFloat(cs.top) || 0;
+        marks.push(y - stickTop);
+        y += card.offsetHeight + (parseFloat(cs.marginBottom) || 0);
+      });
+      const approach = window.innerHeight * 0.7;          // ช่วงเดินจากประตูไปจุดที่ 1
+      let p;                                               // -1 = ประตู, 0..3 = จุดที่ 1..4
+      if (scrolled <= marks[0] - approach) p = -1;
+      else if (scrolled < marks[0]) p = -1 + (scrolled - (marks[0] - approach)) / approach;
+      else {
+        p = cards.length - 1;
+        for (let i = 0; i < cards.length - 1; i++) {
+          if (scrolled < marks[i + 1]) { p = i + (scrolled - marks[i]) / (marks[i + 1] - marks[i]); break; }
+        }
+      }
+      const L = routeLens.nodes;
+      let len;
+      if (p <= -1) len = 0;
+      else if (p < 0) len = (p + 1) * L[0];
+      else { const i = Math.min(Math.floor(p), L.length - 1); const f = p - i; len = i >= L.length - 1 ? L[L.length - 1] : L[i] + (L[i + 1] - L[i]) * f; }
+
+      active.style.strokeDasharray = routeLens.total;
+      active.style.strokeDashoffset = routeLens.total - len;
+      const pt = document.getElementById('tuRouteBase').getPointAtLength(len);
+      walker.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
+
+      const idx = p < -0.15 ? -1 : Math.min(cards.length - 1, Math.max(0, Math.round(p)));
+      if (idx !== routeActiveIdx) {
+        routeActiveIdx = idx;
+        document.querySelectorAll('.tu-route-node').forEach((n, i) => {
+          n.classList.toggle('active', i === idx);
+          n.classList.toggle('done', idx >= 0 && i < idx);
+        });
+        cards.forEach((c, i) => {
+          c.classList.toggle('is-active', i === idx);
+          if (i <= idx) c.classList.add('is-revealed-bars');
+        });
+      }
+    }
+
+    // กดหมายเลขบนแผนที่ = เลื่อนไปยังการ์ดเสาหลักนั้น
     function selectCircuitNode(idx) {
-      const nodes = document.querySelectorAll('.circuit-milestone-node');
-      nodes.forEach((n, i) => n.classList.toggle('active', i === idx));
+      const stack = document.getElementById('tuPillarStack');
+      const card = stack && stack.querySelectorAll('.tu-pillar-card')[idx];
+      if (!card) return;
+      let y = 0;
+      const cards = stack.querySelectorAll('.tu-pillar-card');
+      for (let i = 0; i < idx; i++) y += cards[i].offsetHeight + (parseFloat(getComputedStyle(cards[i]).marginBottom) || 0);
+      const stickTop = parseFloat(getComputedStyle(card).top) || 0;
+      const target = stack.getBoundingClientRect().top + window.pageYOffset + y - stickTop + 2;
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    }
 
-      const c = CIRCUIT_DATA[idx];
-      document.getElementById('cInsightTag').textContent = c.tag;
-      document.getElementById('cInsightTitle').textContent = c.title;
-      document.getElementById('cInsightDesc').textContent = c.desc;
-      const imgEl = document.getElementById('cInsightImg');
-      if (imgEl && c.img) {
-        imgEl.src = c.img;
-        imgEl.className = 'circuit-card-img ' + (c.pillarClass || '');
-      }
-      document.getElementById('cStat1').textContent = c.stat1;
-      document.getElementById('cStatLbl1').textContent = c.lbl1;
-      document.getElementById('cStat2').textContent = c.stat2;
-      document.getElementById('cStatLbl2').textContent = c.lbl2;
-
-      const activePath = document.getElementById('circuitActivePath');
-      if (activePath) {
-        const segments = [
-          "M 120 180 C 130 90, 220 80, 280 140",
-          "M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160",
-          "M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160 C 620 200, 600 290, 540 340",
-          "M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160 C 620 200, 600 290, 540 340 C 470 390, 360 410, 300 370 Z"
-        ];
-        activePath.setAttribute('d', segments[idx] || segments[0]);
-      }
+    function initPillarRoute() {
+      renderPillarStack();
+      routeLens = null;
+      window.addEventListener('scroll', requestRouteFrame, { passive: true });
+      window.addEventListener('resize', () => { routeLens = null; requestRouteFrame(); }, { passive: true });
+      requestRouteFrame();
     }
 
     // 7. Budget Stream Drilldown & Interactive Chart Update
@@ -1655,7 +1807,7 @@
             labels: [
               'Pillar 1: วิจัยสากล (Top 100 QS)',
               'Pillar 2: ทักษะ AI (AI Pedagogy 100%)',
-              'Pillar 3: 88 SANDBOX (10,000 ลบ.)',
+              'Pillar 3: 88 SANDBOX (10,000 ทีม)',
               'Pillar 4: Net-Zero Campus 2030'
             ],
             datasets: [
@@ -2360,11 +2512,7 @@
       initAnimatedCounters();
       initBidwellsScrollMotions();
       updateCockpit();
-      document.querySelectorAll('.circuit-milestone-node').forEach((node, i) => {
-        node.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCircuitNode(i); }
-        });
-      });
+      initPillarRoute();
     });
 
     // ==========================================================================
