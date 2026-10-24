@@ -4203,3 +4203,9 @@
 }
 
 
+
+
+/* Global Hide Bottom Floating Scrubber (User requested to keep right nav only) */
+.bidwells-floating-scrubber {
+  display: none !important;
+}

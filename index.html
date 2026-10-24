@@ -41,7 +41,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024b" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024c" />
   <link rel="stylesheet" href="assets/css/dino-game.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="assets/css/dino-game.css" /></noscript>
 
@@ -206,7 +206,7 @@
   <!-- ==========================================================================
        2. FIXED BOTTOM SCRUBBER PILL (10 Topics Progress Indicator)
        ========================================================================== -->
-  <div class="bidwells-floating-scrubber" id="floatingScrubber">
+  <div class="bidwells-floating-scrubber" id="floatingScrubber" style="display: none !important;">
     <div class="scrubber-track-container" id="scrubberTrack" role="slider" tabindex="0" aria-label="ตัวเลื่อนนำทาง 10 หัวข้อ 90 ปี ธรรมศาสตร์ (ใช้ปุ่มลูกศรซ้าย/ขวา หรือ Home/End)" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" aria-valuetext="หน้าแรก" onclick="handleScrubberClick(event)">
       <div class="scrubber-track-bg"></div>
       <div class="scrubber-track-fill" id="scrubberFill"></div>
@@ -1514,20 +1514,25 @@
 
     <!-- Interactive TU 2034 Strategy Cockpit -->
     <div class="cockpit-strategy-card tu-reveal-slide-up">
-      <div class="cockpit-header-grid" style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; margin-bottom: 24px;">
-        <div class="cockpit-title-col">
-          <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">
-            ห้องควบคุมจำลองยุทธศาสตร์ TU 2034 (Centennial Strategy Cockpit)
+      <!-- Cockpit Header: Title & Purpose on Left, High-Impact KPI Readout Box on Right -->
+      <div class="cockpit-header-grid" style="display: flex; justify-content: space-between; align-items: center; gap: 32px; margin-bottom: 28px; border-bottom: 1.5px solid #edf2f7; padding-bottom: 24px; flex-wrap: wrap;">
+        <div class="cockpit-title-col" style="flex: 1 1 520px; min-width: 280px;">
+          <div style="display: inline-flex; align-items: center; gap: 7px; background: rgba(197, 25, 68, 0.08); border: 1px solid rgba(197, 25, 68, 0.2); color: var(--tu-crimson); padding: 4px 12px; border-radius: 9999px; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;">
+            <i class="fa-solid fa-sliders"></i> SIMULATION DASHBOARD &amp; SCENARIO MODELING
+          </div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.85rem; font-weight: 700; color: var(--tu-navy); margin: 0 0 8px; line-height: 1.3;">
+            ห้องควบคุมจำลองยุทธศาสตร์ TU 2034 <br><span style="font-size: 1.2rem; font-weight: 600; color: #64748b;">(Centennial Strategy Cockpit)</span>
           </h3>
-          <p style="font-size: 0.9rem; color: #64748b; margin: 0; line-height: 1.6;">
-            ปรับคันเร่งยุทธศาสตร์ 4 ด้านเพื่อจำลองดัชนีความพร้อมสู่ 100 ปี ธรรมศาสตร์ (Centennial Readiness Index)
+          <p style="font-size: 0.92rem; color: #64748b; margin: 0; line-height: 1.6; max-width: 580px;">
+            ปรับคันเร่งยุทธศาสตร์ 4 ด้าน เพื่อจำลองดัชนีความพร้อมสู่ 100 ปี ธรรมศาสตร์ (Centennial Readiness Index) จากการวิเคราะห์ถ่วงน้ำหนักตามแผนยุทธศาสตร์ มธ.
           </p>
         </div>
-        <div class="cockpit-score-col" style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; min-width: 220px;">
-          <div style="font-size: 2.8rem; font-weight: 900; line-height: 1; color: var(--tu-crimson);" id="cockpitCompositeScore">93.0</div>
-          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-top: 5px;">Centennial Readiness Index</div>
-          <div style="font-size: 0.72rem; color: #94a3b8; font-style: italic; margin-top: 2px;">* ตัวจำลองสมมุติ ไม่ใช่คะแนนทางการ</div>
-          <button class="cockpit-reset-btn" onclick="resetCockpit()" aria-label="รีเซ็ตค่าจำลองยุทธศาสตร์เป็นค่ามาตรฐาน" style="background: rgba(11, 22, 59, 0.08); border: 1px solid rgba(11, 22, 59, 0.2); border-radius: 6px; padding: 5px 12px; font-size: 0.78rem; font-weight: 600; color: var(--tu-navy); cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; transition: all 0.2s;">
+
+        <div class="cockpit-score-col" style="flex: 0 0 auto; margin-left: auto; text-align: right; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 18px 28px; box-shadow: 0 6px 18px rgba(0,0,0,0.03); min-width: 250px;">
+          <div style="font-size: 3.2rem; font-weight: 900; line-height: 1; color: var(--tu-crimson); font-family: var(--font-heading); letter-spacing: -0.02em;" id="cockpitCompositeScore">93.0</div>
+          <div style="font-size: 0.76rem; color: var(--tu-navy); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px;">Centennial Readiness Index</div>
+          <div style="font-size: 0.72rem; color: #94a3b8; font-style: italic; margin-top: 3px;">* ตัวจำลองสมมุติ ไม่ใช่คะแนนทางการ</div>
+          <button class="cockpit-reset-btn" onclick="resetCockpit()" aria-label="รีเซ็ตค่าจำลองยุทธศาสตร์เป็นค่ามาตรฐาน" style="background: #ffffff; border: 1px solid rgba(11, 22, 59, 0.2); border-radius: 8px; padding: 6px 14px; font-size: 0.8rem; font-weight: 700; color: var(--tu-navy); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.04); transition: all 0.2s;">
             <i class="fa-solid fa-rotate-left"></i> รีเซ็ตค่ามาตรฐาน
           </button>
         </div>
