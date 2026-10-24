@@ -3935,53 +3935,101 @@
 .triple-crown-badges-stage {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin: 32px 0;
+  gap: 16px;
+  max-width: 860px;
+  margin: 26px auto 32px;
 }
 .accreditation-badge-card {
   background: rgba(11, 22, 59, 0.7);
-  border: 1px solid rgba(255, 199, 44, 0.3);
-  border-radius: 16px;
-  padding: 24px 18px;
+  border: 1px solid rgba(255, 199, 44, 0.35);
+  border-radius: 14px;
+  padding: 18px 12px;
   text-align: center;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   transition: transform 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .accreditation-badge-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: var(--tu-gold);
 }
 .badge-svg-wrap {
-  width: 95px;
-  height: 115px;
-  margin-bottom: 12px;
+  width: 70px;
+  height: 84px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .crown-svg-graphic {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.6));
+  width: 70px;
+  height: 84px;
+  max-width: 100%;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
 }
 .accreditation-badge-name {
   font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 0.96rem;
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 .accreditation-badge-desc {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   color: #cbd5e1;
-  line-height: 1.45;
+  line-height: 1.4;
 }
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .triple-crown-badges-stage {
+    gap: 8px;
+  }
+  .accreditation-badge-card {
+    padding: 12px 6px;
+  }
+  .badge-svg-wrap, .crown-svg-graphic {
+    width: 50px;
+    height: 60px;
+  }
+  .accreditation-badge-name {
+    font-size: 0.8rem;
+  }
+  .accreditation-badge-desc {
+    font-size: 0.65rem;
+    line-height: 1.25;
+  }
+}
+
+/* Cockpit Strategy Header Layout */
+.cockpit-header-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.cockpit-title-col {
+  flex: 1;
+}
+.cockpit-score-col {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 200px;
+}
+@media (max-width: 680px) {
+  .cockpit-header-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
+  }
+  .cockpit-score-col {
+    align-items: flex-end !important;
+    text-align: right !important;
   }
 }
 

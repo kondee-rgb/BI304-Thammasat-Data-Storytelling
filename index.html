@@ -41,7 +41,7 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024b" />
   <link rel="stylesheet" href="assets/css/dino-game.css" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="assets/css/dino-game.css" /></noscript>
 
@@ -1008,11 +1008,11 @@
       </div>
 
       <!-- 3 Bespoke Triple Crown Accreditation SVG Badges (Replacing Repeated Student Image) -->
-      <div class="triple-crown-badges-stage tu-reveal-slide-up">
+      <div class="triple-crown-badges-stage tu-reveal-slide-up" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 26px auto 32px;">
         <!-- Badge 1: AACSB 2012 -->
         <div class="accreditation-badge-card tu-reveal-slide-up tu-stagger-1">
-          <div class="badge-svg-wrap">
-            <svg viewBox="0 0 100 120" class="crown-svg-graphic" aria-hidden="true">
+          <div class="badge-svg-wrap" style="width: 70px; height: 84px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="70" height="84" viewBox="0 0 100 120" class="crown-svg-graphic" style="width: 70px; height: 84px; display: block;" aria-hidden="true">
               <defs>
                 <linearGradient id="gradAacsb" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#ffc72c" />
@@ -1040,8 +1040,8 @@
 
         <!-- Badge 2: EQUIS 2012 -->
         <div class="accreditation-badge-card tu-reveal-slide-up tu-stagger-2">
-          <div class="badge-svg-wrap">
-            <svg viewBox="0 0 100 120" class="crown-svg-graphic" aria-hidden="true">
+          <div class="badge-svg-wrap" style="width: 70px; height: 84px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="70" height="84" viewBox="0 0 100 120" class="crown-svg-graphic" style="width: 70px; height: 84px; display: block;" aria-hidden="true">
               <defs>
                 <linearGradient id="gradEquis" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#38bdf8" />
@@ -1077,8 +1077,8 @@
 
         <!-- Badge 3: AMBA 2018 -->
         <div class="accreditation-badge-card tu-reveal-slide-up tu-stagger-3">
-          <div class="badge-svg-wrap">
-            <svg viewBox="0 0 100 120" class="crown-svg-graphic" aria-hidden="true">
+          <div class="badge-svg-wrap" style="width: 70px; height: 84px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="70" height="84" viewBox="0 0 100 120" class="crown-svg-graphic" style="width: 70px; height: 84px; display: block;" aria-hidden="true">
               <defs>
                 <linearGradient id="gradAmba" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#ff4d79" />
@@ -1514,20 +1514,20 @@
 
     <!-- Interactive TU 2034 Strategy Cockpit -->
     <div class="cockpit-strategy-card tu-reveal-slide-up">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
-        <div>
-          <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--tu-navy);">
+      <div class="cockpit-header-grid" style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; margin-bottom: 24px;">
+        <div class="cockpit-title-col">
+          <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--tu-navy); margin-bottom: 6px;">
             ห้องควบคุมจำลองยุทธศาสตร์ TU 2034 (Centennial Strategy Cockpit)
           </h3>
-          <p style="font-size: 0.88rem; color: #64748b;">
+          <p style="font-size: 0.9rem; color: #64748b; margin: 0; line-height: 1.6;">
             ปรับคันเร่งยุทธศาสตร์ 4 ด้านเพื่อจำลองดัชนีความพร้อมสู่ 100 ปี ธรรมศาสตร์ (Centennial Readiness Index)
           </p>
         </div>
-        <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-          <div style="font-size: 2.2rem; font-weight: 900; color: var(--tu-crimson);" id="cockpitCompositeScore">92.0</div>
-          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Centennial Readiness Index</div>
-          <div style="font-size: 0.72rem; color: #64748b; font-style: italic; margin-top: 2px;">* ตัวจำลองสมมุติ ไม่ใช่คะแนนทางการ</div>
-          <button class="cockpit-reset-btn" onclick="resetCockpit()" aria-label="รีเซ็ตค่าจำลองยุทธศาสตร์เป็นค่ามาตรฐาน" style="background: rgba(11, 22, 59, 0.08); border: 1px solid rgba(11, 22, 59, 0.2); border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; color: var(--tu-navy); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; margin-top: 4px;">
+        <div class="cockpit-score-col" style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; min-width: 220px;">
+          <div style="font-size: 2.8rem; font-weight: 900; line-height: 1; color: var(--tu-crimson);" id="cockpitCompositeScore">93.0</div>
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-top: 5px;">Centennial Readiness Index</div>
+          <div style="font-size: 0.72rem; color: #94a3b8; font-style: italic; margin-top: 2px;">* ตัวจำลองสมมุติ ไม่ใช่คะแนนทางการ</div>
+          <button class="cockpit-reset-btn" onclick="resetCockpit()" aria-label="รีเซ็ตค่าจำลองยุทธศาสตร์เป็นค่ามาตรฐาน" style="background: rgba(11, 22, 59, 0.08); border: 1px solid rgba(11, 22, 59, 0.2); border-radius: 6px; padding: 5px 12px; font-size: 0.78rem; font-weight: 600; color: var(--tu-navy); cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; transition: all 0.2s;">
             <i class="fa-solid fa-rotate-left"></i> รีเซ็ตค่ามาตรฐาน
           </button>
         </div>
