@@ -51,18 +51,85 @@
 }
 .tu-runner__mute:hover { opacity: 1; background: rgba(15,23,42,.06); }
 
-.tu-runner__controls { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; flex-wrap: wrap; }
-.tu-runner__help { margin: 0; font-size: .85rem; color: #475569; text-align: center; }
+.tu-runner__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.tu-runner__help {
+  margin: 0;
+  font-size: .88rem;
+  color: #475569;
+  text-align: center;
+}
 .tu-runner__help kbd {
-  display: inline-block; padding: 1px 7px; border: 1px solid #94a3b8; border-bottom-width: 2px; border-radius: 6px;
-  background: #fff; font: 600 .8rem ui-monospace, monospace; color: #0f172a;
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid #94a3b8;
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: #fff;
+  font: 700 .8rem ui-monospace, monospace;
+  color: #0f172a;
 }
-.tu-runner__duck {
-  display: none; min-width: 96px; min-height: 48px; border: 2px solid var(--r-navy); border-radius: 14px;
-  background: #fff; color: var(--r-navy); font: 700 1rem/1 inherit; touch-action: manipulation; user-select: none;
+.tu-runner__touch-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 440px;
 }
-.tu-runner__duck:active { background: var(--r-navy); color: #fff; }
-@media (pointer: coarse) { .tu-runner__duck { display: inline-block; } }
+.tu-runner__touch-btn {
+  flex: 1;
+  min-height: 52px;
+  padding: 12px 20px;
+  border-radius: 16px;
+  font: 800 1.05rem/1 inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.1s ease, background 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.tu-runner__touch-btn:focus-visible {
+  outline: 3px solid var(--r-gold);
+  outline-offset: 3px;
+}
+.tu-runner__touch-btn--jump {
+  background: var(--r-crimson);
+  color: #ffffff;
+  border: 2px solid var(--r-crimson);
+}
+.tu-runner__touch-btn--jump:hover {
+  background: #9e1236;
+}
+.tu-runner__touch-btn--jump:active {
+  background: #7a0e2a;
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(197,25,68,0.3);
+}
+.tu-runner__touch-btn--duck {
+  background: #ffffff;
+  color: var(--r-navy);
+  border: 2px solid var(--r-navy);
+}
+.tu-runner__touch-btn--duck:hover {
+  background: #f1f5f9;
+}
+.tu-runner__touch-btn--duck:active {
+  background: var(--r-navy);
+  color: #ffffff;
+  transform: scale(0.96);
+}
 
 .tu-runner__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 

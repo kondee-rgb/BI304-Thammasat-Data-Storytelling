@@ -149,8 +149,11 @@
         '<button type="button" class="tu-runner__mute" data-mute aria-pressed="false" aria-label="ปิดเสียงเกม"></button>' +
       '</div>' +
       '<div class="tu-runner__controls">' +
-        '<p class="tu-runner__help"><kbd>Space</kbd>/<kbd>↑</kbd> กระโดด · <kbd>↓</kbd> ก้ม · แตะหน้าจอเพื่อกระโดด</p>' +
-        '<button type="button" class="tu-runner__duck" data-duck aria-label="ก้ม (กดค้าง)">ก้ม ▼</button>' +
+        '<p class="tu-runner__help"><kbd>Space</kbd>/<kbd>W</kbd>/<kbd>↑</kbd> กระโดด · <kbd>S</kbd>/<kbd>↓</kbd> ก้ม</p>' +
+        '<div class="tu-runner__touch-bar">' +
+          '<button type="button" class="tu-runner__touch-btn tu-runner__touch-btn--jump" data-jump aria-label="กระโดด (กดค้างเพื่อกระโดดสูง)"><span aria-hidden="true">▲</span> กระโดด</button>' +
+          '<button type="button" class="tu-runner__touch-btn tu-runner__touch-btn--duck" data-duck aria-label="ก้ม (กดค้างเพื่อหมอบ)"><span aria-hidden="true">▼</span> ก้ม</button>' +
+        '</div>' +
       '</div>' +
       '<div class="tu-runner__sr" aria-live="polite" data-live></div>';
     this.canvas = r.querySelector('canvas');
@@ -159,7 +162,7 @@
       overlay: r.querySelector('[data-overlay]'), title: r.querySelector('[data-title]'),
       sub: r.querySelector('[data-sub]'), play: r.querySelector('[data-play]'),
       playLabel: r.querySelector('[data-playlabel]'), mute: r.querySelector('[data-mute]'),
-      duck: r.querySelector('[data-duck]'), live: r.querySelector('[data-live]'),
+      duck: r.querySelector('[data-duck]'), jump: r.querySelector('[data-jump]'), live: r.querySelector('[data-live]'),
       hi: r.querySelector('.tu-runner__hi'), cur: r.querySelector('.tu-runner__cur'),
       stage: r.querySelector('.tu-runner__stage')
     };
@@ -208,8 +211,8 @@
 
     r.addEventListener('keydown', function (e) {
       var k = e.key;
-      var isJump = (k === ' ' || k === 'Spacebar' || k === 'ArrowUp' || k === 'Up');
-      var isDown = (k === 'ArrowDown' || k === 'Down');
+      var isJump = (k === ' ' || k === 'Spacebar' || k === 'ArrowUp' || k === 'Up' || k === 'w' || k === 'W');
+      var isDown = (k === 'ArrowDown' || k === 'Down' || k === 's' || k === 'S');
       if (e.target && e.target.tagName === 'BUTTON' && (k === ' ' || k === 'Enter')) return; // ให้ปุ่มทำงานปกติ
       if (isJump || isDown) {
         if (g.state === 'running') e.preventDefault();
@@ -222,8 +225,8 @@
     });
     r.addEventListener('keyup', function (e) {
       var k = e.key;
-      if (k === ' ' || k === 'Spacebar' || k === 'ArrowUp' || k === 'Up') { g.holdJump = false; g.endJump(); }
-      if (k === 'ArrowDown' || k === 'Down') { g.ducking = false; g.fastFall = false; }
+      if (k === ' ' || k === 'Spacebar' || k === 'ArrowUp' || k === 'Up' || k === 'w' || k === 'W') { g.holdJump = false; g.endJump(); }
+      if (k === 'ArrowDown' || k === 'Down' || k === 's' || k === 'S') { g.ducking = false; g.fastFall = false; }
     });
 
     // แตะ/คลิกบนเวที = กระโดด
@@ -236,12 +239,33 @@
     window.addEventListener('pointerup', function () { g.holdJump = false; g.endJump(); });
     this.canvas.style.touchAction = 'manipulation';
 
-    // ปุ่มก้ม (มือถือ)
+    // ปุ่มกระโดด (สัมผัสบนมือถือ / คลิก)
+    var j = this.el.jump;
+    if (j) {
+      j.addEventListener('pointerdown', function (e) {
+        e.preventDefault();
+        if (g.state === 'running') { g.holdJump = true; g.jump(); }
+        else if (g.state === 'idle' || g.state === 'over') g.start();
+        else if (g.state === 'paused') g.resume();
+        g.root.focus({ preventScroll: true });
+      });
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) {
+        j.addEventListener(ev, function () { g.holdJump = false; g.endJump(); });
+      });
+    }
+
+    // ปุ่มก้ม (สัมผัสบนมือถือ / คลิก)
     var d = this.el.duck;
-    d.addEventListener('pointerdown', function (e) { e.preventDefault(); if (g.state === 'running') { g.ducking = true; if (g.jumping) g.fastFall = true; } });
-    ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) {
-      d.addEventListener(ev, function () { g.ducking = false; g.fastFall = false; });
-    });
+    if (d) {
+      d.addEventListener('pointerdown', function (e) {
+        e.preventDefault();
+        if (g.state === 'running') { g.ducking = true; if (g.jumping) g.fastFall = true; }
+        g.root.focus({ preventScroll: true });
+      });
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) {
+        d.addEventListener(ev, function () { g.ducking = false; g.fastFall = false; });
+      });
+    }
 
     // หยุดอัตโนมัติ: เสียโฟกัส / ออกนอกจอ / ซ่อนแท็บ
     r.addEventListener('focusout', function (e) {
