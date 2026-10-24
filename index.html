@@ -41,9 +41,11 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024e" />
-  <link rel="stylesheet" href="assets/css/dino-game.css?v=20261024e" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="assets/css/dino-game.css?v=20261024e" /></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024f" />
+  <link rel="stylesheet" href="assets/css/dino-game.css?v=20261024f" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/dino-game.css?v=20261024f" /></noscript>
+  <link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261024f" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261024f" /></noscript>
 
   <!-- Leaflet 1.9.4 CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'" />
@@ -175,7 +177,7 @@
       </a>
       <a href="#topic-08" class="mobile-nav-item" onclick="closeMobileNav()">
         <span class="nav-item-num">08</span>
-        <span class="nav-item-label">8. แคมปัสสีเขียว: ผู้นำโลก SDG 11 & สวนป๋วย</span>
+        <span class="nav-item-label">8. แคมปัสสีเขียว: ผู้นำโลก SDG 16 & สวนป๋วย</span>
       </a>
       <a href="#topic-09" class="mobile-nav-item" onclick="closeMobileNav()">
         <span class="nav-item-num">09</span>
@@ -475,6 +477,51 @@
             <div id="mEventLabel" style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">นักศึกษารุ่นแรก</div>
           </div>
         </div>
+        <!-- Interactive Data Guessing Activity: เดาตัวเลขก่อนดูเฉลย -->
+        <div data-tu-guess style="margin: 40px auto 30px;">
+          <script type="application/json">
+          {
+            "title": "เดาตัวเลขสถิติธรรมศาสตร์ก่อนดูเฉลย",
+            "kicker": "กิจกรรมโต้ตอบ • INTERACTIVE DATA GUESS",
+            "items": [
+              {
+                "q": "คุณคิดว่าในปีก่อตั้ง พ.ศ. 2477 มีผู้สมัครเข้าเรียน มธก. รุ่นแรกกี่คน?",
+                "min": 1000,
+                "max": 15000,
+                "start": 5000,
+                "step": 50,
+                "answer": 7094,
+                "unit": "คน",
+                "note": "ในพิธีเปิดมหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง เมื่อวันที่ 27 มิ.ย. 2477 มีผู้สมัครเข้าเรียนรุ่นแรกสูงถึง 7,094 คน (กว่า 7,000 คน) สะท้อนความกระหายการศึกษาของราษฎร",
+                "source": { "label": "Silpa-mag (24 ต.ค. 2569)", "url": "https://www.silpa-mag.com/?p=135675" }
+              },
+              {
+                "q": "ปัจจุบัน มหาวิทยาลัยธรรมศาสตร์ มีจำนวนนักศึกษารวมทุกระดับกี่คน?",
+                "min": 20000,
+                "max": 60000,
+                "start": 35000,
+                "step": 250,
+                "answer": 42850,
+                "unit": "คน",
+                "note": "สถิตินักศึกษาปัจจุบันรวม 42,850 คน โดยกระจายตัวในศูนย์รังสิต 31,500 คน (73.5%), ท่าพระจันทร์ 6,310 คน, ลำปาง 3,120 คน และพัทยา 1,920 คน",
+                "source": { "label": "กองบริหารงานวิชาการ มธ. (24 ต.ค. 2569)", "url": "https://reg.tu.ac.th/" }
+              },
+              {
+                "q": "งบประมาณรายจ่ายรวมประจำปีล่าสุดของมหาวิทยาลัยธรรมศาสตร์ มีมูลค่าเท่าใด?",
+                "min": 5000,
+                "max": 25000,
+                "start": 12000,
+                "step": 250,
+                "answer": 15350,
+                "unit": "ล้านบาท",
+                "note": "งบประมาณรายจ่ายรวม 15,350 ล้านบาท ประกอบด้วยงบอุดหนุนแผ่นดิน 38% และเงินรายได้ของมหาวิทยาลัยเอง 62%",
+                "source": { "label": "กองแผนงาน มหาวิทยาลัยธรรมศาสตร์", "url": "https://planning.tu.ac.th/" }
+              }
+            ]
+          }
+          </script>
+        </div>
+
                 <div class="narrative-connector-bridge">
           <i class="fa-solid fa-arrow-right-long"></i>
           <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> จากการปักหมุด ณ ท่าพระจันทร์ ความต้องการโอกาสทางการศึกษาที่เพิ่มขึ้นอย่างก้าวกระโดด ได้ขับเคลื่อนให้ธรรมศาสตร์ต้องขยายอาณาเขตสู่ 4 ศูนย์การศึกษายุทธศาสตร์ทั่วประเทศ</span>
@@ -1564,6 +1611,72 @@
       </p>
     </div>
 
+    <!-- 90th Anniversary Quiz Challenge -->
+    <div data-tu-quiz style="margin: 0 auto 36px; max-width: 800px;">
+      <script type="application/json">
+      {
+        "title": "Quiz ท้าประลองความรู้ 90 ปี มธ.",
+        "kicker": "QUIZ โต้ตอบ • 90TH ANNIVERSARY CHALLENGE",
+        "introTitle": "ทดสอบความรู้: คุณรู้จักธรรมศาสตร์ดีแค่ไหน?",
+        "introText": "ท้าประลอง 5 คำถามจากข้อเท็จจริงตลอด 9 ทศวรรษ สุ่มคำถามและสลับลำดับตัวเลือกใหม่ทุกครั้ง",
+        "startLabel": "เริ่มทำ Quiz 5 ข้อ →",
+        "count": 5,
+        "questions": [
+          {
+            "q": "คณะพาณิชยศาสตร์และการบัญชี (TBS) ได้รับการรับรองมาตรฐานสากลครบ 3 มงกุฎ (Triple Crown: EQUIS, AACSB, AMBA) ในปีใด?",
+            "options": ["ปี 2012", "ปี 2015", "ปี 2018", "ปี 2021"],
+            "correct": 2,
+            "explain": "TBS ได้รับการรับรองจาก AMBA ในปี 2018 ทำให้เป็นสถาบันการศึกษาด้านบริหารธุรกิจแห่งแรกในประเทศไทยที่ได้รับรอง Triple Crown ครบทั้ง 3 สถาบัน",
+            "source": { "label": "AMBA & BGA (24 ต.ค. 2569)", "url": "https://www.amba-bga.com/schools/thammasat-business-school-thammasat-university" },
+            "ref": { "label": "หัวข้อที่ 07 ความเป็นเลิศระดับสากล", "href": "#topic-07" }
+          },
+          {
+            "q": "สวนผักดาดฟ้า ณ อาคารป๋วย 100 ปี (TURF) มีจุดเด่นด้านการบริหารจัดการสิ่งแวดล้อมอย่างไร?",
+            "options": [
+              "สวนผักดาดฟ้าที่ใหญ่ที่สุดในเอเชีย กักเก็บ/ชะลอน้ำฝนได้ราว 3.1 ล้านแกลลอน",
+              "สวนผักลอยน้ำพลังงานสะอาดแห่งแรกในเอเชียตะวันออกเฉียงใต้",
+              "ฟาร์มปลูกพืชไร้ดินระบบปิดขนาดใหญ่ที่สุดในมหาวิทยาลัยไทย",
+              "ระบบดักจับคาร์บอนไดออกไซด์ด้วยจุลสาหร่ายใต้ดิน"
+            ],
+            "correct": 0,
+            "explain": "TURF มีพื้นที่ 22,000 ตร.ม. ออกแบบเป็นแปลงเกษตรอินทรีย์ขั้นบันได เป็นสวนผักดาดฟ้าที่ใหญ่ที่สุดในเอเชีย ชะลอและกักเก็บน้ำฝนได้ราว 3.1 ล้านแกลลอน",
+            "source": { "label": "Greenroofs.com (24 ต.ค. 2569)", "url": "https://www.greenroofs.com/2021/02/16/featured-project-thammasat-university-urban-rooftop-farm-turf/" },
+            "ref": { "label": "หัวข้อที่ 08 นวัตกรรมสีเขียว", "href": "#topic-08" }
+          },
+          {
+            "q": "ในการจัดอันดับ THE Impact Rankings 2026 มหาวิทยาลัยธรรมศาสตร์ ครองอันดับที่เท่าใดของโลกในเป้าหมาย SDG 16 (Peace, Justice and Strong Institutions)?",
+            "options": ["อันดับที่ 1 ของโลก", "อันดับที่ 5 ของโลก", "อันดับที่ 10 ของโลก", "อันดับที่ 46 ของโลก"],
+            "correct": 0,
+            "explain": "ธรรมศาสตร์ครองอันดับ 1 ของโลกใน SDG 16 (สันติภาพ ความยุติธรรม และสถาบันที่เข้มแข็ง) ด้วยคะแนน 92.9 และอยู่อันดับที่ 46 รวมของโลก",
+            "source": { "label": "Khaosod English (24 ต.ค. 2569)", "url": "https://www.khaosodenglish.com/life/arts/2026/06/25/thammasat-ranks-no-1-globally-in-sdg16-for-peace-justice-and-strong-institutions/amp/" },
+            "ref": { "label": "หัวข้อที่ 08 นวัตกรรมสีเขียวและ SDG", "href": "#topic-08" }
+          },
+          {
+            "q": "โครงสร้างประชากรนักศึกษาของมหาวิทยาลัยธรรมศาสตร์ในปัจจุบัน มีสัดส่วนหญิงและชายเป็นอย่างไร?",
+            "options": [
+              "หญิง 62.4% (26,738 คน) / ชาย 37.6% (16,112 คน)",
+              "ชาย 55.0% / หญิง 45.0%",
+              "สัดส่วนเท่ากัน 50.0% / 50.0%",
+              "หญิง 72.5% / ชาย 27.5%"
+            ],
+            "correct": 0,
+            "explain": "จากจำนวนนักศึกษาทั้งหมด 42,850 คน มีนักศึกษาหญิง 26,738 คน (62.4%) และนักศึกษาชาย 16,112 คน (37.6%)",
+            "source": { "label": "กองบริหารงานวิชาการ มธ. (24 ต.ค. 2569)", "url": "https://reg.tu.ac.th/" },
+            "ref": { "label": "หัวข้อที่ 04 โครงสร้างประชากร", "href": "#topic-04" }
+          },
+          {
+            "q": "แผนการติดตั้งระบบผลิตไฟฟ้าพลังงานแสงอาทิตย์ (Solar PV Rooftop) ณ มธ. ศูนย์รังสิต มีเป้าหมายกำลังการผลิตรวมเท่าใด?",
+            "options": ["5 เมกะวัตต์ (MW)", "10 เมกะวัตต์ (MW)", "15 เมกะวัตต์ (MW)", "30 เมกะวัตต์ (MW)"],
+            "correct": 2,
+            "explain": "มหาวิทยาลัยธรรมศาสตร์มีแผนติดตั้งพลังงานแสงอาทิตย์รวม 15 MW (โดยติดตั้งแล้วเสร็จ 5 MW) สู่การเป็นมหาวิทยาลัยพลังงานสะอาดและคาร์บอนสมดุล",
+            "source": { "label": "Bangkok Post (24 ต.ค. 2569)", "url": "https://www.bangkokpost.com/news/general/1395042/all-abuzz-about-going-solar" },
+            "ref": { "label": "หัวข้อที่ 08 นวัตกรรมสีเขียว", "href": "#topic-08" }
+          }
+        ]
+      }
+      </script>
+    </div>
+
     <!-- TU Runner Mini-Game (Chrome Dino Style) -->
     <div style="max-width: 800px; margin: 0 auto 36px; text-align: center;">
       <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(197, 25, 68, 0.08); border: 1.5px solid var(--tu-crimson); color: var(--tu-crimson); padding: 7px 22px; border-radius: 9999px; font-weight: 700; font-size: 0.92rem; margin-bottom: 14px;">
@@ -1734,7 +1847,11 @@
        JAVASCRIPT LOGIC & VISUALIZATION ENGINES
        ========================================================================== -->
   <!-- Main Application Logic -->
-  <script src="assets/js/app.js?v=20261024e" defer></script>
-  <script src="assets/js/dino-game.js?v=20261024e" defer></script>
+  <script src="assets/js/app.js?v=20261024f" defer></script>
+  <script src="assets/js/dino-game.js?v=20261024f" defer></script>
+  <!-- Confetti Celebration FX -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <!-- TU Interactive Activities Engine -->
+  <script src="assets/js/tu-interactive.js?v=20261024f" defer></script>
 </body>
 </html>
