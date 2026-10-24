@@ -507,6 +507,14 @@
       { id: 'finish', name: 'ศตวรรษ 90 ปี' }
     ];
 
+    function scrollToElement(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    window.scrollToElement = scrollToElement;
+
     // ==========================================================================
     // HERO WALKERS: นักศึกษาเดินลงตามเลนแบบทแยงไปทางที่หันหน้า (ขวา)
     //  - ระยะทางผูกกับตำแหน่งสกรอลล์ (ไม่กระโดด ไม่หลุดออกนอกฉาก)
@@ -529,32 +537,46 @@
       const y = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
       const heroH = hero.offsetHeight;
       const vh = window.innerHeight;
-      const span = Math.max(1, heroH - vh * 0.55);
-      const p = Math.min(Math.max(y / span, 0), 1);
+
+      // Scroll trigger: เริ่มต้นเมื่อเลื่อนพ้น Hero overlay (vh * 0.25) และเสร็จสมบูรณ์เมื่อถึงปลายรันเวย์
+      const scrollStart = vh * 0.25;
+      const scrollEnd = Math.max(scrollStart + 100, heroH - vh * 0.92);
+      const p = Math.min(Math.max((y - scrollStart) / (scrollEnd - scrollStart), 0), 1);
 
       const dy = y - heroWalkerState.lastY;
       if (Math.abs(dy) > 0.5) heroWalkerState.facing = dy >= 0 ? 1 : -1;
       heroWalkerState.lastY = y;
 
       const laneW = stage.clientWidth;
-      [['studentLeader', 0.26, 0], ['studentScholar', 0.2, Math.PI / 2]].forEach(([id, dxRatio, phase]) => {
+      const stageH = stage.offsetHeight || heroH;
+      const slot2 = stage.querySelector('.grid-box-slot2');
+      const slot2Top = slot2 ? slot2.offsetTop : (stageH - 120 - 28);
+      const slot2H = slot2 ? slot2.offsetHeight : 28;
+      const slot2Bottom = slot2Top + slot2H;
+
+      [['studentLeader', 0.24, 0], ['studentScholar', 0.18, Math.PI / 2]].forEach(([id, dxRatio, phase]) => {
         const el = document.getElementById(id);
         if (!el) return;
         const img = el.querySelector('.tu-student-walker-img');
-        const startTop = el.offsetTop;                 // ตำแหน่งก่อน transform
+        const startTop = el.offsetTop;                 // ตำแหน่งเริ่มต้นก่อน transform
         const h = el.offsetHeight;
-        const travelY = Math.max(0, heroH - 40 - h - startTop);
+
+        // ล็อกระยะสิ้นสุดสูงสุด (Clamp): หยุดสนิทพอดีที่ระดับหมุด "2567 — ครบ 90 ปี" ห้ามเคลื่อนที่เกินระดับหมุดเด็ดขาด
+        const targetStopBottom = (id === 'studentScholar') ? (slot2Top - 10) : (slot2Top - 45);
+        const maxTravelY = Math.max(0, targetStopBottom - h - startTop);
         const travelX = laneW * dxRatio;
         const maxX = Math.max(0, laneW - el.offsetLeft - el.offsetWidth - 8);
+
         const tx = Math.min(travelX * p, maxX);
-        const ty = travelY * p;
+        const ty = Math.min(maxTravelY * p, maxTravelY);
         el.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0)`;
 
         if (img) {
+          const isMoving = p > 0 && p < 1 && Math.abs(dy) > 0.1;
           const dist = Math.hypot(tx, ty);
           const stepPhase = dist / 22 + phase;         // 1 ก้าว ≈ 70px ของระยะทาง
-          const bob = reduce ? 0 : -Math.abs(Math.sin(stepPhase)) * 6;
-          const tilt = reduce ? 0 : Math.sin(stepPhase) * 1.8;
+          const bob = (reduce || !isMoving) ? 0 : -Math.abs(Math.sin(stepPhase)) * 6;
+          const tilt = (reduce || !isMoving) ? 0 : Math.sin(stepPhase) * 1.8;
           const flip = heroWalkerState.facing;
           img.style.transform = `translateY(${bob.toFixed(2)}px) rotate(${(tilt * flip).toFixed(2)}deg) scaleX(${flip})`;
         }

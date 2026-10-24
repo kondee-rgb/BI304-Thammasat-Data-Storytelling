@@ -466,7 +466,7 @@
        ========================================================================== */
     .hero-track-section {
       position: relative;
-      min-height: 170vh;
+      min-height: 205vh;
       background-color: var(--tu-navy);
       background-image: 
         radial-gradient(circle at 50% 30%, #162a5b 0%, var(--tu-navy) 70%),
@@ -561,13 +561,13 @@
 
     /* หมุดเริ่ม (2477) อยู่ใต้เท้านักศึกษาตอนเริ่ม / หมุดปลายทาง (2567) อยู่ท้ายเส้นทางเดิน */
     .grid-box-pole {
-      top: calc(100vh - 228px);
+      top: calc(100vh + 35px);
       left: 28px;
       height: 28px;
     }
 
     .grid-box-slot2 {
-      bottom: 26px;
+      bottom: 120px;
       right: 28px;
       height: 28px;
     }
@@ -593,14 +593,14 @@
 
     /* จุดเริ่มเดินอยู่ใต้ปุ่ม "เริ่มต้นสำรวจ" ไม่ทับข้อความ แล้วเดินลงตามเลนเมื่อเลื่อนหน้า (คำนวณใน app.js) */
     .tu-student-leader {
-      top: calc(100vh - 185px);
-      left: 40px;
+      top: calc(100vh + 55px);
+      left: 42px;
       width: 125px;
     }
 
     .tu-student-scholar {
-      top: calc(100vh - 95px);
-      left: 340px;
+      top: calc(100vh + 115px);
+      left: 345px;
       width: 112px;
     }
 
@@ -3158,7 +3158,7 @@
       
       /* Hero Mobile Scaling */
       .hero-track-section {
-        min-height: 175vh;
+        min-height: 195vh;
         padding-top: 60px;
       }
       .central-track-stage {
@@ -3172,20 +3172,20 @@
         width: 10px;
       }
       .grid-box-pole {
-        top: calc(100vh - 182px);
+        top: calc(100vh + 20px);
         left: 12px;
       }
       .grid-box-slot2 {
-        bottom: 18px;
+        bottom: 90px;
         right: 12px;
       }
       .tu-student-leader {
-        top: calc(100vh - 150px);
+        top: calc(100vh + 45px);
         left: 6%;
         width: 84px;
       }
       .tu-student-scholar {
-        top: calc(100vh - 80px);
+        top: calc(100vh + 95px);
         left: 50%;
         width: 76px;
       }
@@ -4188,7 +4188,7 @@
 /* 9. Mobile Polish & Scrubber Control */
 @media (max-width: 768px) {
   .hero-track-section {
-    min-height: 165vh !important;
+    min-height: 195vh !important;
   }
   .winning-cards-row {
     grid-template-columns: 1fr !important;
