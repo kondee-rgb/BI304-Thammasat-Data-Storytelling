@@ -14,10 +14,9 @@
         family: "'Sarabun', sans-serif",
         size: 12
       };
-      Chart.defaults.animation = {
-        duration: 1100,
-        easing: 'easeOutQuart'
-      };
+      // ตั้งค่าเฉพาะคุณสมบัติ ห้ามแทนที่ทั้ง object (จะทำให้ตัวแปลงค่าแอนิเมชันของ Chart.js หายและกราฟค้างกลางทาง)
+      Chart.defaults.animation.duration = 1100;
+      Chart.defaults.animation.easing = 'easeOutQuart';
     }
 
     // Thai word segmentation safe wrapper for tooltip text
@@ -265,22 +264,22 @@
         template: "Marker Map / Geographic Explorer",
         templateUrl: "https://app.flourish.studio/@flourish/marker-map",
         category: "Campus GIS",
-        badge: "4 ศูนย์การศึกษา • 2,836 ไร่",
+        badge: "4 ศูนย์การศึกษา • 2,791 ไร่",
         csv: "02_flourish_scene2_campus_locations.csv",
         secondaryCsv: "02_flourish_campuses_map.csv",
         secondaryLabel: "Campuses GIS Coordinates CSV",
         desc: "ข้อมูลเชิงพื้นที่และบทบาทเชิงยุทธศาสตร์ ขนาดพื้นที่ จำนวนประชากรนักศึกษา และความเชี่ยวชาญเฉพาะทางของ 4 ศูนย์",
         highlights: [
-          "ศูนย์รังสิต (1,757 ไร่): ศูนย์กลางการศึกษาหลัก ศูนย์การแพทย์ สวนป๋วย 100 ปี และอุทยานนวัตกรรม รองรับนักศึกษา 32,000 คน (75%)",
-          "ศูนย์ท่าพระจันทร์ (49 ไร่): หัวใจประวัติศาสตร์ มรดกประชาธิปไตย และศูนย์กลางหลักสูตรนานาชาติ/บัณฑิตศึกษา (6,500 คน)",
-          "ศูนย์ลำปาง (464 ไร่) & ศูนย์พัทยา (566 ไร่): ประตูการศึกษาล้านนาและศูนย์กลางนวัตกรรม EEC ยานยนต์ไฟฟ้า AI"
+          "ศูนย์รังสิต (1,757 ไร่): ศูนย์กลางการศึกษาหลัก ศูนย์การแพทย์ สวนป๋วย 100 ปี และอุทยานนวัตกรรม รองรับนักศึกษา 31,500 คน (73.5%)",
+          "ศูนย์ท่าพระจันทร์ (104 ไร่): หัวใจประวัติศาสตร์ มรดกประชาธิปไตย และศูนย์กลางหลักสูตรนานาชาติ/บัณฑิตศึกษา (6,310 คน)",
+          "ศูนย์ลำปาง (364 ไร่ • 3,120 คน) & ศูนย์พัทยา (566 ไร่ • 1,920 คน): ประตูการศึกษาล้านนาและศูนย์กลางนวัตกรรม EEC"
         ],
         tableHeaders: ["Campus_Name", "Latitude", "Longitude", "Area_Rai", "Students", "Share_Pct", "Established_BE", "Key_Role"],
         tableSample: [
-          ["ศูนย์ท่าพระจันทร์", "13.7557", "100.4930", "49", "6,500", "15%", "2477", "ศูนย์กลางประวัติศาสตร์ นานาชาติ และบัณฑิตศึกษา"],
-          ["ศูนย์รังสิต", "14.0736", "100.6067", "1,757", "32,000", "75%", "2529", "ศูนย์การศึกษาหลัก ศูนย์การแพทย์ สวนป๋วย 100 ปี นวัตกรรม"],
-          ["ศูนย์ลำปาง", "18.2982", "99.4897", "464", "2,200", "5%", "2539", "ประตูการศึกษาภาคเหนือ ศิลปวัฒนธรรมล้านนา สหวิทยาการ"],
-          ["ศูนย์พัทยา", "12.9236", "100.9925", "566", "1,500", "4%", "2538", "เขตเศรษฐกิจพิเศษ EEC ยานยนต์ไฟฟ้า นวัตกรรมดิจิทัล"]
+          ["ศูนย์ท่าพระจันทร์", "13.7557", "100.4907", "104", "6,310", "14.8%", "2477", "ศูนย์กลางประวัติศาสตร์ นานาชาติ และบัณฑิตศึกษา"],
+          ["ศูนย์รังสิต", "14.0722", "100.6015", "1,757", "31,500", "73.5%", "2529", "ศูนย์การศึกษาหลัก ศูนย์การแพทย์ สวนป๋วย 100 ปี นวัตกรรม"],
+          ["ศูนย์ลำปาง", "18.3171", "99.3986", "364", "3,120", "7.2%", "2535", "ประตูการศึกษาภาคเหนือ ศิลปวัฒนธรรมล้านนา สหวิทยาการ"],
+          ["ศูนย์พัทยา", "12.9275", "100.9925", "566", "1,920", "4.5%", "2538", "เขตเศรษฐกิจพิเศษ EEC ยานยนต์ไฟฟ้า นวัตกรรมดิจิทัล"]
         ]
       },
       {
@@ -322,17 +321,17 @@
         secondaryLabel: "Gender Summary Donut CSV",
         desc: "โครงสร้างความหลากหลายทางเพศของนักศึกษาใน 4 กลุ่มสาขาวิชา สะท้อนสังคมแห่งความเท่าเทียมและการเปิดกว้าง",
         highlights: [
-          "วิทยาศาสตร์สุขภาพและการแพทย์: สัดส่วนนักศึกษาหญิงสูงสุด 68.0% (5,200 คน) ชาย 32.0% (2,450 คน)",
-          "สังคมศาสตร์และมนุษยศาสตร์: สัดส่วนนักศึกษาหญิง 64.0% (11,450 คน) ชาย 36.0% (6,450 คน)",
-          "วิทยาศาสตร์และเทคโนโลยี: นักศึกษาชาย 56.0% (6,220 คน) นักศึกษาหญิง 44.0% (4,880 คน) สะท้อนการเติบโตของผู้หญิงในสาย STEM"
+          "วิทยาศาสตร์สุขภาพและการแพทย์: สัดส่วนนักศึกษาหญิงสูงสุด 71.5% (≈5,577 คน จาก 7,800 คน)",
+          "สังคมศาสตร์และมนุษยศาสตร์: กลุ่มใหญ่ที่สุด 19,200 คน หญิง 64.2% ชาย 35.8%",
+          "วิทยาศาสตร์และเทคโนโลยี: ใกล้สมดุลที่สุด หญิง 53.8% ชาย 46.2% (11,450 คน)"
         ],
         tableHeaders: ["Cluster", "Female_Students", "Male_Students", "Female_Pct", "Male_Pct", "Total_Students"],
         tableSample: [
-          ["สังคมศาสตร์-มนุษยศาสตร์", "11,450", "6,450", "64.0%", "36.0%", "17,900"],
-          ["วิทยาศาสตร์สุขภาพ", "5,200", "2,450", "68.0%", "32.0%", "7,650"],
-          ["นานาชาติและสถาบันบูรณาการ", "3,600", "2,400", "60.0%", "40.0%", "6,000"],
-          ["วิทยาศาสตร์และเทคโนโลยี", "4,880", "6,220", "44.0%", "56.0%", "11,100"],
-          ["ภาพรวมทั้งมหาวิทยาลัย", "25,130", "17,520", "58.9%", "41.1%", "42,850"]
+          ["สังคมศาสตร์-มนุษยศาสตร์", "12,326", "6,874", "64.2%", "35.8%", "19,200"],
+          ["วิทยาศาสตร์และเทคโนโลยี", "6,160", "5,290", "53.8%", "46.2%", "11,450"],
+          ["วิทยาศาสตร์สุขภาพ", "5,577", "2,223", "71.5%", "28.5%", "7,800"],
+          ["นานาชาติและสถาบันบูรณาการ", "2,675", "1,725", "60.8%", "39.2%", "4,400"],
+          ["ภาพรวมทั้งมหาวิทยาลัย", "26,738", "16,112", "62.4%", "37.6%", "42,850"]
         ]
       },
       {
@@ -341,7 +340,7 @@
         template: "Sankey Diagram",
         templateUrl: "https://app.flourish.studio/@flourish/sankey",
         category: "Campus Migration",
-        badge: "ท่าพระจันทร์ ➔ รังสิต 75%",
+        badge: "ท่าพระจันทร์ ➔ รังสิต 73.5%",
         csv: "05_flourish_scene5_migration_flow_sankey.csv",
         secondaryCsv: "05_flourish_campus_migration_eras.csv",
         secondaryLabel: "Campus Migration Eras CSV",
@@ -349,16 +348,16 @@
         highlights: [
           "พ.ศ. 2500: ศูนย์ท่าพระจันทร์รองรับนักศึกษา 100% ก่อนเริ่มมีข้อจำกัดด้านพื้นที่ขยาย",
           "พ.ศ. 2529 - 2545: การย้ายนักศึกษาสายวิทยาศาสตร์และตามด้วยทุกหลักสูตรปริญญาตรีสู่รังสิต",
-          "ปัจจุบัน: รังสิตเป็น Main Campus (73.5% - 75%) ขณะที่ท่าพระจันทร์ปรับสู่ Global & Postgrad Hub (15%)"
+          "ปัจจุบัน: รังสิตเป็น Main Campus (73.5%) ขณะที่ท่าพระจันทร์ปรับสู่ Global & Postgrad Hub (14.8%)"
         ],
         tableHeaders: ["Source_Node", "Target_Node", "Student_Flow_Value", "Era_Description"],
         tableSample: [
-          ["มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)", "รังสิต ปัจจุบัน (32,000 คน / ป.ตรี)", "18,000", "การย้ายหลักสูตร ป.ตรี สู่รังสิตเต็มรูปแบบ"],
-          ["มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)", "ท่าพระจันทร์ ปัจจุบัน (6,500 คน / นานาชาติ)", "6,500", "คงไว้เฉพาะหลักสูตรนานาชาติและ ป.โท-เอก"],
+          ["มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)", "รังสิต ปัจจุบัน (31,500 คน / ป.ตรี)", "17,500", "การย้ายหลักสูตร ป.ตรี สู่รังสิตเต็มรูปแบบ"],
+          ["มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)", "ท่าพระจันทร์ ปัจจุบัน (6,310 คน / นานาชาติ)", "6,310", "คงไว้เฉพาะหลักสูตรนานาชาติและ ป.โท-เอก"],
           ["มธ. ท่าพระจันทร์ (ศูนย์แรก 2477)", "ขยายสู่ศูนย์รังสิต (2529)", "14,000", "การก่อตั้งศูนย์รังสิตรองรับเอเชียนเกมส์"],
-          ["ขยายสู่ศูนย์รังสิต (2529)", "รังสิต ปัจจุบัน (32,000 คน / ป.ตรี)", "14,000", "การเติบโตของศูนย์รังสิต"],
-          ["ขยายสู่ศูนย์ลำปาง (2539)", "ลำปาง ปัจจุบัน (2,200 คน / ล้านนา)", "2,200", "พัฒนาการศึกษาภาคเหนือ"],
-          ["ขยายสู่ศูนย์พัทยา (2538)", "พัทยา ปัจจุบัน (1,500 คน / EEC)", "1,500", "รองรับเขตเศรษฐกิจพิเศษ EEC"]
+          ["ขยายสู่ศูนย์รังสิต (2529)", "รังสิต ปัจจุบัน (31,500 คน / ป.ตรี)", "14,000", "การเติบโตของศูนย์รังสิต"],
+          ["ขยายสู่ศูนย์ลำปาง (2535)", "ลำปาง ปัจจุบัน (3,120 คน / ล้านนา)", "3,120", "พัฒนาการศึกษาภาคเหนือ"],
+          ["ขยายสู่ศูนย์พัทยา (2538)", "พัทยา ปัจจุบัน (1,920 คน / EEC)", "1,920", "รองรับเขตเศรษฐกิจพิเศษ EEC"]
         ]
       },
       {
@@ -383,8 +382,8 @@
           ["gov", "งบประมาณแผ่นดิน (Government Grants)", "35.8%", "5,495 ล้านบาท", "4,920", "5,060", "5,170", "5,320", "5,495"],
           ["tuition", "รายได้ค่าธรรมเนียมการศึกษา (Tuition Fees)", "32.4%", "4,973 ล้านบาท", "4,280", "4,450", "4,610", "4,790", "4,973"],
           ["assets", "ทรัพย์สินและผลประโยชน์ (Assets & Investments)", "18.2%", "2,794 ล้านบาท", "2,340", "2,420", "2,540", "2,680", "2,794"],
-          ["research", "รายได้วิจัยและบริการวิชาการ (Research & Services)", "8.6%", "1,320 ล้านบาท", "1,180", "1,210", "1,250", "1,270", "1,320"],
-          ["medical", "บริการทางการแพทย์ (Healthcare Services)", "5.0%", "768 ล้านบาท", "700", "710", "640", "720", "768"]
+          ["research", "รายได้วิจัยและบริการวิชาการ (Research & Services)", "8.6%", "1,320 ล้านบาท", "1,180", "1,210", "1,240", "1,280", "1,320"],
+          ["medical", "บริการทางการแพทย์ (Healthcare Services)", "5.0%", "768 ล้านบาท", "700", "710", "650", "710", "768"]
         ]
       },
       {
@@ -420,7 +419,7 @@
         template: "Radar / Spider Chart",
         templateUrl: "https://app.flourish.studio/@flourish/radar",
         category: "Sustainability SDGs",
-        badge: "SDG 11 ท็อป 10 โลก • 15 MWp Solar",
+        badge: "SDG 11 ท็อป 10 โลก • แผนโซลาร์ 15 MW",
         csv: "08_flourish_scene8_sdg_radar.csv",
         secondaryCsv: "08_flourish_sustainability_metrics.csv",
         secondaryLabel: "Sustainability & Solar Metrics CSV",
@@ -434,7 +433,7 @@
         tableSample: [
           ["SDG 11", "Sustainable Cities & Communities (Top 10 โลก)", "98.4", "90.0"],
           ["SDG 4", "Quality Education (การศึกษาเท่าเทียม)", "92.8", "90.0"],
-          ["SDG 7", "Affordable & Clean Energy (พลังงานสะอาด 35 MW)", "91.5", "90.0"],
+          ["SDG 7", "Affordable & Clean Energy (แผนพลังงานสะอาด 15 MW)", "91.5", "90.0"],
           ["SDG 17", "Partnerships for the Goals (พันธมิตรความร่วมมือ)", "90.4", "90.0"],
           ["SDG 3", "Good Health & Well-being (สุขภาวะชุมชน)", "88.6", "90.0"],
           ["SDG 13", "Climate Action (การรับมือโลกร้อน)", "87.2", "90.0"]
@@ -443,7 +442,7 @@
       {
         id: 9,
         title: "9. การเติบโตของ รพ.ธรรมศาสตร์เฉลิมพระเกียรติ",
-        template: "Dual Axis Bar & Line Chart",
+        template: "Column Chart",
         templateUrl: "https://app.flourish.studio/@flourish/bar-chart",
         category: "Healthcare Infrastructure",
         badge: "1.48 ล้านคน/ปี • 750 เตียง",
@@ -453,17 +452,17 @@
         desc: "วิวัฒนาการ 37 ปีของโรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ สู่ศูนย์การแพทย์ระดับตติยภูมิชั้นสูงและเสาหลักสู้ภัยสุขภาพ",
         highlights: [
           "ผู้ป่วยนอก (OPD): เติบโตจาก 50,000 คน/ปี (ปี 2530) สู่ 1,480,000 คน/ปีในปัจจุบัน",
-          "เตียงผู้ป่วยตติยภูมิ: ขยายจาก 120 เตียง สู่ 750 เตียง (มติ ครม. เป้าหมาย 1,000 เตียง) พร้อมห้องผ่าตัดอัจฉริยะและศูนย์เฉพาะทางครบวงจร",
+          "เตียงผู้ป่วยตติยภูมิเปิดบริการจริง 750 เตียง (มติ ครม. เป้าหมาย 1,000 เตียง) พร้อมศูนย์เฉพาะทางครบวงจร",
           "บทบาทประวัติศาสตร์: โรงพยาบาลสนามแห่งแรกของไทยในวิกฤตโควิด-19 และศูนย์ฉีดวัคซีนระดับชาติ"
         ],
-        tableHeaders: ["Year_BE", "Year_AD", "Outpatient_Visits", "Hospital_Beds", "Notable_Events"],
+        tableHeaders: ["Year_BE", "Year_AD", "Outpatient_Visits", "Notable_Events"],
         tableSample: [
-          ["2530", "1987", "50,000", "120", "เริ่มเปิดให้บริการ รพ.ธรรมศาสตร์"],
-          ["2540", "1997", "210,000", "350", "ขยายอาคารบริการทางการแพทย์"],
-          ["2550", "2007", "520,000", "650", "ยกระดับสู่ศูนย์การแพทย์ระดับตติยภูมิ"],
-          ["2560", "2017", "980,000", "950", "รองรับผู้ป่วยตติยภูมิขั้นสูง"],
-          ["2564", "2021", "1,250,000", "780", "โรงพยาบาลสนามแห่งแรกสู้ภัยโควิด-19"],
-          ["2567", "2024", "1,480,000", "750", "ศูนย์การแพทย์เพื่อประชาชน 750 เตียง (เป้าหมาย 1,000 เตียง)"]
+          ["2530", "1987", "50,000", "เริ่มเปิดให้บริการ รพ.ธรรมศาสตร์"],
+          ["2540", "1997", "210,000", "ขยายอาคารบริการทางการแพทย์"],
+          ["2550", "2007", "520,000", "ยกระดับสู่ศูนย์การแพทย์ระดับตติยภูมิ"],
+          ["2560", "2017", "980,000", "รองรับผู้ป่วยตติยภูมิขั้นสูง"],
+          ["2564", "2021", "1,250,000", "โรงพยาบาลสนามแห่งแรกสู้ภัยโควิด-19"],
+          ["2567", "2024", "1,480,000", "ศูนย์การแพทย์เพื่อประชาชน 750 เตียง (เป้าหมาย 1,000 เตียง)"]
         ]
       },
       {
@@ -508,7 +507,63 @@
       { id: 'finish', name: 'ศตวรรษ 90 ปี' }
     ];
 
+    // ==========================================================================
+    // HERO WALKERS: นักศึกษาเดินลงตามเลนแบบทแยงไปทางที่หันหน้า (ขวา)
+    //  - ระยะทางผูกกับตำแหน่งสกรอลล์ (ไม่กระโดด ไม่หลุดออกนอกฉาก)
+    //  - ก้าวเท้า (ยก-ลง + เอียงตัว) ตามระยะที่เดินจริง จึงหยุดเมื่อผู้ใช้หยุดเลื่อน
+    //  - เลื่อนขึ้น = เดินกลับ ตัวละครหันหลังกลับ (กลับด้านภาพ) ไม่เดินถอยหลัง
+    // ==========================================================================
+    const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
+
+    function requestHeroWalkerFrame() {
+      if (heroWalkerState.ticking) return;
+      heroWalkerState.ticking = true;
+      requestAnimationFrame(() => { heroWalkerState.ticking = false; updateHeroWalkers(); });
+    }
+
+    function updateHeroWalkers() {
+      const hero = document.getElementById('hero');
+      const stage = hero && hero.querySelector('.central-track-stage');
+      if (!hero || !stage) return;
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const y = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+      const heroH = hero.offsetHeight;
+      const vh = window.innerHeight;
+      const span = Math.max(1, heroH - vh * 0.55);
+      const p = Math.min(Math.max(y / span, 0), 1);
+
+      const dy = y - heroWalkerState.lastY;
+      if (Math.abs(dy) > 0.5) heroWalkerState.facing = dy >= 0 ? 1 : -1;
+      heroWalkerState.lastY = y;
+
+      const laneW = stage.clientWidth;
+      [['studentLeader', 0.26, 0], ['studentScholar', 0.2, Math.PI / 2]].forEach(([id, dxRatio, phase]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const img = el.querySelector('.tu-student-walker-img');
+        const startTop = el.offsetTop;                 // ตำแหน่งก่อน transform
+        const h = el.offsetHeight;
+        const travelY = Math.max(0, heroH - 40 - h - startTop);
+        const travelX = laneW * dxRatio;
+        const maxX = Math.max(0, laneW - el.offsetLeft - el.offsetWidth - 8);
+        const tx = Math.min(travelX * p, maxX);
+        const ty = travelY * p;
+        el.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0)`;
+
+        if (img) {
+          const dist = Math.hypot(tx, ty);
+          const stepPhase = dist / 22 + phase;         // 1 ก้าว ≈ 70px ของระยะทาง
+          const bob = reduce ? 0 : -Math.abs(Math.sin(stepPhase)) * 6;
+          const tilt = reduce ? 0 : Math.sin(stepPhase) * 1.8;
+          const flip = heroWalkerState.facing;
+          img.style.transform = `translateY(${bob.toFixed(2)}px) rotate(${(tilt * flip).toFixed(2)}deg) scaleX(${flip})`;
+        }
+      });
+    }
+
     function initScrollInteractions() {
+      window.addEventListener('resize', requestHeroWalkerFrame, { passive: true });
+      requestHeroWalkerFrame();
       const studentLeader = document.getElementById('studentLeader');
       const studentScholar = document.getElementById('studentScholar');
       const scrubberFill = document.getElementById('scrubberFill');
@@ -561,16 +616,8 @@
           }
         });
 
-        // Hero Student Walkers Scroll Acceleration
-        const walkerStartScroll = 400;
-        if (scrollTop <= walkerStartScroll) {
-          if (studentLeader) studentLeader.style.transform = 'translateY(0px)';
-          if (studentScholar) studentScholar.style.transform = 'translateY(0px)';
-        } else if (scrollTop < window.innerHeight * 2.2) {
-          const delta = scrollTop - walkerStartScroll;
-          if (studentLeader) studentLeader.style.transform = `translateY(${delta * 0.92}px)`;
-          if (studentScholar) studentScholar.style.transform = `translateY(${delta * 0.85}px)`;
-        }
+        // Hero Student Walkers — เดินตามการเลื่อนหน้าแบบต่อเนื่อง (ดู updateHeroWalkers)
+        requestHeroWalkerFrame();
 
         // Update Active Nav Link, Scrubber Pip, and Topic Indicator
         SECTION_TRACKS.forEach((sec, idx) => {
@@ -867,13 +914,14 @@
         }
       };
 
+      // สร้างกราฟใหม่ทุกครั้งที่เปลี่ยนตัวกรอง เพื่อให้ tooltip / การคลิก / สีจุด ตรงกับรายการคณะที่กรองแล้ว
       if (facultiesTcasChart) {
-        facultiesTcasChart.data.labels = labels;
-        facultiesTcasChart.data.datasets[0].data = data;
-        facultiesTcasChart.data.datasets[0].backgroundColor = colors.map(c => c + 'aa');
-        facultiesTcasChart.update();
-        return;
+        facultiesTcasChart.destroy();
+        facultiesTcasChart = null;
       }
+      const wrap = document.getElementById('facultiesChartWrapper');
+      if (wrap) wrap.style.height = Math.max(220, list.length * 21 + 60) + 'px';
+      if (wrap && wrap.style.display === 'none') return; // ซ่อนอยู่ (มุมมองการ์ด) — จะสร้างเมื่อกลับมามุมมองกราฟ
 
       facultiesTcasChart = new Chart(ctx, {
         type: 'bar',
@@ -957,7 +1005,7 @@
         if (btnGrid) btnGrid.classList.remove('active');
         if (chartWrapper) chartWrapper.style.display = 'block';
         if (gridWrapper) gridWrapper.style.display = 'none';
-        if (facultiesTcasChart) facultiesTcasChart.resize();
+        initFacultiesTcasChart();
       } else {
         if (btnChart) btnChart.classList.remove('active');
         if (btnGrid) btnGrid.classList.add('active');
@@ -993,7 +1041,17 @@
       const activeBtn = btnEl || (typeof event !== 'undefined' && event && event.target ? event.target.closest('.fac-pill') : null) || document.querySelector(`.fac-pill[onclick*="'${pillar}'"]`);
       if (activeBtn) activeBtn.classList.add('active');
       renderFaculties(pillar);
+      renderTcasTable(pillar);
       initFacultiesTcasChart();
+    }
+
+    // ตารางข้อมูล TCAS สร้างจากชุดข้อมูลเดียวกับกราฟ (ไม่ให้ตัวเลขขัดกัน)
+    function renderTcasTable(filter) {
+      const body = document.getElementById('tcasTableBody');
+      if (!body) return;
+      const list = (filter && filter !== 'all' ? FACULTIES_DATA.filter(f => f.pillar === filter) : [...FACULTIES_DATA])
+        .sort((a, b) => parseFloat(b.cutoff) - parseFloat(a.cutoff));
+      body.innerHTML = list.map(f => `<tr><td>${f.name}</td><td>${f.pillarName}</td><td>${parseFloat(f.cutoff).toFixed(2)}</td><td>${f.accept}</td></tr>`).join('');
     }
 
     let lastActiveFocusElement = null;
@@ -1208,50 +1266,37 @@
           }
         };
       } else if (idx === 1) {
-        // Scene 2: 4 Campuses Infrastructure & Population
+        // Scene 2: 4 Campuses — จำนวนนักศึกษา (แกนเดียว) พื้นที่แสดงใน tooltip
+        const campusArea = [1757, 104, 364, 566];
         config = {
           type: 'bar',
           data: {
-            labels: ['ศูนย์รังสิต (Hub)', 'ศูนย์ท่าพระจันทร์', 'ศูนย์ลำปาง', 'ศูนย์พัทยา (EEC)'],
-            datasets: [
-              {
-                label: 'จำนวนนักศึกษา (คน)',
-                data: [32000, 6500, 2200, 1500],
-                backgroundColor: '#c51944',
-                borderRadius: 6,
-                yAxisID: 'y'
-              },
-              {
-                label: 'ขนาดพื้นที่ (ไร่)',
-                data: [1757, 49, 464, 566],
-                backgroundColor: '#f59e0b',
-                borderRadius: 6,
-                yAxisID: 'y1'
-              }
-            ]
+            labels: ['ศูนย์รังสิต', 'ศูนย์ท่าพระจันทร์', 'ศูนย์ลำปาง', 'ศูนย์พัทยา (EEC)'],
+            datasets: [{
+              label: 'จำนวนนักศึกษา (คน)',
+              data: [31500, 6310, 3120, 1920],
+              backgroundColor: ['#c51944', '#a6d2e6', '#ffc72c', '#00857c'],
+              borderRadius: 6,
+              maxBarThickness: 90
+            }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { position: 'top' },
+              legend: { display: false },
               tooltip: {
                 callbacks: {
-                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`
+                  label: ctx => `นักศึกษา: ${ctx.parsed.y.toLocaleString()} คน (${(ctx.parsed.y / 42850 * 100).toFixed(1)}%)`,
+                  afterLabel: ctx => `พื้นที่: ${campusArea[ctx.dataIndex].toLocaleString()} ไร่`
                 }
               }
             },
             scales: {
               y: {
                 beginAtZero: true,
-                position: 'left',
-                title: { display: true, text: 'นักศึกษา (คน)' }
-              },
-              y1: {
-                beginAtZero: true,
-                position: 'right',
-                grid: { drawOnChartArea: false },
-                title: { display: true, text: 'พื้นที่ (ไร่)' }
+                title: { display: true, text: 'นักศึกษา (คน)' },
+                ticks: { callback: v => v.toLocaleString() }
               }
             }
           }
@@ -1304,23 +1349,21 @@
           }
         };
       } else if (idx === 3) {
-        // Scene 4: Gender Diversity
+        // Scene 4: Gender Diversity — ตัวเลขเดียวกับหัวข้อ 04
         config = {
           type: 'bar',
           data: {
-            labels: ['สังคมศาสตร์-มนุษยศาสตร์', 'วิทยาศาสตร์สุขภาพ', 'นานาชาติ & บูรณาการ', 'วิทยาศาสตร์และเทคโนโลยี'],
+            labels: ['สังคมศาสตร์-มนุษยศาสตร์', 'วิทยาศาสตร์และเทคโนโลยี', 'วิทยาศาสตร์สุขภาพ', 'นานาชาติ & บูรณาการ'],
             datasets: [
               {
                 label: 'หญิง (Female %)',
-                data: [64.0, 68.0, 60.0, 44.0],
-                backgroundColor: '#c51944',
-                borderRadius: { topLeft: 4, bottomLeft: 4 }
+                data: [64.2, 53.8, 71.5, 60.8],
+                backgroundColor: '#c51944'
               },
               {
                 label: 'ชาย (Male %)',
-                data: [36.0, 32.0, 40.0, 56.0],
-                backgroundColor: '#0b163b',
-                borderRadius: { topRight: 4, bottomRight: 4 }
+                data: [35.8, 46.2, 28.5, 39.2],
+                backgroundColor: '#0b163b'
               }
             ]
           },
@@ -1339,6 +1382,7 @@
             scales: {
               x: {
                 stacked: true,
+                min: 0,
                 max: 100,
                 ticks: { callback: v => v + '%' }
               },
@@ -1373,7 +1417,7 @@
               },
               {
                 label: 'ศูนย์ลำปาง (%)',
-                data: [0.0, 0.0, 5.0, 7.3],
+                data: [0.0, 0.0, 5.0, 7.2],
                 borderColor: '#f59e0b',
                 tension: 0.3,
                 borderWidth: 2,
@@ -1381,7 +1425,7 @@
               },
               {
                 label: 'ศูนย์พัทยา (%)',
-                data: [0.0, 0.0, 3.0, 4.4],
+                data: [0.0, 0.0, 3.0, 4.5],
                 borderColor: '#10b981',
                 tension: 0.3,
                 borderWidth: 2,
@@ -1410,58 +1454,37 @@
           }
         };
       } else if (idx === 5) {
-        // Scene 6: 5-Year Budget Streams
+        // Scene 6: 5-Year Budget Streams — แท่งซ้อน 5 แหล่งรายได้ ความสูงรวม = งบประมาณรวม
+        const streams = STREAMS_DATA.slice(1);
+        const streamColors = ['#0284c7', '#c51944', '#f59e0b', '#7c3aed', '#00857c'];
         config = {
           type: 'bar',
           data: {
             labels: ['2563', '2564', '2565', '2566', '2567'],
-            datasets: [
-              {
-                type: 'bar',
-                label: 'งบประมาณแผ่นดิน (ลบ.)',
-                data: [4920, 5060, 5170, 5320, 5495],
-                backgroundColor: '#0284c7',
-                borderRadius: 4
-              },
-              {
-                type: 'bar',
-                label: 'ค่าธรรมเนียมการศึกษา (ลบ.)',
-                data: [4280, 4450, 4610, 4790, 4973],
-                backgroundColor: '#c51944',
-                borderRadius: 4
-              },
-              {
-                type: 'bar',
-                label: 'ทรัพย์สินและการลงทุน (ลบ.)',
-                data: [2340, 2420, 2540, 2680, 2794],
-                backgroundColor: '#f59e0b',
-                borderRadius: 4
-              },
-              {
-                type: 'line',
-                label: 'งบรวมทุกด้าน (ลบ.)',
-                data: [13420, 13850, 14210, 14780, 15350],
-                borderColor: '#0b163b',
-                borderWidth: 3,
-                tension: 0.2,
-                pointRadius: 5,
-                fill: false
-              }
-            ]
+            datasets: streams.map((st, i) => ({
+              label: st.name.split(' (')[0],
+              data: st.data,
+              backgroundColor: streamColors[i],
+              maxBarThickness: 70
+            }))
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
             plugins: {
-              legend: { position: 'top' },
+              legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
               tooltip: {
                 callbacks: {
-                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()} ล้านบาท`
+                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()} ล้านบาท`,
+                  footer: items => `รวมทุกด้าน: ${STREAMS_DATA[0].data[items[0].dataIndex].toLocaleString()} ล้านบาท`
                 }
               }
             },
             scales: {
+              x: { stacked: true },
               y: {
+                stacked: true,
                 beginAtZero: true,
                 ticks: { callback: v => (v / 1000).toFixed(0) + 'k' }
               }
@@ -1527,7 +1550,7 @@
             labels: [
               'SDG 11: เมืองยั่งยืน (Top 10)',
               'SDG 4: การศึกษาเท่าเทียม',
-              'SDG 7: พลังงานสะอาด (35MW)',
+              'SDG 7: พลังงานสะอาด (แผน 15 MW)',
               'SDG 17: หุ้นส่วนความร่วมมือ',
               'SDG 3: สุขภาพและสุขภาวะ',
               'SDG 13: รับมือภูมิอากาศ'
@@ -1569,56 +1592,35 @@
           }
         };
       } else if (idx === 8) {
-        // Scene 9: Thammasat Hospital Healthcare Growth
+        // Scene 9: Thammasat Hospital — ผู้ป่วยนอก (แกนเดียว)
         config = {
           type: 'bar',
           data: {
             labels: ['2530', '2540', '2550', '2560', '2564', '2567'],
-            datasets: [
-              {
-                type: 'bar',
-                label: 'ผู้ป่วยนอก OPD (คน/ปี)',
-                data: [50000, 210000, 520000, 980000, 1250000, 1480000],
-                backgroundColor: '#0284c7',
-                borderRadius: 4,
-                yAxisID: 'y'
-              },
-              {
-                type: 'line',
-                label: 'เตียงผู้ป่วยตติยภูมิ (เตียง)',
-                data: [120, 350, 650, 470, 750],
-                borderColor: '#c51944',
-                backgroundColor: '#c51944',
-                borderWidth: 3,
-                pointRadius: 5,
-                yAxisID: 'y1',
-                tension: 0.3
-              }
-            ]
+            datasets: [{
+              label: 'ผู้ป่วยนอก OPD (คน/ปี)',
+              data: [50000, 210000, 520000, 980000, 1250000, 1480000],
+              backgroundColor: '#0284c7',
+              borderRadius: 4,
+              maxBarThickness: 70
+            }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { position: 'top' },
+              legend: { display: false },
               tooltip: {
                 callbacks: {
-                  label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`
+                  label: ctx => `ผู้ป่วยนอก: ${ctx.parsed.y.toLocaleString()} คน/ปี`
                 }
               }
             },
             scales: {
               y: {
-                position: 'left',
                 beginAtZero: true,
-                title: { display: true, text: 'ผู้ป่วยนอก (คน)' },
-                ticks: { callback: v => (v / 1000).toFixed(0) + 'k' }
-              },
-              y1: {
-                position: 'right',
-                beginAtZero: true,
-                grid: { drawOnChartArea: false },
-                title: { display: true, text: 'เตียงผู้ป่วย' }
+                title: { display: true, text: 'ผู้ป่วยนอก (คน/ปี)' },
+                ticks: { callback: v => (v / 1000000).toFixed(1) + 'M' }
               }
             }
           }
@@ -1818,64 +1820,46 @@
     function initGreenSustainabilityChart() {
       const ctx = document.getElementById('greenSustainabilityCanvas');
       if (!ctx) return;
-      
+      if (greenChartInstance) { greenChartInstance.destroy(); greenChartInstance = null; }
+
+      // ข้อมูลสอดคล้องกับตัวเลขในหน้า: ติดตั้งแล้ว 5 MW (Bangkok Post) → 6.8 MW ปี 2566 (อบก./TGO)
+      // → แผนยุทธศาสตร์ 15 MW → เป้าหมาย 25 MW ปี 2030 (ตามตารางข้อมูล)
+      const labels = ['ติดตั้งแล้ว (2561)', 'ติดตั้งแล้ว (2566)', 'แผนยุทธศาสตร์', 'เป้าหมาย 2030'];
+      const values = [5, 6.8, 15, 25];
+      const isPlan = [false, false, true, true];
       greenChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['2020', '2021', '2022', '2023', '2024', '2030 (เป้าหมาย Net-Zero)'],
-          datasets: [
-            {
-              type: 'bar',
-              label: 'กำลังผลิต Solar Rooftop (MWp)',
-              data: [12.5, 18.2, 24.6, 30.1, 35.8, 55.0],
-              backgroundColor: 'rgba(16, 185, 129, 0.85)',
-              borderRadius: 6,
-              barThickness: 20,
-              maxBarThickness: 26,
-              yAxisID: 'y'
-            },
-            {
-              type: 'line',
-              label: 'ลดก๊าซเรือนกระจกสะสม (พันตัน CO2e/ปี)',
-              data: [8.4, 12.1, 16.8, 21.2, 25.5, 42.0],
-              borderColor: '#ffc72c',
-              backgroundColor: 'rgba(255, 199, 44, 0.2)',
-              borderWidth: 3,
-              pointBackgroundColor: '#ffc72c',
-              pointRadius: 5,
-              tension: 0.35,
-              yAxisID: 'y1'
-            }
-          ]
+          labels,
+          datasets: [{
+            label: 'กำลังผลิตโซลาร์เซลล์ (MW)',
+            data: values,
+            backgroundColor: isPlan.map(p => p ? 'rgba(16, 185, 129, 0.35)' : 'rgba(16, 185, 129, 0.9)'),
+            borderColor: '#10b981',
+            borderWidth: isPlan.map(p => p ? 2 : 0),
+            borderDash: [4, 3],
+            borderRadius: 6,
+            maxBarThickness: 64
+          }]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: {
-              position: 'top',
-              labels: { color: '#ffffff', font: { family: 'Prompt', size: 12 } }
-            },
+            legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (c) => `${c.dataset.label}: ${c.parsed.y} ${c.dataset.type === 'bar' ? 'MWp' : 'พันตัน'}`
+                label: (c) => `${c.parsed.y} MW ${isPlan[c.dataIndex] ? '(แผน/เป้าหมาย)' : '(ติดตั้งแล้ว)'}`
               }
             }
           },
           scales: {
             y: {
-              type: 'linear',
-              display: true,
-              position: 'left',
+              beginAtZero: true,
+              max: 30,
+              title: { display: true, text: 'เมกะวัตต์ (MW)', color: '#94a3b8' },
               ticks: { color: '#94a3b8', callback: (v) => v + ' MW' },
               grid: { color: 'rgba(255, 255, 255, 0.08)' }
-            },
-            y1: {
-              type: 'linear',
-              display: true,
-              position: 'right',
-              grid: { drawOnChartArea: false },
-              ticks: { color: '#ffc72c', callback: (v) => v + 'k t' }
             },
             x: {
               ticks: { color: '#ffffff', font: { family: 'Prompt' } },
@@ -1889,24 +1873,24 @@
     function switchGreenVisual(mode) {
       const btnEnergy = document.getElementById('btnGreenEnergy');
       const btnRadar = document.getElementById('btnGreenRadar');
-      if (!greenChartInstance) return;
+      const ctx = document.getElementById('greenSustainabilityCanvas');
+      if (!ctx || typeof Chart === 'undefined') return;
+      if (btnEnergy) { btnEnergy.classList.toggle('active', mode !== 'radar'); btnEnergy.setAttribute('aria-pressed', mode !== 'radar'); }
+      if (btnRadar) { btnRadar.classList.toggle('active', mode === 'radar'); btnRadar.setAttribute('aria-pressed', mode === 'radar'); }
+      if (greenChartInstance) { greenChartInstance.destroy(); greenChartInstance = null; }
 
       if (mode === 'radar') {
-        btnEnergy.classList.remove('active');
-        btnRadar.classList.add('active');
-        greenChartInstance.destroy();
-        const ctx = document.getElementById('greenSustainabilityCanvas');
         greenChartInstance = new Chart(ctx, {
           type: 'radar',
           data: {
             labels: [
-              '1. การสนับสนุนมรดก & ศิลปวัฒนธรรม',
-              '2. มาตรฐานอาคารเขียว & พลังงาน',
-              '3. ขนส่งคาร์บอนต่ำ (EV 100%)',
-              '4. พื้นที่สีเขียว & สวนป๋วย 100 ปี'
+              'มรดก & ศิลปวัฒนธรรม',
+              'อาคารเขียว & พลังงาน',
+              'ขนส่งคาร์บอนต่ำ (EV)',
+              'พื้นที่สีเขียว & สวนป๋วย'
             ],
             datasets: [{
-              label: 'คะแนนการประเมิน THE Impact Rankings SDG 11 (คะแนนเต็ม 100)',
+              label: 'คะแนนองค์ประกอบ SDG 11 (เต็ม 100)',
               data: [99.2, 97.8, 98.6, 98.0],
               backgroundColor: 'rgba(16, 185, 129, 0.35)',
               borderColor: '#10b981',
@@ -1922,13 +1906,14 @@
               legend: {
                 position: 'top',
                 labels: { color: '#ffffff', font: { family: 'Prompt', size: 12 } }
-              }
+              },
+              tooltip: { callbacks: { label: (c) => `${c.label}: ${c.parsed.r} / 100` } }
             },
             scales: {
               r: {
-                min: 80,
+                min: 0,
                 max: 100,
-                ticks: { display: false },
+                ticks: { stepSize: 25, color: '#94a3b8', backdropColor: 'transparent' },
                 pointLabels: { color: '#ffffff', font: { family: 'Prompt', size: 11 } },
                 grid: { color: 'rgba(255, 255, 255, 0.15)' },
                 angleLines: { color: 'rgba(255, 255, 255, 0.2)' }
@@ -1937,53 +1922,46 @@
           }
         });
       } else {
-        btnEnergy.classList.add('active');
-        btnRadar.classList.remove('active');
-        greenChartInstance.destroy();
         initGreenSustainabilityChart();
       }
     }
 
     // Topic 09 Hospital Service Capacity Chart Switcher
     let hospitalChartInstance = null;
-    function initHospitalCapacityChart() {
+    const HOSPITAL_YEARS = ['2562', '2563', '2564 (วิกฤตโควิด)', '2565', '2566', '2567'];
+    const HOSPITAL_OPD = [1050000, 1180000, 1320000, 1380000, 1420000, 1480000]; // ครั้ง/ปี
+    const HOSPITAL_IPD = [38000, 42000, 49000, 51000, 54000, 58400];             // ราย/ปี
+
+    function initHospitalCapacityChart(mode) {
       const ctx = document.getElementById('hospitalCapacityCanvas');
-      if (!ctx) return;
+      if (!ctx || typeof Chart === 'undefined') return;
+      if (hospitalChartInstance) { hospitalChartInstance.destroy(); hospitalChartInstance = null; }
+      const isIpd = mode === 'ipd';
+      const data = isIpd ? HOSPITAL_IPD : HOSPITAL_OPD;
+      const color = isIpd ? '#0b163b' : '#c51944';
+      const unit = isIpd ? 'ราย' : 'คน';
 
       hospitalChartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['2562', '2563', '2564 (วิกฤตโควิด)', '2565', '2566', '2567'],
-          datasets: [
-            {
-              label: 'ผู้ป่วยนอก OPD (แสนคน/ปี)',
-              data: [10.5, 11.8, 13.2, 13.8, 14.2, 14.8],
-              borderColor: '#c51944',
-              backgroundColor: 'rgba(197, 25, 68, 0.12)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.35,
-              pointBackgroundColor: '#c51944',
-              pointRadius: 5,
-              yAxisID: 'y'
-            },
-            {
-              label: 'ผู้ป่วยใน IPD (หมื่นคน/ปี)',
-              data: [3.8, 4.2, 4.9, 5.1, 5.4, 5.8],
-              borderColor: '#0b163b',
-              backgroundColor: 'transparent',
-              borderWidth: 2.5,
-              borderDash: [5, 5],
-              pointBackgroundColor: '#0b163b',
-              pointRadius: 4,
-              tension: 0.35,
-              yAxisID: 'y1'
-            }
-          ]
+          labels: HOSPITAL_YEARS,
+          datasets: [{
+            label: isIpd ? 'ผู้ป่วยใน IPD (ราย/ปี)' : 'ผู้ป่วยนอก OPD (คน/ปี)',
+            data,
+            borderColor: color,
+            backgroundColor: isIpd ? 'rgba(11, 22, 59, 0.10)' : 'rgba(197, 25, 68, 0.12)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.35,
+            pointBackgroundColor: color,
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
           plugins: {
             legend: {
               position: 'top',
@@ -1991,24 +1969,18 @@
             },
             tooltip: {
               callbacks: {
-                label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y} ${ctx.datasetIndex === 0 ? 'แสนคน' : 'หมื่นคน'}`
+                label: (c) => `${c.dataset.label.split(' (')[0]}: ${c.parsed.y.toLocaleString()} ${unit}`
               }
             }
           },
           scales: {
             y: {
-              type: 'linear',
-              display: true,
-              position: 'left',
-              ticks: { color: '#64748b', callback: (v) => v + ' แสน' },
+              beginAtZero: true,
+              ticks: {
+                color: '#64748b',
+                callback: (v) => isIpd ? (v / 1000) + 'k' : (v / 1000000).toFixed(1) + 'M'
+              },
               grid: { color: 'rgba(0, 0, 0, 0.05)' }
-            },
-            y1: {
-              type: 'linear',
-              display: true,
-              position: 'right',
-              grid: { drawOnChartArea: false },
-              ticks: { color: '#0b163b', callback: (v) => v + ' หมื่น' }
             },
             x: {
               ticks: { color: '#334155', font: { family: 'Prompt' } },
@@ -2021,53 +1993,11 @@
 
     function switchHospitalVisual(mode) {
       const btnTrend = document.getElementById('btnHospTrend');
-      const btnBeds = document.getElementById('btnHospBeds');
-      if (!hospitalChartInstance) return;
-
-      if (mode === 'beds') {
-        btnTrend.classList.remove('active');
-        btnBeds.classList.add('active');
-        hospitalChartInstance.destroy();
-        const ctx = document.getElementById('hospitalCapacityCanvas');
-        hospitalChartInstance = new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            labels: [
-              'อายุรกรรม & วิกฤต ICU (390 เตียง)',
-              'ศัลยกรรม & อุบัติเหตุฉุกเฉิน (336 เตียง)',
-              'กุมารเวช & สูติ-นรีเวชกรรม (252 เตียง)',
-              'จักษุ & โสต ศอ นาสิก (224 เตียง)',
-              'ศูนย์จีโนมิกส์ & การแพทย์ชั้นสูง (198 เตียง)'
-            ],
-            datasets: [{
-              data: [390, 336, 252, 224, 198],
-              backgroundColor: ['#c51944', '#0b163b', '#ffc72c', '#00857c', '#a6d2e6'],
-              borderWidth: 2,
-              borderColor: '#ffffff'
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: 'right',
-                labels: { color: '#0f172a', font: { family: 'Prompt', size: 12 }, boxWidth: 16 }
-              },
-              tooltip: {
-                callbacks: {
-                  label: (ctx) => `${ctx.label}: ${ctx.raw} เตียง`
-                }
-              }
-            }
-          }
-        });
-      } else {
-        btnTrend.classList.add('active');
-        btnBeds.classList.remove('active');
-        hospitalChartInstance.destroy();
-        initHospitalCapacityChart();
-      }
+      const btnIpd = document.getElementById('btnHospBeds');
+      const isIpd = mode === 'ipd';
+      if (btnTrend) { btnTrend.classList.toggle('active', !isIpd); btnTrend.setAttribute('aria-pressed', !isIpd); }
+      if (btnIpd) { btnIpd.classList.toggle('active', isIpd); btnIpd.setAttribute('aria-pressed', isIpd); }
+      initHospitalCapacityChart(isIpd ? 'ipd' : 'opd');
     }
 
         function initCharts() {
@@ -2129,19 +2059,17 @@
             datasets: [
               {
                 label: 'หญิง (%)',
-                data: [64.2, 53.8, 71.5, 59.8],
+                data: [64.2, 53.8, 71.5, 60.8],
                 backgroundColor: '#ec4899',
                 borderRadius: 4,
-                barThickness: 20,
-                maxBarThickness: 24
+                maxBarThickness: 90
               },
               {
                 label: 'ชาย (%)',
-                data: [35.8, 46.2, 28.5, 40.2],
+                data: [35.8, 46.2, 28.5, 39.2],
                 backgroundColor: '#3b82f6',
                 borderRadius: 4,
-                barThickness: 20,
-                maxBarThickness: 24
+                maxBarThickness: 90
               }
             ]
           },
@@ -2152,13 +2080,18 @@
               legend: { position: 'top' },
               tooltip: {
                 callbacks: {
-                  label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y}%`
+                  label: (ctx) => {
+                    const totals = [19200, 11450, 7800, 4400];
+                    const n = Math.round(totals[ctx.dataIndex] * ctx.parsed.y / 100);
+                    return `${ctx.dataset.label}: ${ctx.parsed.y}% (≈ ${n.toLocaleString()} คน)`;
+                  }
                 }
               }
             },
             scales: {
               y: {
                 stacked: true,
+                min: 0,
                 max: 100,
                 ticks: { callback: (v) => v + '%' },
                 grid: { color: 'rgba(0,0,0,0.05)' }
@@ -2224,7 +2157,7 @@
             },
             scales: {
               x: { stacked: true, grid: { display: false }, ticks: { color: '#cbd5e1' } },
-              y: { stacked: true, max: 100, ticks: { callback: (v) => v + '%', color: '#cbd5e1' }, grid: { color: 'rgba(255,255,255,0.08)' } }
+              y: { stacked: true, min: 0, max: 100, ticks: { callback: (v) => v + '%', color: '#cbd5e1' }, grid: { color: 'rgba(255,255,255,0.08)' } }
             }
           }
         });
@@ -2396,6 +2329,7 @@
       initHeaderNavInteractions();
       initScrollInteractions();
       renderFaculties('all');
+      renderTcasTable('all');
       initFacultiesTcasChart();
       initCharts();
       initTuLeafletMap();
@@ -2404,6 +2338,11 @@
       initAnimatedCounters();
       initBidwellsScrollMotions();
       updateCockpit();
+      document.querySelectorAll('.circuit-milestone-node').forEach((node, i) => {
+        node.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCircuitNode(i); }
+        });
+      });
     });
 
     // ==========================================================================
@@ -2500,10 +2439,7 @@
                   canvas.dataset.entranceAnimated = 'true';
                   chart.reset();
                   requestAnimationFrame(() => {
-                    chart.update({
-                      duration: 1100,
-                      easing: 'easeOutQuart'
-                    });
+                    chart.update(); // Chart.js v4: update() รับ mode เป็นสตริงเท่านั้น (ส่ง object ทำให้แอนิเมชันพัง)
                   });
                 }
               }
@@ -2529,12 +2465,12 @@
 
 
     // Accessible Data Table Toggle
-    function toggleDataTable(id) {
+    function toggleDataTable(id, btnEl) {
       const el = document.getElementById(id);
       if (!el) return;
       const isHidden = (el.style.display === 'none' || el.style.display === '');
       el.style.display = isHidden ? 'block' : 'none';
-      const btn = event ? event.currentTarget : null;
+      const btn = btnEl || document.querySelector(`[onclick*="toggleDataTable('${id}'"]`);
       if (btn) {
         btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
         const icon = isHidden ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-table"></i>';

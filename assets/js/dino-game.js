@@ -57,37 +57,67 @@
   /* ---------- วาดตัวละคร / สิ่งกีดขวาง ---------- */
   function R(ctx, c, x, y, w, h) { ctx.fillStyle = c; ctx.fillRect(Math.round(x), Math.round(y), w, h); }
 
+  // ขาหรือแขน 2 ท่อน (ต้นขา/แขนท่อนบน + หน้าแข้ง/แขนท่อนล่าง) มุมเป็นองศาจากแนวดิ่ง (+ = ไปข้างหน้า/ขวา)
+  function limb(ctx, x, y, a1, a2, l1, l2, w, color, endColor, endW, endH) {
+    var r1 = a1 * Math.PI / 180, r2 = a2 * Math.PI / 180;
+    var kx = x + Math.sin(r1) * l1, ky = y + Math.cos(r1) * l1;
+    var ex = kx + Math.sin(r2) * l2, ey = ky + Math.cos(r2) * l2;
+    ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(kx, ky); ctx.lineTo(ex, ey); ctx.stroke();
+    if (endColor) { ctx.fillStyle = endColor; ctx.fillRect(Math.round(ex - 3), Math.round(ey - endH / 2), endW, endH); }
+  }
+
+  // ท่าวิ่ง 4 เฟรม: ก้าวยาว → สลับขาผ่านใต้ลำตัว → ก้าวยาวอีกข้าง → สลับขา (แขนแกว่งสวนขา)
+  var RUN_POSE = [
+    { a: [38, 12], b: [-34, -78], bob: 1 },
+    { a: [12, -22], b: [-8, -55], bob: -1 },
+    { a: [-34, -78], b: [38, 12], bob: 1 },
+    { a: [-8, -55], b: [12, -22], bob: -1 }
+  ];
+
   function drawStudent(ctx, x, y, state, frame) {
-    // state: 'run' | 'duck' | 'dead' | 'idle'
+    // state: 'run' | 'duck' | 'dead' | 'idle' | 'jump'
     var skin = '#f1c6a0', hair = '#1b1b2f', shirt = '#f8fafc', line = '#94a3b8',
-        pants = '#14234f', shoe = '#ffffff', bag = '#0b163b', crimson = '#c51944', gold = '#ffc72c';
-    var step = (state === 'run' || state === 'duck') ? frame % 2 : 0;
+        pants = '#14234f', pantsBack = '#0b163b', shoe = '#ffffff', bag = '#0b163b', crimson = '#c51944', gold = '#ffc72c';
     ctx.save(); ctx.translate(x, y);
     if (state === 'duck') {
+      var st = frame % 2;
       R(ctx, bag, 2, 6, 8, 12);                                  // กระเป๋า
       R(ctx, line, 7, 6, 28, 16); R(ctx, shirt, 8, 7, 26, 14);   // ลำตัวเอนไปข้างหน้า
       R(ctx, crimson, 28, 9, 2, 8);                              // สายคล้องบัตร
       R(ctx, hair, 31, 0, 13, 5); R(ctx, skin, 33, 4, 12, 9);    // หัว
       R(ctx, '#0f172a', 40, 7, 2, 2);                            // ตา
-      R(ctx, pants, 10, 21, 7, step ? 4 : 7); R(ctx, pants, 22, 21, 7, step ? 7 : 4);
-      R(ctx, shoe, 10, step ? 25 : 28 - 0, 9, 3); R(ctx, shoe, 22, step ? 28 : 25, 9, 3);
-    } else {
-      var lift = step ? 5 : 0, lift2 = step ? 0 : 5;
-      if (state === 'idle') { lift = 0; lift2 = 0; }
-      if (state === 'jump') { lift = 4; lift2 = 0; }
-      R(ctx, bag, 7, 17, 7, 13);                                  // กระเป๋า
-      R(ctx, hair, 14, 0, 15, 5); R(ctx, skin, 16, 4, 12, 10);   // หัว
-      R(ctx, line, 13, 13, 18, 19); R(ctx, shirt, 14, 14, 16, 17);// เสื้อ
-      R(ctx, crimson, 21, 14, 2, 11); R(ctx, gold, 20, 25, 4, 5); // สายคล้อง + บัตร
-      R(ctx, skin, step ? 28 : 11, 17, 4, 9);                     // แขน
-      if (state === 'dead') {
-        ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1.5; ctx.beginPath();
-        ctx.moveTo(22, 6); ctx.lineTo(26, 10); ctx.moveTo(26, 6); ctx.lineTo(22, 10); ctx.stroke();
-      } else R(ctx, '#0f172a', 24, 7, 2, 2);
-      R(ctx, pants, 15, 31, 7, 11 - lift); R(ctx, pants, 23, 31, 7, 11 - lift2);
-      R(ctx, shoe, 14, 42 - lift, 9, 4); R(ctx, shoe, 22, 42 - lift2, 9, 4);
-      R(ctx, line, 14, 45 - lift, 9, 1); R(ctx, line, 22, 45 - lift2, 9, 1);
+      limb(ctx, 14, 20, st ? 30 : -25, st ? 5 : -60, 4, 4, 5, st ? pantsBack : pants, shoe, 9, 3);
+      limb(ctx, 26, 20, st ? -25 : 30, st ? -60 : 5, 4, 4, 5, st ? pants : pantsBack, shoe, 9, 3);
+      ctx.restore();
+      return;
     }
+
+    var pose;
+    if (state === 'run') pose = RUN_POSE[frame % 4];
+    else if (state === 'jump') pose = { a: [45, -15], b: [-20, -70], bob: 0 };   // ขาหน้ายกพับ ขาหลังเหยียดดันตัว
+    else pose = { a: [6, 0], b: [-6, 0], bob: 0 };                                // idle / dead ยืนตรง
+    var by = pose.bob;                                                            // ตัวขึ้นลงตามจังหวะก้าว
+    var armA = -pose.a[0] * 0.9, armB = -pose.b[0] * 0.9;                          // แขนแกว่งสวนกับขาข้างเดียวกัน
+
+    // ด้านหลัง (ไกลตา): ขา B + แขน B สีเข้มกว่า
+    limb(ctx, 21, 30 + by, pose.b[0], pose.b[1], 8, 8, 6, pantsBack, shoe, 9, 4);
+    limb(ctx, 21, 17 + by, armB, armB + 70, 6, 6, 3.5, '#d9a882');
+
+    R(ctx, bag, 8, 16 + by, 7, 13);                                // กระเป๋าสะพายหลัง
+    R(ctx, line, 14, 14 + by, 16, 18); R(ctx, shirt, 15, 15 + by, 14, 16); // เสื้อ
+    R(ctx, pants, 15, 29 + by, 14, 4);                             // เข็มขัด/สะโพก
+    R(ctx, crimson, 23, 15 + by, 2, 9); R(ctx, gold, 22, 24 + by, 4, 5);   // สายคล้อง + บัตร
+    R(ctx, hair, 15, 0 + by, 14, 5); R(ctx, skin, 17, 4 + by, 12, 10);     // หัว
+    R(ctx, hair, 15, 4 + by, 3, 4);                                // ผมด้านหลัง
+    if (state === 'dead') {
+      ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1.5; ctx.beginPath();
+      ctx.moveTo(23, 6 + by); ctx.lineTo(27, 10 + by); ctx.moveTo(27, 6 + by); ctx.lineTo(23, 10 + by); ctx.stroke();
+    } else R(ctx, '#0f172a', 25, 7 + by, 2, 2);
+
+    // ด้านหน้า (ใกล้ตา): ขา A + แขน A
+    limb(ctx, 23, 30 + by, pose.a[0], pose.a[1], 8, 8, 6, pants, shoe, 9, 4);
+    limb(ctx, 23, 17 + by, armA, armA + 70, 6, 6, 3.5, skin);
     ctx.restore();
   }
 
@@ -367,7 +397,7 @@
     this.score = this.distance * CFG.scoreCoef;
 
     // ตัวละคร
-    this.frameT += dt; if (this.frameT > 90) { this.frameT = 0; this.frame++; }
+    this.frameT += dt; if (this.frameT > 80) { this.frameT = 0; this.frame++; }
     if (this.jumping) {
       var g = CFG.gravity * (this.fastFall ? CFG.speedDrop : 1);
       this.py += this.vy * f; this.vy += g * f;

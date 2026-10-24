@@ -41,9 +41,9 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024d" />
-  <link rel="stylesheet" href="assets/css/dino-game.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="assets/css/dino-game.css" /></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261024e" />
+  <link rel="stylesheet" href="assets/css/dino-game.css?v=20261024e" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/dino-game.css?v=20261024e" /></noscript>
 
   <!-- Leaflet 1.9.4 CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'" />
@@ -627,7 +627,7 @@
               <i class="fa-solid fa-chart-column"></i> แผนภูมิเปรียบเทียบ (Visualizer)
             </button>
             <button class="fac-view-btn" id="btnFacGridView" onclick="setFacultiesView('grid')">
-              <i class="fa-solid fa-table-cells"></i> รายการการ์ด (26 คณะ)
+              <i class="fa-solid fa-table-cells"></i> รายการการ์ด (25 คณะ)
             </button>
           </div>
         </div>
@@ -639,7 +639,7 @@
             <div class="kpi-lbl">คะแนนต่ำสุดที่เปิดรับสูงสุด</div>
           </div>
           <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-2">
-            <div class="kpi-num stat-counter" style="color: var(--tu-navy);">72.8 <span class="unit">คะแนน</span></div>
+            <div class="kpi-num stat-counter" style="color: var(--tu-navy);">72.9 <span class="unit">คะแนน</span></div>
             <div class="kpi-lbl">คะแนนเฉลี่ย TCAS รวมทุกคณะ</div>
           </div>
           <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-3">
@@ -654,11 +654,11 @@
 
         <!-- Pillar Filters -->
         <div class="faculties-filter-pills">
-          <button class="fac-pill active" onclick="filterFaculties('all')">ทั้งหมด (26 คณะ)</button>
-          <button class="fac-pill" onclick="filterFaculties('soc')">สังคมศาสตร์และมนุษยศาสตร์</button>
-          <button class="fac-pill" onclick="filterFaculties('sci')">วิทยาศาสตร์และเทคโนโลยี</button>
-          <button class="fac-pill" onclick="filterFaculties('med')">วิทยาศาสตร์สุขภาพ</button>
-          <button class="fac-pill" onclick="filterFaculties('inter')">วิทยาลัยนานาชาติและนวัตกรรม</button>
+          <button class="fac-pill active" onclick="filterFaculties('all', this)">ทั้งหมด (25 คณะ)</button>
+          <button class="fac-pill" onclick="filterFaculties('soc', this)">สังคมศาสตร์และมนุษยศาสตร์</button>
+          <button class="fac-pill" onclick="filterFaculties('sci', this)">วิทยาศาสตร์และเทคโนโลยี</button>
+          <button class="fac-pill" onclick="filterFaculties('med', this)">วิทยาศาสตร์สุขภาพ</button>
+          <button class="fac-pill" onclick="filterFaculties('inter', this)">วิทยาลัยนานาชาติและนวัตกรรม</button>
         </div>
 
         <!-- Academic Pillar Legend -->
@@ -681,7 +681,7 @@
         <!-- Cards Grid Container -->
         <div class="faculties-cards-grid" id="facultiesGrid" style="display: none;"></div>
         <div style="margin-top: 20px;">
-          <button class="table-toggle-btn" aria-expanded="false" onclick="toggleDataTable('tcasDataTableWrap')">
+          <button class="table-toggle-btn" aria-expanded="false" onclick="toggleDataTable('tcasDataTableWrap', this)">
             <i class="fa-solid fa-table"></i> แสดงตารางข้อมูลคะแนน TCAS 2566 ทั้งหมด
           </button>
           <div class="accessible-data-table-wrap" id="tcasDataTableWrap" style="display: none;">
@@ -731,15 +731,15 @@
           โครงสร้างประชากรนักศึกษาและความหลากหลายทางเพศภาวะ
         </h2>
         <p style="font-size: 1.05rem; color: #334155; max-width: 860px; line-height: 1.7;">
-          ธรรมศาสตร์มุ่งเน้นความเสมอภาคและดุลยภาพประชากรในทุกมิติวิชาการ โดยมีสัดส่วนนักศึกษาหญิงรวม 62.4% (26,738 คน) และนักศึกษาชาย <span class="stat-counter">37.6<span class="unit">%</span></span> (<span class="stat-counter">16,112 <span class="unit">คน</span></span>) พร้อมความหลากหลายที่เปิดกว้างในทุกเพศภาวะ
+          ธรรมศาสตร์มุ่งเน้นความเสมอภาคและดุลยภาพประชากรในทุกมิติวิชาการ โดยมีสัดส่วนนักศึกษาหญิงรวม 62.4% (26,738 คน) และนักศึกษาชาย 37.6% (16,112 คน) พร้อมความหลากหลายที่เปิดกว้างในทุกเพศภาวะ
         </p>
       </div>
 
       <div class="demographic-white-card tu-reveal-slide-up">
         <div class="demographic-ratio-bar-wrap">
           <div class="ratio-bar">
-            <div class="ratio-female">นักศึกษาหญิง <span class="stat-counter">62.4%</span> (<span class="stat-counter">26,620</span> คน)</div>
-            <div class="ratio-male">นักศึกษาชาย <span class="stat-counter">37.6%</span> (<span class="stat-counter">16,030</span> คน)</div>
+            <div class="ratio-female">นักศึกษาหญิง <span class="stat-counter">62.4%</span> (<span class="stat-counter">26,738</span> คน)</div>
+            <div class="ratio-male">นักศึกษาชาย <span class="stat-counter">37.6%</span> (<span class="stat-counter">16,112</span> คน)</div>
           </div>
         </div>
 
@@ -790,7 +790,7 @@
           </div>
           <div class="demo-chip-box tu-reveal-slide-up tu-stagger-4">
             <div class="demo-chip-title">สถาบันและวิทยาลัยนานาชาติ</div>
-            <div class="demo-chip-stat">หญิง 59.8% / ชาย 40.2%</div>
+            <div class="demo-chip-stat">หญิง 60.8% / ชาย 39.2%</div>
             <div class="demo-chip-sub">ประชากร 4,400 คน (10.3%)</div>
           </div>
         </div>
@@ -826,8 +826,8 @@
             <p style="font-size: 0.85rem; color: #94a3b8;">เปรียบเทียบสัดส่วน 4 ศูนย์การศึกษาตั้งแต่ พ.ศ. 2500 ถึง พ.ศ. 2567</p>
           </div>
           <div style="display: flex; gap: 8px;">
-            <button class="era-pill-btn active" onclick="setDistributionEra('all')">วิวัฒนาการ 4 ยุค</button>
-            <button class="era-pill-btn" onclick="setDistributionEra('2567')">สัดส่วนปัจจุบัน (2567)</button>
+            <button class="era-pill-btn active" onclick="setDistributionEra('all', this)">วิวัฒนาการ 4 ยุค</button>
+            <button class="era-pill-btn" onclick="setDistributionEra('2567', this)">สัดส่วนปัจจุบัน (2567)</button>
           </div>
         </div>
 
@@ -928,7 +928,7 @@
             <canvas id="budgetChartCanvas"></canvas>
           </div>
         <div style="margin-top: 20px;">
-          <button class="table-toggle-btn" aria-expanded="false" onclick="toggleDataTable('budgetDataTableWrap')">
+          <button class="table-toggle-btn" aria-expanded="false" onclick="toggleDataTable('budgetDataTableWrap', this)">
             <i class="fa-solid fa-table"></i> แสดงตารางสรุปงบประมาณ 5 ปีย้อนหลัง (2563 — 2567)
           </button>
           <div class="accessible-data-table-wrap" id="budgetDataTableWrap" style="display: none;">
@@ -1220,8 +1220,9 @@
           <div class="green-card-icon"><i class="fa-solid fa-smog"></i></div>
           <div class="green-card-title">ลดคาร์บอนสู่ Net-Zero</div>
           <div class="green-card-desc">ลดการปล่อยก๊าซเรือนกระจกอย่างต่อเนื่อง เดินหน้าสู่เป้าหมายความเป็นกลางทางคาร์บอนของมหาวิทยาลัย</div>
-          <div class="green-card-stat stat-counter">-24,000 <span class="unit">ตัน/ปี</span></div>
+          <div class="green-card-stat stat-counter">-25,500 <span class="unit">ตัน/ปี</span></div>
         </div>
+      </div>
       <!-- Dedicated Interactive Visual: Clean Energy & Sustainability Metrics -->
       <div class="green-visual-card tu-reveal-slide-up">
         <div class="green-visual-header">
@@ -1230,10 +1231,10 @@
             <span>ระบบนิเวศพลังงานสะอาดและดัชนีความยั่งยืน 4 มิติ (Green Energy & SDG 11)</span>
           </h3>
           <div class="green-toggle-group">
-            <button class="green-toggle-btn active" id="btnGreenEnergy" onclick="switchGreenVisual('energy')">
-              <i class="fa-solid fa-solar-panel"></i> โซลาร์เซลล์ & ลดคาร์บอน (Trajectory)
+            <button type="button" class="green-toggle-btn active" id="btnGreenEnergy" aria-pressed="true" onclick="switchGreenVisual('energy')">
+              <i class="fa-solid fa-solar-panel"></i> กำลังผลิตโซลาร์เซลล์ (MW)
             </button>
-            <button class="green-toggle-btn" id="btnGreenRadar" onclick="switchGreenVisual('radar')">
+            <button type="button" class="green-toggle-btn" id="btnGreenRadar" aria-pressed="false" onclick="switchGreenVisual('radar')">
               <i class="fa-solid fa-chart-pie"></i> 4 เสาหลัก THE Impact SDG 11
             </button>
           </div>
@@ -1319,7 +1320,7 @@
           <div class="hospital-kpi-desc">รองรับการรักษาโรคซับซ้อนและหออภิบาลผู้ป่วยวิกฤต (ICU) ทันสมัย</div>
         </div>
         <div class="hospital-kpi-card tu-reveal-slide-up tu-stagger-2">
-          <div class="hospital-kpi-num stat-counter">1.46M+ <span class="unit">คน/ปี</span></div>
+          <div class="hospital-kpi-num stat-counter">1.48M+ <span class="unit">คน/ปี</span></div>
           <div class="hospital-kpi-title">ผู้ป่วยนอกต่อปี</div>
           <div class="hospital-kpi-desc">ให้บริการตรวจรักษาครอบคลุมประชาชนในพื้นที่ภาคกลางและปริมณฑล</div>
         </div>
@@ -1365,6 +1366,7 @@
             <p style="font-size: 0.88rem; color: #64748b; line-height: 1.6; margin: 0;">การดูแลสุขภาพองค์รวม การส่งเสริมสุขภาพ และการดูแลผู้สูงอายุอย่างอบอุ่นตามวิถีชุมชน</p>
           </div>
         </div>
+      </div>
       <!-- Dedicated Interactive Visual: Thammasat Hospital Capacity & Patient Volume -->
       <div class="hospital-visual-card tu-reveal-slide-up">
         <div class="hospital-visual-header">
@@ -1373,10 +1375,12 @@
             <span>สถิติการให้บริการทางการแพทย์และการขยายตัวของขีดความสามารถ (2562 — 2567)</span>
           </h3>
           <div class="hospital-toggle-group">
-            <button class="hospital-toggle-btn active" id="btnHospTrend" onclick="switchHospitalVisual('trend')">
-              <i class="fa-solid fa-users"></i> สถิติผู้ป่วยนอก & ผู้ป่วยใน 6 ปี
+            <button type="button" class="hospital-toggle-btn active" id="btnHospTrend" onclick="switchHospitalVisual('trend')" aria-pressed="true">
+              <i class="fa-solid fa-users"></i> ผู้ป่วยนอก (OPD) 6 ปี
             </button>
-            
+            <button type="button" class="hospital-toggle-btn" id="btnHospBeds" onclick="switchHospitalVisual('ipd')" aria-pressed="false">
+              <i class="fa-solid fa-bed-pulse"></i> ผู้ป่วยใน (IPD) 6 ปี
+            </button>
           </div>
         </div>
 
@@ -1452,17 +1456,17 @@
     <div class="circuit-layout-grid">
       <!-- Silverstone SVG Vector Track Outline -->
       <div class="silverstone-svg-container tu-reveal-slide-right">
-        <svg width="100%" height="100%" viewBox="0 0 680 460" fill="none">
+        <svg width="100%" height="100%" viewBox="0 0 680 460" fill="none" style="position:absolute; inset:0;" aria-hidden="true">
           <path id="circuitBasePath" d="M 120 180 C 130 90, 220 80, 280 140 C 340 180, 480 120, 560 160 C 620 200, 600 290, 540 340 C 470 390, 360 410, 300 370 C 240 330, 180 340, 150 290 C 110 240, 110 210, 120 180 Z" stroke="#00857c" stroke-width="6" opacity="0.45" stroke-linecap="round" stroke-linejoin="round" />
           <path id="circuitActivePath" d="M 120 180 C 130 90, 220 80, 280 140" stroke="#c51944" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
           <path d="M 280 140 C 310 190, 240 240, 220 280" stroke="#00857c" stroke-width="4" stroke-dasharray="6 6" opacity="0.35" />
         </svg>
 
         <!-- 4 Milestone Nodes along the Track -->
-        <div class="circuit-milestone-node active" style="top: 180px; left: 120px;" onclick="selectCircuitNode(0)">1</div>
-        <div class="circuit-milestone-node" style="top: 140px; left: 280px;" onclick="selectCircuitNode(1)">2</div>
-        <div class="circuit-milestone-node" style="top: 160px; left: 560px;" onclick="selectCircuitNode(2)">3</div>
-        <div class="circuit-milestone-node" style="top: 370px; left: 300px;" onclick="selectCircuitNode(3)">4</div>
+        <div class="circuit-milestone-node active" style="top: 39.13%; left: 17.647%;" role="button" tabindex="0" aria-label="เสาหลักที่ 1" onclick="selectCircuitNode(0)">1</div>
+        <div class="circuit-milestone-node" style="top: 30.435%; left: 41.176%;" role="button" tabindex="0" aria-label="เสาหลักที่ 2" onclick="selectCircuitNode(1)">2</div>
+        <div class="circuit-milestone-node" style="top: 34.783%; left: 82.353%;" role="button" tabindex="0" aria-label="เสาหลักที่ 3" onclick="selectCircuitNode(2)">3</div>
+        <div class="circuit-milestone-node" style="top: 80.435%; left: 44.118%;" role="button" tabindex="0" aria-label="เสาหลักที่ 4" onclick="selectCircuitNode(3)">4</div>
       </div>
 
       <!-- Synchronized Insight Card -->
@@ -1730,7 +1734,7 @@
        JAVASCRIPT LOGIC & VISUALIZATION ENGINES
        ========================================================================== -->
   <!-- Main Application Logic -->
-  <script src="assets/js/app.js" defer></script>
-  <script src="assets/js/dino-game.js" defer></script>
+  <script src="assets/js/app.js?v=20261024e" defer></script>
+  <script src="assets/js/dino-game.js?v=20261024e" defer></script>
 </body>
 </html>
