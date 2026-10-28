@@ -1,0 +1,231 @@
+/* TU Runner — สไตล์มินิเกม (ใช้ตัวแปร --tu-* ของเว็บ มี fallback) */
+.tu-runner {
+  --r-navy: var(--tu-navy, #0b163b);
+  --r-crimson: var(--tu-crimson, #c51944);
+  --r-gold: var(--tu-gold, #ffc72c);
+  max-width: 760px; margin: 0 auto; padding: 0 16px; outline: none;
+  font-family: var(--font-sans, 'Prompt', 'Sarabun', system-ui, sans-serif);
+}
+.tu-runner:focus-visible .tu-runner__stage { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--r-crimson); }
+.tu-runner__stage {
+  position: relative; background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px;
+  overflow: hidden; box-shadow: 0 10px 25px -3px rgba(0,0,0,.08);
+  transition: background .8s, border-color .8s;
+}
+.tu-runner__canvas { display: block; width: 100%; height: auto; aspect-ratio: 600 / 150; transition: filter .8s; }
+.tu-runner.is-night .tu-runner__stage { background: #0f172a; border-color: #334155; }
+.tu-runner.is-night .tu-runner__canvas { filter: invert(1) hue-rotate(180deg); }
+
+.tu-runner__score {
+  position: absolute; top: 10px; right: 14px; font: 700 15px/1 ui-monospace, 'Courier New', monospace;
+  letter-spacing: .08em; color: #334155; pointer-events: none;
+}
+.tu-runner__hi { color: #64748b; margin-right: 8px; }
+.tu-runner.is-night .tu-runner__score { color: #e2e8f0; }
+.tu-runner.is-night .tu-runner__hi { color: #94a3b8; }
+
+.tu-runner__overlay {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 12px; text-align: center; background: rgba(248,250,252,.82); backdrop-filter: blur(2px);
+}
+.tu-runner__overlay[hidden] { display: none; }
+.tu-runner__title { font-weight: 800; font-size: clamp(1rem, 3.4vw, 1.35rem); color: var(--r-navy); }
+.tu-runner__sub { font-size: clamp(.78rem, 2.6vw, .95rem); color: #334155; max-width: 46ch; line-height: 1.5; }
+.tu-runner__btn {
+  margin-top: 6px; min-height: 48px; padding: 12px 32px; border: 0; border-radius: 999px; cursor: pointer;
+  font: 700 1.05rem/1 inherit; color: #fff; background: var(--r-crimson); box-shadow: 0 6px 20px rgba(197,25,68,.4);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  animation: tuBtnPulse 2.4s infinite ease-in-out;
+}
+.tu-runner__btn:hover { background: #9e1236; transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px rgba(197,25,68,.5); }
+@keyframes tuBtnPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(197,25,68,.4); }
+  50% { transform: scale(1.04); box-shadow: 0 8px 26px rgba(197,25,68,.6); }
+}
+.tu-runner__btn:focus-visible, .tu-runner__mute:focus-visible, .tu-runner__duck:focus-visible { outline: 3px solid var(--r-gold); outline-offset: 3px; }
+
+.tu-runner__top-actions {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 4;
+}
+.tu-runner__icon-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #334155;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  padding: 0;
+  line-height: 1;
+}
+.tu-runner__icon-btn:hover {
+  background: #ffffff;
+  color: var(--r-crimson);
+  border-color: var(--r-crimson);
+  transform: scale(1.08);
+  box-shadow: 0 4px 10px rgba(197, 25, 68, 0.2);
+}
+.tu-runner__icon-btn:active {
+  transform: scale(0.92);
+}
+.tu-runner__icon-btn:focus-visible {
+  outline: 3px solid var(--r-gold);
+  outline-offset: 2px;
+}
+.tu-runner__icon-btn.is-paused {
+  background: var(--r-crimson);
+  color: #ffffff;
+  border-color: var(--r-crimson);
+}
+.tu-runner.is-night .tu-runner__icon-btn {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #f1f5f9;
+}
+.tu-runner.is-night .tu-runner__icon-btn:hover {
+  background: #0f172a;
+  color: #fecdd3;
+}
+.tu-runner__mute {
+  /* backwards-compat */
+}
+
+.tu-runner__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.tu-runner__help {
+  margin: 0;
+  font-size: .88rem;
+  color: #475569;
+  text-align: center;
+}
+.tu-runner__help kbd {
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid #94a3b8;
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: #fff;
+  font: 700 .8rem ui-monospace, monospace;
+  color: #0f172a;
+}
+.tu-runner__touch-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 440px;
+}
+.tu-runner__touch-btn {
+  flex: 1;
+  min-height: 52px;
+  padding: 12px 20px;
+  border-radius: 16px;
+  font: 800 1.05rem/1 inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.1s ease, background 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.tu-runner__touch-btn:focus-visible {
+  outline: 3px solid var(--r-gold);
+  outline-offset: 3px;
+}
+.tu-runner__touch-btn--jump {
+  background: var(--r-crimson);
+  color: #ffffff;
+  border: 2px solid var(--r-crimson);
+}
+.tu-runner__touch-btn--jump:hover {
+  background: #9e1236;
+}
+.tu-runner__touch-btn--jump:active {
+  background: #7a0e2a;
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(197,25,68,0.3);
+}
+.tu-runner__touch-btn--duck {
+  background: #ffffff;
+  color: var(--r-navy);
+  border: 2px solid var(--r-navy);
+}
+.tu-runner__touch-btn--duck:hover {
+  background: #f1f5f9;
+}
+.tu-runner__touch-btn--duck:active {
+  background: var(--r-navy);
+  color: #ffffff;
+  transform: scale(0.96);
+}
+.tu-runner__touch-btn--pause {
+  flex: 0.75;
+  min-width: 80px;
+  background: #f8fafc;
+  color: #334155;
+  border: 2px solid #cbd5e1;
+  font-size: 0.96rem;
+}
+.tu-runner__touch-btn--pause:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+.tu-runner__touch-btn--pause:active,
+.tu-runner__touch-btn--pause.is-paused {
+  background: #e2e8f0;
+  border-color: var(--r-crimson);
+  color: var(--r-crimson);
+  transform: scale(0.96);
+}
+
+.tu-runner__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tu-runner__stage, .tu-runner__canvas, .tu-runner__btn { transition: none; }
+}
+
+.tu-runner-badges {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* มือถือ: ให้เวทีสูงพอสำหรับข้อความ/ปุ่มบนหน้าจอเริ่ม (canvas เกาะด้านล่าง ด้านบนเป็นท้องฟ้า) */
+@media (max-width: 600px) {
+  .tu-runner { padding: 0 12px; }
+  .tu-runner__stage { display: flex; align-items: flex-end; min-height: 210px; }
+  .tu-runner__canvas { width: 100%; }
+  .tu-runner__overlay { padding: 14px 12px; }
+  .tu-runner__touch-bar { gap: 10px; }
+  .tu-runner__touch-btn { padding: 10px 12px; font-size: 0.95rem; min-height: 48px; border-radius: 12px; }
+  .tu-runner__touch-btn--pause { min-width: 68px; font-size: 0.88rem; }
+}

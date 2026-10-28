@@ -538,6 +538,12 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
       const leader = document.getElementById('studentLeader');
       const scholar = document.getElementById('studentScholar');
       if (!hero || !cta || !leader || !scholar) return;
+      // Editorial hero mode: keep the cover at viewport scale. The legacy walk-track
+      // behavior otherwise stretches the cover beyond two screens and fights the new layout.
+      if (hero.dataset.editorialStatic === 'true') {
+        hero.style.minHeight = '';
+        return;
+      }
       const key = window.innerWidth + 'x' + window.innerHeight + ':' + cta.offsetHeight;
       if (!force && key === heroLayoutKey) return;
       heroLayoutKey = key;
@@ -561,6 +567,7 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
       const hero = document.getElementById('hero');
       const stage = hero && hero.querySelector('.central-track-stage');
       if (!hero || !stage) return;
+      if (hero.dataset.editorialStatic === 'true') return;
       layoutHeroWalkers(false);
       const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const y = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
@@ -846,11 +853,22 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
       const nodes = document.querySelectorAll('.stepper-node');
       nodes.forEach((n, i) => n.classList.toggle('active', i === idx));
 
+      const card = document.getElementById('milestoneEventCard');
+      if (card) {
+        card.classList.remove('is-switching');
+        void card.offsetWidth;
+        card.classList.add('is-switching');
+      }
+
       const item = MILESTONES_DATA[idx];
       document.getElementById('mEventTitle').textContent = item.title;
       document.getElementById('mEventDesc').textContent = item.desc;
       document.getElementById('mEventStat').textContent = item.stat;
       document.getElementById('mEventLabel').textContent = item.lbl;
+
+      if (card) {
+        setTimeout(() => card.classList.remove('is-switching'), 340);
+      }
     }
 
     // 6. TU 2034 — เส้นทางบนแผนที่ศูนย์รังสิต + การ์ด 4 เสาหลักแบบซ้อนทับ (stacking cards)
@@ -876,7 +894,7 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
         const pct = d.current / d.target * 100;
         return `
         <article class="tu-pillar-card" data-idx="${i}" style="--i:${i}" aria-labelledby="tuPillarTitle${i}">
-          <header class="tu-pillar-head">
+          <header class="tu-pillar-head" tabindex="0" role="button" aria-expanded="${i === 0 ? 'true' : 'false'}" aria-label="เสาหลักที่ ${i + 1}: ${PILLAR_SHORT[i]}">
             <span class="tu-pillar-num">${i + 1}</span>
             <div class="tu-pillar-head-text">
               <div class="tu-pillar-tag">เสาหลักที่ ${i + 1} • ${PILLAR_PLACES[i]}</div>
@@ -927,84 +945,233 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
 
     let routeActiveIdx = -1;
     let routeTicking = false;
+    let routeClickAnimating = false;
+    let routeClickTimer = null;
+    const prefersRouteReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const routeDrawDuration = prefersRouteReducedMotion ? 0 : 920;
+
     function requestRouteFrame() {
       if (routeTicking) return;
       routeTicking = true;
       requestAnimationFrame(() => { routeTicking = false; updateRouteProgress(); });
     }
 
-    function updateRouteProgress() {
-      const stack = document.getElementById('tuPillarStack');
+    function setRouteScene(idx, cards) {
+      routeActiveIdx = idx;
+      document.querySelectorAll('.tu-route-node').forEach((node, i) => {
+        node.classList.toggle('active', i === idx);
+        node.classList.toggle('done', idx >= 0 && i < idx);
+        node.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+      });
+      cards.forEach((card, i) => {
+        const isActive = i === idx;
+        card.classList.toggle('is-active', isActive);
+        if (i <= idx) card.classList.add('is-revealed-bars');
+        const head = card.querySelector('.tu-pillar-head');
+        if (head) head.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      });
+    }
+
+    let routeAnimRaf = null;
+    let currentDrawnLength = 0;
+
+    function applyRouteLength(len) {
+      const base = document.getElementById('tuRouteBase');
       const active = document.getElementById('tuRouteActive');
       const walker = document.getElementById('tuRouteWalker');
-      if (!stack || !active || !walker) return;
+      if (!routeLens || !base || !active || !walker) return;
+
+      const safeLength = Math.max(0, Math.min(routeLens.total, len));
+      currentDrawnLength = safeLength;
+
+      active.style.strokeDasharray = String(routeLens.total);
+      active.style.strokeDashoffset = String(routeLens.total - safeLength);
+
+      const point = base.getPointAtLength(safeLength);
+      walker.setAttribute('transform', `translate(${point.x.toFixed(1)} ${point.y.toFixed(1)})`);
+    }
+
+    function animateRouteToLength(targetLength, duration, onComplete) {
+      if (routeAnimRaf) {
+        cancelAnimationFrame(routeAnimRaf);
+        routeAnimRaf = null;
+      }
+      const active = document.getElementById('tuRouteActive');
+      const walker = document.getElementById('tuRouteWalker');
+      if (active) active.style.transition = 'none';
+      if (walker) walker.style.transition = 'none';
+
+      const start = currentDrawnLength;
+      const dist = targetLength - start;
+      if (duration <= 0 || Math.abs(dist) < 0.5) {
+        applyRouteLength(targetLength);
+        if (onComplete) onComplete();
+        return;
+      }
+
+      const startTime = performance.now();
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const t = Math.min(1, Math.max(0, elapsed / duration));
+        const cur = start + dist * easeOutCubic(t);
+        applyRouteLength(cur);
+        if (t < 1) {
+          routeAnimRaf = requestAnimationFrame(step);
+        } else {
+          routeAnimRaf = null;
+          if (onComplete) onComplete();
+        }
+      }
+      routeAnimRaf = requestAnimationFrame(step);
+    }
+
+    function drawRouteToLength(length, mode = 'scroll') {
+      const base = document.getElementById('tuRouteBase');
+      const active = document.getElementById('tuRouteActive');
+      const walker = document.getElementById('tuRouteWalker');
+      if (!routeLens || !base || !active || !walker) return;
+
+      const safeLength = Math.max(0, Math.min(routeLens.total, length));
+
+      if (mode === 'click' && routeDrawDuration > 0) {
+        animateRouteToLength(safeLength, routeDrawDuration);
+      } else {
+        if (routeAnimRaf) {
+          cancelAnimationFrame(routeAnimRaf);
+          routeAnimRaf = null;
+        }
+        active.style.transition = 'none';
+        walker.style.transition = 'none';
+        applyRouteLength(safeLength);
+      }
+    }
+
+    function updateRouteProgress() {
+      if (routeClickAnimating) return;
+      const stack = document.getElementById('tuPillarStack');
+      if (!stack) return;
       if (!routeLens) routeLens = measureRoute();
       if (!routeLens) return;
       const cards = stack.querySelectorAll('.tu-pillar-card');
       if (!cards.length) return;
 
-      // ระยะเลื่อนที่การ์ดแต่ละใบ "ติด" (stick) — คำนวณจากตำแหน่งในโฟลว์ปกติ
+      // Map vertical story progress to the matching cumulative SVG path length.
       const stackTop = stack.getBoundingClientRect().top;
       const scrolled = -stackTop;
       const marks = [];
-      let y = 0;
-      cards.forEach((card, i) => {
-        const cs = getComputedStyle(card);
-        const stickTop = parseFloat(cs.top) || 0;
-        marks.push(y - stickTop);
-        y += card.offsetHeight + (parseFloat(cs.marginBottom) || 0);
+      let flowY = 0;
+      cards.forEach((card) => {
+        const css = getComputedStyle(card);
+        const stickyTop = parseFloat(css.top) || 0;
+        marks.push(flowY - stickyTop);
+        flowY += card.offsetHeight + (parseFloat(css.marginBottom) || 0);
       });
-      const approach = window.innerHeight * 0.7;          // ช่วงเดินจากประตูไปจุดที่ 1
-      let p;                                               // -1 = ประตู, 0..3 = จุดที่ 1..4
-      if (scrolled <= marks[0] - approach) p = -1;
-      else if (scrolled < marks[0]) p = -1 + (scrolled - (marks[0] - approach)) / approach;
+
+      const approach = window.innerHeight * 0.7;
+      let progress;
+      if (scrolled <= marks[0] - approach) progress = -1;
+      else if (scrolled < marks[0]) progress = -1 + (scrolled - (marks[0] - approach)) / approach;
       else {
-        p = cards.length - 1;
+        progress = cards.length - 1;
         for (let i = 0; i < cards.length - 1; i++) {
-          if (scrolled < marks[i + 1]) { p = i + (scrolled - marks[i]) / (marks[i + 1] - marks[i]); break; }
+          const span = Math.max(1, marks[i + 1] - marks[i]);
+          if (scrolled < marks[i + 1]) {
+            progress = i + (scrolled - marks[i]) / span;
+            break;
+          }
         }
       }
-      const L = routeLens.nodes;
-      let len;
-      if (p <= -1) len = 0;
-      else if (p < 0) len = (p + 1) * L[0];
-      else { const i = Math.min(Math.floor(p), L.length - 1); const f = p - i; len = i >= L.length - 1 ? L[L.length - 1] : L[i] + (L[i + 1] - L[i]) * f; }
 
-      active.style.strokeDasharray = routeLens.total;
-      active.style.strokeDashoffset = routeLens.total - len;
-      const pt = document.getElementById('tuRouteBase').getPointAtLength(len);
-      walker.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
-
-      const idx = p < -0.15 ? -1 : Math.min(cards.length - 1, Math.max(0, Math.round(p)));
-      if (idx !== routeActiveIdx) {
-        routeActiveIdx = idx;
-        document.querySelectorAll('.tu-route-node').forEach((n, i) => {
-          n.classList.toggle('active', i === idx);
-          n.classList.toggle('done', idx >= 0 && i < idx);
-        });
-        cards.forEach((c, i) => {
-          c.classList.toggle('is-active', i === idx);
-          if (i <= idx) c.classList.add('is-revealed-bars');
-        });
+      const lengths = routeLens.nodes;
+      let length = 0;
+      if (progress <= -1) length = 0;
+      else if (progress < 0) length = (progress + 1) * lengths[0];
+      else {
+        const segment = Math.min(Math.floor(progress), lengths.length - 1);
+        const fraction = progress - segment;
+        length = segment >= lengths.length - 1
+          ? lengths[lengths.length - 1]
+          : lengths[segment] + (lengths[segment + 1] - lengths[segment]) * fraction;
       }
+
+      drawRouteToLength(length, 'scroll');
+      const idx = progress < -0.15 ? -1 : Math.min(cards.length - 1, Math.max(0, Math.round(progress)));
+      if (idx !== routeActiveIdx) setRouteScene(idx, cards);
     }
 
-    // กดหมายเลขบนแผนที่ = เลื่อนไปยังการ์ดเสาหลักนั้น
+    // Clicking a numbered stop draws the route to that landmark while the story scrolls to its card.
     function selectCircuitNode(idx) {
       const stack = document.getElementById('tuPillarStack');
-      const card = stack && stack.querySelectorAll('.tu-pillar-card')[idx];
+      const cards = stack ? stack.querySelectorAll('.tu-pillar-card') : [];
+      const card = cards[idx];
       if (!card) return;
-      let y = 0;
-      const cards = stack.querySelectorAll('.tu-pillar-card');
-      for (let i = 0; i < idx; i++) y += cards[i].offsetHeight + (parseFloat(getComputedStyle(cards[i]).marginBottom) || 0);
-      const stickTop = parseFloat(getComputedStyle(card).top) || 0;
-      const target = stack.getBoundingClientRect().top + window.pageYOffset + y - stickTop + 2;
-      window.scrollTo({ top: target, behavior: 'smooth' });
+      if (!routeLens) routeLens = measureRoute();
+
+      if (routeLens && routeLens.nodes[idx] !== undefined) {
+        routeClickAnimating = true;
+        if (routeClickTimer) clearTimeout(routeClickTimer);
+        drawRouteToLength(routeLens.nodes[idx], 'click');
+        setRouteScene(idx, cards);
+      }
+
+      let flowY = 0;
+      for (let i = 0; i < idx; i++) {
+        flowY += cards[i].offsetHeight + (parseFloat(getComputedStyle(cards[i]).marginBottom) || 0);
+      }
+      const stickyTop = parseFloat(getComputedStyle(card).top) || 0;
+      const target = stack.getBoundingClientRect().top + window.pageYOffset + flowY - stickyTop + 2;
+      window.scrollTo({ top: target, behavior: prefersRouteReducedMotion ? 'auto' : 'smooth' });
+
+      if (routeClickAnimating) {
+        routeClickTimer = setTimeout(() => {
+          routeClickAnimating = false;
+          requestRouteFrame();
+        }, routeDrawDuration + 180);
+      }
     }
+    window.selectCircuitNode = selectCircuitNode;
 
     function initPillarRoute() {
       renderPillarStack();
       routeLens = null;
+
+      const stack = document.getElementById('tuPillarStack');
+      if (stack) {
+        stack.addEventListener('click', (e) => {
+          const head = e.target.closest('.tu-pillar-head');
+          if (!head) return;
+          const card = head.closest('.tu-pillar-card');
+          if (!card) return;
+          const idx = parseInt(card.getAttribute('data-idx'), 10);
+          if (!isNaN(idx)) selectCircuitNode(idx);
+        });
+
+        stack.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            const head = e.target.closest('.tu-pillar-head');
+            if (head) {
+              e.preventDefault();
+              const card = head.closest('.tu-pillar-card');
+              if (!card) return;
+              const idx = parseInt(card.getAttribute('data-idx'), 10);
+              if (!isNaN(idx)) selectCircuitNode(idx);
+            }
+          }
+        });
+
+        stack.addEventListener('focusin', (e) => {
+          const card = e.target.closest('.tu-pillar-card');
+          if (card && !routeClickAnimating) {
+            const idx = parseInt(card.getAttribute('data-idx'), 10);
+            if (!isNaN(idx) && idx !== routeActiveIdx) {
+              selectCircuitNode(idx);
+            }
+          }
+        });
+      }
+
       window.addEventListener('scroll', requestRouteFrame, { passive: true });
       window.addEventListener('resize', () => { routeLens = null; requestRouteFrame(); }, { passive: true });
       requestRouteFrame();
@@ -2285,7 +2452,7 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
             labels: ['พ.ศ. 2500', 'พ.ศ. 2530', 'พ.ศ. 2545', 'พ.ศ. 2567 (ปัจจุบัน)'],
             datasets: [
               {
-                label: 'ท่าพระจันทร์ (%)',
+                label: 'ศูนย์ท่าพระจันทร์',
                 data: [100, 68, 22, 14.8],
                 backgroundColor: '#a6d2e6',
                 barThickness: 28,
@@ -2293,7 +2460,7 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
                 borderRadius: 4
               },
               {
-                label: 'ศูนย์รังสิต (%)',
+                label: 'ศูนย์รังสิต',
                 data: [0, 32, 70, 73.5],
                 backgroundColor: '#c51944',
                 barThickness: 28,
@@ -2301,7 +2468,7 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
                 borderRadius: 4
               },
               {
-                label: 'ศูนย์ลำปาง (%)',
+                label: 'ศูนย์ลำปาง',
                 data: [0, 0, 5, 7.2],
                 backgroundColor: '#ffc72c',
                 barThickness: 28,
@@ -2309,7 +2476,7 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
                 borderRadius: 4
               },
               {
-                label: 'ศูนย์พัทยา (%)',
+                label: 'ศูนย์พัทยา',
                 data: [0, 0, 3, 4.5],
                 backgroundColor: '#00857c',
                 barThickness: 28,
@@ -2322,7 +2489,21 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { position: 'top', labels: { color: '#ffffff' } },
+              legend: {
+                position: 'top',
+                align: 'center',
+                labels: {
+                  color: '#1e293b',
+                  font: {
+                    family: "'Prompt', 'Sarabun', sans-serif",
+                    size: 13,
+                    weight: '700'
+                  },
+                  padding: 16,
+                  usePointStyle: true,
+                  pointStyle: 'circle'
+                }
+              },
               tooltip: {
                 callbacks: {
                   label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y}%`
@@ -2330,8 +2511,25 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
               }
             },
             scales: {
-              x: { stacked: true, grid: { display: false }, ticks: { color: '#cbd5e1' } },
-              y: { stacked: true, min: 0, max: 100, ticks: { callback: (v) => v + '%', color: '#cbd5e1' }, grid: { color: 'rgba(255,255,255,0.08)' } }
+              x: {
+                stacked: true,
+                grid: { display: false },
+                ticks: {
+                  color: '#475569',
+                  font: { family: "'Prompt', sans-serif", size: 12, weight: '600' }
+                }
+              },
+              y: {
+                stacked: true,
+                min: 0,
+                max: 100,
+                ticks: {
+                  callback: (v) => v + '%',
+                  color: '#475569',
+                  font: { family: "'Prompt', sans-serif", size: 12 }
+                },
+                grid: { color: 'rgba(21, 35, 70, 0.08)' }
+              }
             }
           }
         });
@@ -2498,6 +2696,75 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
       stepFrame(update);
     }
 
+// ==========================================================================
+    // INTER-CHAPTER GRAPH & CHART SEAMLESS TRANSITIONS
+    // ==========================================================================
+    function initInterTopicGraphTransitions() {
+      const graphSelectors = [
+        '#topic-01 .milestone-event-card',
+        '#topic-02 #campusLeafletMap',
+        '#topic-02 .campus-cluster-cards-grid',
+        '#topic-03 .faculties-white-card',
+        '#topic-04 .demographic-white-card',
+        '#topic-05 .campus-distribution-card',
+        '#topic-06 .cost-cap-white-card',
+        '#topic-07 .triple-crown-badges-stage',
+        '#topic-07 .tbs-benchmark-card',
+        '#topic-08 .green-highlight-box',
+        '#topic-08 .green-visual-card',
+        '#topic-09 .hospital-kpi-row',
+        '#topic-09 .hospital-chart-card',
+        '#topic-10 .tu-route-layout'
+      ];
+
+      const elements = [];
+      graphSelectors.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) {
+          el.classList.add('tu-graph-stage');
+          elements.push(el);
+        }
+      });
+
+      if (!elements.length || !('IntersectionObserver' in window)) return;
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        elements.forEach(el => el.classList.add('is-in-view'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const el = entry.target;
+          if (entry.isIntersecting) {
+            el.classList.add('is-in-view');
+            // If it contains a canvas with Chart.js, refresh animation smoothly once
+            const canvas = el.querySelector('canvas') || (el.tagName === 'CANVAS' ? el : null);
+            if (canvas && typeof Chart !== 'undefined' && Chart.getChart) {
+              const chart = Chart.getChart(canvas);
+              if (chart && !el.dataset.graphHasRendered) {
+                el.dataset.graphHasRendered = 'true';
+                chart.update();
+              }
+            }
+            if (el.id === 'campusLeafletMap' || el.querySelector('#campusLeafletMap')) {
+              if (window.tuMap && typeof window.tuMap.invalidateSize === 'function') {
+                window.tuMap.invalidateSize();
+              }
+            }
+          } else {
+            // Keep subtle softening when out of reading line
+            el.classList.remove('is-in-view');
+          }
+        });
+      }, {
+        rootMargin: '-6% 0px -6% 0px',
+        threshold: 0.12
+      });
+
+      elements.forEach(el => observer.observe(el));
+    }
+
     // Window Onload Initialization
     window.addEventListener('DOMContentLoaded', () => {
       initHeaderNavInteractions();
@@ -2511,6 +2778,7 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
       initHospitalCapacityChart();
       initAnimatedCounters();
       initBidwellsScrollMotions();
+      initInterTopicGraphTransitions();
       updateCockpit();
       initPillarRoute();
     });
@@ -2713,4 +2981,23 @@ const heroWalkerState = { lastY: 0, facing: 1, ticking: false };
           }
         });
       }
+
+
+
+            // Smooth Inter-Chapter Navigation via Narrative Connector Bridges
+      document.querySelectorAll('.narrative-connector-bridge[data-next-target]').forEach(bridge => {
+        const targetId = bridge.dataset.nextTarget;
+        const targetEl = document.querySelector(targetId);
+        if (!targetEl) return;
+        const navigate = () => {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        };
+        bridge.addEventListener('click', navigate);
+        bridge.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            navigate();
+          }
+        });
+      });
     });

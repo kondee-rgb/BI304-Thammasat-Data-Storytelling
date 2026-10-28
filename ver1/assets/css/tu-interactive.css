@@ -1,0 +1,88 @@
+/* TU Interactive — สไตล์ "เดาตัวเลข" + "Quiz" (ใช้ตัวแปร --tu-* ของเว็บ มี fallback) */
+.tui {
+  --c-navy: var(--tu-navy, #0b163b); --c-crimson: var(--tu-crimson, #c51944);
+  --c-gold: var(--tu-gold, #ffc72c); --c-text: var(--tu-text, #0f172a); --c-muted: var(--tu-muted, #475569);
+  max-width: 720px; margin: 0 auto 32px; padding: 26px clamp(18px, 4vw, 34px) 28px;
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 20px;
+  box-shadow: 0 10px 25px -3px rgba(0,0,0,.08); color: var(--c-text);
+  font-family: var(--font-sans, 'Prompt', 'Sarabun', system-ui, sans-serif);
+}
+.tui * { box-sizing: border-box; }
+.tui-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.tui-kicker { font-weight: 800; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--c-crimson); }
+.tui-step { font-size: .85rem; color: var(--c-muted); }
+.tui-dots { display: flex; gap: 6px; margin-left: auto; }
+.tui-dots i { width: 22px; height: 6px; border-radius: 3px; background: #e2e8f0; }
+.tui-dots i.is-done { background: var(--c-navy); } .tui-dots i.is-now { background: var(--c-crimson); }
+.tui-q { margin: 0 0 14px; font-size: clamp(1.1rem, 3.4vw, 1.4rem); line-height: 1.45; font-weight: 700; color: var(--c-navy); }
+
+/* เดาตัวเลข */
+.tui-bigwrap { display: flex; align-items: baseline; gap: 4px; margin: 6px 0 10px; }
+.tui-bignum { font-size: clamp(2.2rem, 9vw, 3.4rem); font-weight: 800; color: var(--c-crimson); font-variant-numeric: tabular-nums; line-height: 1; }
+.tui-unit { color: var(--c-muted); font-size: 1rem; }
+.tui-range { -webkit-appearance: none; appearance: none; width: 100%; height: 44px; background: transparent; cursor: pointer; --p: 50%; }
+.tui-range::-webkit-slider-runnable-track { height: 10px; border-radius: 6px; background: linear-gradient(90deg, var(--c-crimson) var(--p), #e2e8f0 var(--p)); }
+.tui-range::-moz-range-track { height: 10px; border-radius: 6px; background: #e2e8f0; }
+.tui-range::-moz-range-progress { height: 10px; border-radius: 6px; background: var(--c-crimson); }
+.tui-range::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; margin-top: -9px; border-radius: 50%; background: #fff; border: 4px solid var(--c-crimson); box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.tui-range::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: #fff; border: 4px solid var(--c-crimson); }
+.tui-range:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 2px; border-radius: 8px; }
+.tui-range:disabled { opacity: .5; cursor: default; }
+.tui-ends { display: flex; justify-content: space-between; font-size: .8rem; color: var(--c-muted); margin: -4px 0 14px; }
+
+.tui-btn { min-height: 46px; padding: 10px 26px; border: 0; border-radius: 999px; cursor: pointer; font: 700 1rem/1 inherit; color: #fff; background: var(--c-crimson); box-shadow: 0 6px 16px rgba(197,25,68,.28); transition: transform .15s, background .15s; }
+.tui-btn:hover { background: #9e1236; transform: translateY(-1px); }
+.tui-btn--ghost { background: #fff; color: var(--c-navy); border: 2px solid var(--c-navy); box-shadow: none; }
+.tui-btn--ghost:hover { background: var(--c-navy); color: #fff; }
+.tui-btn:focus-visible, .tui-opt:focus-visible, .tui-src:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
+
+.tui-reveal, .tui-fb { margin-top: 18px; padding-top: 16px; border-top: 1px dashed #cbd5e1; }
+.tui-reveal[hidden], .tui-fb[hidden] { display: none; }
+.tui-verdict { display: inline-block; padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: .95rem; margin-bottom: 14px; }
+.tui-ok { background: #ecfdf5; color: #047857; } .tui-near { background: #fffbeb; color: #92400e; } .tui-far { background: #fef2f2; color: #b91c1c; }
+.tui-bars { display: grid; gap: 10px; margin-bottom: 12px; }
+.tui-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 10px; align-items: center; font-size: .9rem; }
+.tui-lab { color: var(--c-muted); white-space: nowrap; }
+.tui-track { height: 18px; background: #f1f5f9; border-radius: 9px; overflow: hidden; }
+.tui-track i { display: block; height: 100%; width: 0; border-radius: 9px; background: #94a3b8; }
+.tui-row--ans .tui-track i { background: var(--c-navy); }
+.tui-val { min-width: 76px; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tui-note { margin: 0 0 8px; line-height: 1.65; color: #334155; font-size: .95rem; }
+.tui-src { display: inline-block; margin: 0 0 14px; font-size: .82rem; color: #1d4ed8; text-decoration: underline; word-break: break-word; }
+.tui-reveal .tui-btn, .tui-fb .tui-btn { display: block; margin-top: 4px; }
+.tui-list { margin: 0 0 16px; padding-left: 20px; line-height: 1.7; font-size: .95rem; }
+.tui-list b { color: var(--c-navy); }
+
+/* Quiz */
+.tui-opts { display: grid; gap: 10px; }
+.tui-opt { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 10px 16px; text-align: left; font: 600 1rem/1.4 inherit; color: var(--c-text); background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 14px; cursor: pointer; transition: border-color .15s, background .15s, transform .15s; }
+.tui-opt:hover:not(:disabled) { border-color: var(--c-crimson); background: #fff; transform: translateX(3px); }
+.tui-key { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--c-navy); color: #fff; font-size: .85rem; }
+.tui-txt { flex: 1; }
+.tui-mark { flex: none; font-weight: 800; font-size: .85rem; }
+.tui-opt:disabled { cursor: default; }
+.tui-opt.is-correct { border-color: #047857; background: #ecfdf5; color: #064e3b; }
+.tui-opt.is-wrong { border-color: #b91c1c; background: #fef2f2; color: #7f1d1d; }
+.tui-opt:disabled:not(.is-correct):not(.is-wrong) { opacity: .55; }
+.tui-score { font-size: 3.4rem; font-weight: 800; color: var(--c-crimson); line-height: 1; margin-bottom: 8px; }
+.tui-score span { font-size: 1.5rem; color: var(--c-muted); font-weight: 600; }
+.tui-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.tui { position: relative; }
+
+@media (max-width: 480px) { .tui-row { grid-template-columns: 62px 1fr auto; gap: 8px; } .tui-val { min-width: 64px; } }
+@media (prefers-reduced-motion: reduce) { .tui-btn, .tui-opt { transition: none; } .tui-opt:hover:not(:disabled) { transform: none; } }
+.tui-list .tui-src { display: block; margin: 2px 0 6px; }
+
+/* Quiz: การ์ดเปิด (ปุ่มเริ่ม) */
+.tui-quiz--intro { padding-top: 20px; padding-bottom: 20px; }
+.tui-intro { display: flex; align-items: center; justify-content: space-between; gap: 18px 24px; flex-wrap: wrap; }
+.tui-intro__txt { flex: 1 1 260px; min-width: 0; }
+.tui-intro .tui-q { margin-bottom: 4px; }
+.tui-intro .tui-note { margin: 0; }
+.tui-intro .tui-btn { flex: none; }
+@media (max-width: 480px) { .tui-intro .tui-btn { width: 100%; } }
+
+/* เลื่อนปุ่ม "ข้อถัดไป" ให้พ้นแถบลอยด้านล่าง/เฮดเดอร์เมื่อได้โฟกัส */
+.tui-fb .tui-btn, .tui-reveal .tui-btn { scroll-margin-bottom: 110px; scroll-margin-top: 90px; }
+
+.tui-quiz { scroll-margin-top: 90px; scroll-margin-bottom: 110px; }

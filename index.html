@@ -41,11 +41,16 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261024j" />
-  <link rel="stylesheet" href="assets/css/dino-game.css?v=20261024j" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="assets/css/dino-game.css?v=20261024j" /></noscript>
-  <link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261024j" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261024j" /></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261028" />
+  <link rel="stylesheet" href="assets/css/dino-game.css?v=20261028" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/dino-game.css?v=20261028" /></noscript>
+  <link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261028" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="assets/css/tu-interactive.css?v=20261028" /></noscript>
+  <!-- CGTN Editorial Scrollytelling Polish Stylesheet -->
+  <link rel="stylesheet" href="assets/css/cgtn-polish.css?v=20261028" />
+  <link rel="stylesheet" href="assets/css/editorial-refinement.css?v=20261028" />
+  <link rel="stylesheet" href="assets/css/scroll-story.css?v=20261029v11" />
+  <link rel="stylesheet" href="assets/css/scroll-story-v8-overrides.css?v=20261029v11" />
 
   <!-- Leaflet 1.9.4 CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'" />
@@ -89,7 +94,7 @@
       </div>
       <div class="header-brand-text">
         <span class="header-brand-title">THAMMASAT 90 YEARS</span>
-        <span class="header-brand-sub">DRIVING INNOVATION AT SPEED</span>
+        <span class="header-brand-sub">DATA STORYTELLING • 2477—2567</span>
       </div>
     </div>
 
@@ -212,9 +217,12 @@
        HERO SECTION & CENTRAL STARTING RACETRACK (Authentic Bidwells Runway)
        ========================================================================== -->
   <main id="main">
-  <section class="hero-track-section" id="hero">
-    <!-- The Central Vertical Asphalt Racetrack -->
+  <section class="hero-track-section editorial-hero-static" id="hero" data-editorial-static="true">
+    <!-- The Central Vertical Asphalt Racetrack (Thammasat Centennial Archway) -->
     <div class="central-track-stage">
+      <!-- Architectural Doorway Threshold Stone -->
+      <div class="doorway-threshold"></div>
+
       <!-- Alternating Checkerboard Curb on the left -->
       <div class="central-track-curb-left"></div>
       <div class="central-track-curb-right"></div>
@@ -257,12 +265,12 @@
       </div>
 
       <h1 class="hero-main-title">
-        Shaping Future<br>
-        <em>Through Wisdom</em>
+        90 ปี<br>
+        <em>ธรรมศาสตร์</em>
       </h1>
 
       <div class="hero-title-thai">
-        90 ปี ธรรมศาสตร์: พลังแห่งปัญญา สู่ศตวรรษแห่งความยั่งยืน
+        จากตลาดวิชา สู่ศตวรรษแห่งความยั่งยืน
       </div>
 
       <p class="hero-lead-desc">
@@ -467,62 +475,17 @@
 
         <div class="milestone-event-card" id="milestoneEventCard">
           <div>
-            <h3 id="mEventTitle" style="font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">พ.ศ. 2477 — สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง</h3>
-            <p id="mEventDesc" style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6;">
+            <h3 id="mEventTitle" style="font-size: 1.15rem; font-weight: 700; color: #101a35; margin-bottom: 6px;">พ.ศ. 2477 — สถาปนามหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง</h3>
+            <p id="mEventDesc" style="font-size: 0.9rem; color: #374151; line-height: 1.6;">
               ศ.ดร.ปรีดี พนมยงค์ สถาปนา มธก. ในฐานะ "ตลาดวิชา" มีผู้สมัครเข้าเรียนรุ่นแรกสูงถึง 7,094 คน เพื่อเป็นบ่อน้ำบำบัดความกระหายของราษฎร
             </p>
           </div>
           <div style="text-align: right; min-width: 130px;">
-            <div id="mEventStat" style="font-size: 2rem; font-weight: 800; color: var(--tu-gold);">7,094</div>
+            <div id="mEventStat" style="font-size: 2rem; font-weight: 800; color: #bd173e;">7,094</div>
             <div id="mEventLabel" style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">นักศึกษารุ่นแรก</div>
           </div>
         </div>
-        <!-- Interactive Data Guessing Activity: เดาตัวเลขก่อนดูเฉลย -->
-        <div data-tu-guess style="margin: 40px auto 30px;">
-          <script type="application/json">
-          {
-            "title": "เดาตัวเลขสถิติธรรมศาสตร์ก่อนดูเฉลย",
-            "kicker": "กิจกรรมโต้ตอบ • INTERACTIVE DATA GUESS",
-            "items": [
-              {
-                "q": "คุณคิดว่าในปีก่อตั้ง พ.ศ. 2477 มีผู้สมัครเข้าเรียน มธก. รุ่นแรกกี่คน?",
-                "min": 1000,
-                "max": 15000,
-                "start": 5000,
-                "step": 50,
-                "answer": 7094,
-                "unit": "คน",
-                "note": "ในพิธีเปิดมหาวิทยาลัยวิชาธรรมศาสตร์และการเมือง เมื่อวันที่ 27 มิ.ย. 2477 มีผู้สมัครเข้าเรียนรุ่นแรกสูงถึง 7,094 คน (กว่า 7,000 คน) สะท้อนความกระหายการศึกษาของราษฎร",
-                "source": { "label": "Silpa-mag (24 ต.ค. 2569)", "url": "https://www.silpa-mag.com/?p=135675" }
-              },
-              {
-                "q": "ปัจจุบัน มหาวิทยาลัยธรรมศาสตร์ มีจำนวนนักศึกษารวมทุกระดับกี่คน?",
-                "min": 20000,
-                "max": 60000,
-                "start": 35000,
-                "step": 250,
-                "answer": 42850,
-                "unit": "คน",
-                "note": "สถิตินักศึกษาปัจจุบันรวม 42,850 คน โดยกระจายตัวในศูนย์รังสิต 31,500 คน (73.5%), ท่าพระจันทร์ 6,310 คน, ลำปาง 3,120 คน และพัทยา 1,920 คน",
-                "source": { "label": "กองบริหารงานวิชาการ มธ. (24 ต.ค. 2569)", "url": "https://reg.tu.ac.th/" }
-              },
-              {
-                "q": "งบประมาณรายจ่ายรวมประจำปีล่าสุดของมหาวิทยาลัยธรรมศาสตร์ มีมูลค่าเท่าใด?",
-                "min": 5000,
-                "max": 25000,
-                "start": 12000,
-                "step": 250,
-                "answer": 15350,
-                "unit": "ล้านบาท",
-                "note": "งบประมาณรายจ่ายรวม 15,350 ล้านบาท ประกอบด้วยงบอุดหนุนแผ่นดิน 38% และเงินรายได้ของมหาวิทยาลัยเอง 62%",
-                "source": { "label": "กองแผนงาน มหาวิทยาลัยธรรมศาสตร์", "url": "https://planning.tu.ac.th/" }
-              }
-            ]
-          }
-          </script>
-        </div>
-
-                <div class="narrative-connector-bridge">
+        <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-02" aria-label="อ่านต่อหัวข้อถัดไป: 4 ศูนย์การศึกษา">
           <i class="fa-solid fa-arrow-right-long"></i>
           <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> จากการปักหมุด ณ ท่าพระจันทร์ ความต้องการโอกาสทางการศึกษาที่เพิ่มขึ้นอย่างก้าวกระโดด ได้ขับเคลื่อนให้ธรรมศาสตร์ต้องขยายอาณาเขตสู่ 4 ศูนย์การศึกษายุทธศาสตร์ทั่วประเทศ</span>
         </div>
@@ -538,7 +501,7 @@
        TOPIC 02: การกระจายโอกาสสู่ภูมิภาค: 4 ศูนย์การศึกษา
        ========================================================================== -->
   <section class="bidwells-map-section" id="topic-02">
-    <div style="max-width: 1200px; margin: 0 auto 40px;">
+    <div style="max-width: 1360px; width: min(1360px, calc(100% - 48px)); margin: 0 auto 40px;">
       <div class="section-eyebrow" style="color: var(--tu-gold);"><i class="fa-solid fa-location-dot"></i> หัวข้อที่ 02 / 10 | 4 ศูนย์การศึกษาทางยุทธศาสตร์ (4 STRATEGIC CAMPUSES)</div>
       <h2 class="section-headline">
         การกระจายโอกาสสู่ภูมิภาค: <em>4 ศูนย์การศึกษา 2,791 ไร่ ทั่วประเทศ</em>
@@ -602,9 +565,9 @@
         <div id="campusLeafletMap"></div>
 
         <div class="campus-location-bar">
-          <i class="fa-solid fa-location-crosshairs" style="color: var(--tu-gold);"></i>
-          <span style="color: #94a3b8; font-weight: 600;">ที่ตั้งทางภูมิศาสตร์:</span>
-          <span id="cLocation" style="color: #ffffff; font-weight: 600;">ริมแม่น้ำเจ้าพระยา เขตพระนคร กรุงเทพมหานคร</span>
+          <i class="fa-solid fa-location-crosshairs" style="color: #bd173e;"></i>
+          <span style="color: #475569; font-weight: 600;">ที่ตั้งทางภูมิศาสตร์:</span>
+          <span id="cLocation" style="color: #101a35; font-weight: 700;">ริมแม่น้ำเจ้าพระยา เขตพระนคร กรุงเทพมหานคร</span>
         </div>
 
         <div class="campus-metrics-strip" id="campusMetricsBox">
@@ -625,7 +588,7 @@
             <div class="lbl">ทิศทางวิชาการ</div>
           </div>
         </div>
-                <div class="narrative-connector-bridge">
+                <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-03" aria-label="อ่านต่อหัวข้อถัดไป: 26 คณะวิชา 4 คลัสเตอร์">
           <i class="fa-solid fa-arrow-right-long"></i>
           <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> บนพื้นที่กว่า 2,791 ไร่ มหาวิทยาลัยได้พัฒนาความเป็นเลิศทางวิชาการ ผ่าน 26 คณะวิชา 4 คลัสเตอร์ ที่เปิดรับหัวกะทิของประเทศในระบบ TCAS</span>
         </div>
@@ -689,9 +652,9 @@
             <div class="kpi-num stat-counter" style="color: var(--tu-navy);">72.9 <span class="unit">คะแนน</span></div>
             <div class="kpi-lbl">คะแนนเฉลี่ย TCAS รวมทุกคณะ</div>
           </div>
-          <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-3">
-            <div class="kpi-num stat-counter" style="color: #0369a1;" data-counter-prefix="1 : ">14.0 <span class="unit">อัตราแข่งขัน</span></div>
-            <div class="kpi-lbl">อัตราการแข่งขันสูงสุด</div>
+          <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-3" title="อัตราการแข่งขันสูงสุด: วิทยาลัยแพทยศาสตร์นานาชาติจุฬาภรณ์ (CICM) มีอัตราส่วน 1 ที่นั่ง ต่อ ผู้สมัคร 14.0 คน (1 : 14.0)">
+            <div class="kpi-num stat-counter" style="color: #0369a1;" data-counter-prefix="1 : ">14.0 <span class="unit" style="font-size: 0.92rem; font-weight: 700; color: #0284c7;">(1 ต่อ 14 คน)</span></div>
+            <div class="kpi-lbl">อัตราการแข่งขันสูงสุด • CICM แพทย์อินเตอร์</div>
           </div>
           <div class="fac-kpi-item tu-reveal-slide-up tu-stagger-4">
             <div class="kpi-num stat-counter" style="color: var(--tu-gold-dark);">26 <span class="unit">คณะ</span></div>
@@ -756,6 +719,10 @@
               </tbody>
             </table>
           </div>
+        </div>
+        <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-04" aria-label="อ่านต่อหัวข้อถัดไป: โครงสร้างประชากรนักศึกษาและบุคลากร">
+          <i class="fa-solid fa-arrow-right-long"></i>
+          <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> จากความหลากหลายของ 26 คณะวิชา มหาวิทยาลัยขับเคลื่อนด้วยพลังคนกว่า 44,000 ชีวิต ซึ่งสะท้อนโครงสร้างประชากรและความเสมอภาคทางเพศในทุกระดับ</span>
         </div>
         <div class="section-source-citation">
           <i class="fa-solid fa-graduation-cap"></i>
@@ -841,6 +808,10 @@
             <div class="demo-chip-sub">ประชากร 4,400 คน (10.3%)</div>
           </div>
         </div>
+        <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-05" aria-label="อ่านต่อหัวข้อถัดไป: การเปลี่ยนผ่านสู่มหาวิทยาลัยวิจัยและการกระจายตัวของวิทยาเขต">
+          <i class="fa-solid fa-arrow-right-long"></i>
+          <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> เบื้องหลังประชากรนักศึกษาที่ขยายตัว คือการเปลี่ยนผ่านพื้นที่การเรียนรู้ครั้งประวัติศาสตร์ โดยศูนย์รังสิตก้าวขึ้นเป็นหัวใจหลักรองรับนักศึกษากว่า 32,800 คน</span>
+        </div>
         <div class="section-source-citation">
           <i class="fa-solid fa-users-viewfinder"></i>
           <span><strong>แหล่งที่มาข้อมูล:</strong> สถิตินักศึกษาจำแนกตามระดับ คณะ และเพศ ประจำปีการศึกษา 2566 สำนักทะเบียนนักศึกษา มหาวิทยาลัยธรรมศาสตร์ • <a href="https://reg.tu.ac.th" target="_blank" rel="noopener">reg.tu.ac.th</a></span>
@@ -869,8 +840,8 @@
       <div class="campus-distribution-card tu-reveal-slide-up">
         <div class="distribution-controls-row">
           <div>
-            <h3 style="font-size: 1.15rem; font-weight: 700; color: #ffffff;">การกระจายสัดส่วนนักศึกษาตามยุคสมัย (Campus Distribution Shift)</h3>
-            <p style="font-size: 0.85rem; color: #94a3b8;">เปรียบเทียบสัดส่วน 4 ศูนย์การศึกษาตั้งแต่ พ.ศ. 2500 ถึง พ.ศ. 2567</p>
+            <h3 style="font-size: 1.18rem; font-weight: 700; color: #0f172a;">การกระจายสัดส่วนนักศึกษาตามยุคสมัย (Campus Distribution Shift)</h3>
+            <p style="font-size: 0.88rem; color: #475569; margin-top: 3px;">เปรียบเทียบสัดส่วน 4 ศูนย์การศึกษา: ศูนย์ท่าพระจันทร์ • ศูนย์รังสิต • ศูนย์ลำปาง • ศูนย์พัทยา (พ.ศ. 2500 ถึง พ.ศ. 2567)</p>
           </div>
           <div style="display: flex; gap: 8px;">
             <button class="era-pill-btn active" onclick="setDistributionEra('all', this)">วิวัฒนาการ 4 ยุค</button>
@@ -878,7 +849,7 @@
           </div>
         </div>
 
-        <div class="tu-reveal-scale" style="height: 240px;">
+        <div class="tu-reveal-scale" style="height: 255px;">
           <canvas id="campusDistributionCanvas"></canvas>
         </div>
 
@@ -924,6 +895,10 @@
             <div class="shift-metric-year">พ.ศ. 2567</div>
             <div class="shift-metric-desc">รังสิตเป็น Main Campus 73.5%, ท่าพระจันทร์ 14.8%, ลำปาง 7.2%, พัทยา 4.5%</div>
           </div>
+        </div>
+        <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-06" aria-label="อ่านต่อหัวข้อถัดไป: การบริหารงบประมาณและเสถียรภาพทางการเงิน">
+          <i class="fa-solid fa-arrow-right-long"></i>
+          <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> การขยายตัวของวิทยาเขตและโครงสร้างพื้นฐานวิจัยระดับโลก ได้รับการสนับสนุนจากวินัยทางการเงินและงบประมาณกว่า 1.2 หมื่นล้านบาทต่อปี</span>
         </div>
         <div class="section-source-citation">
           <i class="fa-solid fa-route"></i>
@@ -1002,6 +977,10 @@
             </table>
           </div>
         </div>
+        </div>
+        <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-07" aria-label="อ่านต่อหัวข้อถัดไป: มาตรฐานระดับโลก: การจัดอันดับมหาวิทยาลัยและ Triple Crown Accreditation">
+          <i class="fa-solid fa-arrow-right-long"></i>
+          <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> การลงทุนทางปัญญาและการบริหารการคลังที่มั่นคง ผลิดอกออกผลเป็นความเป็นเลิศระดับสากล และการได้รับการรับรองมาตรฐาน Triple Crown ระดับโลก</span>
         </div>
         <div class="section-source-citation">
           <i class="fa-solid fa-coins"></i>
@@ -1197,6 +1176,10 @@
             </tr>
           </tbody>
         </table>
+        <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-08" aria-label="อ่านต่อหัวข้อถัดไป: ธรรมศาสตร์เพื่อสังคมและการพัฒนาที่ยั่งยืน: SDG Impact">
+          <i class="fa-solid fa-arrow-right-long"></i>
+          <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> นอกเหนือจากความเป็นเลิศทางวิชาการระดับโลก ธรรมศาสตร์ยังคงยึดมั่นในอุดมการณ์เพื่อประชาชน โดยบูรณาการเป้าหมาย SDG สู่ทุกมิติของการพัฒนา</span>
+        </div>
         <div class="section-source-citation">
           <i class="fa-solid fa-award"></i>
           <span><strong>แหล่งที่มาข้อมูล:</strong> ฐานข้อมูลรับรองวิทยฐานะสากล AACSB, EFMD EQUIS, AMBA (2018 — 2023) และ QS Asia University Rankings 2025 • <a href="https://aacsb.edu" target="_blank" rel="noopener">aacsb.edu</a></span>
@@ -1333,6 +1316,10 @@
             <div class="val stat-counter" data-counter-suffix=" / 100">98.4 <span class="unit">/ 100</span></div>
             <div class="lbl">คะแนนโลก SDG 11 (อันดับ 1 โลก SDG 16)</div>
           </div>
+        </div>
+        <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-09" aria-label="อ่านต่อหัวข้อถัดไป: โรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติ: ที่พึ่งทางสุขภาพของประชาชน">
+          <i class="fa-solid fa-arrow-right-long"></i>
+          <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> ความยั่งยืนของสังคมไม่อาจสมบูรณ์ได้หากปราศจากสุขภาวะที่ดี โรงพยาบาลธรรมศาสตร์เฉลิมพระเกียรติจึงเป็นเสาหลักที่พร้อมดูแลผู้ป่วยกว่า 1.4 ล้านรายต่อปี</span>
         </div>
         <div class="section-source-citation">
           <i class="fa-solid fa-leaf"></i>
@@ -1475,6 +1462,10 @@
             <div class="val stat-counter">308-470 เตียง</div>
             <div class="lbl">รพ.สนาม (ผู้ป่วยสะสมกว่า 3,200 ราย)</div>
           </div>
+        </div>
+        <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#topic-10" aria-label="อ่านต่อหัวข้อถัดไป: TU 2034: ก้าวสู่ศตวรรษที่ 2 อย่างยั่งยืน">
+          <i class="fa-solid fa-arrow-right-long"></i>
+          <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> จากอดีตสู่ปัจจุบัน และจากพลังการดูแลสุขภาพสู่ก้าวต่อไป มหาวิทยาลัยธรรมศาสตร์พร้อมมุ่งสู่วิสัยทัศน์ TU 2034 สู่ศตวรรษแห่งความยั่งยืน</span>
         </div>
         <div class="section-source-citation">
           <i class="fa-solid fa-hospital"></i>
@@ -1628,6 +1619,10 @@
           <input type="range" class="cockpit-range-input" min="50" max="100" value="96" id="sliderHealth" aria-label="ระดับสุขภาพและการแพทย์เพื่อชุมชน (น้ำหนัก 20%)" aria-valuemin="50" aria-valuemax="100" aria-valuenow="96" aria-valuetext="96%" oninput="updateCockpit()" />
           <div class="cockpit-val-disp" id="dispHealth">96%</div>
         </div>
+      </div>
+      <div class="narrative-connector-bridge" role="button" tabindex="0" data-next-target="#finish" aria-label="ไปยังบทสรุปและแบบทดสอบส่งท้าย">
+        <i class="fa-solid fa-arrow-right-long"></i>
+        <span><strong>สะพานเชื่อมโยงข้อมูล:</strong> สำรวจบทสรุปภาพรวมทั้งหมด และร่วมทดสอบความรู้เพื่อรับประกาศนียบัตรผู้นำการเรียนรู้ 90 ปี มหาวิทยาลัยธรรมศาสตร์</span>
       </div>
       <div class="section-source-citation">
         <i class="fa-solid fa-compass"></i>
@@ -1891,11 +1886,14 @@
        JAVASCRIPT LOGIC & VISUALIZATION ENGINES
        ========================================================================== -->
   <!-- Main Application Logic -->
-  <script src="assets/js/app.js?v=20261024j" defer></script>
-  <script src="assets/js/dino-game.js?v=20261024j" defer></script>
+  <script src="assets/js/app.js?v=20261029v11" defer></script>
+  <script src="assets/js/dino-game.js?v=20261028" defer></script>
   <!-- Confetti Celebration FX -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
   <!-- TU Interactive Activities Engine -->
-  <script src="assets/js/tu-interactive.js?v=20261024j" defer></script>
+  <script src="assets/js/tu-interactive.js?v=20261029v11" defer></script>
+  <!-- CGTN Editorial Scrollytelling Polish Engine -->
+  <script src="assets/js/cgtn-polish.js?v=20261028" defer></script>
+  <script src="assets/js/scroll-story.js?v=20261029v11" defer></script>
 </body>
 </html>

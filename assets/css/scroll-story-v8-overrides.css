@@ -1,0 +1,1137 @@
+/* BI304 v8+ Refinement — Editorial Scrollytelling, High-Contrast Typography & Seamless Transitions
+   Inspired by CGTN "Who Runs China": continuous narrative flow, direction-aware easing, and accessible typography. */
+
+:root {
+  --story-transition-duration: 720ms;
+  --story-ease: cubic-bezier(.16, 1, .3, 1);
+  --story-ease-bounce: cubic-bezier(.34, 1.3, .64, 1);
+}
+
+/* ==========================================================================
+   1. GLOBAL & INTER-CHAPTER SMOOTH SCROLLING TRANSITIONS
+   ========================================================================== */
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 80px;
+}
+
+section[id^="topic-"],
+section#hero,
+section#key-findings,
+section#finish {
+  scroll-margin-top: 82px;
+  position: relative;
+}
+
+/* ==========================================================================
+   2. HIGH-CONTRAST TYPOGRAPHY & SOURCE CITATIONS (READABILITY)
+   ========================================================================== */
+.section-source-citation,
+.section-source-citation span {
+  color: #334155 !important;
+  opacity: 1 !important;
+  font-size: .88rem !important;
+  line-height: 1.6 !important;
+  text-shadow: none !important;
+}
+.section-source-citation strong {
+  color: #7f1230 !important;
+  background: #fce7ef !important;
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-weight: 800 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+.section-source-citation i {
+  color: #7f1230 !important;
+  flex: 0 0 auto;
+}
+.section-source-citation a {
+  color: #9f1239 !important;
+  font-weight: 750 !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 3px;
+  transition: color .2s ease;
+}
+.section-source-citation a:hover,
+.section-source-citation a:focus-visible {
+  color: #690d28 !important;
+  text-decoration-thickness: 2px !important;
+}
+
+/* Narrative Connector Bridge (Interactive Inter-Chapter Pathway) */
+.narrative-connector-bridge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  background: #f8fafc !important;
+  border: 1px solid #dbe2ec !important;
+  border-left: 5px solid #bd173e !important;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 8px 24px rgba(21, 35, 70, .05);
+  font-size: .95rem !important;
+  line-height: 1.65 !important;
+  padding: 16px 22px !important;
+  margin-top: 26px !important;
+  margin-bottom: 14px !important;
+  cursor: pointer;
+  text-decoration: none !important;
+  position: relative;
+  transition: transform .35s var(--story-ease), box-shadow .35s var(--story-ease), border-color .35s ease, background .35s ease !important;
+}
+.narrative-connector-bridge:hover,
+.narrative-connector-bridge:focus-visible {
+  transform: translateX(6px) !important;
+  background: #ffffff !important;
+  box-shadow: 0 12px 32px rgba(21, 35, 70, .09) !important;
+  border-color: #cbd5e1 !important;
+  border-left-color: #9f1239 !important;
+  outline: 2px solid rgba(189, 23, 62, .3);
+  outline-offset: 2px;
+}
+.narrative-connector-bridge span {
+  color: #1e293b !important;
+  opacity: 1 !important;
+  flex: 1 1 auto;
+}
+.narrative-connector-bridge strong {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+.narrative-connector-bridge i {
+  color: #bd173e !important;
+  font-size: 1.15rem;
+  flex: 0 0 auto;
+  transition: transform .35s var(--story-ease);
+}
+.narrative-connector-bridge:hover i {
+  transform: translateX(6px) scale(1.1);
+}
+.narrative-connector-bridge::after {
+  content: "อ่านต่อ ↓";
+  font-size: .78rem;
+  font-weight: 750;
+  color: #bd173e;
+  background: rgba(189, 23, 62, .08);
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  transition: background .25s ease, color .25s ease;
+}
+.narrative-connector-bridge:hover::after,
+.narrative-connector-bridge:focus-visible::after {
+  background: #bd173e;
+  color: #ffffff;
+}
+
+/* Topic 07 Dark Chapter Palette Preservation */
+#topic-07 .narrative-connector-bridge {
+  background: rgba(255, 255, 255, .08) !important;
+  border: 1px solid rgba(255, 255, 255, .16) !important;
+  border-left: 5px solid #ff4d6d !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .3) !important;
+}
+#topic-07 .narrative-connector-bridge:hover,
+#topic-07 .narrative-connector-bridge:focus-visible {
+  background: rgba(255, 255, 255, .14) !important;
+  border-color: rgba(255, 255, 255, .28) !important;
+  outline-color: rgba(255, 77, 109, .4);
+}
+#topic-07 .narrative-connector-bridge span {
+  color: #f1f5f9 !important;
+}
+#topic-07 .narrative-connector-bridge strong {
+  color: #ffffff !important;
+}
+#topic-07 .narrative-connector-bridge i {
+  color: #ff859e !important;
+}
+#topic-07 .narrative-connector-bridge::after {
+  color: #ff9eb3;
+  background: rgba(255, 255, 255, .14);
+}
+#topic-07 .narrative-connector-bridge:hover::after,
+#topic-07 .narrative-connector-bridge:focus-visible::after {
+  background: #ff4d6d;
+  color: #ffffff;
+}
+
+#topic-07 .section-source-citation,
+#topic-07 .section-source-citation span {
+  color: #e5e9f2 !important;
+}
+#topic-07 .section-source-citation strong {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, .14) !important;
+}
+#topic-07 .section-source-citation i {
+  color: #ff9eb3 !important;
+}
+#topic-07 .section-source-citation a {
+  color: #ffb4c5 !important;
+}
+
+/* ==========================================================================
+   3. SCROLL-STORY MODULE & STICKY PANEL FIT (DESKTOP)
+   ========================================================================== */
+@media (min-width: 981px) {
+  .scroll-story-grid {
+    grid-template-rows: auto auto;
+    row-gap: 0;
+  }
+  .scroll-story-visual-col {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    min-width: 0;
+    align-self: start;
+    position: sticky;
+    top: clamp(72px, 8.5vh, 88px) !important;
+    z-index: 5;
+    overflow: visible;
+  }
+  .scroll-story-steps {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding-bottom: 28px;
+  }
+  .scroll-story-grid::after {
+    content: "เลื่อนต่อเพื่อสำรวจข้อมูลเชิงลึกในมิติถัดไป";
+    display: flex;
+    grid-column: 2;
+    grid-row: 2;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: clamp(380px, 52vh, 600px) !important;
+    padding: 24px 12px 0;
+    border-top: 1px solid rgba(23, 33, 58, .08);
+    background: linear-gradient(180deg, rgba(247, 249, 252, .75), transparent 85%);
+    color: #475569;
+    font-size: .84rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    line-height: 1.5;
+    pointer-events: none;
+  }
+}
+
+/* ==========================================================================
+   4. ENHANCED TYPOGRAPHY & FONT LEGIBILITY (STANDARD SCREENS)
+   ========================================================================== */
+.scroll-story-stage {
+  border-radius: 16px;
+  border: 1px solid rgba(21, 35, 70, .09);
+  background: #ffffff;
+  padding: 18px 22px !important;
+  box-shadow: 0 10px 30px rgba(16, 26, 53, .06);
+  position: relative;
+  overflow: visible;
+}
+
+.scroll-story-stage-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(21, 35, 70, .07);
+}
+
+.scroll-story-stage-eyebrow {
+  font-size: .84rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--story-accent, #bd173e) !important;
+  margin-bottom: 4px;
+}
+
+.scroll-story-stage-title {
+  font-size: 1.30rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+}
+
+.scroll-story-stage-index {
+  display: inline-grid;
+  place-items: center;
+  width: 30px !important;
+  height: 30px !important;
+  flex: 0 0 30px !important;
+  border-radius: 50%;
+  color: #ffffff !important;
+  background: var(--story-accent, #bd173e) !important;
+  font-size: .80rem !important;
+  font-weight: 800 !important;
+  box-shadow: 0 3px 8px rgba(189, 23, 62, .25);
+}
+
+.scroll-story-metric-block {
+  padding: 10px 0 6px !important;
+}
+
+.scroll-story-metric {
+  font-size: clamp(2rem, 3.2vw, 2.7rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  color: #0f172a !important;
+  letter-spacing: -.025em;
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+
+.scroll-story-metric-label {
+  font-size: .95rem !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  margin-top: 4px !important;
+  display: block;
+}
+
+.scroll-story-metric-support {
+  font-size: .88rem !important;
+  color: #475569 !important;
+  line-height: 1.5 !important;
+  margin-top: 4px !important;
+}
+
+/* Visualization Marks Typography */
+.story-bar-label {
+  font-size: .88rem !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  line-height: 1.4 !important;
+}
+.story-bar-value {
+  font-size: .94rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  font-variant-numeric: tabular-nums;
+}
+.story-vertical-value {
+  font-size: .88rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  font-variant-numeric: tabular-nums;
+}
+.story-vertical-label {
+  font-size: .84rem !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+}
+.story-stacked-legend-item {
+  font-size: .85rem !important;
+  color: #334155 !important;
+  line-height: 1.45 !important;
+}
+.story-stacked-legend-item strong {
+  font-size: .92rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+.story-people-caption {
+  font-size: .86rem !important;
+  color: #475569 !important;
+  line-height: 1.6 !important;
+}
+.story-pair-card-label {
+  font-size: .85rem !important;
+  font-weight: 700 !important;
+  color: #334155 !important;
+}
+.story-pair-card-value {
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+.story-pair-card-note {
+  font-size: .82rem !important;
+  color: #475569 !important;
+  line-height: 1.45 !important;
+}
+.story-progress-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 9px !important;
+  margin-top: 6px !important;
+}
+.story-progress-row {
+  padding: 4px 6px !important;
+  border-radius: 8px !important;
+  transition: background-color .3s ease !important;
+}
+.story-progress-row.story-progress-row-focus {
+  background: rgba(189, 23, 62, .06) !important;
+}
+.story-progress-meta {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+  font-size: .84rem !important;
+  margin-bottom: 4px !important;
+}
+.story-progress-title {
+  font-weight: 700 !important;
+  color: #1e293b !important;
+}
+.story-progress-ratio {
+  color: #475569 !important;
+  font-variant-numeric: tabular-nums !important;
+  font-size: .82rem !important;
+}
+.story-progress-pct {
+  color: var(--story-accent, #bd173e) !important;
+  font-style: normal !important;
+  font-weight: 750 !important;
+}
+.story-progress-track {
+  height: 8px !important;
+  background: rgba(21, 35, 70, .08) !important;
+  border-radius: 99px !important;
+  overflow: hidden !important;
+}
+.story-progress-fill {
+  height: 100% !important;
+  width: var(--progress-width, 0%) !important;
+  background-color: var(--progress-color, #bd173e) !important;
+  border-radius: 99px !important;
+  box-shadow: 0 0 8px rgba(189, 23, 62, .25) !important;
+}
+.story-badge strong {
+  font-size: .90rem !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+.story-badge small {
+  font-size: .82rem !important;
+  color: #475569 !important;
+}
+.scroll-story-source-note {
+  font-size: .84rem !important;
+  line-height: 1.45 !important;
+  color: #475569 !important;
+  margin-top: 14px !important;
+  padding-top: 10px !important;
+  border-top: 1px dashed rgba(21, 35, 70, .1) !important;
+}
+
+/* Narrative Story Cards Typography & State */
+.scroll-story-step {
+  border-radius: 14px;
+  border: 1px solid rgba(21, 35, 70, .09);
+  background: rgba(255, 255, 255, .82);
+  padding: 24px 28px !important;
+  box-shadow: 0 4px 18px rgba(21, 35, 70, .04);
+  transition: transform .42s var(--story-ease), opacity .42s ease, background .35s ease, border-color .35s ease, box-shadow .42s var(--story-ease) !important;
+}
+.scroll-story-step.is-active {
+  background: #ffffff !important;
+  border-color: rgba(189, 23, 62, .35) !important;
+  border-left: 5px solid var(--story-accent, #bd173e) !important;
+  box-shadow: 0 16px 42px rgba(16, 26, 53, .11) !important;
+  transform: translateX(8px) !important;
+  opacity: 1 !important;
+}
+.scroll-story-step:not(.is-active) {
+  opacity: .48 !important;
+  transform: translateX(0) !important;
+}
+.scroll-story-step:hover:not(.is-active) {
+  opacity: .82 !important;
+  transform: translateX(3px) !important;
+}
+.scroll-story-step h4 {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: #0f172a !important;
+  margin-bottom: 10px !important;
+}
+.scroll-story-step p {
+  font-size: 1.02rem !important;
+  line-height: 1.75 !important;
+  color: #334155 !important;
+}
+.scroll-story-step-period {
+  font-size: .84rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .04em;
+  padding: 4px 10px;
+  background: rgba(189, 23, 62, .08);
+  border-radius: 6px;
+  color: var(--story-accent, #bd173e) !important;
+}
+.scroll-story-step-number {
+  width: 30px !important;
+  height: 30px !important;
+  flex: 0 0 30px !important;
+  font-size: .80rem !important;
+  font-weight: 800 !important;
+}
+.story-step-foot {
+  font-size: .84rem !important;
+  color: #64748b !important;
+  margin-top: 14px !important;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE COMPACTING FOR SHORT DESKTOP VIEWPORTS (HEIGHT <= 760PX)
+   Preserves font legibility above 0.78rem while compacting layout padding.
+   ========================================================================== */
+@media (min-width: 981px) and (max-height: 760px) {
+  .scroll-story-visual-col {
+    top: 72px;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .scroll-story-stage {
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 14px 18px !important;
+    border-radius: 14px;
+  }
+  .scroll-story-stage-head {
+    gap: 10px !important;
+    padding-bottom: 6px !important;
+  }
+  .scroll-story-stage-eyebrow {
+    font-size: .80rem !important;
+    font-weight: 800 !important;
+    letter-spacing: .06em !important;
+  }
+  .scroll-story-stage-index {
+    width: 28px !important;
+    height: 28px !important;
+    flex-basis: 28px !important;
+    font-size: .78rem !important;
+  }
+  .scroll-story-stage-title {
+    font-size: 1.15rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+  }
+  .scroll-story-metric-block {
+    padding: 8px 0 4px !important;
+  }
+  .scroll-story-metric {
+    font-size: clamp(1.85rem, 3.5vw, 2.8rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+  }
+  .scroll-story-metric-label {
+    font-size: .88rem !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    margin-top: 3px !important;
+  }
+  .scroll-story-metric-support {
+    font-size: .82rem !important;
+    color: #475569 !important;
+    line-height: 1.4 !important;
+    margin-top: 3px !important;
+  }
+  .scroll-story-visual-content,
+  .scroll-story-visual-content:has(.story-people-grid) {
+    min-height: 0 !important;
+    margin-top: 6px !important;
+  }
+  .story-vertical-bars {
+    min-height: 120px !important;
+    gap: 9px !important;
+  }
+  .story-vertical-bar {
+    height: 114px !important;
+    gap: 4px !important;
+  }
+  .story-vertical-track {
+    height: 72px !important;
+  }
+  .story-vertical-value {
+    font-size: .84rem !important;
+    font-weight: 800 !important;
+  }
+  .story-vertical-label {
+    font-size: .80rem !important;
+    font-weight: 600 !important;
+  }
+  .story-bar-list {
+    gap: 8px !important;
+  }
+  .story-bar-row {
+    gap: 8px !important;
+  }
+  .story-bar-label {
+    font-size: .84rem !important;
+    font-weight: 700 !important;
+  }
+  .story-bar-value {
+    font-size: .88rem !important;
+    font-weight: 800 !important;
+  }
+  .story-bar-track {
+    height: 9px !important;
+  }
+  .story-stacked-wrap {
+    gap: 8px !important;
+  }
+  .story-stacked-track {
+    height: 24px !important;
+  }
+  .story-stacked-legend {
+    gap: 6px 10px !important;
+  }
+  .story-stacked-legend-item {
+    font-size: .80rem !important;
+  }
+  .story-stacked-legend-item strong {
+    font-size: .85rem !important;
+    font-weight: 800 !important;
+  }
+  .story-people-grid {
+    max-width: 320px !important;
+    gap: 3px 3px !important;
+    margin: 3px auto 6px !important;
+  }
+  .story-person {
+    height: 15px !important;
+  }
+  .story-person::before {
+    width: 4.5px !important;
+    height: 4.5px !important;
+  }
+  .story-person::after {
+    top: 5.5px !important;
+    width: 7px !important;
+    height: 8.5px !important;
+  }
+  .story-people-caption {
+    font-size: .80rem !important;
+    margin-top: 5px !important;
+  }
+  .story-pair-cards {
+    gap: 8px !important;
+  }
+  .story-pair-card {
+    padding: 10px 12px !important;
+  }
+  .story-pair-card-label {
+    font-size: .80rem !important;
+    font-weight: 700 !important;
+  }
+  .story-pair-card-value {
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+  }
+  .story-pair-card-note {
+    font-size: .78rem !important;
+  }
+  .story-progress-list {
+    gap: 8px !important;
+  }
+  .story-progress-meta {
+    font-size: .82rem !important;
+    font-weight: 700 !important;
+  }
+  .story-progress-track {
+    height: 8px !important;
+  }
+  .story-badge-grid {
+    gap: 8px !important;
+  }
+  .story-badge {
+    min-height: 80px !important;
+    padding: 8px 6px !important;
+  }
+  .story-badge strong {
+    font-size: .84rem !important;
+    font-weight: 700 !important;
+  }
+  .story-badge small {
+    font-size: .76rem !important;
+  }
+  .scroll-story-source-note {
+    font-size: .80rem !important;
+    line-height: 1.4 !important;
+    margin-top: 8px !important;
+    padding-top: 7px !important;
+  }
+}
+
+/* ==========================================================================
+   6. CHAPTER ENTRY & DIRECTION-AWARE TRANSITIONS (INTER-CHAPTER)
+   ========================================================================== */
+.scroll-story-module.is-chapter-entering .scroll-story-heading {
+  animation: story-heading-reveal-v9 .85s cubic-bezier(.16, 1, .3, 1) both !important;
+}
+.scroll-story-module[data-entry-direction="up"].is-chapter-entering .scroll-story-heading {
+  animation-name: story-heading-reveal-up-v9 !important;
+}
+
+.scroll-story-module.is-chapter-entering .scroll-story-stage {
+  animation: story-stage-handoff-v9 .92s cubic-bezier(.16, 1, .3, 1) both !important;
+}
+.scroll-story-module[data-entry-direction="up"].is-chapter-entering .scroll-story-stage {
+  animation-name: story-stage-handoff-up-v9 !important;
+}
+
+.scroll-story-module.is-chapter-entering .scroll-story-step {
+  animation: story-step-cascade-v9 .72s cubic-bezier(.16, 1, .3, 1) both !important;
+}
+.scroll-story-module[data-entry-direction="up"].is-chapter-entering .scroll-story-step {
+  animation-name: story-step-cascade-up-v9 !important;
+}
+.scroll-story-module.is-chapter-entering .scroll-story-step:nth-child(1) { animation-delay: .04s !important; }
+.scroll-story-module.is-chapter-entering .scroll-story-step:nth-child(2) { animation-delay: .10s !important; }
+.scroll-story-module.is-chapter-entering .scroll-story-step:nth-child(3) { animation-delay: .16s !important; }
+.scroll-story-module.is-chapter-entering .scroll-story-step:nth-child(4) { animation-delay: .22s !important; }
+.scroll-story-module.is-chapter-entering .scroll-story-step:nth-child(5) { animation-delay: .28s !important; }
+
+/* Subtle Accent Sweep on Stage Entry */
+.scroll-story-stage::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 16px 16px 0 0;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, transparent, var(--story-accent, #bd173e) 48%, rgba(255, 255, 255, .7) 58%, transparent);
+  pointer-events: none;
+}
+.scroll-story-module[data-entry-direction="down"].is-chapter-entering .scroll-story-stage::before {
+  animation: story-accent-sweep-down-v8 .84s cubic-bezier(.2, .8, .2, 1) both;
+}
+.scroll-story-module[data-entry-direction="up"].is-chapter-entering .scroll-story-stage::before {
+  transform-origin: right center;
+  animation: story-accent-sweep-up-v8 .84s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes story-heading-reveal-v9 {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); filter: blur(3px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+}
+@keyframes story-heading-reveal-up-v9 {
+  from { opacity: 0; transform: translate3d(0, -24px, 0); filter: blur(3px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+}
+@keyframes story-stage-handoff-v9 {
+  0% { opacity: .2; transform: translate3d(0, 26px, 0) scale(.97); filter: blur(4px); }
+  65% { opacity: 1; transform: translate3d(0, -2px, 0) scale(1.006); filter: blur(0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: none; }
+}
+@keyframes story-stage-handoff-up-v9 {
+  0% { opacity: .2; transform: translate3d(0, -26px, 0) scale(.97); filter: blur(4px); }
+  65% { opacity: 1; transform: translate3d(0, 2px, 0) scale(1.006); filter: blur(0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: none; }
+}
+@keyframes story-step-cascade-v9 {
+  from { opacity: .3; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes story-step-cascade-up-v9 {
+  from { opacity: .3; transform: translate3d(0, -22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes story-accent-sweep-down-v8 {
+  0% { opacity: 0; transform: scaleX(0); transform-origin: left center; }
+  20% { opacity: 1; }
+  85% { opacity: .75; }
+  100% { opacity: 0; transform: scaleX(1); transform-origin: left center; }
+}
+@keyframes story-accent-sweep-up-v8 {
+  0% { opacity: 0; transform: scaleX(0); transform-origin: right center; }
+  20% { opacity: 1; }
+  85% { opacity: .75; }
+  100% { opacity: 0; transform: scaleX(1); transform-origin: right center; }
+}
+
+/* ==========================================================================
+   7. INTRA-TOPIC VISUAL & INTERACTIVE TRANSITIONS
+   ========================================================================== */
+/* Cross-type transition container: CSS Grid Single-Coordinate Space */
+.scroll-story-visual-content.is-crossfading {
+  display: grid !important;
+  grid-template-areas: "stage-layer" !important;
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  will-change: height;
+  transition: height .52s cubic-bezier(.16, 1, .3, 1) !important;
+}
+.scroll-story-visual-content .story-visual-layer {
+  grid-area: stage-layer !important;
+  width: 100% !important;
+  align-self: start !important;
+  justify-self: stretch !important;
+}
+.scroll-story-visual-content .story-visual-out {
+  pointer-events: none !important;
+  z-index: 1 !important;
+  animation: story-viz-out-down-v8 .46s cubic-bezier(.4, 0, .7, .2) forwards !important;
+}
+.scroll-story-visual-content .story-visual-in {
+  z-index: 2 !important;
+  animation: story-viz-in-down-v8 .68s cubic-bezier(.16, 1, .3, 1) forwards !important;
+  will-change: opacity, transform, filter !important;
+}
+.scroll-story-visual-content[data-entry-direction="up"] .story-visual-out {
+  animation-name: story-viz-out-up-v8 !important;
+}
+.scroll-story-visual-content[data-entry-direction="up"] .story-visual-in {
+  animation-name: story-viz-in-up-v8 !important;
+}
+
+@keyframes story-viz-out-down-v8 {
+  0% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+  100% { opacity: 0; transform: translate3d(0, -16px, 0) scale(.975); filter: blur(4px); }
+}
+@keyframes story-viz-in-down-v8 {
+  0% { opacity: 0; transform: translate3d(0, 20px, 0) scale(.975); filter: blur(5px); }
+  65% { opacity: 1; transform: translate3d(0, -1px, 0) scale(1.004); filter: blur(0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: none; }
+}
+@keyframes story-viz-out-up-v8 {
+  0% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+  100% { opacity: 0; transform: translate3d(0, 16px, 0) scale(.975); filter: blur(4px); }
+}
+@keyframes story-viz-in-up-v8 {
+  0% { opacity: 0; transform: translate3d(0, -20px, 0) scale(.975); filter: blur(5px); }
+  65% { opacity: 1; transform: translate3d(0, 1px, 0) scale(1.004); filter: blur(0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: none; }
+}
+
+/* Same-Chart Marks Continuous Animation */
+.story-bar-fill,
+.story-vertical-fill,
+.story-stacked-segment,
+.story-progress-fill {
+  transition: width .78s cubic-bezier(.16, 1, .3, 1), height .78s cubic-bezier(.16, 1, .3, 1), background-color .38s ease, opacity .38s ease !important;
+}
+/* People Icon Morphing and Fluid 3D Wave Transition */
+.story-people-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 3px 3px;
+  max-width: 320px;
+  margin: 6px auto 10px;
+  perspective: 600px;
+}
+
+.story-person {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 18px;
+  color: #cbd1db;
+  transition: color .42s cubic-bezier(.16, 1, .3, 1), transform .42s cubic-bezier(.34, 1.45, .64, 1), filter .35s ease !important;
+  transition-delay: var(--person-delay, 0ms) !important;
+  will-change: transform, color;
+}
+
+.story-person.female {
+  color: var(--story-female, #d63384) !important;
+}
+
+.story-person.male {
+  color: var(--story-male, #2563eb) !important;
+}
+
+/* Staggered Pop & Flip on State Switch */
+.story-person.is-flipping {
+  animation: person-morph-flip .56s cubic-bezier(.34, 1.45, .64, 1) both !important;
+  animation-delay: var(--person-delay, 0ms) !important;
+  z-index: 5;
+}
+
+/* Ripple wave across unchanged icons in the grid */
+.scroll-story-visual-content.is-morphing .story-person:not(.is-flipping) {
+  animation: person-morph-wave .42s ease-in-out both;
+  animation-delay: var(--person-delay, 0ms);
+}
+
+@keyframes person-morph-flip {
+  0% {
+    transform: scale(1) translateY(0) rotateY(0deg);
+    filter: none;
+  }
+  40% {
+    transform: scale(1.55) translateY(-4px) rotateY(180deg);
+    filter: drop-shadow(0 4px 10px rgba(189, 23, 62, .45));
+  }
+  75% {
+    transform: scale(0.92) translateY(1px) rotateY(360deg);
+  }
+  100% {
+    transform: scale(1) translateY(0) rotateY(360deg);
+    filter: none;
+  }
+}
+
+@keyframes person-morph-wave {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.16) translateY(-1px); }
+  100% { transform: scale(1); }
+}
+
+.story-person:hover {
+  transform: scale(1.4) translateY(-3px) !important;
+  filter: drop-shadow(0 4px 8px rgba(16, 26, 53, .3)) !important;
+  z-index: 10;
+  transition: transform .2s var(--story-ease), filter .2s ease !important;
+  transition-delay: 0ms !important;
+}
+
+.story-female-pct,
+.story-male-pct {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  margin-left: 2px;
+}
+
+/* Text Swapping Glide Transitions Inside Scenes */
+.story-copy-out {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .11s ease, transform .11s ease;
+}
+.story-copy-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: story-copy-glide .28s cubic-bezier(.16, 1, .3, 1) both;
+}
+@keyframes story-copy-glide {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Topic 01 Milestone Stepper Interactive Transition */
+#milestoneEventCard {
+  transition: opacity .32s cubic-bezier(.16, 1, .3, 1), transform .32s cubic-bezier(.16, 1, .3, 1), box-shadow .32s ease;
+}
+#milestoneEventCard.is-switching {
+  opacity: .35;
+  transform: translateY(4px) scale(.995);
+}
+.stepper-node {
+  transition: transform .28s var(--story-ease), box-shadow .28s ease;
+}
+.stepper-node:hover {
+  transform: translateY(-2px);
+}
+.stepper-node.active .stepper-circle {
+  box-shadow: 0 0 0 5px rgba(189, 23, 62, .22);
+  transform: scale(1.1);
+  transition: transform .3s cubic-bezier(.16, 1, .3, 1), box-shadow .3s ease;
+}
+
+/* Topic 10 Strategic Pillar Elevation */
+.tu-pillar-item {
+  transition: transform .42s cubic-bezier(.16, 1, .3, 1), box-shadow .42s cubic-bezier(.16, 1, .3, 1), border-color .35s ease !important;
+}
+.tu-pillar-item.active-destination,
+.tu-pillar-item:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 22px 48px rgba(16, 26, 53, .15) !important;
+  border-color: rgba(189, 23, 62, .38) !important;
+}
+
+/* Intra-Topic Interactive Components Transitions */
+.campus-metric-item,
+.campus-metric-item .val,
+.visual-metric-pill,
+.visual-metric-pill .val,
+.hospital-metric-pill,
+.hospital-metric-pill .val {
+  transition: transform .32s var(--story-ease), box-shadow .32s var(--story-ease), color .28s ease, opacity .28s ease !important;
+}
+.cluster-select-btn,
+.filter-pill,
+.drilldown-pill {
+  transition: transform .25s var(--story-ease), background-color .25s ease, color .25s ease, box-shadow .25s var(--story-ease), border-color .25s ease !important;
+}
+.cluster-select-btn:hover,
+.filter-pill:hover,
+.drilldown-pill:hover {
+  transform: translateY(-2px);
+}
+.cluster-select-btn.active,
+.filter-pill.active,
+.drilldown-pill.active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(189, 23, 62, .24) !important;
+}
+.faculty-card {
+  transition: transform .35s var(--story-ease), box-shadow .35s var(--story-ease), opacity .35s ease, border-color .3s ease !important;
+}
+.faculty-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(16, 26, 53, .08);
+}
+
+/* ==========================================================================
+   8. MOBILE RESPONSIVE ADAPTATIONS (MAX-WIDTH 980PX)
+   ========================================================================== */
+@media (max-width: 980px) {
+  .scroll-story-visual-col {
+    position: sticky;
+    top: 70px;
+  }
+  .scroll-story-grid::after {
+    display: none !important;
+  }
+  .scroll-story-step {
+    padding: 18px 20px !important;
+  }
+  .scroll-story-step.is-active {
+    transform: translateY(-3px) !important;
+  }
+  .scroll-story-step h4 {
+    font-size: 1.15rem !important;
+  }
+  .scroll-story-step p {
+    font-size: .95rem !important;
+  }
+}
+
+/* ==========================================================================
+   9. PREFERS-REDUCED-MOTION SUPPORT
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .scroll-story-module.is-chapter-entering .scroll-story-heading,
+  .scroll-story-module.is-chapter-entering .scroll-story-stage,
+  .scroll-story-module.is-chapter-entering .scroll-story-step,
+  .scroll-story-module.is-chapter-entering .scroll-story-stage::before,
+  .scroll-story-visual-content .story-visual-out,
+  .scroll-story-visual-content .story-visual-in,
+  .story-copy-in {
+    animation: none !important;
+    filter: none !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .scroll-story-visual-content,
+  .scroll-story-visual-content *,
+  .scroll-story-step,
+  #milestoneEventCard,
+  .tu-pillar-item,
+  .narrative-connector-bridge,
+  .campus-metric-item,
+  .cluster-select-btn,
+  .filter-pill,
+  .drilldown-pill,
+  .faculty-card {
+    transition-duration: .01ms !important;
+  }
+}
+
+
+/* ==========================================================================
+   8. INTER-TOPIC GRAPH CONTINUITY & SEAMLESS TRANSITIONS
+   ========================================================================== */
+.tu-graph-stage {
+  transition: opacity .65s cubic-bezier(.16, 1, .3, 1),
+              transform .65s cubic-bezier(.16, 1, .3, 1),
+              filter .65s cubic-bezier(.16, 1, .3, 1),
+              box-shadow .55s ease,
+              border-color .45s ease !important;
+  will-change: transform, opacity;
+}
+
+.tu-graph-stage:not(.is-in-view) {
+  opacity: .84;
+  transform: translate3d(0, 14px, 0) scale(.988);
+  filter: blur(1.5px);
+}
+
+.tu-graph-stage.is-in-view {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
+  filter: blur(0) !important;
+}
+
+/* Topic 07 (Triple Crown & Rankings) Stage Smoothness */
+#topic-07 .scroll-story-stage {
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35) !important;
+}
+#topic-07 .scroll-story-stage-title {
+  color: #ffffff !important;
+}
+#topic-07 .story-pair-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+#topic-07 .story-pair-card-label {
+  color: #94a3b8 !important;
+}
+#topic-07 .story-pair-card-value {
+  color: #38bdf8 !important;
+}
+#topic-07 .story-pair-card-note {
+  color: #cbd5e1 !important;
+}
+#topic-07 .story-badge {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+#topic-07 .story-badge strong {
+  color: #ffffff !important;
+}
+#topic-07 .story-badge small {
+  color: #cbd5e1 !important;
+}
+
+/* Topic 08 (Green Campus) Stage Marks Animation */
+#topic-08 .scroll-story-stage {
+  border-left: 4px solid #10b981 !important;
+  box-shadow: 0 12px 36px rgba(16, 185, 129, 0.08) !important;
+}
+#topic-08 .story-bar-fill {
+  transition: width .82s cubic-bezier(.16, 1, .3, 1), background-color .4s ease !important;
+}
+
+/* Topic 09 (Hospital & Health) Stage Marks Animation */
+#topic-09 .scroll-story-stage {
+  border-left: 4px solid #0284c7 !important;
+  box-shadow: 0 12px 36px rgba(2, 132, 199, 0.08) !important;
+}
+
+/* Smooth Arrow Pulse on Narrative Bridges */
+.narrative-connector-bridge i {
+  animation: bridge-arrow-glide 2.4s ease-in-out infinite alternate;
+}
+@keyframes bridge-arrow-glide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tu-graph-stage {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .narrative-connector-bridge i {
+    animation: none !important;
+  }
+}
